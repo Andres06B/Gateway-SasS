@@ -1,0 +1,123 @@
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <!-- Button to open modal -->
+    <button
+      id="openModalBtn"
+      class="px-6 py-3 bg-[#8c14ff] text-white rounded-lg
+        hover:bg-[#8c14ff]/90 transform hover:scale-105
+        transition-all duration-200 ease-out
+        shadow-lg shadow-[#8c14ff]/30
+        flex items-center space-x-2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+      </svg>
+      <span>Select Account Type</span>
+    </button>
+
+    <!-- Modal -->
+    <div id="modal" class="modal fixed inset-0 flex items-center justify-center z-50 bg-black/50">
+      <div class="modal-content relative bg-white rounded-xl shadow-2xl p-8 m-4 max-w-2xl w-full animate-popup">
+        <!-- Close button -->
+        <button
+          id="closeModalBtn"
+          class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+
+        <!-- Modal content -->
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Choose Account Type</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Personal Account Option -->
+          <div class="option-card bg-white p-6 rounded-xl border-2 border-[#8c14ff]/20 hover:border-[#8c14ff] cursor-pointer shadow-lg">
+            <div class="p-3 rounded-full bg-[#8c14ff]/10 w-fit mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#8c14ff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Personal Account</h3>
+            <p class="text-gray-600 mb-4">Perfect for individual users managing personal tasks and projects.</p>
+            <button
+              id="selectPersonalBtn"
+              class="w-full px-4 py-2 bg-[#8c14ff] text-white rounded-lg
+                hover:bg-[#8c14ff]/90 transform hover:scale-105
+                transition-all duration-200 ease-out
+                shadow-lg shadow-[#8c14ff]/30"
+            >
+              Select Personal
+            </button>
+          </div>
+
+          <!-- Business Account Option -->
+          <div class="option-card bg-white p-6 rounded-xl border-2 border-[#8c14ff]/20 hover:border-[#8c14ff] cursor-pointer shadow-lg">
+            <div class="p-3 rounded-full bg-[#8c14ff]/10 w-fit mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#8c14ff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+                <path d="M3 7h18" />
+                <path d="M3 21h18" />
+                <path d="M9 5v16" />
+                <path d="M15 5v16" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Business Account</h3>
+            <p class="text-gray-600 mb-4">Ideal for companies and teams requiring advanced business features.</p>
+            <button
+              id="selectBusinessBtn"
+              class="w-full px-4 py-2 bg-[#8c14ff] text-white rounded-lg
+                hover:bg-[#8c14ff]/90 transform hover:scale-105
+                transition-all duration-200 ease-out
+                shadow-lg shadow-[#8c14ff]/30"
+            >
+              Select Business
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>

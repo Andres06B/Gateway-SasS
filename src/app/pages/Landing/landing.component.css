@@ -1,0 +1,65 @@
+/* RESET PARA EL MARQUEE - EVITA CONFLICTOS */
+.marquee-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 4rem 0; /* Ajusta según necesites */
+}
+
+.marquee-track {
+  display: flex;
+  position: relative;
+  animation: marquee-scroll 30s linear infinite;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-item {
+  flex: 0 0 auto;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Estilos para los iconos sociales */
+.social-icon-wrapper {
+  padding: 0.75rem;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: inline-flex;
+}
+
+.social-icon-wrapper:hover {
+  transform: scale(1.1);
+}
+
+.social-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Temas oscuros */
+.dark .social-icon-wrapper {
+  background-color: #1f2937;
+}
+
+/* Colores específicos para cada red social */
+.social-icon-wrapper.facebook:hover { background-color: #1877f226; }
+.social-icon-wrapper.instagram:hover { 
+  background: linear-gradient(45deg, #833ab426, #fd1d1d26, #fcb04526); 
+}
+.social-icon-wrapper.tiktok:hover { background-color: rgba(0, 0, 0, 0.1); }
+.dark .social-icon-wrapper.tiktok:hover { background-color: rgba(255, 255, 255, 0.1); }
+.social-icon-wrapper.whatsapp:hover { background-color: #25d36526; }
+.social-icon-wrapper.twitter:hover { background-color: #1da1f226; }

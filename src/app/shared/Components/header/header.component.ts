@@ -6,9 +6,13 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
-  isMenuOpen = false;
-  toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-  }
+export class HeaderComponent{
+menuOpen: boolean = false;
+
+toggleMenu(): void {
+  this.menuOpen = !this.menuOpen;
+  console.log("Estado del menú:", this.menuOpen); // Para depurar si el menú se abre
+}
+
+
 }
