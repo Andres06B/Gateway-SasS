@@ -1,10 +1,6 @@
 @media (max-width: 1024px) {
-  .hidden {
+  .lg\\:hidden {
     display: none;
-  }
-
-  .block {
-    display: block;
   }
 }
 
@@ -18,7 +14,6 @@
     opacity: 0;
     transform: translateY(-10px);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -29,9 +24,30 @@
 header.scrolled {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.95) !important;
 }
 
 .dark header.scrolled {
-  background-color: rgba(17, 24, 39, 0.95);
+  background-color: rgba(17, 24, 39, 0.95) !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 64px; /* Asegura espacio para el header */
+}
+
+/* Ajustes para el header */
+header {
+  height: 64px;
+}
+
+/* Asegurar que el menú móvil no cause overflow */
+#mobile-menu {
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+/* Asegúrate de que el scroll suave funcione incluso sin el CSS global */
+html {
+  scroll-behavior: smooth;
 }

@@ -1,65 +1,163 @@
-/* RESET PARA EL MARQUEE - EVITA CONFLICTOS */
-.marquee-section {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  overflow: hidden;
-  padding: 4rem 0; /* Ajusta según necesites */
+ /* Estilos globales para eliminar márgenes */
+ html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: white;
 }
 
-.marquee-track {
-  display: flex;
-  position: relative;
-  animation: marquee-scroll 30s linear infinite;
-  width: max-content;
-  will-change: transform;
+/* Contenedor principal */
+.main-container {
+  width: 100%;
+  background-color: white;
+  overflow-x: hidden;
 }
 
-.marquee-item {
-  flex: 0 0 auto;
-  margin: 0 2rem;
+/* Secciones con espaciado consistente */
+section {
+  padding: 4rem 0;
+  width: 100%;
+}
+
+/* Hero section ajustado */
+.hero-section {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+/* Sección de equipo mejorada */
+.team-section {
+  padding: 3rem 0;
+}
+
+.team-container {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-@keyframes marquee-scroll {
+.team-member {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  width: calc(20% - 1.5rem);
+  min-width: 180px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #f3f4f6;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 3px solid #8c14ff;
+}
+
+.team-member h3 {
+  color: #1f2937;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.specialty {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.social-links a {
+  color: #4b5563;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #8c14ff;
+  transform: scale(1.2);
+}
+
+/* Efectos de gradiente para secciones */
+.gradient-bg {
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .team-member {
+    width: calc(25% - 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 0;
+  }
+  
+  .team-member {
+    width: calc(33.333% - 1.5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .team-member {
+    width: calc(50% - 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .team-member {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+.marquee-content {
+  animation: marquee 25s linear infinite;
+  display: flex;
+}
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.marquee-content {
+  animation: marquee 30s linear infinite;
+  display: flex;
+}
+
+@keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Estilos para los iconos sociales */
-.social-icon-wrapper {
-  padding: 0.75rem;
-  background-color: #f3f4f6;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  display: inline-flex;
+/* Scroll suave para todos los enlaces ancla */
+html {
+  scroll-behavior: smooth;
 }
-
-.social-icon-wrapper:hover {
-  transform: scale(1.1);
-}
-
-.social-icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-/* Temas oscuros */
-.dark .social-icon-wrapper {
-  background-color: #1f2937;
-}
-
-/* Colores específicos para cada red social */
-.social-icon-wrapper.facebook:hover { background-color: #1877f226; }
-.social-icon-wrapper.instagram:hover { 
-  background: linear-gradient(45deg, #833ab426, #fd1d1d26, #fcb04526); 
-}
-.social-icon-wrapper.tiktok:hover { background-color: rgba(0, 0, 0, 0.1); }
-.dark .social-icon-wrapper.tiktok:hover { background-color: rgba(255, 255, 255, 0.1); }
-.social-icon-wrapper.whatsapp:hover { background-color: #25d36526; }
-.social-icon-wrapper.twitter:hover { background-color: #1da1f226; }

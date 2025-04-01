@@ -1,142 +1,128 @@
-<header
-    class="fixed w-full bg-white/90 dark:bg-gray-900/90 shadow-md z-50 backdrop-blur-md transition-all duration-300 border-b border-gray-200/50 dark:border-gray-800/50">
-    <nav class="border-gray-200 py-2.5">
-        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-            <!-- Logo con animación -->
-            <a href="#" class="flex items-center group">
-                <img src="./assets/images/logo.svg"
-                    class="h-6 mr-3 sm:h-9 transition-all duration-300 group-hover:rotate-12" alt="Logo" />
-                <span
-                    class="self-center text-xl font-semibold whitespace-nowrap text-black dark:text-white group-hover:text-[#8c14ff] transition-colors duration-300">
+<header class="fixed top-2 left-1/2 transform -translate-x-1/2 w-[calc(100%-1rem)] max-w-7xl mx-4 bg-white/90 dark:bg-gray-900/90 shadow-lg z-50 backdrop-blur-md transition-all duration-300 border border-gray-200/50 dark:border-gray-800/50 rounded-2xl hover:shadow-xl hover:-translate-y-0.5">
+    <nav class="px-2 sm:px-4 py-2.5">
+        <div class="flex flex-wrap items-center justify-between mx-auto">
+            <!-- Logo -->
+            <a (click)="smoothScroll('hero')" class="flex items-center space-x-3 rtl:space-x-reverse group cursor-pointer">
+                <img src="dash.png" class="h-6 sm:h-7 group-hover:rotate-12 transition-transform duration-300" alt="Logo" />
+                <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900 dark:text-white">
                     Quantum Gateway
                 </span>
             </a>
 
-            <!-- Botón para menú en móviles con animación -->
-            <button
-                class="lg:hidden text-gray-800 dark:text-gray-200 p-2 rounded-lg focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-                id="menu-button">
-                <svg id="menu-icon-open" class="w-6 h-6 transition-transform duration-300" fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zM3 10h14a1 1 0 110 2H3a1 1 0 110-2zM3 15h14a1 1 0 110 2H3a1 1 0 110-2z"
-                        clip-rule="evenodd"></path>
+            <!-- Botón menú móvil -->
+            <button (click)="toggleMenu()" class="lg:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors duration-200"
+                aria-controls="mobile-menu" [attr.aria-expanded]="menuOpen">
+                <svg class="w-7 h-7 text-gray-800 dark:text-gray-200" [class.hidden]="menuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
-                <svg id="menu-icon-close" class="w-6 h-6 hidden transition-transform duration-300" fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
+                <svg class="w-7 h-7 text-gray-800 dark:text-gray-200" [class.hidden]="!menuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
 
-            <!-- Menú en pantalla grande con animaciones -->
-            <div class="hidden lg:flex items-center space-x-8">
-                <a href="#" class="relative text-[#8c14ff] font-medium group">
-                    <span>Inicio</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8c14ff] transition-all duration-300 group-hover:w-full"></span>
+            <!-- Menú principal (desktop) -->
+            <div class="hidden lg:flex items-center space-x-6">
+                <a (click)="smoothScroll('hero')" 
+                   class="relative px-2 py-1.5 font-medium group cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'hero'"
+                   [class.text-gray-800]="activeSection !== 'hero'"
+                   [class.dark:text-gray-300]="activeSection !== 'hero'">
+                    <span class="relative z-10">Inicio</span>
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                          [class.scale-x-100]="activeSection === 'hero'"></span>
                 </a>
-                <a href="#"
-                    class="relative text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] dark:hover:text-[#8c14ff] font-medium group transition-colors duration-300">
-                    <span>Compañía</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8c14ff] transition-all duration-300 group-hover:w-full"></span>
+                
+                <a (click)="smoothScroll('Servicios')" 
+                   class="relative px-2 py-1.5 font-medium group cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'Servicios'"
+                   [class.text-gray-800]="activeSection !== 'Servicios'"
+                   [class.dark:text-gray-300]="activeSection !== 'Servicios'">
+                    <span class="relative z-10">Servicios</span>
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                          [class.scale-x-100]="activeSection === 'Servicios'"></span>
                 </a>
-                <a href="#"
-                    class="relative text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] dark:hover:text-[#8c14ff] font-medium group transition-colors duration-300">
-                    <span>Servicios</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8c14ff] transition-all duration-300 group-hover:w-full"></span>
+                
+                <a (click)="smoothScroll('Informacion')" 
+                   class="relative px-2 py-1.5 font-medium group cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'Informacion'"
+                   [class.text-gray-800]="activeSection !== 'Informacion'"
+                   [class.dark:text-gray-300]="activeSection !== 'Informacion'">
+                    <span class="relative z-10">Información</span>
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                          [class.scale-x-100]="activeSection === 'Informacion'"></span>
                 </a>
-                <a href="#"
-                    class="relative text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] dark:hover:text-[#8c14ff] font-medium group transition-colors duration-300">
-                    <span>Información</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8c14ff] transition-all duration-300 group-hover:w-full"></span>
+                
+                <a (click)="smoothScroll('Equipo')" 
+                   class="relative px-2 py-1.5 font-medium group cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'Equipo'"
+                   [class.text-gray-800]="activeSection !== 'Equipo'"
+                   [class.dark:text-gray-300]="activeSection !== 'Equipo'">
+                    <span class="relative z-10">Equipo</span>
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                          [class.scale-x-100]="activeSection === 'Equipo'"></span>
                 </a>
-                <a href="#"
-                    class="relative text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] dark:hover:text-[#8c14ff] font-medium group transition-colors duration-300">
-                    <span>Reseñas</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8c14ff] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#"
-                    class="relative px-4 py-2 text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-md font-medium hover:shadow-lg hover:shadow-[#8c14ff]/30 transition-all duration-300">
-                    <span>Planes</span>
+                
+                <a (click)="smoothScroll('contact')" 
+                   class="relative px-5 py-2.5 text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 group overflow-hidden cursor-pointer">
+                    <span class="relative z-10">Comenzar</span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-[#6a00ff] to-[#8c14ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </a>
             </div>
         </div>
 
-        <!-- Menú desplegable en móviles con animación -->
-        <div id="mobile-menu"
-            class="hidden lg:hidden bg-white dark:bg-gray-800 w-full mt-2 shadow-lg rounded-lg origin-top animate-fade-in-down">
-            <ul class="flex flex-col p-4 space-y-3">
-                <li>
-                    <a href="#"
-                        class="flex items-center px-4 py-2 text-[#8c14ff] font-medium rounded-lg bg-[#8c14ff]/10 hover:bg-[#8c14ff]/20 transition-colors duration-200">
-                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                            </path>
-                        </svg>
-                        Inicio
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
-                            </path>
-                        </svg>
-                        Compañía
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        Servicios
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                            </path>
-                        </svg>
-                        Información
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center px-4 py-2 text-gray-800 dark:text-gray-300 hover:text-[#8c14ff] rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
-                            </path>
-                        </svg>
-                        Reseñas
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center px-4 py-3 mt-2 text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-md font-medium hover:shadow-lg hover:shadow-[#8c14ff]/30 transition-all duration-300">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                        </svg>
-                        Planes
-                    </a>
-                </li>
-            </ul>
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="lg:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm w-full mt-2 px-4 pb-4 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-800/50"
+             [class.hidden]="!menuOpen">
+            <div class="flex flex-col space-y-2 pt-2">
+                <a (click)="smoothScroll('hero')" 
+                   class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'hero'"
+                   [class.bg-purple-50]="activeSection === 'hero'"
+                   [class.dark:bg-gray-800]="activeSection === 'hero'"
+                   [class.text-gray-800]="activeSection !== 'hero'"
+                   [class.dark:text-gray-300]="activeSection !== 'hero'"
+                   [class.hover:bg-gray-100]="activeSection !== 'hero'"
+                   [class.dark:hover:bg-gray-800]="activeSection !== 'hero'">
+                    Inicio
+                </a>
+                <a (click)="smoothScroll('Servicios')" 
+                   class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'Servicios'"
+                   [class.bg-purple-50]="activeSection === 'Servicios'"
+                   [class.dark:bg-gray-800]="activeSection === 'Servicios'"
+                   [class.text-gray-800]="activeSection !== 'Servicios'"
+                   [class.dark:text-gray-300]="activeSection !== 'Servicios'"
+                   [class.hover:bg-gray-100]="activeSection !== 'Servicios'"
+                   [class.dark:hover:bg-gray-800]="activeSection !== 'Servicios'">
+                    Servicios
+                </a>
+                <a (click)="smoothScroll('Informacion')" 
+                   class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'Informacion'"
+                   [class.bg-purple-50]="activeSection === 'Informacion'"
+                   [class.dark:bg-gray-800]="activeSection === 'Informacion'"
+                   [class.text-gray-800]="activeSection !== 'Informacion'"
+                   [class.dark:text-gray-300]="activeSection !== 'Informacion'"
+                   [class.hover:bg-gray-100]="activeSection !== 'Informacion'"
+                   [class.dark:hover:bg-gray-800]="activeSection !== 'Informacion'">
+                    Información
+                </a>
+                <a (click)="smoothScroll('Equipo')" 
+                   class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
+                   [class.text-[#8c14ff]]="activeSection === 'Equipo'"
+                   [class.bg-purple-50]="activeSection === 'Equipo'"
+                   [class.dark:bg-gray-800]="activeSection === 'Equipo'"
+                   [class.text-gray-800]="activeSection !== 'Equipo'"
+                   [class.dark:text-gray-300]="activeSection !== 'Equipo'"
+                   [class.hover:bg-gray-100]="activeSection !== 'Equipo'"
+                   [class.dark:hover:bg-gray-800]="activeSection !== 'Equipo'">
+                    Equipo
+                </a>
+                <a (click)="smoothScroll('contact')" 
+                   class="mt-2 py-3 px-4 text-center text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 cursor-pointer">
+                    Comenzar
+                </a>
+            </div>
         </div>
     </nav>
 </header>
