@@ -1,10 +1,12 @@
- /* Estilos globales para eliminar márgenes */
- html, body {
+/* Estilos globales */
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
   background-color: white;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 /* Contenedor principal */
@@ -14,23 +16,22 @@
   overflow-x: hidden;
 }
 
-/* Secciones con espaciado consistente */
+/* Secciones */
 section {
   padding: 4rem 0;
   width: 100%;
 }
 
-/* Hero section ajustado */
 .hero-section {
   padding-top: 6rem;
   padding-bottom: 4rem;
 }
 
-/* Sección de equipo mejorada */
 .team-section {
   padding: 3rem 0;
 }
 
+/* Equipo */
 .team-container {
   display: flex;
   flex-wrap: wrap;
@@ -98,9 +99,20 @@ section {
   transform: scale(1.2);
 }
 
-/* Efectos de gradiente para secciones */
+/* Efectos de gradiente */
 .gradient-bg {
   background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+}
+
+/* Marquee */
+.marquee-content {
+  animation: marquee 30s linear infinite;
+  display: flex;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Responsividad */
@@ -131,33 +143,4 @@ section {
     width: 100%;
     max-width: 250px;
   }
-}
-.marquee-content {
-  animation: marquee 25s linear infinite;
-  display: flex;
-}
-
-
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-  
-body {
-  font-family: 'Poppins', sans-serif;
-}
-
-.marquee-content {
-  animation: marquee 30s linear infinite;
-  display: flex;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Scroll suave para todos los enlaces ancla */
-html {
-  scroll-behavior: smooth;
 }

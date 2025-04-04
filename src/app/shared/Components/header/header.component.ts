@@ -7,9 +7,9 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  showPopup = false;
   menuOpen = false;
-  activeSection: string | null = null;
-
+  activeSection = 'hero';
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
   }
@@ -52,5 +52,17 @@ export class HeaderComponent {
         }
       }
     }
+  }
+
+
+
+
+  openPopup() {
+    this.showPopup = true;
+    this.menuOpen = false; // Cierra el menú móvil si está abierto
+  }
+
+  closePopup() {
+    this.showPopup = false;
   }
 }
