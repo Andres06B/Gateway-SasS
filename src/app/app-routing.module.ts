@@ -5,6 +5,7 @@ import { LoginAdminComponent } from './pages/Admin/login-admin/login-admin.compo
 import { Error404Component } from './shared/Components/error404/error404.component';
 import { LoginUserComponent } from './pages/Users/login-users/login-user.component';
 import { AboutAdminComponent } from './pages/Admin/about-admin/about-admin.component';
+import { AdministrativeInformationComponent } from './pages/Admin/administrative-information/administrative-information.component';
 
 //import { LandingComponent } from './view/landing/landing.component';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'error404', component: Error404Component }, // Página de error 404
   {path: 'loginUser', component: LoginUserComponent}, // Página de inicio de sesión usuarios
   {path:'about', component: AboutAdminComponent}, // Página de información sobre la aplicaciónAdministrativa
+  {path:'infoAdmi', component: AdministrativeInformationComponent}, // Página de información sobre la aplicaciónAdministrativa
   
 
 

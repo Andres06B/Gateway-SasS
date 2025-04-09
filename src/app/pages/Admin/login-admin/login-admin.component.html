@@ -1,108 +1,108 @@
 <div class="min-h-screen bg-gradient-to-br from-[#f0f4f8] to-[#dfe7ef] flex items-center justify-center p-4 sm:p-6">
-    <!-- Contenedor principal -->
-    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md mx-auto relative overflow-visible">
-      
-      <!-- Logo posicionado correctamente -->
-      <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 z-10 w-24 h-24">
-        <div class="w-full h-full bg-gradient-to-br from-[#6e45e2] to-[#88d3ce] rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-float hover:rotate-12 transition-all duration-300">
-          <svg class="h-10 w-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-      </div>
-  
-      <!-- Contenido del formulario -->
-      <div class="pt-16 px-6 sm:px-8 pb-8">
-        <!-- Títulos -->
-        <div class="text-center mb-6">
-          <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Quantum Gateway</h1>
-          <p class="text-[#6e45e2] text-sm sm:text-base font-medium mt-1">Administrative Portal</p>
-        </div>
-  
-        <!-- Formulario -->
-        <form (ngSubmit)="onSubmit()" class="space-y-4 sm:space-y-5">
-          <!-- Campo Email -->
-          <div>
-            <label for="email" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Email Address</label>
-            <div class="relative group">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#6e45e2] group-hover:text-[#88d3ce] transition-colors">
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-              </div>
-              <input 
-                type="email" 
-                id="email" 
-                placeholder="Enter your email" 
-                required
-                class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6e45e2] focus:border-transparent transition-all duration-300 hover:bg-gray-100"
-              >
-            </div>
-          </div>
-  
-          <!-- Campo Password con Toggle FUNCIONAL -->
-          <div>
-            <label for="password" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Password</label>
-            <div class="relative group">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#6e45e2] group-hover:text-[#88d3ce] transition-colors">
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                </svg>
-              </div>
-              <input 
-                [type]="showPassword ? 'text' : 'password'" 
-                id="password" 
-                placeholder="Enter your password" 
-                required
-                class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-12 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6e45e2] focus:border-transparent transition-all duration-300 hover:bg-gray-100"
-              >
-              <!-- Botón Toggle Password FUNCIONAL -->
-              <button 
-                type="button" 
-                (click)="togglePasswordVisibility()"
-                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#6e45e2] transition-colors"
-                aria-label="Toggle password visibility"
-              >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path *ngIf="!showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  <path *ngIf="showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-  
-          <!-- Opciones -->
-          <div class="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
-            <div class="flex items-center">
-              <input 
-                type="checkbox" 
-                id="remember-me" 
-                name="rememberMe"
-                class="h-4 w-4 text-[#6e45e2] focus:ring-[#6e45e2] border-gray-300 rounded transition-all"
-              >
-              <label for="remember-me" class="ml-2 block text-xs sm:text-sm text-gray-600">Remember me</label>
-            </div>
-            <a href="#" class="text-xs sm:text-sm text-[#6e45e2] hover:text-[#88d3ce] transition-colors">Forgot password?</a>
-          </div>
-  
-          <!-- Botón Submit -->
-          <button 
-            type="submit" 
-            class="w-full bg-gradient-to-r from-[#6e45e2] to-[#88d3ce] hover:from-[#7d55f0] hover:to-[#8de0db] text-white font-medium py-2 sm:py-3 px-4 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#6e45e2] focus:ring-offset-2 group"
-          >
-            <span class="flex items-center justify-center">
-              <span class="text-sm sm:text-base">Sign In</span>
-              <svg class="h-4 w-4 sm:h-5 sm:w-5 ml-1 sm:ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </span>
-          </button>
-        </form>
-      </div>
-  
-      <!-- Footer -->
-      <div class="px-6 sm:px-8 py-3 sm:py-4 bg-gray-50 border-t border-gray-100 rounded-b-2xl">
-        <p class="text-center text-xs text-gray-500">© 2025 Quantum Gateway. All rights reserved.</p>
-      </div>
+  <!-- Contenedor principal -->
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-md mx-auto relative overflow-visible">
+    
+    <!-- Logo posicionado correctamente -->
+    <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 z-10 w-24 h-24">
+    <div class="w-full h-full bg-gradient-to-br from-[#6e45e2] to-[#88d3ce] rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-float hover:rotate-12 transition-all duration-300">
+      <svg class="h-10 w-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
     </div>
+    </div>
+  
+    <!-- Contenido del formulario -->
+    <div class="pt-16 px-6 sm:px-8 pb-8">
+    <!-- Títulos -->
+    <div class="text-center mb-6">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Quantum Gateway</h1>
+      <p class="text-[#6e45e2] text-sm sm:text-base font-medium mt-1">Portal Administrativo</p>
+    </div>
+  
+    <!-- Formulario -->
+    <form (ngSubmit)="onSubmit()" class="space-y-4 sm:space-y-5">
+      <!-- Campo Email -->
+      <div>
+      <label for="email" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Correo Electrónico</label>
+      <div class="relative group">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#6e45e2] group-hover:text-[#88d3ce] transition-colors">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        </div>
+        <input 
+        type="email" 
+        id="email" 
+        placeholder="Ingresa tu correo" 
+        required
+        class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6e45e2] focus:border-transparent transition-all duration-300 hover:bg-gray-100"
+        >
+      </div>
+      </div>
+  
+      <!-- Campo Password con Toggle FUNCIONAL -->
+      <div>
+      <label for="password" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Contraseña</label>
+      <div class="relative group">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#6e45e2] group-hover:text-[#88d3ce] transition-colors">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
+        </div>
+        <input 
+        [type]="showPassword ? 'text' : 'password'" 
+        id="password" 
+        placeholder="Ingresa tu contraseña" 
+        required
+        class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-12 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6e45e2] focus:border-transparent transition-all duration-300 hover:bg-gray-100"
+        >
+        <!-- Botón Toggle Password FUNCIONAL -->
+        <button 
+        type="button" 
+        (click)="togglePasswordVisibility()"
+        class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#6e45e2] transition-colors"
+        aria-label="Alternar visibilidad de la contraseña"
+        >
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path *ngIf="!showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          <path *ngIf="showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+        </svg>
+        </button>
+      </div>
+      </div>
+  
+      <!-- Opciones -->
+      <div class="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
+      <div class="flex items-center">
+        <input 
+        type="checkbox" 
+        id="remember-me" 
+        name="rememberMe"
+        class="h-4 w-4 text-[#6e45e2] focus:ring-[#6e45e2] border-gray-300 rounded transition-all"
+        >
+        <label for="remember-me" class="ml-2 block text-xs sm:text-sm text-gray-600">Recuérdame</label>
+      </div>
+      <a href="#" class="text-xs sm:text-sm text-[#6e45e2] hover:text-[#88d3ce] transition-colors">¿Olvidaste tu contraseña?</a>
+      </div>
+  
+      <!-- Botón Submit -->
+      <button 
+      type="submit" 
+      class="w-full bg-gradient-to-r from-[#6e45e2] to-[#88d3ce] hover:from-[#7d55f0] hover:to-[#8de0db] text-white font-medium py-2 sm:py-3 px-4 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#6e45e2] focus:ring-offset-2 group"
+      >
+      <span class="flex items-center justify-center">
+        <span class="text-sm sm:text-base">Iniciar Sesión</span>
+        <svg class="h-4 w-4 sm:h-5 sm:w-5 ml-1 sm:ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </span>
+      </button>
+    </form>
+    </div>
+  
+    <!-- Footer -->
+    <div class="px-6 sm:px-8 py-3 sm:py-4 bg-gray-50 border-t border-gray-100 rounded-b-2xl">
+    <p class="text-center text-xs text-gray-500">© 2025 Quantum Gateway. Todos los derechos reservados.</p>
+    </div>
+  </div>
   </div>

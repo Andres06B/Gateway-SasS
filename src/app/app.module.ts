@@ -14,8 +14,9 @@ import { LoginUserComponent } from './pages/Users/login-users/login-user.compone
 import { Error404Component } from './shared/Components/error404/error404.component';
 import { AboutAdminComponent } from './pages/Admin/about-admin/about-admin.component';
 import { LoginAdminComponent } from './pages/Admin/login-admin/login-admin.component';
-import { CompanyRegistrationComponent } from './shared/Components/company-registration/company-registration.component';
 import { HotelUsersComponent } from './pages/Users/hotel-users/hotel-users.component';
+import { CompanyRegistrationComponent } from './pages/Admin/company-registration/company-registration.component';
+import { AdministrativeInformationComponent } from './pages/Admin/administrative-information/administrative-information.component';
 
 
 
@@ -30,8 +31,9 @@ import { HotelUsersComponent } from './pages/Users/hotel-users/hotel-users.compo
     Error404Component,
     AboutAdminComponent,
     LoginAdminComponent,
-    CompanyRegistrationComponent,
     HotelUsersComponent,
+    CompanyRegistrationComponent,
+    AdministrativeInformationComponent,
 
   ],
   imports: [

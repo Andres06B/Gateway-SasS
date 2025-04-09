@@ -1,36 +1,32 @@
 <div id="inicio" class="w-full overflow-x-hidden">
-  <!-- Header (sin cambios) -->
   <app-header class="fixed top-0 w-full z-50"></app-header>
-  
-  <!-- Sección hero con MARGEN SUPERIOR AUMENTADO (único cambio) -->
-  <section class="relative bg-white dark:bg-gray-900 mt-24 pb-12 sm:mt-20 sm:pb-16 lg:mt-20 lg:pb-14 w-full">
-    <!-- Background Effects (sin cambios) -->
-    <div class="absolute inset-0 opacity-10">
+  <section class="relative bg-white dark:bg-gray-900 mt-24 pb-12 sm:mt-20 sm:pb-16 lg:mt-20 lg:pb-14 w-full overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none z-0">
       <div class="absolute top-0 left-5 sm:left-20 w-48 sm:w-64 h-48 sm:h-64 bg-[#8c14ff]/20 rounded-full mix-blend-overlay filter blur-3xl animate-blob"></div>
       <div class="absolute top-0 right-5 sm:right-20 w-48 sm:w-64 h-48 sm:h-64 bg-[#6a00ff]/20 rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-2000"></div>
       <div class="absolute bottom-10 sm:bottom-20 left-10 sm:left-32 w-48 sm:w-64 h-48 sm:h-64 bg-[#360077]/20 rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-4000"></div>
     </div>
-
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
-      <div class="grid gap-8 lg:grid-cols-12 lg:gap-12 items-center">
-        <!-- Content Column (sin cambios) -->
-        <div class="lg:col-span-7">
-          <!-- Badge -->
+  
+    <div class="relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="grid gap-12 lg:grid-cols-12 items-center">
+        
+        <!-- Text Content -->
+        <div class="lg:col-span-7 animate-fade-in-up">
           <div class="mb-4 sm:mb-6 inline-flex px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-[#8c14ff]/10 backdrop-blur-sm border border-[#8c14ff]/20 animate-fade-in">
+            <i class="bi bi-stars mr-2 text-[#8c14ff]"></i>
             <span class="text-xs sm:text-sm font-medium text-[#8c14ff] dark:text-[#c792ff]">NUEVA VERSIÓN DISPONIBLE</span>
           </div>
-
-          <!-- Title -->
+  
           <h1 class="text-3xl sm:text-4xl md:text-5xl xl:text-[3.4rem] font-bold leading-tight tracking-tight text-gray-900 dark:text-white mb-4 sm:mb-6 animate-fade-in-down">
             Revoluciona la gestión <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] block sm:inline">de tu hotel</span>
           </h1>
-
-          <!-- Subtitle -->
+  
           <p class="text-base sm:text-lg lg:text-xl font-light text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl animate-fade-in-down animate-delay-100">
             La plataforma todo-en-uno que optimiza reservas, hospedajes y operaciones con inteligencia artificial y análisis en tiempo real.
           </p>
-
-          <!-- Stats -->
+  
+          <!-- Stats y Reviews -->
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-6 sm:mt-8 animate-fade-in animate-delay-300">
             <div class="flex -space-x-3 sm:-space-x-4">
               <img class="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
@@ -38,41 +34,40 @@
               <img class="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
             </div>
             <div class="font-medium text-gray-900 dark:text-white">
-              <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Únete a +500 hoteles</div>
+              <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 flex items-center gap-1">
+                <i class="bi bi-building-check"></i> Únete a +500 hoteles
+              </div>
               <div class="flex items-center text-xs sm:text-sm">
-                <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                </svg>
+                <i class="bi bi-star-fill text-yellow-400 mr-1"></i>
                 <span>4.9/5 (350 reseñas)</span>
               </div>
             </div>
           </div>
-
+  
           <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
-            <a href="#" class="px-5 py-2.5 sm:px-6 sm:py-3 text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-lg font-medium text-center hover:shadow-lg transition-all text-sm sm:text-base">
-              Comenzar 
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8 animate-fade-in-up animate-delay-500">
+            <a class="px-5 py-3 sm:px-6 sm:py-3 text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-lg font-medium text-center hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out text-sm sm:text-base">
+              <i class="bi bi-rocket-takeoff mr-2"></i> Comenzar
             </a>
-          </div>
+            <a href="#" class="px-5 py-3 sm:px-6 sm:py-3 text-[#8c14ff] bg-white border border-[#8c14ff]/30 rounded-lg font-medium text-center hover:bg-[#f8f0ff] transition-all duration-300 text-sm sm:text-base">
+                <i class="bi bi-play-circle mr-2"></i> Ver Demo
+            </a>
+            </div>
         </div>
-
-        <!-- Image Column -->
+  
+        <!-- Imagen Dashboard -->
         <div class="lg:col-span-5 mt-8 sm:mt-10 lg:mt-0 animate-float">
           <div class="relative w-full max-w-md mx-auto lg:mx-0">
             <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-32 h-32 sm:w-40 sm:h-40 bg-[#c792ff]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
             <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-32 h-32 sm:w-40 sm:h-40 bg-[#8c14ff]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-3000"></div>
-            <img src="dash.png" alt="Dashboard de hotel" class="relative z-10 w-full h-auto rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 backdrop-blur-sm">
+            <img src="dash.png" alt="Dashboard de hotel" class="relative z-10 w-full h-auto rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 backdrop-blur-sm transition-transform duration-300 hover:scale-105">
           </div>
         </div>
       </div>
     </div>
   </section>
+  
 </div>
-
-
-
-
-
 
 
 <!-- SECCIÓN PRINCIPAL - DISEÑO ELEGANTE -->
