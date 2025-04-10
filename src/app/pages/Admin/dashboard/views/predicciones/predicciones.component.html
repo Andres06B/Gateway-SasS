@@ -1,0 +1,282 @@
+<app-layout>
+    <div class="min-h-screen bg-white p-4 md:p-6 md:pl-16 md:pt-16">
+      
+        <!-- Contenido principal -->
+        <div class="md:ml-8">
+          
+          <!-- Header responsive -->
+          <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+            <div class="mb-4 md:mb-0">
+              <h2 class="text-xl md:text-2xl font-bold text-blue-900">Hotel Booking Prediction</h2>
+              <p class="text-sm md:text-base text-blue-600">Advanced analytics for hotel reservations</p>
+            </div>
+            <button class="px-4 py-2 md:px-5 md:py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 w-full md:w-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+              </svg>
+              New Prediction
+            </button>
+          </div>
+      
+          <!-- Resultado de la predicción -->
+          <div class="bg-white rounded-lg md:rounded-2xl shadow-xs md:shadow-sm border border-blue-100 overflow-hidden mb-6">
+            <div class="p-4 md:p-6 border-b border-blue-100">
+              <h2 class="text-lg md:text-xl font-semibold text-blue-900">Prediction Result</h2>
+            </div>
+            
+            <div class="p-4 md:p-6">
+              <!-- Tarjeta de resultado principal -->
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 md:p-6 rounded-lg md:rounded-xl mb-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div>
+                    <h3 class="text-sm md:text-base font-medium text-blue-500">Predicted Status</h3>
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-900 mt-1">Confirmed</h2>
+                    <p class="text-xs md:text-sm text-blue-500 mt-1">Probability: 64.65%</p>
+                  </div>
+                  <div class="bg-white p-3 md:p-4 rounded-lg md:rounded-xl shadow-xs">
+                    <div class="flex items-center gap-2">
+                      <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                      <span class="text-sm md:text-base font-medium text-blue-900">High Confidence</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Probabilidades -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <!-- Cancelada -->
+                <div class="bg-white p-4 rounded-lg border border-blue-100">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <h3 class="text-sm font-medium text-blue-500">Canceled</h3>
+                      <p class="text-xl font-bold text-blue-900 mt-1">23.09%</p>
+                    </div>
+                    <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="mt-3 h-2 bg-blue-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-red-400 rounded-full" style="width: 23.09%"></div>
+                  </div>
+                </div>
+                
+                <!-- Confirmada -->
+                <div class="bg-white p-4 rounded-lg border border-blue-100">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <h3 class="text-sm font-medium text-blue-500">Confirmed</h3>
+                      <p class="text-xl font-bold text-blue-900 mt-1">64.65%</p>
+                    </div>
+                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="mt-3 h-2 bg-blue-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-green-500 rounded-full" style="width: 64.65%"></div>
+                  </div>
+                </div>
+                
+                <!-- Pendiente -->
+                <div class="bg-white p-4 rounded-lg border border-blue-100">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <h3 class="text-sm font-medium text-blue-500">Pending</h3>
+                      <p class="text-xl font-bold text-blue-900 mt-1">12.26%</p>
+                    </div>
+                    <div class="h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="mt-3 h-2 bg-blue-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-amber-400 rounded-full" style="width: 12.26%"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Detalles de la reserva -->
+              <div class="bg-white p-4 md:p-6 rounded-lg border border-blue-100">
+                <h3 class="text-lg font-semibold text-blue-900 mb-4">Reservation Details</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Columna izquierda -->
+                  <div>
+                    <div class="mb-4">
+                      <h4 class="text-sm font-medium text-blue-500">Client Information</h4>
+                      <div class="mt-2 space-y-2">
+                        <p class="text-sm"><span class="font-medium text-blue-900">Age:</span> 28 years</p>
+                        <p class="text-sm"><span class="font-medium text-blue-900">Country:</span> Mexico</p>
+                      </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                      <h4 class="text-sm font-medium text-blue-500">Stay Information</h4>
+                      <div class="mt-2 space-y-2">
+                        <p class="text-sm"><span class="font-medium text-blue-900">Days in Advance:</span> 0</p>
+                        <p class="text-sm"><span class="font-medium text-blue-900">Stay Duration:</span> 1 day</p>
+                        <p class="text-sm"><span class="font-medium text-blue-900">Total Price:</span> $950.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Columna derecha -->
+                  <div>
+                    <div class="mb-4">
+                      <h4 class="text-sm font-medium text-blue-500">Room Information</h4>
+                      <div class="mt-2 space-y-2">
+                        <p class="text-sm"><span class="font-medium text-blue-900">Type:</span> Single</p>
+                        <p class="text-sm"><span class="font-medium text-blue-900">Capacity:</span> 1 person</p>
+                      </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                      <h4 class="text-sm font-medium text-blue-500">Payment Information</h4>
+                      <div class="mt-2 space-y-2">
+                        <p class="text-sm"><span class="font-medium text-blue-900">Method:</span> Transfer</p>
+                        <p class="text-sm"><span class="font-medium text-blue-900">Status:</span> Pending</p>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h4 class="text-sm font-medium text-blue-500">Hotel Features</h4>
+                      <div class="mt-2 space-y-2">
+                        <p class="text-sm"><span class="font-medium text-blue-900">Landing Page:</span> No</p>
+                        <p class="text-sm"><span class="font-medium text-blue-900">WhatsApp Bot:</span> No</p>
+                        <p class="text-sm"><span class="font-medium text-blue-900">Services Offered:</span> 1</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Acciones -->
+            <div class="p-4 md:p-6 border-t border-blue-100 flex flex-col md:flex-row justify-end gap-3">
+                <button 
+                  (click)="toggleFormulario()"
+                  class="px-4 py-2 border border-blue-200 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors w-full md:w-auto"
+                >
+                  Nueva Predicción
+                </button>
+              </div>
+              
+              <!-- Formulario desplegable -->
+              <div *ngIf="mostrarFormulario" class="mt-4 p-6 border border-gray-200 rounded-lg bg-white shadow-sm">
+                <form (submit)="onSubmit($event)" class="space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Columna 1 -->
+                    <div>
+                      <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Edad del cliente</label>
+                        <input 
+                          type="number" 
+                          [(ngModel)]="formData.edad_cliente" 
+                          name="edad_cliente" 
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        >
+                      </div>
+                      <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">País del cliente</label>
+                        <input 
+                          type="text" 
+                          [(ngModel)]="formData.pais_cliente" 
+                          name="pais_cliente" 
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        >
+                      </div>
+                      <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Días de anticipación</label>
+                        <input 
+                          type="number" 
+                          [(ngModel)]="formData.dias_anticipacion" 
+                          name="dias_anticipacion" 
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        >
+                      </div>
+                    </div>
+              
+                    <!-- Columna 2 -->
+                    <div>
+                      <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Tipo de habitación</label>
+                        <select 
+                          [(ngModel)]="formData.habitacion_tipo" 
+                          name="habitacion_tipo" 
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        >
+                          <option value="Single">Single</option>
+                          <option value="Double">Double</option>
+                        </select>
+                      </div>
+                      <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Precio total</label>
+                        <input 
+                          type="number" 
+                          step="0.01" 
+                          [(ngModel)]="formData.precio_total_estadia" 
+                          name="precio_total_estadia" 
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        >
+                      </div>
+                      <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Método de pago</label>
+                        <select 
+                          [(ngModel)]="formData.metodo_pago" 
+                          name="metodo_pago" 
+                          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        >
+                          <option value="Transferencia">Transferencia</option>
+                          <option value="Tarjeta">Tarjeta</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Checkboxes -->
+                  <div class="flex space-x-4">
+                    <label class="flex items-center">
+                      <input 
+                        type="checkbox" 
+                        [(ngModel)]="formData.hotel_tiene_landing_page" 
+                        name="hotel_tiene_landing_page" 
+                        class="rounded border-gray-300 text-blue-600 shadow-sm"
+                      >
+                      <span class="ml-2 text-sm text-gray-700">¿Tiene landing page?</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input 
+                        type="checkbox" 
+                        [(ngModel)]="formData.hotel_tiene_bot_whatsapp" 
+                        name="hotel_tiene_bot_whatsapp" 
+                        class="rounded border-gray-300 text-blue-600 shadow-sm"
+                      >
+                      <span class="ml-2 text-sm text-gray-700">¿Tiene bot de WhatsApp?</span>
+                    </label>
+                  </div>
+              
+                  <!-- Botón de enviar -->
+                  <div class="flex justify-end">
+                    <button 
+                      type="submit"
+                      class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      Enviar
+                    </button>
+                  </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </app-layout>

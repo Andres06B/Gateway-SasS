@@ -6,7 +6,8 @@ import { Error404Component } from './shared/Components/error404/error404.compone
 import { LoginUserComponent } from './pages/Users/login-users/login-user.component';
 import { AboutAdminComponent } from './pages/Admin/about-admin/about-admin.component';
 import { AdministrativeInformationComponent } from './pages/Admin/administrative-information/administrative-information.component';
-
+import { InicioComponent } from './pages/Admin/dashboard/views/inicio/inicio.component';
+import { PrediccionesComponent } from './pages/Admin/dashboard/views/predicciones/predicciones.component';
 //import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'loginUser', component: LoginUserComponent}, // Página de inicio de sesión usuarios
   {path:'about', component: AboutAdminComponent}, // Página de información sobre la aplicaciónAdministrativa
   {path:'infoAdmi', component: AdministrativeInformationComponent}, // Página de información sobre la aplicaciónAdministrativa
-  
+  {path: 'inicio', component: InicioComponent},
+  {path: 'predicciones', component: PrediccionesComponent} // Página de inicio del administrador
 
 
 ];

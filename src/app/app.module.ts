@@ -17,6 +17,14 @@ import { LoginAdminComponent } from './pages/Admin/login-admin/login-admin.compo
 import { HotelUsersComponent } from './pages/Users/hotel-users/hotel-users.component';
 import { CompanyRegistrationComponent } from './pages/Admin/company-registration/company-registration.component';
 import { AdministrativeInformationComponent } from './pages/Admin/administrative-information/administrative-information.component';
+import { SidebarComponent } from './pages/Admin/dashboard/components/sidebar/sidebar.component';
+import { InicioComponent } from './pages/Admin/dashboard/views/inicio/inicio.component';
+import { NavComponent } from './pages/Admin/dashboard/components/nav/nav.component';
+import { LayoutComponent } from './pages/Admin/dashboard/components/layout/layout.component';
+import { UsuariosComponent } from './pages/Admin/dashboard/views/usuarios/usuarios.component';
+import { ReservasComponent } from './pages/Admin/dashboard/views/reservas/reservas.component';
+import { HabitacionesComponent } from './pages/Admin/dashboard/views/habitaciones/habitaciones.component';
+import { PrediccionesComponent } from './pages/Admin/dashboard/views/predicciones/predicciones.component';
 
 
 
@@ -34,6 +42,14 @@ import { AdministrativeInformationComponent } from './pages/Admin/administrative
     HotelUsersComponent,
     CompanyRegistrationComponent,
     AdministrativeInformationComponent,
+    SidebarComponent,
+    InicioComponent,
+    NavComponent,
+    LayoutComponent,
+    UsuariosComponent,
+    ReservasComponent,
+    HabitacionesComponent,
+    PrediccionesComponent,
 
   ],
   imports: [
