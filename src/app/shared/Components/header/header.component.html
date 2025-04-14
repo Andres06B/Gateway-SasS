@@ -1,19 +1,19 @@
 <header class="fixed top-2 left-1/2 transform -translate-x-1/2 w-[calc(100%-1rem)] max-w-7xl mx-4 bg-white/90 dark:bg-gray-900/90 shadow-lg z-50 backdrop-blur-md transition-all duration-300 border border-gray-200/50 dark:border-gray-800/50 rounded-2xl hover:shadow-xl hover:-translate-y-0.5">
     <nav class="px-2 sm:px-4 py-2.5">
         <div class="flex flex-wrap items-center justify-between mx-auto">
-            <!-- Logo - Estilo del primer código -->
+            <!-- Logo - Cambiado el gradiente a #207d81 -->
             <a (click)="smoothScroll('hero')" class="flex items-center space-x-3 rtl:space-x-reverse group cursor-pointer">
-                <div class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-2 shadow-lg">
+                <div class="flex items-center justify-center bg-[#207d81] rounded-lg p-2 shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
                         </path>
                     </svg>
                 </div>
-                <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Quantum Gateway</span>
+                <span class="text-2xl font-bold text-[#207d81]">Quantum Gateway</span>
             </a>
 
-            <!-- Botón del menú móvil -->
+            <!-- Botón del menú móvil (sin cambios) -->
             <button (click)="toggleMenu()" class="lg:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors duration-200"
                 aria-controls="mobile-menu" [attr.aria-expanded]="menuOpen">
                 <svg class="w-7 h-7 text-gray-800 dark:text-gray-200" [class.hidden]="menuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -24,64 +24,63 @@
                 </svg>
             </button>
 
-            <!-- Menú principal (escritorio) -->
+            <!-- Menú principal (escritorio) - Cambiados los colores a #207d81 -->
             <div class="hidden lg:flex items-center space-x-6">
                 <a (click)="smoothScroll('hero')" 
                    class="relative px-2 py-1.5 font-medium group cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'hero'"
+                   [class.text-[#207d81]]="activeSection === 'hero'"
                    [class.text-gray-800]="activeSection !== 'hero'"
                    [class.dark:text-gray-300]="activeSection !== 'hero'">
                     <span class="relative z-10">inicio</span>
-                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#207d81] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                           [class.scale-x-100]="activeSection === 'hero'"></span>
                 </a>
                 
                 <a (click)="smoothScroll('Servicios')" 
                    class="relative px-2 py-1.5 font-medium group cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'Servicios'"
+                   [class.text-[#207d81]]="activeSection === 'Servicios'"
                    [class.text-gray-800]="activeSection !== 'Servicios'"
                    [class.dark:text-gray-300]="activeSection !== 'Servicios'">
                     <span class="relative z-10">Servicios</span>
-                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#207d81] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                           [class.scale-x-100]="activeSection === 'Servicios'"></span>
                 </a>
                 
                 <a (click)="smoothScroll('Informacion')" 
                    class="relative px-2 py-1.5 font-medium group cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'Informacion'"
+                   [class.text-[#207d81]]="activeSection === 'Informacion'"
                    [class.text-gray-800]="activeSection !== 'Informacion'"
                    [class.dark:text-gray-300]="activeSection !== 'Informacion'">
                     <span class="relative z-10">Información</span>
-                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#207d81] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                           [class.scale-x-100]="activeSection === 'Informacion'"></span>
                 </a>
                 
                 <a (click)="smoothScroll('Equipo')" 
                    class="relative px-2 py-1.5 font-medium group cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'Equipo'"
+                   [class.text-[#207d81]]="activeSection === 'Equipo'"
                    [class.text-gray-800]="activeSection !== 'Equipo'"
                    [class.dark:text-gray-300]="activeSection !== 'Equipo'">
                     <span class="relative z-10">Equipo</span>
-                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#207d81] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                           [class.scale-x-100]="activeSection === 'Equipo'"></span>
                 </a>
                 
                 <a (click)="openPopup()" 
-                   class="relative px-5 py-2.5 text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 group overflow-hidden cursor-pointer">
+                   class="relative px-5 py-2.5 text-white bg-[#207d81] rounded-xl font-medium hover:shadow-lg hover:shadow-[#207d81]/30 transition-all duration-300 group overflow-hidden cursor-pointer">
                     <span class="relative z-10">Comenzar</span>
-                    <span class="absolute inset-0 bg-gradient-to-r from-[#6a00ff] to-[#8c14ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="absolute inset-0 bg-[#1a6a6d] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </a>
             </div>
         </div>
 
-        <!-- Menú móvil -->
+        <!-- Menú móvil - Cambiados los colores a #207d81 -->
         <div id="mobile-menu" class="lg:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm w-full mt-2 px-4 pb-4 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-800/50"
              [class.hidden]="!menuOpen">
             <div class="flex flex-col space-y-2 pt-2">
                 <a (click)="smoothScroll('hero')" 
                    class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'hero'"
-                   [class.bg-purple-50]="activeSection === 'hero'"
+                   [class.text-[#207d81]]="activeSection === 'hero'"
                    [class.dark:bg-gray-800]="activeSection === 'hero'"
                    [class.text-gray-800]="activeSection !== 'hero'"
                    [class.dark:text-gray-300]="activeSection !== 'hero'"
@@ -91,8 +90,7 @@
                 </a>
                 <a (click)="smoothScroll('Servicios')" 
                    class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'Servicios'"
-                   [class.bg-purple-50]="activeSection === 'Servicios'"
+                   [class.text-[#207d81]]="activeSection === 'Servicios'"
                    [class.dark:bg-gray-800]="activeSection === 'Servicios'"
                    [class.text-gray-800]="activeSection !== 'Servicios'"
                    [class.dark:text-gray-300]="activeSection !== 'Servicios'"
@@ -102,8 +100,7 @@
                 </a>
                 <a (click)="smoothScroll('Informacion')" 
                    class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'Informacion'"
-                   [class.bg-purple-50]="activeSection === 'Informacion'"
+                   [class.text-[#207d81]]="activeSection === 'Informacion'"
                    [class.dark:bg-gray-800]="activeSection === 'Informacion'"
                    [class.text-gray-800]="activeSection !== 'Informacion'"
                    [class.dark:text-gray-300]="activeSection !== 'Informacion'"
@@ -113,8 +110,7 @@
                 </a>
                 <a (click)="smoothScroll('Equipo')" 
                    class="py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
-                   [class.text-[#8c14ff]]="activeSection === 'Equipo'"
-                   [class.bg-purple-50]="activeSection === 'Equipo'"
+                   [class.text-[#207d81]]="activeSection === 'Equipo'"
                    [class.dark:bg-gray-800]="activeSection === 'Equipo'"
                    [class.text-gray-800]="activeSection !== 'Equipo'"
                    [class.dark:text-gray-300]="activeSection !== 'Equipo'"
@@ -123,7 +119,7 @@
                     Equipo
                 </a>
                 <a (click)="openPopup()" 
-                   class="mt-2 py-3 px-4 text-center text-white bg-gradient-to-r from-[#8c14ff] to-[#6a00ff] rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 cursor-pointer">
+                   class="mt-2 py-3 px-4 text-center text-white bg-[#207d81] rounded-xl font-medium hover:shadow-lg hover:shadow-[#207d81]/30 transition-all duration-300 cursor-pointer">
                     Comenzar
                 </a>
             </div>
