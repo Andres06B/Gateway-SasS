@@ -9,25 +9,27 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/Components/header/header.component';
 import { FooterComponent } from './shared/Components/footer/footer.component';
 import { PopupComponent } from './shared/Components/popup/popup.component';
-import { LandingComponent } from './pages/Landing/landing.component';
-import { LoginUserComponent } from './pages/Users/login-users/login-user.component';
+
+import { LoginUserComponent } from './pages/Quantum Users/login-users/login-user.component';
 import { Error404Component } from './shared/Components/error404/error404.component';
-import { AboutAdminComponent } from './pages/Admin/about-admin/about-admin.component';
-import { LoginAdminComponent } from './pages/Admin/login-admin/login-admin.component';
-import { HotelUsersComponent } from './pages/Users/hotel-users/hotel-users.component';
-import { CompanyRegistrationComponent } from './pages/Admin/company-registration/company-registration.component';
-import { AdministrativeInformationComponent } from './pages/Admin/administrative-information/administrative-information.component';
-import { SidebarComponent } from './pages/Admin/dashboard/components/sidebar/sidebar.component';
-import { InicioComponent } from './pages/Admin/dashboard/views/inicio/inicio.component';
-import { NavComponent } from './pages/Admin/dashboard/components/nav/nav.component';
-import { LayoutComponent } from './pages/Admin/dashboard/components/layout/layout.component';
-import { ReservasComponent } from './pages/Admin/dashboard/views/reservas/reservas.component';
-import { PrediccionesComponent } from './pages/Admin/dashboard/views/predicciones/predicciones.component';
-import { PaginaWebComponent } from './pages/Admin/dashboard/views/pagina-web/pagina-web.component';
-import { UsuariosComponent } from './pages/Admin/dashboard/views/usuarios/usuarios.component';
-import { HabitacioenesComponent } from './pages/Admin/dashboard/views/habitacioenes/habitacioenes.component';
-import { PagosComponent } from './pages/Admin/dashboard/views/pagos/pagos.component';
-import { ConfiguracionComponent } from './pages/Admin/dashboard/views/configuracion/configuracion.component';
+import { AboutAdminComponent } from './pages/Quantum Admin/about-admin/about-admin.component';
+import { LoginAdminComponent } from './pages/Quantum Admin/login-admin/login-admin.component';
+import { HotelUsersComponent } from './pages/Quantum Users/hotel-users/hotel-users.component';
+import { CompanyRegistrationComponent } from './pages/Quantum Admin/company-registration/company-registration.component';
+import { AdministrativeInformationComponent } from './pages/Quantum Admin/administrative-information/administrative-information.component';
+import { SidebarComponent } from './pages/Quantum Admin/dashboard/components/sidebar/sidebar.component';
+import { InicioComponent } from './pages/Quantum Admin/dashboard/views/inicio/inicio.component';
+import { NavComponent } from './pages/Quantum Admin/dashboard/components/nav/nav.component';
+import { LayoutComponent } from './pages/Quantum Admin/dashboard/components/layout/layout.component';
+import { ReservasComponent } from './pages/Quantum Admin/dashboard/views/reservas/reservas.component';
+import { PrediccionesComponent } from './pages/Quantum Admin/dashboard/views/predicciones/predicciones.component';
+import { PaginaWebComponent } from './pages/Quantum Admin/dashboard/views/pagina-web/pagina-web.component';
+import { UsuariosComponent } from './pages/Quantum Admin/dashboard/views/usuarios/usuarios.component';
+import { HabitacioenesComponent } from './pages/Quantum Admin/dashboard/views/habitacioenes/habitacioenes.component';
+import { PagosComponent } from './pages/Quantum Admin/dashboard/views/pagos/pagos.component';
+import { ConfiguracionComponent } from './pages/Quantum Admin/dashboard/views/configuracion/configuracion.component';
+import { LandingComponent } from './pages/Quantum Web/Landing/landing.component';
+import { LoginWebComponent } from './pages/Quantum Web/login-web/login-web.component';
 
 
 
@@ -56,6 +58,7 @@ import { ConfiguracionComponent } from './pages/Admin/dashboard/views/configurac
     HabitacioenesComponent,
     PagosComponent,
     ConfiguracionComponent,
+    LoginWebComponent,
 
   ],
   imports: [

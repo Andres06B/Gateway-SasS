@@ -1,36 +1,44 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingComponent } from './pages/Landing/landing.component';
-import { LoginAdminComponent } from './pages/Admin/login-admin/login-admin.component';
+
+import { LoginAdminComponent } from './pages/Quantum Admin/login-admin/login-admin.component';
 import { Error404Component } from './shared/Components/error404/error404.component';
-import { LoginUserComponent } from './pages/Users/login-users/login-user.component';
-import { AboutAdminComponent } from './pages/Admin/about-admin/about-admin.component';
-import { AdministrativeInformationComponent } from './pages/Admin/administrative-information/administrative-information.component';
-import { InicioComponent } from './pages/Admin/dashboard/views/inicio/inicio.component';
-import { PrediccionesComponent } from './pages/Admin/dashboard/views/predicciones/predicciones.component';
-import { UsuariosComponent } from './pages/Admin/dashboard/views/usuarios/usuarios.component';
-import { HabitacioenesComponent } from './pages/Admin/dashboard/views/habitacioenes/habitacioenes.component';
-import { PagosComponent } from './pages/Admin/dashboard/views/pagos/pagos.component';
-import { PaginaWebComponent } from './pages/Admin/dashboard/views/pagina-web/pagina-web.component';
-import { ReservasComponent } from './pages/Admin/dashboard/views/reservas/reservas.component';
-import { ConfiguracionComponent } from './pages/Admin/dashboard/views/configuracion/configuracion.component';
+import { LoginUserComponent } from './pages/Quantum Users/login-users/login-user.component';
+import { AboutAdminComponent } from './pages/Quantum Admin/about-admin/about-admin.component';
+import { AdministrativeInformationComponent } from './pages/Quantum Admin/administrative-information/administrative-information.component';
+import { InicioComponent } from './pages/Quantum Admin/dashboard/views/inicio/inicio.component';
+import { PrediccionesComponent } from './pages/Quantum Admin/dashboard/views/predicciones/predicciones.component';
+import { UsuariosComponent } from './pages/Quantum Admin/dashboard/views/usuarios/usuarios.component';
+import { HabitacioenesComponent } from './pages/Quantum Admin/dashboard/views/habitacioenes/habitacioenes.component';
+import { PagosComponent } from './pages/Quantum Admin/dashboard/views/pagos/pagos.component';
+import { PaginaWebComponent } from './pages/Quantum Admin/dashboard/views/pagina-web/pagina-web.component';
+import { ReservasComponent } from './pages/Quantum Admin/dashboard/views/reservas/reservas.component';
+import { ConfiguracionComponent } from './pages/Quantum Admin/dashboard/views/configuracion/configuracion.component';
+import { LandingComponent } from './pages/Quantum Web/Landing/landing.component';
+import { LoginWebComponent } from './pages/Quantum Web/login-web/login-web.component';
 //import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
 
-  {
-    path: '', component: LandingComponent
-  }, // Página principal
-  {
-    path: 'landing', component: LandingComponent
-  },
 
-  //{ path: '**', redirectTo: '', pathMatch: 'full' }, // Redirige rutas desconocidas a Landing
-  { path: 'loginAdmin', component: LoginAdminComponent }, // Página de inicio de sesión
+
+  //rutas globales
   { path: 'error404', component: Error404Component }, // Página de error 404
-  {path: 'loginUser', component: LoginUserComponent}, // Página de inicio de sesión usuarios
+
+
+  //Rutas para la aplicación web
+  { path: '', component: LandingComponent},
+  {path: 'landing', component: LandingComponent},
+  {path: 'loginCorp', component: LoginWebComponent},
+  
+
+  //rutas para la aplicación web (Quantum Web)
+  { path: '**', redirectTo: '', pathMatch: 'full' }, // Redirige rutas desconocidas a Landing
+  { path: 'loginAdmin', component: LoginAdminComponent }, // Página de inicio de sesión
   {path:'about', component: AboutAdminComponent}, // Página de información sobre la aplicaciónAdministrativa
   {path:'infoAdmi', component: AdministrativeInformationComponent}, // Página de información sobre la aplicaciónAdministrativa
+  
+  //Rutas para la aplicación administrativa (Dashboard Admin Empresas)
   {path: 'inicio', component: InicioComponent},
   {path: 'predicciones', component: PrediccionesComponent},
   {path: 'usuarios', component: UsuariosComponent},
@@ -42,7 +50,8 @@ const routes: Routes = [
   {path: 'pagina-web', component: PaginaWebComponent}, // Redirige rutas desconocidas a Landing}
 
 
-
+  //rutas de usuarios
+  {path: 'loginUser', component: LoginUserComponent}, // Página de inicio de sesión usuarios
 
 
 ]

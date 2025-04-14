@@ -1,0 +1,121 @@
+<div class="min-h-screen bg-[url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
+  <!-- Fondo animado con partículas -->
+  <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+  
+  <!-- Partículas animadas -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="particle absolute rounded-full bg-white/10 animate-float1" style="top: 20%; left: 15%; width: 8px; height: 8px;"></div>
+    <div class="particle absolute rounded-full bg-[#2aa8ad]/30 animate-float2" style="top: 60%; left: 80%; width: 12px; height: 12px;"></div>
+    <div class="particle absolute rounded-full bg-white/20 animate-float3" style="top: 30%; left: 65%; width: 6px; height: 6px;"></div>
+    <div class="particle absolute rounded-full bg-[#207d81]/40 animate-float4" style="top: 75%; left: 25%; width: 10px; height: 10px;"></div>
+  </div>
+
+  <!-- Contenedor principal con animación de entrada -->
+  <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl w-full max-w-md mx-auto relative overflow-visible animate-fade-in-up">
+    
+    <!-- Logo con animación mejorada -->
+    <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 z-10 w-24 h-24">
+      <div class="w-full h-full bg-gradient-to-br from-[#207d81] to-[#2aa8ad] rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-float hover:rotate-12 hover:scale-110 transition-all duration-500">
+        <svg class="h-10 w-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+        </svg>
+      </div>
+    </div>
+  
+    <!-- Contenido del formulario -->
+    <div class="pt-16 px-6 sm:px-8 pb-8">
+      <!-- Títulos con animación -->
+      <div class="text-center mb-6 animate-fade-in-delay">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Quantum Gateway</h1>
+        <p class="text-[#207d81] text-sm sm:text-base font-medium mt-1">Portal Administrativo</p>
+      </div>
+  
+      <!-- Formulario -->
+      <form (ngSubmit)="onSubmit()" class="space-y-4 sm:space-y-5">
+        <!-- Campo Email con animación -->
+        <div class="animate-fade-in-delay2">
+          <label for="email" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Correo Electrónico</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#207d81] group-hover:text-[#2aa8ad] transition-colors duration-300">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="Ingresa tu correo" 
+              required
+              class="w-full bg-gray-50/70 border border-gray-200 rounded-lg pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#207d81] focus:border-transparent transition-all duration-300 hover:bg-gray-100/80 hover:shadow-sm"
+            >
+          </div>
+        </div>
+  
+        <!-- Campo Password con animación -->
+        <div class="animate-fade-in-delay3">
+          <label for="password" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Contraseña</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#207d81] group-hover:text-[#2aa8ad] transition-colors duration-300">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <input 
+              [type]="showPassword ? 'text' : 'password'" 
+              id="password" 
+              placeholder="Ingresa tu contraseña" 
+              required
+              class="w-full bg-gray-50/70 border border-gray-200 rounded-lg pl-10 pr-12 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#207d81] focus:border-transparent transition-all duration-300 hover:bg-gray-100/80 hover:shadow-sm"
+            >
+            <!-- Botón Toggle Password -->
+            <button 
+              type="button" 
+              (click)="togglePasswordVisibility()"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#207d81] transition-colors duration-300"
+              aria-label="Alternar visibilidad de la contraseña"
+            >
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path *ngIf="!showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                <path *ngIf="showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+  
+        <!-- Opciones con animación -->
+        <div class="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 animate-fade-in-delay4">
+          <div class="flex items-center">
+            <input 
+              type="checkbox" 
+              id="remember-me" 
+              name="rememberMe"
+              class="h-4 w-4 text-[#207d81] focus:ring-[#207d81] border-gray-300 rounded transition-all"
+            >
+            <label for="remember-me" class="ml-2 block text-xs sm:text-sm text-gray-600">Recuérdame</label>
+          </div>
+          <a href="#" class="text-xs sm:text-sm text-[#207d81] hover:text-[#2aa8ad] transition-colors duration-300">¿Olvidaste tu contraseña?</a>
+        </div>
+  
+        <!-- Botón Submit con animación mejorada -->
+        <div class="animate-fade-in-delay5">
+          <button routerLink="/inicio"
+            type="submit" 
+            class="w-full bg-gradient-to-r from-[#207d81] to-[#2aa8ad] hover:from-[#1a6a6d] hover:to-[#23979a] text-white font-medium py-2 sm:py-3 px-4 rounded-lg shadow hover:shadow-lg transition-all duration-500 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#207d81] focus:ring-offset-2 group"
+          >
+            <span class="flex items-center justify-center">
+              <span class="text-sm sm:text-base">Iniciar Sesión</span>
+              <svg class="h-4 w-4 sm:h-5 sm:w-5 ml-1 sm:ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Footer con animación -->
+    <div class="px-6 sm:px-8 py-3 sm:py-4 bg-gray-50/70 border-t border-gray-100 rounded-b-2xl animate-fade-in-delay6">
+      <p class="text-center text-xs text-gray-600">© 2025 Quantum Gateway. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</div>
