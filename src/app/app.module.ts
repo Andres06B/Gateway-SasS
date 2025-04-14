@@ -21,10 +21,13 @@ import { SidebarComponent } from './pages/Admin/dashboard/components/sidebar/sid
 import { InicioComponent } from './pages/Admin/dashboard/views/inicio/inicio.component';
 import { NavComponent } from './pages/Admin/dashboard/components/nav/nav.component';
 import { LayoutComponent } from './pages/Admin/dashboard/components/layout/layout.component';
-import { UsuariosComponent } from './pages/Admin/dashboard/views/usuarios/usuarios.component';
 import { ReservasComponent } from './pages/Admin/dashboard/views/reservas/reservas.component';
-import { HabitacionesComponent } from './pages/Admin/dashboard/views/habitaciones/habitaciones.component';
 import { PrediccionesComponent } from './pages/Admin/dashboard/views/predicciones/predicciones.component';
+import { PaginaWebComponent } from './pages/Admin/dashboard/views/pagina-web/pagina-web.component';
+import { UsuariosComponent } from './pages/Admin/dashboard/views/usuarios/usuarios.component';
+import { HabitacioenesComponent } from './pages/Admin/dashboard/views/habitacioenes/habitacioenes.component';
+import { PagosComponent } from './pages/Admin/dashboard/views/pagos/pagos.component';
+import { ConfiguracionComponent } from './pages/Admin/dashboard/views/configuracion/configuracion.component';
 
 
 
@@ -46,10 +49,13 @@ import { PrediccionesComponent } from './pages/Admin/dashboard/views/prediccione
     InicioComponent,
     NavComponent,
     LayoutComponent,
-    UsuariosComponent,
     ReservasComponent,
-    HabitacionesComponent,
     PrediccionesComponent,
+    PaginaWebComponent,
+    UsuariosComponent,
+    HabitacioenesComponent,
+    PagosComponent,
+    ConfiguracionComponent,
 
   ],
   imports: [

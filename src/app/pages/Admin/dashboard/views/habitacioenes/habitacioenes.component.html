@@ -6,55 +6,68 @@
           <!-- Encabezado mejorado -->
           <div class="mb-6 flex justify-between items-start">
             <div>
-              <h1 class="text-2xl font-bold text-gray-800">Gestión de Usuarios</h1>
-              <p class="text-gray-600">Administra los clientes y huéspedes del sistema</p>
+              <h1 class="text-2xl font-bold text-gray-800">Gestión de Habitaciones</h1>
+              <p class="text-gray-600">Administra las habitaciones del hotel</p>
             </div>
             <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center text-sm shadow-md transition-all duration-200 transform hover:scale-105">
               <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
               </svg>
-              Nuevo Usuario
+              Nueva Habitación
             </button>
           </div>
 
           <!-- Panel de estadísticas simplificado -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <!-- Total usuarios -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <!-- Total habitaciones -->
             <div class="bg-white p-4 rounded-lg shadow border border-gray-200 flex items-center">
               <div class="p-3 rounded-lg bg-purple-100 text-purple-600 mr-4">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z"></path>
+                  <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path>
                 </svg>
               </div>
               <div>
-                <p class="text-sm text-gray-500">Usuarios totales</p>
-                <p class="text-xl font-semibold">1,842</p>
+                <p class="text-sm text-gray-500">Habitaciones totales</p>
+                <p class="text-xl font-semibold">120</p>
               </div>
             </div>
             
-            <!-- Usuarios activos -->
+            <!-- Habitaciones disponibles -->
             <div class="bg-white p-4 rounded-lg shadow border border-gray-200 flex items-center">
               <div class="p-3 rounded-lg bg-green-100 text-green-600 mr-4">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                 </svg>
               </div>
               <div>
-                <p class="text-sm text-gray-500">Activos</p>
-                <p class="text-xl font-semibold">324 <span class="text-xs text-green-600 ml-1">(+12%)</span></p>
+                <p class="text-sm text-gray-500">Disponibles</p>
+                <p class="text-xl font-semibold">78 <span class="text-xs text-green-600 ml-1">(65%)</span></p>
               </div>
             </div>
             
-            <!-- Corporativos -->
+            <!-- Habitaciones ocupadas -->
             <div class="bg-white p-4 rounded-lg shadow border border-gray-200 flex items-center">
-              <div class="p-3 rounded-lg bg-blue-100 text-blue-600 mr-4">
+              <div class="p-3 rounded-lg bg-red-100 text-red-600 mr-4">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"></path>
+                  <path fill-rule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"></path>
                 </svg>
               </div>
               <div>
-                <p class="text-sm text-gray-500">Corporativos</p>
-                <p class="text-xl font-semibold">42</p>
+                <p class="text-sm text-gray-500">Ocupadas</p>
+                <p class="text-xl font-semibold">36</p>
+              </div>
+            </div>
+            
+            <!-- Habitaciones en mantenimiento -->
+            <div class="bg-white p-4 rounded-lg shadow border border-gray-200 flex items-center">
+              <div class="p-3 rounded-lg bg-yellow-100 text-yellow-600 mr-4">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Mantenimiento</p>
+                <p class="text-xl font-semibold">6</p>
               </div>
             </div>
           </div>
@@ -63,7 +76,7 @@
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
             <div class="flex flex-col md:flex-row md:items-center md:space-x-4 space-y-4 md:space-y-0">
               <div class="relative flex-1">
-                <input type="text" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Buscar usuarios...">
+                <input type="text" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Buscar habitaciones...">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
@@ -75,15 +88,24 @@
                 <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm">
                   <option>Todos los tipos</option>
                   <option>Individual</option>
-                  <option>Corporativo</option>
-                  <option>VIP</option>
+                  <option>Doble</option>
+                  <option>Suite</option>
+                  <option>Familiar</option>
                 </select>
                 
                 <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm">
                   <option>Todos los estados</option>
-                  <option>Activo</option>
-                  <option>Inactivo</option>
-                  <option>Verificado</option>
+                  <option>Disponible</option>
+                  <option>Ocupada</option>
+                  <option>Mantenimiento</option>
+                  <option>Reservada</option>
+                </select>
+                
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm">
+                  <option>Todas las plantas</option>
+                  <option>Planta 1</option>
+                  <option>Planta 2</option>
+                  <option>Planta 3</option>
                 </select>
                 
                 <button class="bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm flex items-center justify-center hover:bg-gray-50">
@@ -96,10 +118,10 @@
             </div>
           </div>
 
-          <!-- Tabla de usuarios mejorada -->
+          <!-- Tabla de habitaciones mejorada -->
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
             <div class="px-6 py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <h2 class="font-semibold text-gray-800 mb-2 sm:mb-0">Listado de Usuarios</h2>
+              <h2 class="font-semibold text-gray-800 mb-2 sm:mb-0">Listado de Habitaciones</h2>
               <div class="flex items-center space-x-2">
                 <button class="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -118,36 +140,36 @@
               <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                   <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuario</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Número</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Último acceso</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Registro</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Planta</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio/Noche</th>
                     <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  <!-- Usuario 1 -->
+                  <!-- Habitación 1 -->
                   <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
-                          <span class="text-sm font-medium">MR</span>
+                          <span class="text-sm font-medium">201</span>
                         </div>
                         <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">María Rodríguez</div>
-                          <div class="text-sm text-gray-500">mariajemplo.com</div>
+                          <div class="text-sm font-medium text-gray-900">Suite Presidencial</div>
+                          <div class="text-sm text-gray-500">Cama King, Jacuzzi</div>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">VIP</span>
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">Suite</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Activo</span>
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Disponible</span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Hoy, 09:42</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/May/2022</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$250.00</td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div class="flex justify-end space-x-3">
                         <button class="text-purple-600 hover:text-purple-900">
@@ -169,27 +191,27 @@
                     </td>
                   </tr>
                   
-                  <!-- Usuario 2 -->
+                  <!-- Habitación 2 -->
                   <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                          <span class="text-sm font-medium">TC</span>
+                          <span class="text-sm font-medium">105</span>
                         </div>
                         <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">TechCorp S.A.</div>
-                          <div class="text-sm text-gray-500">contactoechcorp.com</div>
+                          <div class="text-sm font-medium text-gray-900">Habitación Doble</div>
+                          <div class="text-sm text-gray-500">2 Camas Queen</div>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Corporativo</span>
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Doble</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Activo</span>
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Ocupada</span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ayer, 16:30</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">22/Ene/2023</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$120.00</td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div class="flex justify-end space-x-3">
                         <button class="text-purple-600 hover:text-purple-900">
@@ -211,16 +233,16 @@
                     </td>
                   </tr>
                   
-                  <!-- Usuario 3 -->
+                  <!-- Habitación 3 -->
                   <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
-                          <span class="text-sm font-medium">JP</span>
+                          <span class="text-sm font-medium">310</span>
                         </div>
                         <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">Juan Pérez</div>
-                          <div class="text-sm text-gray-500">juanejemplo.com</div>
+                          <div class="text-sm font-medium text-gray-900">Habitación Individual</div>
+                          <div class="text-sm text-gray-500">1 Cama individual</div>
                         </div>
                       </div>
                     </td>
@@ -228,10 +250,10 @@
                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Individual</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Inactivo</span>
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Mantenimiento</span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10/Ene/2023</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">05/Mar/2021</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$80.00</td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div class="flex justify-end space-x-3">
                         <button class="text-purple-600 hover:text-purple-900">
@@ -259,7 +281,7 @@
             <!-- Paginación mejorada -->
             <div class="px-6 py-3 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div class="text-sm text-gray-500 mb-2 sm:mb-0">
-                Mostrando <span class="font-medium">1</span> a <span class="font-medium">3</span> de <span class="font-medium">1,842</span> usuarios
+                Mostrando <span class="font-medium">1</span> a <span class="font-medium">3</span> de <span class="font-medium">120</span> habitaciones
               </div>
               <div class="flex space-x-1">
                 <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>

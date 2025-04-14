@@ -8,6 +8,12 @@ import { AboutAdminComponent } from './pages/Admin/about-admin/about-admin.compo
 import { AdministrativeInformationComponent } from './pages/Admin/administrative-information/administrative-information.component';
 import { InicioComponent } from './pages/Admin/dashboard/views/inicio/inicio.component';
 import { PrediccionesComponent } from './pages/Admin/dashboard/views/predicciones/predicciones.component';
+import { UsuariosComponent } from './pages/Admin/dashboard/views/usuarios/usuarios.component';
+import { HabitacioenesComponent } from './pages/Admin/dashboard/views/habitacioenes/habitacioenes.component';
+import { PagosComponent } from './pages/Admin/dashboard/views/pagos/pagos.component';
+import { PaginaWebComponent } from './pages/Admin/dashboard/views/pagina-web/pagina-web.component';
+import { ReservasComponent } from './pages/Admin/dashboard/views/reservas/reservas.component';
+import { ConfiguracionComponent } from './pages/Admin/dashboard/views/configuracion/configuracion.component';
 //import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
@@ -26,11 +32,20 @@ const routes: Routes = [
   {path:'about', component: AboutAdminComponent}, // Página de información sobre la aplicaciónAdministrativa
   {path:'infoAdmi', component: AdministrativeInformationComponent}, // Página de información sobre la aplicaciónAdministrativa
   {path: 'inicio', component: InicioComponent},
-  {path: 'predicciones', component: PrediccionesComponent} // Página de inicio del administrador
+  {path: 'predicciones', component: PrediccionesComponent},
+  {path: 'usuarios', component: UsuariosComponent},
+  {path: 'habitaciones', component: HabitacioenesComponent},
+  {path: 'pagos', component: PagosComponent},
+  {path: 'paginaweb', component: PaginaWebComponent}, // Página de información sobre la aplicaciónAdministrativa
+  {path: 'reservas', component: ReservasComponent}, // Página de reservas
+  {path: 'configuracion', component: ConfiguracionComponent}, // Página de configuración
+  {path: 'pagina-web', component: PaginaWebComponent}, // Redirige rutas desconocidas a Landing}
 
 
-];
 
+
+
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
