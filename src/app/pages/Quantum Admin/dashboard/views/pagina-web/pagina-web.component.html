@@ -1,70 +1,179 @@
-<!-- pagina-web.component.html -->
-<div class="hotel-profile">
-    <!-- Portada editable -->
-    <div class="cover-image" [style.backgroundImage]="'url(' + hotel.coverImage + ')'">
-      <button class="edit-cover" (click)="editImage('cover')">
-        <i class="edit-icon">✏️</i> Cambiar portada
-      </button>
+<div class="hotel-profile font-sans">
+  <!-- Portada editable -->
+  <div class="relative h-64 md:h-96 rounded-b-3xl overflow-hidden shadow-lg">
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"
+    ></div>
+    <div
+      class="absolute inset-0 bg-cover bg-center transition-all duration-500"
+      [style.backgroundImage]="'url(' + hotel.coverImage + ')'"
+    ></div>
+    <button
+      class="absolute bottom-4 right-4 z-20 bg-white/80 hover:bg-white text-black px-4 py-2 rounded-full text-sm font-semibold shadow-md backdrop-blur-md transition"
+      (click)="editImage('cover')"
+    >
+      <i class="edit-icon mr-2">✏️</i> Cambiar portada
+    </button>
+  </div>
+
+  <!-- Información principal -->
+  <div class="profile-container px-6 md:px-12 py-10">
+    <div class="logo-section flex flex-col md:flex-row items-start md:items-center gap-6">
+      <div class="logo-container relative">
+        <img
+          [src]="hotel.logo"
+          alt="Hotel Logo"
+          class="hotel-logo w-32 h-32 object-cover rounded-full shadow-md"
+        />
+        <button
+          class="absolute bottom-0 right-0 bg-white border p-1 rounded-full shadow hover:bg-gray-100 transition"
+          (click)="editImage('logo')"
+        >
+          <i class="edit-icon text-lg">📷</i>
+        </button>
+      </div>
+
+      <div class="hotel-info">
+        <h1
+          contenteditable="true"
+          class="text-3xl font-bold text-gray-800 mb-2"
+          (blur)="updateHotel('name', $event)"
+        >
+          {{ hotel.name }}
+        </h1>
+        <p
+          contenteditable="true"
+          class="text-gray-600 max-w-xl"
+          (blur)="updateHotel('description', $event)"
+        >
+          {{ hotel.description }}
+        </p>
+
+        <div class="rating mt-3">
+          <span
+            *ngFor="let star of [1, 2, 3, 4, 5]"
+            (click)="hotel.rating = star"
+            [class.active]="star <= hotel.rating"
+            class="text-xl cursor-pointer transition-colors duration-300"
+            [ngClass]="{
+              'text-yellow-400': star <= hotel.rating,
+              'text-gray-300': star > hotel.rating
+            }"
+            >★</span
+          >
+        </div>
+      </div>
     </div>
-  
-    <!-- Información principal -->
-    <div class="profile-container">
-      <div class="logo-section">
-        <div class="logo-container">
-          <img [src]="hotel.logo" alt="Hotel Logo" class="hotel-logo">
-          <button class="edit-logo" (click)="editImage('logo')">
-            <i class="edit-icon">📷</i>
+
+    <!-- Información de contacto -->
+    <div class="contact-info mt-10 grid gap-4 md:grid-cols-2">
+      <div
+        class="contact-card flex items-center gap-4 bg-white shadow-sm rounded-xl p-4"
+        *ngFor="let contact of contactInfo"
+      >
+        <div
+          class="contact-icon text-2xl text-gray-500"
+          [innerHTML]="contact.icon"
+        ></div>
+        <span
+          contenteditable="true"
+          class="text-gray-700"
+          (blur)="updateContact(contact, $event)"
+          >{{ contact.value }}</span
+        >
+      </div>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="social-section mt-10">
+      <h2 class="text-xl font-semibold mb-4">
+        Redes Sociales
+        <button
+          class="ml-4 text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded transition"
+          (click)="addSocial()"
+        >
+          + Añadir
+        </button>
+      </h2>
+      <div class="social-list flex flex-col gap-3">
+        <div
+          class="social-item flex items-center gap-4 bg-white shadow-sm rounded-xl p-3"
+          *ngFor="let social of hotel.socialMedia; let i = index"
+        >
+          <span class="social-icon text-xl">{{ getSocialIcon(social.type) }}</span>
+          <span
+            contenteditable="true"
+            class="flex-grow text-gray-700"
+            (blur)="updateSocial(i, 'username', $event)"
+            >{{ social.username }}</span
+          >
+          <button
+            class="text-red-500 hover:text-red-700 transition"
+            (click)="removeSocial(i)"
+          >
+            🗑️
           </button>
         </div>
-        
-        <div class="hotel-info">
-          <h1 contenteditable="true" (blur)="updateHotel('name', $event)">{{ hotel.name }}</h1>
-          <p contenteditable="true" (blur)="updateHotel('description', $event)">{{ hotel.description }}</p>
-          
-          <div class="rating">
-            <span *ngFor="let star of [1,2,3,4,5]" 
-                  (click)="hotel.rating = star"
-                  [class.active]="star <= hotel.rating">★</span>
+      </div>
+    </div>
+
+    <!-- Habitaciones -->
+    <div class="rooms-section mt-12">
+      <h2 class="text-xl font-semibold mb-4">
+        Habitaciones
+        <button
+          class="ml-4 text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded transition"
+          (click)="addRoom()"
+        >
+          + Añadir
+        </button>
+      </h2>
+      <div class="room-list grid gap-6 md:grid-cols-2">
+        <div
+          class="room-card bg-white shadow-md rounded-xl overflow-hidden"
+          *ngFor="let room of hotel.rooms; let i = index"
+        >
+          <div
+            class="room-image h-48 bg-cover bg-center relative"
+            [style.backgroundImage]="'url(' + room.image + ')'"
+          >
+            <button
+              class="absolute bottom-2 right-2 bg-white/80 hover:bg-white p-1 rounded-full text-sm"
+              (click)="editRoomImage(i)"
+            >
+              📷
+            </button>
           </div>
-        </div>
-      </div>
-  
-      <!-- Información de contacto -->
-      <div class="contact-info">
-        <div class="contact-card" *ngFor="let contact of contactInfo">
-          <div class="contact-icon" [innerHTML]="contact.icon"></div>
-          <span contenteditable="true" (blur)="updateContact(contact, $event)">{{ contact.value }}</span>
-        </div>
-      </div>
-  
-      <!-- Redes sociales -->
-      <div class="social-section">
-        <h2>Redes Sociales <button (click)="addSocial()">+ Añadir</button></h2>
-        <div class="social-list">
-          <div class="social-item" *ngFor="let social of hotel.socialMedia; let i = index">
-            <span class="social-icon">{{ getSocialIcon(social.type) }}</span>
-            <span contenteditable="true" (blur)="updateSocial(i, 'username', $event)">{{ social.username }}</span>
-            <button (click)="removeSocial(i)">🗑️</button>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Habitaciones -->
-      <div class="rooms-section">
-        <h2>Habitaciones <button (click)="addRoom()">+ Añadir</button></h2>
-        <div class="room-list">
-          <div class="room-card" *ngFor="let room of hotel.rooms; let i = index">
-            <div class="room-image" [style.backgroundImage]="'url(' + room.image + ')'">
-              <button (click)="editRoomImage(i)">📷</button>
-            </div>
-            <div class="room-details">
-              <h3 contenteditable="true" (blur)="updateRoom(i, 'name', $event)">{{ room.name }}</h3>
-              <p contenteditable="true" (blur)="updateRoom(i, 'description', $event)">{{ room.description }}</p>
-              <span contenteditable="true" (blur)="updateRoom(i, 'price', $event)">${{ room.price }} noche</span>
-              <button (click)="removeRoom(i)">Eliminar</button>
-            </div>
+          <div class="room-details p-4">
+            <h3
+              contenteditable="true"
+              class="text-lg font-semibold mb-2"
+              (blur)="updateRoom(i, 'name', $event)"
+            >
+              {{ room.name }}
+            </h3>
+            <p
+              contenteditable="true"
+              class="text-gray-600"
+              (blur)="updateRoom(i, 'description', $event)"
+            >
+              {{ room.description }}
+            </p>
+            <span
+              contenteditable="true"
+              class="block mt-2 text-green-600 font-bold"
+              (blur)="updateRoom(i, 'price', $event)"
+              >${{ room.price }} noche</span
+            >
+            <button
+              class="mt-3 text-sm text-red-500 hover:text-red-700 transition"
+              (click)="removeRoom(i)"
+            >
+              Eliminar
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
