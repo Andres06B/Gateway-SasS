@@ -9,13 +9,8 @@
             <p class="text-gray-600">Monitoreo y administración de transacciones financieras</p>
           </div>
           <div class="flex flex-col xs:flex-row gap-2 w-full sm:w-auto">
-            <button class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg flex items-center justify-center text-sm shadow-sm hover:bg-gray-50 w-full sm:w-auto">
-              <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-              Exportar
-            </button>
-            <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center justify-center text-sm shadow-md transition-all duration-200 w-full sm:w-auto">
+            
+            <button class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg flex items-center justify-center text-sm shadow-md transition-all duration-200 w-full sm:w-auto">
               <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
               </svg>
@@ -31,7 +26,7 @@
             <div class="flex items-start justify-between">
               <div>
                 <p class="text-sm font-medium text-gray-500 flex items-center">
-                  <svg class="w-4 h-4 mr-1 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg class="w-4 h-4 mr-1 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
                   </svg>
@@ -97,7 +92,7 @@
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
           <div class="flex flex-col md:flex-row md:items-center gap-4">
             <div class="relative flex-1">
-              <input type="text" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm" placeholder="Buscar...">
+              <input type="text" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-sm" placeholder="Buscar...">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
@@ -106,21 +101,21 @@
             </div>
             
             <div class="grid grid-cols-2 sm:flex sm:flex-row gap-2 w-full md:w-auto">
-              <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm w-full">
+              <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-sm w-full">
                 <option>Método</option>
                 <option>Tarjeta</option>
                 <option>Efectivo</option>
                 <option>Transferencia</option>
               </select>
               
-              <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm w-full">
+              <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-sm w-full">
                 <option>Estado</option>
                 <option>Completado</option>
                 <option>Pendiente</option>
                 <option>Rechazado</option>
               </select>
               
-              <button class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm flex items-center justify-center hover:bg-purple-700 col-span-2 sm:col-span-1">
+              <button class="bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm flex items-center justify-center hover:bg-cyan-700 col-span-2 sm:col-span-1">
                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"></path>
                 </svg>
@@ -135,16 +130,6 @@
           <div class="px-4 py-3 sm:px-6 border-b border-gray-200 flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2">
             <h2 class="font-semibold text-gray-800">Historial de Transacciones</h2>
             <div class="flex items-center gap-1">
-              <button class="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                </svg>
-              </button>
-              <button class="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                </svg>
-              </button>
             </div>
           </div>
           
@@ -166,7 +151,7 @@
                   <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#78945</td>
                   <td class="px-4 py-3 whitespace-nowrap">
                     <div class="flex items-center">
-                      <div class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xs">
+                      <div class="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 text-xs">
                         MR
                       </div>
                       <div class="ml-3">
@@ -193,7 +178,7 @@
                   </td>
                   <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
                     <div class="flex justify-end gap-2">
-                      <button class="text-purple-600 hover:text-purple-900">
+                      <button class="text-cyan-600 hover:text-cyan-900">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                           <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
@@ -239,7 +224,7 @@
                   </td>
                   <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
                     <div class="flex justify-end gap-2">
-                      <button class="text-purple-600 hover:text-purple-900">
+                      <button class="text-cyan-600 hover:text-cyan-900">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                           <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
@@ -266,7 +251,7 @@
               <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>
                 Anterior
               </button>
-              <button class="px-3 py-1 border border-purple-500 bg-purple-50 text-purple-600 rounded-lg text-sm font-medium">
+              <button class="px-3 py-1 border border-cyan-500 bg-cyan-50 text-cyan-600 rounded-lg text-sm font-medium">
                 1
               </button>
               <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">

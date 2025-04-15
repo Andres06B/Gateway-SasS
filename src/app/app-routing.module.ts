@@ -21,39 +21,28 @@ import { LoginWebComponent } from './pages/Quantum Web/login-web/login-web.compo
 const routes: Routes = [
 
 
+ // Rutas públicas
+ { path: '', component: LandingComponent },
+ { path: 'landing', component: LandingComponent },
+ { path: 'loginCorp', component: LoginWebComponent },
+ { path: 'loginAdmin', component: LoginAdminComponent },
+ { path: 'loginUser', component: LoginUserComponent },
+ { path: 'about', component: AboutAdminComponent },
+ { path: 'infoAdmi', component: AdministrativeInformationComponent },
+ { path: 'error404', component: Error404Component },
 
-  //rutas globales
-  { path: 'error404', component: Error404Component }, // Página de error 404
+ // Rutas administrativas (protegidas)
+ { path: 'inicio', component: InicioComponent },
+ { path: 'predicciones', component: PrediccionesComponent },
+ { path: 'usuarios', component: UsuariosComponent },
+ { path: 'habitaciones', component: HabitacioenesComponent },
+ { path: 'pagos', component: PagosComponent },
+ { path: 'pagina-web', component: PaginaWebComponent },
+ { path: 'reservas', component: ReservasComponent },
+ { path: 'configuracion', component: ConfiguracionComponent },
 
-
-  //Rutas para la aplicación web
-  { path: '', component: LandingComponent},
-  {path: 'landing', component: LandingComponent},
-  {path: 'loginCorp', component: LoginWebComponent},
-  
-
-  //rutas para la aplicación web (Quantum Web)
-  { path: '**', redirectTo: '', pathMatch: 'full' }, // Redirige rutas desconocidas a Landing
-  { path: 'loginAdmin', component: LoginAdminComponent }, // Página de inicio de sesión
-  {path:'about', component: AboutAdminComponent}, // Página de información sobre la aplicaciónAdministrativa
-  {path:'infoAdmi', component: AdministrativeInformationComponent}, // Página de información sobre la aplicaciónAdministrativa
-  
-  //Rutas para la aplicación administrativa (Dashboard Admin Empresas)
-  {path: 'inicio', component: InicioComponent},
-  {path: 'predicciones', component: PrediccionesComponent},
-  {path: 'usuarios', component: UsuariosComponent},
-  {path: 'habitaciones', component: HabitacioenesComponent},
-  {path: 'pagos', component: PagosComponent},
-  {path: 'paginaweb', component: PaginaWebComponent}, // Página de información sobre la aplicaciónAdministrativa
-  {path: 'reservas', component: ReservasComponent}, // Página de reservas
-  {path: 'configuracion', component: ConfiguracionComponent}, // Página de configuración
-  {path: 'pagina-web', component: PaginaWebComponent}, // Redirige rutas desconocidas a Landing}
-
-
-  //rutas de usuarios
-  {path: 'loginUser', component: LoginUserComponent}, // Página de inicio de sesión usuarios
-
-
+ // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)
+ { path: '**', redirectTo: 'error404', pathMatch: 'full' }
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -9,7 +9,7 @@
               <h1 class="text-2xl font-bold text-gray-800">Gestión de Usuarios</h1>
               <p class="text-gray-600">Administra los clientes y huéspedes del sistema</p>
             </div>
-            <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center text-sm shadow-md transition-all duration-200 transform hover:scale-105">
+            <button class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg flex items-center text-sm shadow-md transition-all duration-200 transform hover:scale-105">
               <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
               </svg>
@@ -21,7 +21,7 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <!-- Total usuarios -->
             <div class="bg-white p-4 rounded-lg shadow border border-gray-200 flex items-center">
-              <div class="p-3 rounded-lg bg-purple-100 text-purple-600 mr-4">
+              <div class="p-3 rounded-lg bg-cyan-100 text-cyan-600 mr-4">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z"></path>
                 </svg>
@@ -63,7 +63,7 @@
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
             <div class="flex flex-col md:flex-row md:items-center md:space-x-4 space-y-4 md:space-y-0">
               <div class="relative flex-1">
-                <input type="text" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Buscar usuarios...">
+                <input type="text" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Buscar usuarios...">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
@@ -72,14 +72,14 @@
               </div>
               
               <div class="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0 w-full md:w-auto">
-                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm">
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-sm">
                   <option>Todos los tipos</option>
                   <option>Individual</option>
                   <option>Corporativo</option>
                   <option>VIP</option>
                 </select>
                 
-                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm">
+                <select class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-sm">
                   <option>Todos los estados</option>
                   <option>Activo</option>
                   <option>Inactivo</option>
@@ -101,11 +101,6 @@
             <div class="px-6 py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <h2 class="font-semibold text-gray-800 mb-2 sm:mb-0">Listado de Usuarios</h2>
               <div class="flex items-center space-x-2">
-                <button class="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </button>
                 <button class="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
@@ -131,7 +126,7 @@
                   <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600">
                           <span class="text-sm font-medium">MR</span>
                         </div>
                         <div class="ml-4">
@@ -141,7 +136,7 @@
                       </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">VIP</span>
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-cyan-100 text-cyan-800">VIP</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Activo</span>
@@ -150,7 +145,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/May/2022</td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div class="flex justify-end space-x-3">
-                        <button class="text-purple-600 hover:text-purple-900">
+                        <button class="text-cyan-600 hover:text-cyan-900">
                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                           </svg>
@@ -192,7 +187,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">22/Ene/2023</td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div class="flex justify-end space-x-3">
-                        <button class="text-purple-600 hover:text-purple-900">
+                        <button class="text-cyan-600 hover:text-cyan-900">
                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                           </svg>
@@ -234,7 +229,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">05/Mar/2021</td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div class="flex justify-end space-x-3">
-                        <button class="text-purple-600 hover:text-purple-900">
+                        <button class="text-cyan-600 hover:text-cyan-900">
                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                           </svg>
@@ -265,7 +260,7 @@
                 <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>
                   Anterior
                 </button>
-                <button class="px-3 py-1 border border-purple-500 bg-purple-50 text-purple-600 rounded-lg text-sm font-medium">
+                <button class="px-3 py-1 border border-cyan-500 bg-cyan-50 text-cyan-600 rounded-lg text-sm font-medium">
                   1
                 </button>
                 <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
