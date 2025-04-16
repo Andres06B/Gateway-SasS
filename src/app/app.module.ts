@@ -37,6 +37,7 @@ import { InfoHostalComponent } from './pages/Quantum Users/web-hotel/info-hostal
 import { InfoCabanaComponent } from './pages/Quantum Users/web-hotel/info-cabana/info-cabana.component';
 import { HeaderWEbComponent } from './pages/Quantum Users/web-hotel/Components/header-web/header-web.component';
 import { FooterWEbComponent } from './pages/Quantum Users/web-hotel/Components/footer-web/footer-web.component';
+import { AdminQuantumComponent } from './pages/Quantum Web/admin-quantum/admin-quantum.component';
 
 
 
@@ -72,6 +73,7 @@ import { FooterWEbComponent } from './pages/Quantum Users/web-hotel/Components/f
     InfoCabanaComponent,
     HeaderWEbComponent,
     FooterWEbComponent,
+    AdminQuantumComponent,
 
   ],
   imports: [
