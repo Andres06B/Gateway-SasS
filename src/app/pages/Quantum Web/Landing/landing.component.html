@@ -1,64 +1,392 @@
-<!-- HERO SECTION -->
-<div id="hero" class="w-full overflow-x-hidden">
-  <app-header class="fixed top-0 w-full z-50"></app-header>
-  <section class="relative bg-white dark:bg-gray-900 mt-24 pb-12 sm:mt-20 sm:pb-16 lg:mt-20 lg:pb-14 w-full overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 opacity-10 pointer-events-none z-0">
-      <div class="absolute top-0 left-5 sm:left-20 w-48 sm:w-64 h-48 sm:h-64 bg-[#22D3EE]/20 rounded-full mix-blend-overlay filter blur-3xl animate-blob"></div>
-      <div class="absolute top-0 right-5 sm:right-20 w-48 sm:w-64 h-48 sm:h-64 bg-[#0EA5E9]/20 rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div class="absolute bottom-10 sm:bottom-20 left-10 sm:left-32 w-48 sm:w-64 h-48 sm:h-64 bg-[#0891B2]/20 rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-4000"></div>
+<div id="hotel-saas-hero"
+  class="w-full min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 overflow-hidden relative">
+
+  <!-- Efecto de partículas de lujo -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5"></div>
+    <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-cyan-500/10 rounded-full filter blur-3xl animate-pulse"></div>
+    <div
+      class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-600/10 rounded-full filter blur-3xl animate-pulse animation-delay-2000">
     </div>
-  
-    <div class="relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-      <div class="grid gap-12 lg:grid-cols-12 items-center">
-        
-        <!-- Text Content -->
-        <div class="lg:col-span-7 animate-fade-in-up">
-          <div class="mb-4 sm:mb-6 inline-flex px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-[#ECFEFF] dark:bg-[#083344]/20 backdrop-blur-sm border border-[#A5F3FC] dark:border-[#155E75]/30 animate-fade-in">
-            <i class="bi bi-stars mr-2 text-[#06B6D4] dark:text-[#67E8F9]"></i>
-            <span class="text-xs sm:text-sm font-medium text-[#0891B2] dark:text-[#A5F3FC]">NUEVA VERSIÓN DISPONIBLE</span>
-          </div>
-  
-          <h1 class="text-3xl sm:text-4xl md:text-5xl xl:text-[3.4rem] font-bold leading-tight tracking-tight text-gray-900 dark:text-white mb-4 sm:mb-6 animate-fade-in-down">
-            Revoluciona la gestión <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] block sm:inline">de tu hotel</span>
-          </h1>
-  
-          <p class="text-base sm:text-lg lg:text-xl font-light text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl animate-fade-in-down animate-delay-100">
-            La plataforma todo-en-uno que optimiza reservas, hospedajes y operaciones con inteligencia artificial y análisis en tiempo real.
-          </p>
-  
-          <!-- Stats y Reviews -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-6 sm:mt-8 animate-fade-in animate-delay-300">
-            <div class="flex -space-x-3 sm:-space-x-4">
-              <img class="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
-              <img class="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
-              <img class="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+  </div>
+
+  <!-- Navegación -->
+  <app-header class="fixed top-0 w-full z-50"></app-header>
+
+  <!-- Contenido principal (centrado y amplio) -->
+  <div
+    class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-full flex flex-col lg:flex-row items-center justify-center gap-16 pt-32 pb-24">
+
+    <!-- Sección de texto (70% del ancho en móvil, 50% en desktop) -->
+    <div class="w-full lg:w-1/2 text-center lg:text-left space-y-8">
+
+      <!-- Bienvenida destacada -->
+      <div class="mb-6">
+        <h2 class="text-lg sm:text-xl font-medium text-cyan-600 dark:text-cyan-400 mb-2">
+          <span class="inline-flex items-center gap-2">
+            <i class="bi bi-stars"></i> Bienvenido a Quantum Gateway
+          </span>
+        </h2>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+          <span class="block">Transforma tu</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">negocio hotelero</span>
+        </h1>
+      </div>
+
+      <!-- Beneficios en lista (diseño moderno) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        <div
+          class="bg-white dark:bg-gray-800/50 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center">
+              <i class="bi bi-calendar2-check text-cyan-600 dark:text-cyan-400"></i>
             </div>
-            <div class="font-medium text-gray-900 dark:text-white">
-              <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 flex items-center gap-1">
-                <i class="bi bi-building-check text-[#0891B2] dark:text-[#67E8F9]"></i> Únete a +500 hoteles
-              </div>
-              <div class="flex items-center text-xs sm:text-sm">
-                <i class="bi bi-star-fill text-yellow-400 mr-1"></i>
-                <span>4.9/5 (350 reseñas)</span>
-              </div>
-            </div>
+            <span class="font-medium">Gestión de reservas 360°</span>
           </div>
         </div>
-  
-        <!-- Imagen Dashboard -->
-        <div class="lg:col-span-5 mt-8 sm:mt-10 lg:mt-0 animate-float">
-          <div class="relative w-full max-w-md mx-auto lg:mx-0">
-            <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-32 h-32 sm:w-40 sm:h-40 bg-[#A5F3FC]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-            <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-32 h-32 sm:w-40 sm:h-40 bg-[#22D3EE]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-3000"></div>
-            <img src="dash.png" alt="Dashboard de hotel" class="relative z-10 w-full h-auto rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 backdrop-blur-sm transition-transform duration-300 hover:scale-105 hover:shadow-[0_20px_25px_-5px_rgba(6,182,212,0.1),0_10px_10px_-5px_rgba(6,182,212,0.04)]">
+
+        <div
+          class="bg-white dark:bg-gray-800/50 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+              <i class="bi bi-graph-up-arrow text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <span class="font-medium">Revenue Management AI</span>
+          </div>
+        </div>
+
+        <div
+          class="bg-white dark:bg-gray-800/50 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+              <i class="bi bi-speedometer2 text-green-600 dark:text-green-400"></i>
+            </div>
+            <span class="font-medium">Dashboard en tiempo real</span>
+          </div>
+        </div>
+
+        <div
+          class="bg-white dark:bg-gray-800/50 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+              <i class="bi bi-credit-card text-purple-600 dark:text-purple-400"></i>
+            </div>
+            <span class="font-medium">Pagos integrados</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust badges (hoteles reconocidos) -->
+      <div class="mt-12">
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Confían en nosotros:</p>
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6">
+          <div class="relative group">
+            <img
+              src="https://cartagena-premium-hotel.hotel-dir.com/data/Photos/OriginalPhoto/3178/317845/317845901.JPEG"
+              alt="Hotel Premium"
+              class="h-12 w-12 rounded-full shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full">
+            </div>
+          </div>
+          <div class="relative group">
+            <img
+              src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/535102099.jpg?k=942d4be8c6e27ea4963f46d86a7ff8f253d98f08f5cfe29fdab72a3d2e8635e8&o=&hp=1"
+              alt="Beach Resort"
+              class="h-12 w-12 rounded-full shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full">
+            </div>
+          </div>
+          <div class="relative group">
+            <img src="https://images.homify.com/v1458742164/p/photo/image/1418653/biedronka_r01.jpg"
+              alt="Mountain Lodge"
+              class="h-12 w-12 rounded-full shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full">
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- Sección visual (derecha) - Imagen premium del dashboard -->
+    <div class="w-full lg:w-1/2 relative mt-12 lg:mt-0">
+      <div class="relative max-w-2xl mx-auto">
+        <!-- Efecto de dispositivo flotante con sombra -->
+        <div
+          class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white dark:border-gray-800 transform rotate-1 hover:rotate-0 transition-all duration-500 hover:shadow-cyan-500/20">
+          <!-- Imagen HD del dashboard -->
+          <img src="dash23.png" alt="Dashboard Quantum Gateway para hoteles" class="w-full h-auto object-cover">
+
+          <!-- Overlay con métricas clave -->
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+            <div class="grid grid-cols-3 gap-4">
+              <div class="bg-white dark:bg-gray-800 p-3 rounded-lg text-center">
+                <p class="text-xs text-gray-500 dark:text-gray-400">Ocupación</p>
+                <p class="text-xl font-bold text-cyan-600 dark:text-cyan-400">92%</p>
+              </div>
+              <div class="bg-white dark:bg-gray-800 p-3 rounded-lg text-center">
+                <p class="text-xs text-gray-500 dark:text-gray-400">ADR</p>
+                <p class="text-xl font-bold text-blue-600 dark:text-blue-400">$145</p>
+              </div>
+              <div class="bg-white dark:bg-gray-800 p-3 rounded-lg text-center">
+                <p class="text-xs text-gray-500 dark:text-gray-400">RevPAR</p>
+                <p class="text-xl font-bold text-green-600 dark:text-green-400">$133</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notificación flotante (ejemplo de reserva en tiempo real) -->
+        <div
+          class="absolute -top-5 -right-5 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 animate-float">
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <span class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-ping"></span>
+              <span
+                class="relative z-10 w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                <i class="bi bi-check-lg text-green-600 dark:text-green-400"></i>
+              </span>
+            </div>
+            <div>
+              <p class="text-sm font-medium">Nueva reserva</p>
+              <p class="text-xs text-gray-500">Habitación #203</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator elegante -->
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
+    <div class="animate-bounce flex flex-col items-center">
+      <div class="w-8 h-12 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-cyan-500 dark:bg-cyan-400 rounded-full mt-2"></div>
+      </div>
+      <span class="text-xs text-gray-500 dark:text-gray-400 mt-2">Desplázate para descubrir</span>
+    </div>
+  </div>
 </div>
 
+<!-- Sección: "Por qué elegir Quantum Gateway" -->
+<div class="w-full bg-white dark:bg-gray-950 py-20 sm:py-28 px-6 sm:px-12 lg:px-24 relative overflow-hidden">
+
+  <!-- Efecto de fondo abstracto -->
+  <div class="absolute inset-0 z-0 opacity-10 dark:opacity-5">
+    <div class="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-500/10 rounded-full filter blur-3xl"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-72 h-72 bg-blue-600/10 rounded-full filter blur-3xl"></div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="relative z-10 max-w-7xl mx-auto">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Todo lo que
+          necesitas</span><br>
+        en una sola plataforma
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Diseñado por hoteleros, para hoteleros. Simplificamos tu operación mientras maximizamos tus ingresos.
+      </p>
+    </div>
+
+    <!-- Tarjetas de beneficios (diseño tipo "módulos interactivos") -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Tarjeta 1: Revenue Management -->
+      <div
+        class="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 group">
+        <div
+          class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors">
+          <i class="bi bi-graph-up-arrow text-3xl text-cyan-600 dark:text-cyan-400 group-hover:text-cyan-500"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Revenue Intelligence</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Nuestro motor de IA ajusta precios en tiempo real según demanda, competencia y eventos locales.
+        </p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-cyan-500"></i>
+            +22% ADR promedio
+          </li>
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-cyan-500"></i>
+            Alertas de oportunidades
+          </li>
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-cyan-500"></i>
+            Integración con PMS
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tarjeta 2: Reservas Directas -->
+      <div
+        class="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 group">
+        <div
+          class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+          <i class="bi bi-calendar-check text-3xl text-blue-600 dark:text-blue-400 group-hover:text-blue-500"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Motor de Reservas</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Sistema todo-en-uno que sincroniza Booking, Airbnb y tu sitio web sin comisiones ocultas.
+        </p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-blue-500"></i>
+            Check-in/out digital
+          </li>
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-blue-500"></i>
+            Sin sobreventas
+          </li>
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-blue-500"></i>
+            Pagos multicanal
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tarjeta 3: Dashboard Inteligente -->
+      <div
+        class="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 group">
+        <div
+          class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
+          <i class="bi bi-speedometer2 text-3xl text-purple-600 dark:text-purple-400 group-hover:text-purple-500"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Dashboard 360°</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Monitorea todas tus métricas clave desde cualquier dispositivo con alertas personalizables.
+        </p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-purple-500"></i>
+            KPIs en tiempo real
+          </li>
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-purple-500"></i>
+            Reportes automáticos
+          </li>
+          <li class="flex items-center gap-2 text-gray-700 dark:text-gray-400">
+            <i class="bi bi-check-circle-fill text-purple-500"></i>
+            Acceso multi-usuario
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Sección de Beneficios -->
+<section class="relative py-16 sm:py-24 lg:py-32 bg-white dark:bg-gray-900 overflow-hidden">
+  <!-- Efectos de fondo -->
+  <div
+    class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-[#f0f9ff] to-transparent dark:from-[#0c4a6e] dark:to-transparent">
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9]">¿Por qué Quantum
+          Gateway?</span>
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300">
+        La solución todo-en-uno que está transformando la industria hotelera con tecnología de vanguardia
+      </p>
+    </div>
+
+    <!-- Tarjetas de beneficios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Beneficio 1 -->
+      <div
+        class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#e2e8f0] dark:border-gray-700">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg flex items-center justify-center mb-6">
+          <i class="bi bi-speedometer2 text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Operaciones optimizadas</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Automatización inteligente de reservas, check-in/out y gestión de habitaciones que reduce tiempos hasta un
+          70%.
+        </p>
+      </div>
+
+      <!-- Beneficio 2 -->
+      <div
+        class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#e2e8f0] dark:border-gray-700">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg flex items-center justify-center mb-6">
+          <i class="bi bi-graph-up-arrow text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Revenue Management</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Nuestro algoritmo de precios dinámicos aumenta tu ADR y ocupación con ajustes automáticos basados en IA.
+        </p>
+      </div>
+
+      <!-- Beneficio 3 -->
+      <div
+        class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#e2e8f0] dark:border-gray-700">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg flex items-center justify-center mb-6">
+          <i class="bi bi-phone text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Experiencia móvil</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          App para huéspedes con control total: llave digital, servicios, recomendaciones locales y comunicación
+          directa.
+        </p>
+      </div>
+
+      <!-- Beneficio 4 -->
+      <div
+        class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#e2e8f0] dark:border-gray-700">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg flex items-center justify-center mb-6">
+          <i class="bi bi-shield-lock text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Seguridad PCI-DSS</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Plataforma certificada con encriptación de extremo a extremo para proteger datos de pago y personales.
+        </p>
+      </div>
+
+      <!-- Beneficio 5 -->
+      <div
+        class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#e2e8f0] dark:border-gray-700">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg flex items-center justify-center mb-6">
+          <i class="bi bi-globe2 text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Distribución global</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Conexión directa con 250+ OTAs y canales de venta sin comisiones adicionales.
+        </p>
+      </div>
+
+      <!-- Beneficio 6 -->
+      <div
+        class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#e2e8f0] dark:border-gray-700">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg flex items-center justify-center mb-6">
+          <i class="bi bi-robot text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Asistente AI 24/7</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Nuestro chatbot resuelve el 85% de consultas en segundos, en 15 idiomas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- SECCIÓN REDES SOCIALES -->
 <div class="w-full bg-white dark:bg-gray-900 overflow-hidden">
@@ -77,27 +405,33 @@
 
         <!-- Instagram -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-pink-600 dark:text-pink-400 w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
             </svg>
           </a>
         </div>
 
         <!-- TikTok -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-black dark:text-white w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
             </svg>
           </a>
         </div>
 
         <!-- WhatsApp -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-[#25D366] w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
           </a>
         </div>
@@ -105,98 +439,120 @@
 
         <!-- Facebook -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-[#1877F2] w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+              <path
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
             </svg>
           </a>
         </div>
 
         <!-- Instagram -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-pink-600 dark:text-pink-400 w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
             </svg>
           </a>
         </div>
 
         <!-- TikTok -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-black dark:text-white w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
             </svg>
           </a>
         </div>
 
         <!-- WhatsApp -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-[#25D366] w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
           </a>
         </div>
-         <!-- Instagram -->
-         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+        <!-- Instagram -->
+        <div class="marquee-item mx-4 sm:mx-6 inline-flex">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-pink-600 dark:text-pink-400 w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
             </svg>
           </a>
         </div>
 
         <!-- TikTok -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-black dark:text-white w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
             </svg>
           </a>
         </div>
 
         <!-- WhatsApp -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-[#25D366] w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
           </a>
         </div>
 
         <!-- Facebook -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-[#1877F2] w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+              <path
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
             </svg>
           </a>
         </div>
 
         <!-- Instagram -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-pink-600 dark:text-pink-400 w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
             </svg>
           </a>
         </div>
 
         <!-- TikTok -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-black dark:text-white w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
             </svg>
           </a>
         </div>
 
         <!-- WhatsApp -->
         <div class="marquee-item mx-4 sm:mx-6 inline-flex">
-          <a href="#" class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
+          <a href="#"
+            class="social-icon-wrapper p-5 rounded-full hover:scale-110 transition-transform duration-300 bg-gray-100 dark:bg-gray-800">
             <svg class="social-icon text-[#25D366] w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
           </a>
         </div>
@@ -210,131 +566,147 @@
 
 
 <!-- SECCION SERVICIOS -->
+<!-- SECCION SERVICIOS MEJORADA -->
 <section id="Servicios" class="bg-white dark:bg-gray-900 overflow-hidden">
-  <div class="max-w-screen-xl px-4 py-12 mx-auto lg:py-16 lg:px-6">
-    <!-- First Feature Row -->
-    <div class="flex flex-col items-center mb-16 lg:flex-row lg:mb-20 lg:gap-12">
-      <!-- Text Content -->
-      <div class="w-full lg:w-1/2 transition-all duration-500 ease-in-out transform hover:-translate-y-1">
-        <h2 class="mb-4 text-3xl font-bold text-gray-900 lg:text-4xl dark:text-white animate-fadeIn">
-          Servicios SaaS <span class="text-[#06B6D4] animate-pulse">para Hoteles</span>
-        </h2>
-        <p class="mb-6 text-lg text-gray-600 dark:text-gray-300 animate-fadeIn delay-100">
-          Transforma la experiencia de tus huéspedes y optimiza la gestión de tu hotel con nuestras
-          herramientas tecnológicas diseñadas específicamente para la industria hotelera.
-        </p>
+  <div class="max-w-screen-xl px-4 py-20 mx-auto lg:py-24 lg:px-6">
 
-        <ul class="space-y-4 animate-fadeIn delay-200">
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Chatbots Inteligentes</span>
-          </li>
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Páginas Web Personalizadas</span>
-          </li>
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Gestión Integral de Reservas</span>
-          </li>
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Análisis y Reportes en Tiempo Real</span>
-          </li>
-        </ul>
+    <!-- Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9]">Quantum Gateway</span>
+        - Soluciones Integrales
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300">
+        Tecnología especializada para cada necesidad en la industria hotelera
+      </p>
+    </div>
 
-        <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 animate-fadeIn delay-300">
-          Descubre cómo nuestras soluciones pueden revolucionar la gestión de tu hotel.
-        </p>
+    <!-- Sección Empresas -->
+    <div class="flex flex-col items-center mb-24 lg:flex-row lg:mb-28 lg:gap-16">
+      <!-- Contenido -->
+      <div class="w-full lg:w-1/2">
+        <div
+          class="inline-flex px-4 py-2 rounded-full bg-[#ECFEFF] dark:bg-[#083344]/30 border border-[#A5F3FC] dark:border-[#155E75]/40 mb-6">
+          <span class="text-sm font-medium text-[#0891B2] dark:text-[#67E8F9]">PARA EMPRESAS HOTELERAS</span>
+        </div>
+
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          Gestión Hotelera <span class="text-[#06B6D4]">Inteligente</span>
+        </h3>
+
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#ECFEFF] dark:bg-[#083344] p-2 rounded-lg mr-4">
+              <i class="bi bi-layers text-xl text-[#06B6D4] dark:text-[#67E8F9]"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Planes Escalables</h4>
+              <p class="text-gray-600 dark:text-gray-300">
+                Desde el plan básico con gestión esencial hasta soluciones empresariales con IA predictiva, sistema de
+                llaves digitales y revenue management avanzado.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#ECFEFF] dark:bg-[#083344] p-2 rounded-lg mr-4">
+              <i class="bi bi-gem text-xl text-[#06B6D4] dark:text-[#67E8F9]"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Panel de Control Premium</h4>
+              <p class="text-gray-600 dark:text-gray-300">
+                Interfaz intuitiva con arrastrar y soltar, visualización en tiempo real de ocupación, gestión
+                centralizada de múltiples propiedades y reportes automatizados.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#ECFEFF] dark:bg-[#083344] p-2 rounded-lg mr-4">
+              <i class="bi bi-shield-lock text-xl text-[#06B6D4] dark:text-[#67E8F9]"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Despliegue Automatizado</h4>
+              <p class="text-gray-600 dark:text-gray-300">
+                Tu propiedad aparece instantáneamente en nuestro marketplace global, recibiendo reservas las 24/7 con
+                nuestro sistema de reservaciones autogestionado.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Image -->
-      <div class="w-full mt-8 lg:w-1/2 lg:mt-0">
-        <img class="w-full rounded-lg shadow-xl transform transition-all duration-700 hover:scale-105 hover:shadow-[0_20px_25px_-5px_rgba(6,182,212,0.1),0_10px_10px_-5px_rgba(6,182,212,0.04)]"
-          src="dash.png" alt="Solución hotelera SaaS" loading="lazy">
+      <!-- Imagen -->
+      <div class="w-full mt-12 lg:w-1/2 lg:mt-0">
+        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-gray-100 dark:border-gray-700">
+          <img class="w-full h-auto" src="Admin.jpeg" alt="Panel de control para hoteles" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Second Feature Row (reversed) -->
-    <div class="flex flex-col items-center lg:flex-row-reverse lg:gap-12">
-      <!-- Text Content -->
-      <div class="w-full lg:w-1/2 transition-all duration-500 ease-in-out transform hover:-translate-y-1">
-        <h2 class="mb-4 text-3xl font-bold text-gray-900 lg:text-4xl dark:text-white animate-fadeIn">
-          Planes <span class="text-[#06B6D4] animate-pulse">Adaptados</span> a tus Necesidades
-        </h2>
-        <p class="mb-6 text-lg text-gray-600 dark:text-gray-300 animate-fadeIn delay-100">
-          Ofrecemos planes flexibles diseñados para hoteles de todos los tamaños, desde pequeñas posadas
-          hasta grandes cadenas hoteleras.
-        </p>
+    <!-- Sección Usuarios -->
+    <div class="flex flex-col items-center lg:flex-row-reverse lg:gap-16">
+      <!-- Contenido -->
+      <div class="w-full lg:w-1/2">
+        <div
+          class="inline-flex px-4 py-2 rounded-full bg-[#ECFEFF] dark:bg-[#083344]/30 border border-[#A5F3FC] dark:border-[#155E75]/40 mb-6">
+          <span class="text-sm font-medium text-[#0891B2] dark:text-[#67E8F9]">PARA VIAJEROS</span>
+        </div>
 
-        <ul class="space-y-4 animate-fadeIn delay-200">
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Soporte Premium</span>
-          </li>
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Integración con Plataformas de Terceros</span>
-          </li>
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Actualizaciones Constantes</span>
-          </li>
-          <li class="flex items-start transition-transform duration-300 hover:scale-105">
-            <svg class="flex-shrink-0 w-6 h-6 mt-1 text-[#22D3EE] animate-bounce" fill="currentColor"
-              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span class="ml-3 text-lg font-medium text-gray-900 dark:text-white">Escalabilidad para Crecer Contigo</span>
-          </li>
-        </ul>
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          Experiencia de <span class="text-[#06B6D4]">Reserva Perfecta</span>
+        </h3>
 
-        <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 animate-fadeIn delay-300">
-          Únete a cientos de hoteles que ya están transformando su negocio con nuestras soluciones.
-        </p>
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#ECFEFF] dark:bg-[#083344] p-2 rounded-lg mr-4">
+              <i class="bi bi-search-heart text-xl text-[#06B6D4] dark:text-[#67E8F9]"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Búsqueda Inteligente</h4>
+              <p class="text-gray-600 dark:text-gray-300">
+                Encuentra hoteles, hostales y cabañas con filtros avanzados por precio, ubicación, amenities y
+                calificaciones reales de otros huéspedes.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#ECFEFF] dark:bg-[#083344] p-2 rounded-lg mr-4">
+              <i class="bi bi-wallet2 text-xl text-[#06B6D4] dark:text-[#67E8F9]"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Reserva en 3 Pasos</h4>
+              <p class="text-gray-600 dark:text-gray-300">
+                1. Registro simple (email o redes sociales)<br>
+                2. Pago seguro con múltiples métodos<br>
+                3. Confirmación instantánea con todos los detalles
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#ECFEFF] dark:bg-[#083344] p-2 rounded-lg mr-4">
+              <i class="bi bi-clipboard2-check text-xl text-[#06B6D4] dark:text-[#67E8F9]"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Gestión Centralizada</h4>
+              <p class="text-gray-600 dark:text-gray-300">
+                Accede a todas tus reservas en un solo lugar, con recordatorios automáticos, opción de modificación y
+                soporte prioritario.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Image -->
-      <div class="w-full mt-8 lg:w-1/2 lg:mt-0">
-        <img class="w-full rounded-lg shadow-xl transform transition-all duration-700 hover:scale-105 hover:shadow-[0_20px_25px_-5px_rgba(6,182,212,0.1),0_10px_10px_-5px_rgba(6,182,212,0.04)]"
-          src="dash2.png" alt="Planes para hoteles" loading="lazy">
+      <!-- Imagen -->
+      <div class="w-full mt-12 lg:w-1/2 lg:mt-0">
+        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-gray-100 dark:border-gray-700">
+          <img class="w-full h-auto" src="user.jpeg" alt="Experiencia de usuario" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -348,9 +720,12 @@
     <div class="text-center mb-16">
       <div class="inline-block relative">
         <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white relative z-10">
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#06B6D4] via-[#0EA5E9] to-[#3B82F6] animate-gradient-x">Información</span>
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-[#06B6D4] via-[#0EA5E9] to-[#3B82F6] animate-gradient-x">Información</span>
         </h2>
-        <div class="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-[#A5F3FC] via-[#67E8F9] to-[#22D3EE] dark:from-[#155E75] dark:via-[#0E7490] dark:to-[#0891B2] blur-md animate-pulse-slow opacity-70"></div>
+        <div
+          class="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-[#A5F3FC] via-[#67E8F9] to-[#22D3EE] dark:from-[#155E75] dark:via-[#0E7490] dark:to-[#0891B2] blur-md animate-pulse-slow opacity-70">
+        </div>
       </div>
       <p class="mt-4 text-xl text-[#06B6D4] dark:text-[#67E8F9] font-medium max-w-2xl mx-auto">
         Herramientas inteligentes que transforman datos en decisiones rentables
@@ -363,27 +738,34 @@
         <div class="flex flex-col lg:flex-row gap-10 items-center">
           <!-- Imagen de Weka -->
           <div class="lg:w-1/2 flex justify-center">
-            <div class="w-full h-64 bg-gradient-to-br from-[#ECFEFF] to-[#CFFAFE] dark:from-gray-700 dark:to-gray-800 rounded-xl shadow-inner overflow-hidden">
+            <div
+              class="w-full h-64 bg-gradient-to-br from-[#ECFEFF] to-[#CFFAFE] dark:from-gray-700 dark:to-gray-800 rounded-xl shadow-inner overflow-hidden">
               <img src="weka.png" alt="Weka Machine Learning" class="w-full h-full object-contain p-4">
             </div>
           </div>
-          
+
           <!-- Contenido Textual -->
           <div class="lg:w-1/2">
             <div class="inline-block mb-6">
-              <span class="px-4 py-1 bg-[#ECFEFF] dark:bg-[#083344]/30 text-[#0891B2] dark:text-[#67E8F9] rounded-full text-sm font-semibold">AI PREDICTIVA</span>
+              <span
+                class="px-4 py-1 bg-[#ECFEFF] dark:bg-[#083344]/30 text-[#0891B2] dark:text-[#67E8F9] rounded-full text-sm font-semibold">AI
+                PREDICTIVA</span>
             </div>
             <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-              Modelo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9]">predicción con Weka</span>
+              Modelo de <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9]">predicción con
+                Weka</span>
             </h3>
             <p class="text-gray-600 dark:text-gray-300 mb-6">
-              Nuestro motor de machine learning procesa millones de puntos de datos para anticipar tendencias con precisión científica:
+              Nuestro motor de machine learning procesa millones de puntos de datos para anticipar tendencias con
+              precisión científica:
             </p>
-            
+
             <div class="space-y-4">
               <div class="flex items-start">
                 <div class="flex-shrink-0 mt-1">
-                  <div class="flex items-center justify-center h-6 w-6 rounded-full bg-[#ECFEFF] dark:bg-[#083344]/20 text-[#0891B2] dark:text-[#67E8F9]">
+                  <div
+                    class="flex items-center justify-center h-6 w-6 rounded-full bg-[#ECFEFF] dark:bg-[#083344]/20 text-[#0891B2] dark:text-[#67E8F9]">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
@@ -391,35 +773,43 @@
                 </div>
                 <div class="ml-3">
                   <p class="text-gray-700 dark:text-gray-200 font-medium">Precisión del 92% en pronósticos</p>
-                  <p class="text-gray-500 dark:text-gray-400 text-sm">Modelos entrenados con datos históricos y variables de mercado</p>
+                  <p class="text-gray-500 dark:text-gray-400 text-sm">Modelos entrenados con datos históricos y
+                    variables de mercado</p>
                 </div>
               </div>
-              
+
               <div class="flex items-start">
                 <div class="flex-shrink-0 mt-1">
-                  <div class="flex items-center justify-center h-6 w-6 rounded-full bg-[#CFFAFE] dark:bg-[#155E75]/20 text-[#0E7490] dark:text-[#22D3EE]">
+                  <div
+                    class="flex items-center justify-center h-6 w-6 rounded-full bg-[#CFFAFE] dark:bg-[#155E75]/20 text-[#0E7490] dark:text-[#22D3EE]">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                   </div>
                 </div>
                 <div class="ml-3">
                   <p class="text-gray-700 dark:text-gray-200 font-medium">Optimización en tiempo real</p>
-                  <p class="text-gray-500 dark:text-gray-400 text-sm">Ajusta tarifas y disponibilidad según patrones detectados</p>
+                  <p class="text-gray-500 dark:text-gray-400 text-sm">Ajusta tarifas y disponibilidad según patrones
+                    detectados</p>
                 </div>
               </div>
-              
+
               <div class="flex items-start">
                 <div class="flex-shrink-0 mt-1">
-                  <div class="flex items-center justify-center h-6 w-6 rounded-full bg-[#ECFEFF] dark:bg-[#083344]/20 text-[#0891B2] dark:text-[#67E8F9]">
+                  <div
+                    class="flex items-center justify-center h-6 w-6 rounded-full bg-[#ECFEFF] dark:bg-[#083344]/20 text-[#0891B2] dark:text-[#67E8F9]">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                      </path>
                     </svg>
                   </div>
                 </div>
                 <div class="ml-3">
                   <p class="text-gray-700 dark:text-gray-200 font-medium">Alertas proactivas</p>
-                  <p class="text-gray-500 dark:text-gray-400 text-sm">Notificaciones sobre oportunidades y riesgos potenciales</p>
+                  <p class="text-gray-500 dark:text-gray-400 text-sm">Notificaciones sobre oportunidades y riesgos
+                    potenciales</p>
                 </div>
               </div>
             </div>
@@ -436,58 +826,76 @@
           <div class="flex flex-col lg:flex-row-reverse gap-10 items-center">
             <!-- Imagen de WhatsApp Bot con IA -->
             <div class="lg:w-1/2 flex justify-center">
-              <div class="w-full h-64 bg-gradient-to-br from-[#ECFEFF] to-[#CFFAFE] dark:from-gray-700 dark:to-gray-800 rounded-xl shadow-inner overflow-hidden">
+              <div
+                class="w-full h-64 bg-gradient-to-br from-[#ECFEFF] to-[#CFFAFE] dark:from-gray-700 dark:to-gray-800 rounded-xl shadow-inner overflow-hidden">
                 <img src="chatbot.png" alt="WhatsApp Bot con IA" class="w-full h-full object-contain p-4">
               </div>
             </div>
-            
+
             <!-- Contenido Textual -->
             <div class="lg:w-1/2">
               <div class="inline-block mb-6">
-                <span class="px-4 py-1 bg-[#CFFAFE] dark:bg-[#155E75]/30 text-[#0E7490] dark:text-[#22D3EE] rounded-full text-sm font-semibold">INTELIGENCIA ARTIFICIAL</span>
+                <span
+                  class="px-4 py-1 bg-[#CFFAFE] dark:bg-[#155E75]/30 text-[#0E7490] dark:text-[#22D3EE] rounded-full text-sm font-semibold">INTELIGENCIA
+                  ARTIFICIAL</span>
               </div>
               <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-                Asistentes Virtuales con <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#3B82F6]">IA Conversacional</span>
+                Asistentes Virtuales con <span
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#3B82F6]">IA
+                  Conversacional</span>
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-6">
                 Nuestros bots aprenden y se adaptan para ofrecer interacciones humanizadas:
               </p>
-              
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
+                <div
+                  class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
                   <div class="text-[#0891B2] dark:text-[#67E8F9] mb-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                      </path>
                     </svg>
                   </div>
                   <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Respuestas Inteligentes</h4>
-                  <p class="text-gray-500 dark:text-gray-400 text-sm">NLP avanzado para entender contexto y emociones</p>
+                  <p class="text-gray-500 dark:text-gray-400 text-sm">NLP avanzado para entender contexto y emociones
+                  </p>
                 </div>
-                
-                <div class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
+
+                <div
+                  class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
                   <div class="text-[#06B6D4] dark:text-[#0EA5E9] mb-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                      </path>
                     </svg>
                   </div>
                   <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Multicanal</h4>
-                  <p class="text-gray-500 dark:text-gray-400 text-sm">WhatsApp, Messenger, SMS y web en un solo lugar</p>
+                  <p class="text-gray-500 dark:text-gray-400 text-sm">WhatsApp, Messenger, SMS y web en un solo lugar
+                  </p>
                 </div>
-                
-                <div class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
+
+                <div
+                  class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
                   <div class="text-[#0891B2] dark:text-[#67E8F9] mb-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                     </svg>
                   </div>
                   <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Reservas Automáticas</h4>
                   <p class="text-gray-500 dark:text-gray-400 text-sm">Procesamiento completo sin intervención humana</p>
                 </div>
-                
-                <div class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
+
+                <div
+                  class="bg-[#ECFEFF] dark:bg-[#083344]/50 p-4 rounded-lg border border-[#CFFAFE] dark:border-[#155E75]">
                   <div class="text-[#06B6D4] dark:text-[#0EA5E9] mb-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
+                      </path>
                     </svg>
                   </div>
                   <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Análisis de Sentimiento</h4>
@@ -495,6 +903,147 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN BENEFICIOS DIFERENCIALES -->
+<section class="bg-gradient-to-b from-[#f0f9ff] to-white dark:from-[#0c4a6e] dark:to-gray-900 py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+        La <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9]">Diferencia
+          Quantum</span>
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Tecnología que conecta perfectamente huéspedes y establecimientos
+      </p>
+    </div>
+
+    <!-- Grid de beneficios -->
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Beneficio 1 -->
+      <div
+        class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-xl flex items-center justify-center mb-6">
+          <i class="bi bi-lightning-charge text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Integración Total</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Conexión automática con los principales sistemas de gestión hotelera (PMS) y canales de distribución (OTAs)
+          sin necesidad de configuraciones complejas.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="px-3 py-1 bg-[#ECFEFF] dark:bg-[#083344] text-[#0891B2] dark:text-[#67E8F9] text-sm rounded-full">Opera
+            PMS</span>
+          <span
+            class="px-3 py-1 bg-[#ECFEFF] dark:bg-[#083344] text-[#0891B2] dark:text-[#67E8F9] text-sm rounded-full">Cloudbeds</span>
+          <span
+            class="px-3 py-1 bg-[#ECFEFF] dark:bg-[#083344] text-[#0891B2] dark:text-[#67E8F9] text-sm rounded-full">Booking.com</span>
+        </div>
+      </div>
+
+      <!-- Beneficio 2 -->
+      <div
+        class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-xl flex items-center justify-center mb-6">
+          <i class="bi bi-shield-lock text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Seguridad Garantizada</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Plataforma certificada PCI DSS Nivel 1 para procesamiento de pagos y encriptación de extremo a extremo para
+          todos los datos sensibles.
+        </p>
+        <div class="flex items-center space-x-2">
+          <i class="bi bi-patch-check-fill text-[#06B6D4] dark:text-[#67E8F9] text-xl"></i>
+          <span class="text-sm text-gray-600 dark:text-gray-300">Certificación PCI DSS</span>
+        </div>
+      </div>
+
+      <!-- Beneficio 3 -->
+      <div
+        class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-xl">
+        <div
+          class="w-14 h-14 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-xl flex items-center justify-center mb-6">
+          <i class="bi bi-graph-up-arrow text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Inteligencia Predictiva</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Nuestros algoritmos analizan patrones de reserva, eventos locales y tendencias del mercado para sugerir
+          precios óptimos y maximizar tu ocupación.
+        </p>
+        <div class="mt-4 flex items-center">
+          <span class="text-2xl font-bold text-[#06B6D4] dark:text-[#67E8F9] mr-2">+30%</span>
+          <span class="text-gray-600 dark:text-gray-300 text-sm">Aumento promedio en ingresos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Casos de éxito -->
+    <div class="mt-20 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Establecimientos que confían en nosotros</h3>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
+            <img src="hotel-ejemplo1.jpg" alt="Hotel Boutique Mar" class="w-full h-full object-cover">
+          </div>
+          <span class="text-sm font-medium text-gray-900 dark:text-white text-center">Hotel Boutique Mar</span>
+          <div class="flex mt-1">
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
+            <img src="hotel-ejemplo2.jpg" alt="Cabañas del Bosque" class="w-full h-full object-cover">
+          </div>
+          <span class="text-sm font-medium text-gray-900 dark:text-white text-center">Cabañas del Bosque</span>
+          <div class="flex mt-1">
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-half text-yellow-400 text-xs"></i>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
+            <img src="hotel-ejemplo3.jpg" alt="Urban Hostel" class="w-full h-full object-cover">
+          </div>
+          <span class="text-sm font-medium text-gray-900 dark:text-white text-center">Urban Hostel</span>
+          <div class="flex mt-1">
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star text-yellow-400 text-xs"></i>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
+            <img src="hotel-ejemplo4.jpg" alt="Resort Montaña" class="w-full h-full object-cover">
+          </div>
+          <span class="text-sm font-medium text-gray-900 dark:text-white text-center">Resort Montaña</span>
+          <div class="flex mt-1">
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
+            <i class="bi bi-star-fill text-yellow-400 text-xs"></i>
           </div>
         </div>
       </div>
@@ -520,96 +1069,122 @@
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold text-gray-900 mb-4">Preguntas Frecuentes</h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">Encuentra respuestas a las dudas más comunes sobre nuestros servicios.</p>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">Encuentra respuestas a las dudas más comunes sobre nuestros
+        servicios.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- FAQ Item 1 -->
-      <div class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
+      <div
+        class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
         <div class="flex items-start">
           <div class="bg-[#ECFEFF] p-3 rounded-full mr-4">
             <svg class="w-6 h-6 text-[#06B6D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
             </svg>
           </div>
           <div>
             <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Cómo puedo crear una cuenta?</h3>
-            <p class="text-gray-600">El proceso es muy sencillo. Solo haz clic en "Registrarte" en la esquina superior derecha, completa el formulario con tus datos y verifica tu correo electrónico.</p>
+            <p class="text-gray-600">El proceso es muy sencillo. Solo haz clic en "Registrarte" en la esquina superior
+              derecha, completa el formulario con tus datos y verifica tu correo electrónico.</p>
           </div>
         </div>
       </div>
 
       <!-- FAQ Item 2 -->
-      <div class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
+      <div
+        class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
         <div class="flex items-start">
           <div class="bg-[#ECFEFF] p-3 rounded-full mr-4">
             <svg class="w-6 h-6 text-[#06B6D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
             </svg>
           </div>
           <div>
             <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Qué métodos de pago aceptan?</h3>
-            <p class="text-gray-600">Aceptamos todas las tarjetas de crédito y débito principales, transferencias bancarias y PayPal. Todos los pagos son procesados de forma segura.</p>
+            <p class="text-gray-600">Aceptamos todas las tarjetas de crédito y débito principales, transferencias
+              bancarias y PayPal. Todos los pagos son procesados de forma segura.</p>
           </div>
         </div>
       </div>
 
       <!-- FAQ Item 3 -->
-      <div class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
+      <div
+        class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
         <div class="flex items-start">
           <div class="bg-[#ECFEFF] p-3 rounded-full mr-4">
             <svg class="w-6 h-6 text-[#06B6D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
             </svg>
           </div>
           <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Puedo cancelar mi suscripción en cualquier momento?</h3>
-            <p class="text-gray-600">Sí, puedes cancelar tu suscripción cuando lo desees sin cargos adicionales. Tendrás acceso hasta el final del período de facturación actual.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Puedo cancelar mi suscripción en cualquier momento?
+            </h3>
+            <p class="text-gray-600">Sí, puedes cancelar tu suscripción cuando lo desees sin cargos adicionales. Tendrás
+              acceso hasta el final del período de facturación actual.</p>
           </div>
         </div>
       </div>
 
       <!-- FAQ Item 4 -->
-      <div class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
+      <div
+        class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
         <div class="flex items-start">
           <div class="bg-[#ECFEFF] p-3 rounded-full mr-4">
             <svg class="w-6 h-6 text-[#06B6D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
             </svg>
           </div>
           <div>
             <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Ofrecen soporte técnico 24/7?</h3>
-            <p class="text-gray-600">Nuestro equipo de soporte está disponible 24/7 por correo electrónico y chat en vivo. La respuesta promedio es de menos de 30 minutos.</p>
+            <p class="text-gray-600">Nuestro equipo de soporte está disponible 24/7 por correo electrónico y chat en
+              vivo. La respuesta promedio es de menos de 30 minutos.</p>
           </div>
         </div>
       </div>
 
       <!-- FAQ Item 5 -->
-      <div class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
+      <div
+        class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
         <div class="flex items-start">
           <div class="bg-[#ECFEFF] p-3 rounded-full mr-4">
             <svg class="w-6 h-6 text-[#06B6D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
             </svg>
           </div>
           <div>
             <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Tienen una aplicación móvil?</h3>
-            <p class="text-gray-600">Sí, nuestra aplicación está disponible tanto para iOS como Android. Puedes descargarla desde la App Store o Google Play Store.</p>
+            <p class="text-gray-600">Sí, nuestra aplicación está disponible tanto para iOS como Android. Puedes
+              descargarla desde la App Store o Google Play Store.</p>
           </div>
         </div>
       </div>
 
       <!-- FAQ Item 6 -->
-      <div class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
+      <div
+        class="faq-item bg-white p-8 rounded-xl shadow-md border-l-4 border-[#22D3EE] transition-all duration-300 hover:shadow-lg hover:border-[#06B6D4]">
         <div class="flex items-start">
           <div class="bg-[#ECFEFF] p-3 rounded-full mr-4">
             <svg class="w-6 h-6 text-[#06B6D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
             </svg>
           </div>
           <div>
             <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Cómo protegen mis datos personales?</h3>
-            <p class="text-gray-600">Utilizamos encriptación de grado bancario y cumplimos con las regulaciones de protección de datos más estrictas. Tus datos siempre están seguros con nosotros.</p>
+            <p class="text-gray-600">Utilizamos encriptación de grado bancario y cumplimos con las regulaciones de
+              protección de datos más estrictas. Tus datos siempre están seguros con nosotros.</p>
           </div>
         </div>
       </div>
@@ -617,7 +1192,8 @@
 
     <div class="text-center mt-16">
       <p class="text-gray-600 mb-6">¿No encontraste lo que buscabas?</p>
-      <button class="bg-gradient-to-r from-[#06B6D4] to-[#0891B2] text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+      <button
+        class="bg-gradient-to-r from-[#06B6D4] to-[#0891B2] text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
         Contactar a Soporte
       </button>
     </div>
@@ -634,66 +1210,342 @@
         Conoce al talentoso equipo detrás de nuestra plataforma
       </p>
     </div>
-    
+
     <div class="team-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
       <!-- Miembro 1 -->
-      <div class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Desarrollador" class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
+      <div
+        class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Desarrollador"
+          class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
         <h3 class="text-2xl font-bold text-[#164E63] mb-2">Alejandro Dávila</h3>
         <p class="specialty text-[#0891B2] mb-6 font-medium">Frontend Developer</p>
         <div class="social-links flex justify-center space-x-6">
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-github"></i></a>
         </div>
       </div>
-      
+
       <!-- Miembro 2 -->
-      <div class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Desarrolladora" class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
+      <div
+        class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Desarrolladora"
+          class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
         <h3 class="text-2xl font-bold text-[#164E63] mb-2">Andrea Berrío</h3>
         <p class="specialty text-[#0891B2] mb-6 font-medium">Frontend Developer</p>
         <div class="social-links flex justify-center space-x-6">
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-github"></i></a>
         </div>
       </div>
-      
+
       <!-- Miembro 3 -->
-      <div class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
-        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Especialista" class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
+      <div
+        class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Especialista"
+          class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
         <h3 class="text-2xl font-bold text-[#164E63] mb-2">Eduardo Rodríguez</h3>
         <p class="specialty text-[#0891B2] mb-6 font-medium">Backend Expert</p>
         <div class="social-links flex justify-center space-x-6">
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-github"></i></a>
         </div>
       </div>
-      
+
       <!-- Miembro 4 -->
-      <div class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Desarrolladora" class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
+      <div
+        class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Desarrolladora"
+          class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
         <h3 class="text-2xl font-bold text-[#164E63] mb-2">Manuela Ruíz</h3>
         <p class="specialty text-[#0891B2] mb-6 font-medium">Database Expert</p>
         <div class="social-links flex justify-center space-x-6">
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-github"></i></a>
         </div>
       </div>
-      
+
       <!-- Miembro 5 -->
-      <div class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
-        <img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Especialista" class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
+      <div
+        class="team-member bg-[#ECFEFF] p-8 rounded-xl shadow-sm border-b-4 border-[#22D3EE] hover:shadow-md transition-all duration-300">
+        <img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Especialista"
+          class="profile-pic w-36 h-36 rounded-full mx-auto mb-6 object-cover border-[3px] border-[#A5F3FC]">
         <h3 class="text-2xl font-bold text-[#164E63] mb-2">Milton Berrío</h3>
         <p class="specialty text-[#0891B2] mb-6 font-medium">Database Expert</p>
         <div class="social-links flex justify-center space-x-6">
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#06B6D4] hover:text-[#0E7490] text-3xl transition-colors duration-200"><i
+              class="fab fa-github"></i></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SECCIÓN HISTORIA DETALLADA -->
+<section id="historia" class="bg-white dark:bg-gray-900 py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+        De las <span class="text-[#06B6D4]">conversaciones</span> a la <span class="text-[#0EA5E9]">revolución</span>
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Cientos de horas de investigación dieron forma a la plataforma hotelera más intuitiva
+      </p>
+    </div>
 
+    <!-- Historia Completa -->
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- Columna Izquierda - Investigación -->
+      <div>
+        <!-- Bloque 1 -->
+        <div
+          class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-[#e2e8f0] dark:border-gray-700 mb-8">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+            <i class="bi bi-chat-square-text text-[#06B6D4] dark:text-[#67E8F9] mr-3"></i>
+            Los primeros diálogos
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Todo comenzó con visitas a <strong>28 hoteles independientes</strong> en 5 ciudades, donde descubrimos:
+          </p>
+          <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-2 mb-4">
+            <li>El 73% usaba sistemas de reservas de los años 2000</li>
+            <li>Perdían hasta 15 horas semanales en procesos manuales</li>
+            <li>40% de las reservas por teléfono tenían errores</li>
+          </ul>
+          <div class="bg-[#ECFEFF] dark:bg-[#083344] p-4 rounded-lg">
+            <p class="text-sm text-[#0891B2] dark:text-[#67E8F9] italic">
+              "Nos dimos cuenta que necesitábamos algo más moderno cuando perdimos una reserva grupal por $8,000 por un
+              error en nuestra hoja de Excel"
+              <span class="block font-medium mt-1">- Gerente del Hotel Costa Azul</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Bloque 2 -->
+        <div
+          class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-[#e2e8f0] dark:border-gray-700">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+            <i class="bi bi-clipboard2-pulse text-[#06B6D4] dark:text-[#67E8F9] mr-3"></i>
+            Pruebas en terreno
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Implementamos el primer prototipo en <strong>3 tipos de establecimientos</strong>:
+          </p>
+          <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg text-center">
+              <i class="bi bi-building text-2xl text-[#06B6D4] dark:text-[#67E8F9] mb-2"></i>
+              <p class="text-xs font-medium">Hotel Boutique</p>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg text-center">
+              <i class="bi bi-house-door text-2xl text-[#06B6D4] dark:text-[#67E8F9] mb-2"></i>
+              <p class="text-xs font-medium">Hostal</p>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg text-center">
+              <i class="bi bi-tree text-2xl text-[#06B6D4] dark:text-[#67E8F9] mb-2"></i>
+              <p class="text-xs font-medium">Cabañas</p>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300">
+            Los resultados después de 3 meses:
+          </p>
+          <div class="mt-3 grid grid-cols-2 gap-3">
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+              <p class="text-2xl font-bold text-[#06B6D4] dark:text-[#67E8F9]">62%</p>
+              <p class="text-xs text-gray-600 dark:text-gray-300">Reducción en errores</p>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+              <p class="text-2xl font-bold text-[#06B6D4] dark:text-[#67E8F9]">28%</p>
+              <p class="text-xs text-gray-600 dark:text-gray-300">Más reservas online</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha - Desarrollo -->
+      <div>
+        <!-- Bloque 3 -->
+        <div
+          class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-[#e2e8f0] dark:border-gray-700 mb-8">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+            <i class="bi bi-lightning-charge text-[#06B6D4] dark:text-[#67E8F9] mr-3"></i>
+            Puntos de quiebre
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Los momentos clave que definieron nuestra plataforma:
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-[#06B6D4]/10 dark:bg-[#06B6D4]/20 p-2 rounded-lg mr-4 flex-shrink-0">
+                <i class="bi bi-calendar-event text-[#06B6D4] dark:text-[#67E8F9]"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white">Evento HotelTech 2023</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Obtuvimos feedback de 120 profesionales que
+                  influyeron en nuestro módulo de revenue management</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-[#06B6D4]/10 dark:bg-[#06B6D4]/20 p-2 rounded-lg mr-4 flex-shrink-0">
+                <i class="bi bi-currency-dollar text-[#06B6D4] dark:text-[#67E8F9]"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white">Crisis de pagos</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Un hotel perdió $12,000 en pagos duplicados, lo que
+                  nos llevó a crear nuestro sistema antifraude</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-[#06B6D4]/10 dark:bg-[#06B6D4]/20 p-2 rounded-lg mr-4 flex-shrink-0">
+                <i class="bi bi-phone text-[#06B6D4] dark:text-[#67E8F9]"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white">Requerimiento móvil</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">El 80% de huéspedes pedía gestionar todo desde su
+                  celular, naciendo nuestra app</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque 4 -->
+        <div
+          class="bg-[#f8fafc] dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-[#e2e8f0] dark:border-gray-700">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+            <i class="bi bi-graph-up-arrow text-[#06B6D4] dark:text-[#67E8F9] mr-3"></i>
+            Impacto actual
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Lo que hemos logrado con nuestros partners hoteleros:
+          </p>
+          <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg text-center">
+              <p class="text-2xl font-bold text-[#06B6D4] dark:text-[#67E8F9]">150+</p>
+              <p class="text-xs">Establecimientos</p>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg text-center">
+              <p class="text-2xl font-bold text-[#06B6D4] dark:text-[#67E8F9]">$4.2M</p>
+              <p class="text-xs">En reservas mensuales</p>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg text-center">
+              <p class="text-2xl font-bold text-[#06B6D4] dark:text-[#67E8F9]">92%</p>
+              <p class="text-xs">Satisfacción</p>
+            </div>
+          </div>
+          <div class="bg-[#ECFEFF] dark:bg-[#083344] p-4 rounded-lg">
+            <p class="text-sm text-[#0891B2] dark:text-[#67E8F9] italic">
+              "Quantum Gateway nos permitió reducir nuestro trabajo administrativo a la mitad y aumentar nuestras
+              reservas directas en un 35% el primer trimestre"
+              <span class="block font-medium mt-1">- Director de Operaciones, Hotel Panorama</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cierre inspirador -->
+    <div class="max-w-3xl mx-auto mt-16 text-center">
+      <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+        Seguimos <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9]">evolucionando</span> con la
+        industria
+      </h3>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        Cada nueva conversación con hoteleros y huéspedes nos inspira a mejorar. ¿Qué problema hotelero podemos resolver
+        juntos?
+      </p>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] mx-auto"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN DE CIERRE - LLAMADO A LA ACCIÓN INSPIRADOR -->
+<section class="relative bg-gradient-to-br from-[#0c4a6e] to-[#06B6D4] py-24 overflow-hidden">
+  <!-- Efectos de fondo -->
+  <div class="absolute top-0 left-0 right-0 h-full opacity-10 pointer-events-none">
+    <div class="absolute top-20 left-1/4 w-80 h-80 bg-white rounded-full filter blur-[100px]"></div>
+    <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-[#A5F3FC] rounded-full filter blur-[120px]"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <!-- Icono decorativo -->
+      <div
+        class="mx-auto w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-8 border border-[#A5F3FC]/20">
+        <i class="bi bi-stars text-3xl text-white"></i>
+      </div>
+
+      <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+        El futuro de la <span class="text-[#CFFAFE]">gestión hotelera</span><br>
+        está aquí
+      </h2>
+
+      <p class="text-xl text-[#CFFAFE] max-w-3xl mx-auto mb-10">
+        Únete a la revolución tecnológica que está transformando cómo el mundo reserva alojamientos y cómo los hoteles
+        gestionan sus operaciones.
+      </p>
+
+      <!-- Tarjetas flotantes -->
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <div
+          class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-[#A5F3FC]/10 hover:border-[#A5F3FC]/30 transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-12 h-12 bg-[#06B6D4] rounded-lg flex items-center justify-center mb-4">
+            <i class="bi bi-lightning-charge text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Implementación Rápida</h3>
+          <p class="text-[#CFFAFE] text-sm">
+            Tu establecimiento estará operativo en nuestra plataforma en menos de 48 horas.
+          </p>
+        </div>
+
+        <div
+          class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-[#A5F3FC]/10 hover:border-[#A5F3FC]/30 transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-12 h-12 bg-[#0EA5E9] rounded-lg flex items-center justify-center mb-4">
+            <i class="bi bi-graph-up-arrow text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Resultados Reales</h3>
+          <p class="text-[#CFFAFE] text-sm">
+            Hoteles que usan Quantum Gateway aumentan sus reservas directas en un 45% en promedio.
+          </p>
+        </div>
+
+        <div
+          class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-[#A5F3FC]/10 hover:border-[#A5F3FC]/30 transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-12 h-12 bg-[#0891B2] rounded-lg flex items-center justify-center mb-4">
+            <i class="bi bi-shield-lock text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Soporte Prioritario</h3>
+          <p class="text-[#CFFAFE] text-sm">
+            Equipo técnico disponible 24/7 para resolver cualquier inquietud.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Olas inferiores -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-current text-white w-full h-16 sm:h-24">
+      <path
+        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+        opacity=".25"></path>
+      <path
+        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+        opacity=".5"></path>
+      <path
+        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z">
+      </path>
+    </svg>
+  </div>
+</section>
 
 <app-footer></app-footer>
