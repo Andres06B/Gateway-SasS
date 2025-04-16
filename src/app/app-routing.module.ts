@@ -16,36 +16,45 @@ import { ReservasComponent } from './pages/Quantum Admin/dashboard/views/reserva
 import { ConfiguracionComponent } from './pages/Quantum Admin/dashboard/views/configuracion/configuracion.component';
 import { LandingComponent } from './pages/Quantum Web/Landing/landing.component';
 import { LoginWebComponent } from './pages/Quantum Web/login-web/login-web.component';
+import { WebHotelComponent } from './pages/Quantum Users/web-hotel/web-hotel.component';
+import { InfoHotelComponent } from './pages/Quantum Users/web-hotel/info-hotel/info-hotel.component';
+import { InfoHostalComponent } from './pages/Quantum Users/web-hotel/info-hostal/info-hostal.component';
+import { InfoCabanaComponent } from './pages/Quantum Users/web-hotel/info-cabana/info-cabana.component';
 //import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
+  // Rutas públicas
+  { path: '', component: LandingComponent },
+  { path: 'landing', component: LandingComponent },
+  { path: 'loginCorp', component: LoginWebComponent },
+  { path: 'loginAdmin', component: LoginAdminComponent },
+  { path: 'loginUser', component: LoginUserComponent },
+  { path: 'about', component: AboutAdminComponent },
+  { path: 'infoAdmi', component: AdministrativeInformationComponent },
+  { path: 'error404', component: Error404Component },
 
+  // Rutas administrativas (protegidas)
+  { path: 'inicio', component: InicioComponent },
+  { path: 'predicciones', component: PrediccionesComponent },
+  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'habitaciones', component: HabitacioenesComponent },
+  { path: 'pagos', component: PagosComponent },
+  { path: 'pagina-web', component: PaginaWebComponent },
+  { path: 'reservas', component: ReservasComponent },
+  { path: 'configuracion', component: ConfiguracionComponent },
 
- // Rutas públicas
- { path: '', component: LandingComponent },
- { path: 'landing', component: LandingComponent },
- { path: 'loginCorp', component: LoginWebComponent },
- { path: 'loginAdmin', component: LoginAdminComponent },
- { path: 'loginUser', component: LoginUserComponent },
- { path: 'about', component: AboutAdminComponent },
- { path: 'infoAdmi', component: AdministrativeInformationComponent },
- { path: 'error404', component: Error404Component },
+  //rutas pagina web usuarios
+  { path: '',  component: WebHotelComponent,}, // Página principal
+  { path: 'Webhotel', component: WebHotelComponent,},
+  { path: 'infohotel', component: InfoHotelComponent,},
+  { path: 'infohostal', component: InfoHostalComponent,},
+  { path: 'infocabaña', component: InfoCabanaComponent,},
 
- // Rutas administrativas (protegidas)
- { path: 'inicio', component: InicioComponent },
- { path: 'predicciones', component: PrediccionesComponent },
- { path: 'usuarios', component: UsuariosComponent },
- { path: 'habitaciones', component: HabitacioenesComponent },
- { path: 'pagos', component: PagosComponent },
- { path: 'pagina-web', component: PaginaWebComponent },
- { path: 'reservas', component: ReservasComponent },
- { path: 'configuracion', component: ConfiguracionComponent },
-
- // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)
- { path: '**', redirectTo: 'error404', pathMatch: 'full' }
-]
+  // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)
+  { path: '**', redirectTo: 'error404', pathMatch: 'full' },
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

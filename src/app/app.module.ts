@@ -14,7 +14,7 @@ import { LoginUserComponent } from './pages/Quantum Users/login-users/login-user
 import { Error404Component } from './shared/Components/error404/error404.component';
 import { AboutAdminComponent } from './pages/Quantum Admin/about-admin/about-admin.component';
 import { LoginAdminComponent } from './pages/Quantum Admin/login-admin/login-admin.component';
-import { HotelUsersComponent } from './pages/Quantum Users/hotel-users/hotel-users.component';
+
 import { CompanyRegistrationComponent } from './pages/Quantum Admin/company-registration/company-registration.component';
 import { AdministrativeInformationComponent } from './pages/Quantum Admin/administrative-information/administrative-information.component';
 import { SidebarComponent } from './pages/Quantum Admin/dashboard/components/sidebar/sidebar.component';
@@ -30,6 +30,13 @@ import { PagosComponent } from './pages/Quantum Admin/dashboard/views/pagos/pago
 import { ConfiguracionComponent } from './pages/Quantum Admin/dashboard/views/configuracion/configuracion.component';
 import { LandingComponent } from './pages/Quantum Web/Landing/landing.component';
 import { LoginWebComponent } from './pages/Quantum Web/login-web/login-web.component';
+import { NavAdminComponent } from './pages/Quantum Admin/about-admin/Components/nav-admin/nav-admin.component';
+import { WebHotelComponent } from './pages/Quantum Users/web-hotel/web-hotel.component';
+import { InfoHotelComponent } from './pages/Quantum Users/web-hotel/info-hotel/info-hotel.component';
+import { InfoHostalComponent } from './pages/Quantum Users/web-hotel/info-hostal/info-hostal.component';
+import { InfoCabanaComponent } from './pages/Quantum Users/web-hotel/info-cabana/info-cabana.component';
+import { HeaderWEbComponent } from './pages/Quantum Users/web-hotel/Components/header-web/header-web.component';
+import { FooterWEbComponent } from './pages/Quantum Users/web-hotel/Components/footer-web/footer-web.component';
 
 
 
@@ -44,7 +51,6 @@ import { LoginWebComponent } from './pages/Quantum Web/login-web/login-web.compo
     Error404Component,
     AboutAdminComponent,
     LoginAdminComponent,
-    HotelUsersComponent,
     CompanyRegistrationComponent,
     AdministrativeInformationComponent,
     SidebarComponent,
@@ -59,6 +65,13 @@ import { LoginWebComponent } from './pages/Quantum Web/login-web/login-web.compo
     PagosComponent,
     ConfiguracionComponent,
     LoginWebComponent,
+    NavAdminComponent,
+    WebHotelComponent,
+    InfoHotelComponent,
+    InfoHostalComponent,
+    InfoCabanaComponent,
+    HeaderWEbComponent,
+    FooterWEbComponent,
 
   ],
   imports: [

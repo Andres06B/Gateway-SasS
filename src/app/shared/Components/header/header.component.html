@@ -1,21 +1,23 @@
 <header class="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 shadow-sm z-50 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <!-- Contenedor principal -->
         <div class="flex justify-between items-center h-16">
-            <!-- Logo -->
-            <a (click)="smoothScroll('hero')" class="flex items-center space-x-2 group cursor-pointer">
-                <div class="flex items-center justify-center bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg p-2 shadow-lg transform group-hover:rotate-6 transition-transform duration-300">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                    </svg>
-                </div>
-                <span class="text-xl font-bold bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] bg-clip-text text-transparent">Quantum Gateway</span>
-            </a>
+            <!-- Logo y título - Contenedor adicional para mejor espaciado -->
+            <div class="flex items-center mr-10">
+                <a (click)="smoothScroll('hero')" class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="flex items-center justify-center bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-lg p-2 shadow-lg transform group-hover:rotate-6 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] bg-clip-text text-transparent">Quantum Gateway</span>
+                </a>
+            </div>
 
             <!-- Menú escritorio -->
-            <div class="hidden lg:flex items-center space-x-8">
+            <div class="hidden lg:flex items-center space-x-6">
                 <!-- Links de navegación -->
-                <div class="flex items-center space-x-1">
+                <div class="flex items-center space-x-4">
                     <a (click)="smoothScroll('hero')" 
                        class="px-4 py-2 font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-all duration-200 flex items-center"
                        [class.text-white]="activeSection === 'hero'"
@@ -66,7 +68,7 @@
                 </div>
 
                 <!-- Redes sociales (versión escritorio) -->
-                <div class="flex items-center space-x-3 border-l border-gray-200/50 dark:border-gray-800/50 pl-4 ml-2">
+                <div class="flex items-center space-x-3 border-l border-gray-200/50 dark:border-gray-800/50 pl-6 ml-4">
                     <a href="https://twitter.com/tuempresa" target="_blank" class="p-2 text-gray-500 hover:text-[#1DA1F2] dark:text-gray-400 dark:hover:text-[#1DA1F2] rounded-full hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-all duration-200">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
@@ -83,8 +85,10 @@
                         </svg>
                     </a>
                 </div>
-                <div class="flex items-center space-x-4 ml-4">
-                    <!-- Botón de Iniciar Sesión (versión original) -->
+
+                <!-- Botones de acción -->
+                <div class="flex items-center space-x-4 ml-6">
+                    <!-- Botón de Iniciar Sesión -->
                     <button routerLink="/loginCorp"
                         class="px-5 py-2.5 font-medium text-[#06B6D4] border border-[#06B6D4] rounded-xl hover:bg-[#ECFEFF] dark:hover:bg-[#083344]/30 transition-all duration-300 flex items-center justify-center whitespace-nowrap">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,16 +96,17 @@
                         </svg>
                         Iniciar Sesión
                     </button>
-    
-    <a (click)="openPopup()"
-        class="relative px-5 py-2.5 text-white bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-xl font-medium hover:shadow-lg hover:shadow-[#06B6D4]/30 transition-all duration-300 group overflow-hidden cursor-pointer flex items-center justify-center whitespace-nowrap">
-        <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-        </svg>
-        <span class="relative z-10">Comenzar</span>
-        <span class="absolute inset-0 bg-[#0891B2] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-    </a>
-</div>
+
+                    <!-- Botón de Comenzar -->
+                    <a (click)="openPopup()"
+                        class="relative px-5 py-2.5 text-white bg-gradient-to-r from-[#06B6D4] to-[#0EA5E9] rounded-xl font-medium hover:shadow-lg hover:shadow-[#06B6D4]/30 transition-all duration-300 group overflow-hidden cursor-pointer flex items-center justify-center whitespace-nowrap">
+                        <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <span class="relative z-10">Comenzar</span>
+                        <span class="absolute inset-0 bg-[#0891B2] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                </div>
             </div>
 
             <!-- Botón menú móvil -->
