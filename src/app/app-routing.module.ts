@@ -20,6 +20,7 @@ import { WebHotelComponent } from './pages/Quantum Users/web-hotel/web-hotel.com
 import { InfoHotelComponent } from './pages/Quantum Users/web-hotel/info-hotel/info-hotel.component';
 import { InfoHostalComponent } from './pages/Quantum Users/web-hotel/info-hostal/info-hostal.component';
 import { InfoCabanaComponent } from './pages/Quantum Users/web-hotel/info-cabana/info-cabana.component';
+import { InicioAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/inicio-adm/inicio-adm.component';
 //import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
@@ -49,6 +50,10 @@ const routes: Routes = [
   { path: 'infohotel', component: InfoHotelComponent,},
   { path: 'infohostal', component: InfoHostalComponent,},
   { path: 'infocabaña', component: InfoCabanaComponent,},
+
+  //rutas administrativas (protegidas) para el admin de la pagina web
+  {path: 'inicio-adm', component: InicioAdmComponent},
+
 
   // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)
   { path: '**', redirectTo: 'error404', pathMatch: 'full' },

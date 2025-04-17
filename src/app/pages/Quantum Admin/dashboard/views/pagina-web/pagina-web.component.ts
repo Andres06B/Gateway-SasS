@@ -1,14 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
-// Interfaces para tipado fuerte
-interface Hotel {
-  name: string;
-  description: string;
-  coverImage: string;
-  logo: string;
-  rating: number;
-  socialMedia: SocialMedia[];
-  rooms: Room[];
+interface ContactInfo {
+  type: string;
+  value: string;
 }
 
 interface SocialMedia {
@@ -23,132 +18,168 @@ interface Room {
   image: string;
 }
 
-interface ContactInfo {
-  icon: string;
-  value: string;
+interface Hotel {
+  name: string;
+  description: string;
+  rating: number;
+  coverImage: string;
+  logo: string;
+  contactInfo: ContactInfo[];
+  socialMedia: SocialMedia[];
+  rooms: Room[];
 }
 
 @Component({
   selector: 'app-pagina-web',
   templateUrl: './pagina-web.component.html',
-  styleUrls: ['./pagina-web.component.css'],
+  styleUrls: ['./pagina-web.component.scss'],
   standalone: false,
 })
 export class PaginaWebComponent {
-  hotel: Hotel = {
-    name: "Hotel Luxury Paradise",
-    description: "Experiencia de lujo en el corazón de la ciudad",
-    coverImage: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",
-    logo: "https://images.unsplash.com/photo-1571896349842-33c89424de2d",
-    rating: 5,
+  @Input() hotel: Hotel = {
+    name: 'Nombre del Hotel',
+    description: 'Descripción breve del hotel...',
+    rating: 4,
+    coverImage: 'assets/default-cover.jpg',
+    logo: 'assets/default-logo.png',
+    contactInfo: [
+      { type: 'address', value: 'Dirección del hotel' },
+      { type: 'phone', value: '+123 456 7890' },
+      { type: 'email', value: 'contacto@hotel.com' },
+      { type: 'website', value: 'www.hotel.com' }
+    ],
     socialMedia: [
-      { type: "facebook", username: "luxuryparadise" },
-      { type: "instagram", username: "luxury_paradise" }
+      { type: 'facebook', username: '@hotel' },
+      { type: 'instagram', username: '@hotel' }
     ],
     rooms: [
       {
-        name: "Suite Presidencial",
-        description: "Amplia suite con vistas panorámicas",
-        price: 450,
-        image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304"
+        name: 'Habitación Estándar',
+        description: 'Cama doble, baño privado, TV',
+        price: 120,
+        image: 'assets/room1.jpg'
       }
     ]
   };
 
-  contactInfo: ContactInfo[] = [
-    { icon: "📍", value: "Av. Principal 123, Ciudad" },
-    { icon: "📞", value: "+1 234 567 890" },
-    { icon: "✉️", value: "info@luxuryparadise.com" },
-    { icon: "🌐", value: "www.luxuryparadise.com" }
-  ];
+  @Output() profileUpdated = new EventEmitter<Hotel>();
 
-  // Métodos corregidos con tipado adecuado
-  updateHotel(field: keyof Hotel, event: Event): void {
+  constructor(private sanitizer: DomSanitizer) {}
+
+  getContactIcon(type: string): string {
+    const iconMap: {[key: string]: string} = {
+      'address': 'fa-map-marker-alt',
+      'phone': 'fa-phone',
+      'email': 'fa-envelope',
+      'website': 'fa-globe'
+    };
+    return iconMap[type] || 'fa-info-circle';
+  }
+
+  getSocialPrefix(type: string): string {
+    const prefixMap: {[key: string]: string} = {
+      'facebook': 'fb.com/',
+      'instagram': '@',
+      'twitter': '@',
+      'linkedin': 'linkedin.com/in/'
+    };
+    return prefixMap[type] || '';
+  }
+
+  updateField(field: keyof Hotel, event: Event): void {
     const target = event.target as HTMLElement;
-    if (field in this.hotel) {
-      (this.hotel[field] as string) = target.textContent || '';
+    if (target?.textContent) {
+      (this.hotel[field] as any) = target.textContent;
+      this.profileUpdated.emit(this.hotel);
     }
   }
 
-  updateContact(contact: ContactInfo, event: Event): void {
-    contact.value = (event.target as HTMLElement).textContent || '';
+  updateRating(rating: number): void {
+    this.hotel.rating = rating;
+    this.profileUpdated.emit(this.hotel);
+  }
+
+  updateContact(index: number, event: Event): void {
+    const target = event.target as HTMLElement;
+    if (target?.textContent && this.hotel.contactInfo[index]) {
+      this.hotel.contactInfo[index].value = target.textContent;
+      this.profileUpdated.emit(this.hotel);
+    }
   }
 
   updateSocial(index: number, field: keyof SocialMedia, event: Event): void {
     const target = event.target as HTMLElement;
-    if (index >= 0 && index < this.hotel.socialMedia.length) {
-      this.hotel.socialMedia[index][field] = target.textContent || '';
+    if (target?.textContent && this.hotel.socialMedia[index]) {
+      (this.hotel.socialMedia[index][field] as any) = target.textContent;
+      this.profileUpdated.emit(this.hotel);
     }
   }
 
   updateRoom(index: number, field: keyof Room, event: Event): void {
     const target = event.target as HTMLElement;
-    const value = target.textContent || '';
-    
-    if (index >= 0 && index < this.hotel.rooms.length) {
+    if (target?.textContent && this.hotel.rooms[index]) {
       if (field === 'price') {
-        const numericValue = parseInt(value.replace(/\D/g, '')) || 0;
-        this.hotel.rooms[index][field] = numericValue;
+        const value = parseFloat(target.textContent) || 0;
+        this.hotel.rooms[index][field] = value;
       } else {
-        (this.hotel.rooms[index][field] as string) = value;
+        (this.hotel.rooms[index][field] as any) = target.textContent;
       }
+      this.profileUpdated.emit(this.hotel);
     }
   }
 
   addSocial(): void {
-    this.hotel.socialMedia.push({ 
-      type: "website", 
-      username: "nuevousuario" 
-    });
+    this.hotel.socialMedia.push({ type: 'facebook', username: '' });
+    this.profileUpdated.emit(this.hotel);
   }
 
   removeSocial(index: number): void {
-    if (index >= 0 && index < this.hotel.socialMedia.length) {
-      this.hotel.socialMedia.splice(index, 1);
-    }
+    this.hotel.socialMedia.splice(index, 1);
+    this.profileUpdated.emit(this.hotel);
   }
 
   addRoom(): void {
     this.hotel.rooms.push({
-      name: "Nueva Habitación",
-      description: "Descripción aquí",
+      name: 'Nueva Habitación',
+      description: 'Descripción de la habitación',
       price: 0,
-      image: "https://via.placeholder.com/400x300"
+      image: 'assets/default-room.jpg'
     });
+    this.profileUpdated.emit(this.hotel);
   }
 
   removeRoom(index: number): void {
-    if (index >= 0 && index < this.hotel.rooms.length) {
-      this.hotel.rooms.splice(index, 1);
+    this.hotel.rooms.splice(index, 1);
+    this.profileUpdated.emit(this.hotel);
+  }
+
+  onImageUpload(type: 'cover' | 'logo', event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files?.length) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (type === 'cover') {
+          this.hotel.coverImage = e.target?.result as string;
+        } else {
+          this.hotel.logo = e.target?.result as string;
+        }
+        this.profileUpdated.emit(this.hotel);
+      };
+      reader.readAsDataURL(file);
     }
   }
 
-  // Métodos para imágenes
-  editImage(type: 'cover' | 'logo'): void {
-    const newImage = prompt("Introduce la URL de la nueva imagen");
-    if (newImage) {
-      if (type === 'cover') {
-        this.hotel.coverImage = newImage;
-      } else {
-        this.hotel.logo = newImage;
-      }
+  onRoomImageUpload(index: number, event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files?.length && this.hotel.rooms[index]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.hotel.rooms[index].image = e.target?.result as string;
+        this.profileUpdated.emit(this.hotel);
+      };
+      reader.readAsDataURL(file);
     }
-  }
-
-  editRoomImage(index: number): void {
-    const newImage = prompt("Introduce la URL de la nueva imagen");
-    if (newImage && index >= 0 && index < this.hotel.rooms.length) {
-      this.hotel.rooms[index].image = newImage;
-    }
-  }
-
-  getSocialIcon(type: string): string {
-    const icons: Record<string, string> = {
-      facebook: "👍",
-      instagram: "📸",
-      twitter: "🐦",
-      website: "🌐"
-    };
-    return icons[type] || "🔗";
   }
 }

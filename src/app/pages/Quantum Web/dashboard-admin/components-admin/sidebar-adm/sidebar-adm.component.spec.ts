@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminQuantumComponent } from './admin-quantum.component';
+import { SidebarAdmComponent } from './sidebar-adm.component';
 
-describe('AdminQuantumComponent', () => {
-  let component: AdminQuantumComponent;
-  let fixture: ComponentFixture<AdminQuantumComponent>;
+describe('SidebarAdmComponent', () => {
+  let component: SidebarAdmComponent;
+  let fixture: ComponentFixture<SidebarAdmComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdminQuantumComponent]
+      declarations: [SidebarAdmComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdminQuantumComponent);
+    fixture = TestBed.createComponent(SidebarAdmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,16 @@
+<div class="layout-container flex h-screen">
+    <!-- Sidebar -->
+    <app-sidebar-adm class="w-64 bg-white shadow-md"></app-sidebar-adm>
+  
+    <!-- Contenedor principal -->
+    <div class="flex flex-col flex-1 overflow-hidden">
+      <!-- Navbar -->
+      <app-navar-adm class="h-16 shadow-md bg-white z-10"></app-navar-adm>
+  
+      <!-- Contenido -->
+      <main class="flex-1 overflow-auto">
+        <ng-content></ng-content> <!-- Aquí se inyectará el contenido -->
+      </main>
+    </div>
+  </div>
+  
