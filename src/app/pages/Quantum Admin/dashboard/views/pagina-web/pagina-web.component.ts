@@ -32,7 +32,7 @@ interface Hotel {
 @Component({
   selector: 'app-pagina-web',
   templateUrl: './pagina-web.component.html',
-  styleUrls: ['./pagina-web.component.scss'],
+  styleUrls: ['./pagina-web.component.css'],
   standalone: false,
 })
 export class PaginaWebComponent {
