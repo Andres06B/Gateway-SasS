@@ -21,6 +21,12 @@ import { InfoHotelComponent } from './pages/Quantum Users/web-hotel/info-hotel/i
 import { InfoHostalComponent } from './pages/Quantum Users/web-hotel/info-hostal/info-hostal.component';
 import { InfoCabanaComponent } from './pages/Quantum Users/web-hotel/info-cabana/info-cabana.component';
 import { InicioAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/inicio-adm/inicio-adm.component';
+import { PagosAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/pagos-adm/pagos-adm.component';
+import { HotelesAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/hoteles-adm/hoteles-adm.component';
+import { ServiciosAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/servicios-adm/servicios-adm.component';
+import { PremiumAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/premium-adm/premium-adm.component';
+import { VipAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/vip-adm/vip-adm.component';
+import { ConfigAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/config-adm/config-adm.component';
 //import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
@@ -53,6 +59,12 @@ const routes: Routes = [
 
   //rutas administrativas (protegidas) para el admin de la pagina web
   {path: 'inicio-adm', component: InicioAdmComponent},
+  {path: 'pagos-adm', component: PagosAdmComponent},
+  {path: 'hoteles-adm', component: HotelesAdmComponent},
+  {path: 'servicios-adm', component: ServiciosAdmComponent},
+  {path: 'premium-adm', component: PremiumAdmComponent},
+  {path: 'vip-adm', component: VipAdmComponent},
+  {path: 'config-adm', component: ConfigAdmComponent},
 
 
   // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)

@@ -42,6 +42,11 @@ import { SidebarAdmComponent } from './pages/Quantum Web/dashboard-admin/compone
 import { InicioAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/inicio-adm/inicio-adm.component';
 import { ServiciosAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/servicios-adm/servicios-adm.component';
 import { LayoutAdmComponent } from './pages/Quantum Web/dashboard-admin/components-admin/layout-adm/layout-adm.component';
+import { HotelesAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/hoteles-adm/hoteles-adm.component';
+import { PagosAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/pagos-adm/pagos-adm.component';
+import { PremiumAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/premium-adm/premium-adm.component';
+import { VipAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/vip-adm/vip-adm.component';
+import { ConfigAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/config-adm/config-adm.component';
 
 
 
@@ -82,6 +87,11 @@ import { LayoutAdmComponent } from './pages/Quantum Web/dashboard-admin/componen
     InicioAdmComponent,
     ServiciosAdmComponent,
     LayoutAdmComponent,
+    HotelesAdmComponent,
+    PagosAdmComponent,
+    PremiumAdmComponent,
+    VipAdmComponent,
+    ConfigAdmComponent,
 
 
   ],
