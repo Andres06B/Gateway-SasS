@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header-web',
@@ -40,12 +40,8 @@ export class HeaderWEbComponent {
   }
 
   onLogin() {
-    // Tu lógica de login aquí
-    this.mobileMenuOpen = false;
+  const loginRoute = "loginUser";
+  this.router.navigate([loginRoute]);
   }
 
-  searchReservation() {
-    // Tu lógica de búsqueda de reserva aquí
-    this.mobileMenuOpen = false;
-  }
 }

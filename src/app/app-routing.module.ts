@@ -27,6 +27,8 @@ import { ServiciosAdmComponent } from './pages/Quantum Web/dashboard-admin/views
 import { PremiumAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/premium-adm/premium-adm.component';
 import { VipAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/vip-adm/vip-adm.component';
 import { ConfigAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/config-adm/config-adm.component';
+import { UserRegistrationComponent } from './pages/Quantum Users/user-registration/user-registration.component';
+
 //import { LandingComponent } from './view/landing/landing.component';
 
 const routes: Routes = [
@@ -35,7 +37,6 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'loginCorp', component: LoginWebComponent },
   { path: 'loginAdmin', component: LoginAdminComponent },
-  { path: 'loginUser', component: LoginUserComponent },
   { path: 'about', component: AboutAdminComponent },
   { path: 'infoAdmi', component: AdministrativeInformationComponent },
   { path: 'error404', component: Error404Component },
@@ -53,6 +54,8 @@ const routes: Routes = [
   //rutas pagina web usuarios
   { path: '',  component: WebHotelComponent,}, // Página principal
   { path: 'Webhotel', component: WebHotelComponent,},
+  { path: 'loginUser', component: LoginUserComponent },
+  { path: 'userRegister', component: UserRegistrationComponent},
   { path: 'infohotel', component: InfoHotelComponent,},
   { path: 'infohostal', component: InfoHostalComponent,},
   { path: 'infocabaña', component: InfoCabanaComponent,},

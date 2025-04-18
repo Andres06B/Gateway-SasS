@@ -47,6 +47,8 @@ import { PagosAdmComponent } from './pages/Quantum Web/dashboard-admin/views-adm
 import { PremiumAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/premium-adm/premium-adm.component';
 import { VipAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/vip-adm/vip-adm.component';
 import { ConfigAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/config-adm/config-adm.component';
+import { UserRegistrationComponent } from './pages/Quantum Users/user-registration/user-registration.component';
+
 
 
 
@@ -92,6 +94,8 @@ import { ConfigAdmComponent } from './pages/Quantum Web/dashboard-admin/views-ad
     PremiumAdmComponent,
     VipAdmComponent,
     ConfigAdmComponent,
+    UserRegistrationComponent,
+
 
 
   ],

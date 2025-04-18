@@ -1,0 +1,164 @@
+<!-- login.component.html -->
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white/95 p-4 relative overflow-hidden">
+  <!-- Elementos decorativos animados -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Burbujas flotantes con diferentes velocidades -->
+    <div
+      class="absolute top-1/4 left-10 w-64 h-64 bg-[#63A481]/10 rounded-full filter blur-[80px] animate-float-slow animate-delay-100">
+    </div>
+    <div
+      class="absolute bottom-1/3 right-10 w-72 h-72 bg-[#428764]/10 rounded-full filter blur-[90px] animate-float-medium">
+    </div>
+    <div
+      class="absolute top-1/2 right-1/2 w-96 h-96 bg-[#306B4F]/05 rounded-full filter blur-[100px] animate-float-slow opacity-70 animate-delay-300">
+    </div>
+
+    <!-- Partículas animadas -->
+    <div *ngFor="let particle of particles" class="absolute rounded-full bg-[#63A481]/20 animate-particle"
+      [style.left]="particle.left" [style.top]="particle.top" [style.width]="particle.size"
+      [style.height]="particle.size" [style.animationDuration]="particle.duration"
+      [style.animationDelay]="particle.delay"></div>
+  </div>
+
+  <!-- Tarjeta de login con animación de entrada -->
+  <div class="w-full max-w-md relative z-10 animate-fade-in-up">
+    <div
+      class="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden transition-all duration-500 hover:shadow-3xl hover:-translate-y-1">
+      <!-- Encabezado con efecto de onda -->
+      <div class="p-8 pb-6 text-center relative">
+        <!-- Icono con animación sutil -->
+        <div
+          class="mx-auto w-20 h-20 flex items-center justify-center bg-gradient-to-br from-[#63A481] to-[#306B4F] rounded-2xl shadow-lg mb-4 animate-pulse-slow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white animate-bounce-slow" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+
+        <!-- Título con efecto de máquina de escribir -->
+        <h2 class="text-3xl font-bold text-gray-800 mb-2">
+          <span class="typewriter">Acceso Exclusivo</span>
+        </h2>
+        <p class="text-gray-500 mt-2 animate-fade-in delay-300">
+          Ingresa tus credenciales
+        </p>
+
+        <!-- Efecto de onda sutil animado -->
+        <div
+          class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#63A481] to-transparent opacity-30 animate-wave">
+        </div>
+      </div>
+
+      <!-- Formulario con animaciones de entrada escalonadas -->
+      <form class="px-8 pb-8 space-y-6">
+        <!-- Grupo Email con animación -->
+        <div class="space-y-3 animate-fade-in-up delay-100">
+          <div class="relative">
+            <input id="email" type="email" placeholder=" "
+              class="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#63A481]/30 focus:border-[#428764] transition-all duration-300 peer bg-white/70 backdrop-blur-sm hover:border-[#63A481]/50"
+              required (focus)="animateInput($event)" (blur)="resetInput($event)" />
+            <label for="email"
+              class="absolute left-4 top-3.5 text-gray-400 pointer-events-none transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:top-1.5 peer-focus:text-sm peer-focus:text-[#428764] bg-white px-1 peer-focus:px-1 -translate-y-6 peer-placeholder-shown:translate-y-0">
+              Correo electrónico
+            </label>
+            <div class="absolute right-4 top-4 text-gray-300 peer-focus:text-[#428764] transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grupo Contraseña con animación -->
+        <div class="space-y-3 animate-fade-in-up delay-200">
+          <div class="relative">
+            <input #passwordInput id="password" [type]="showPassword ? 'text' : 'password'" placeholder=" "
+              class="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#63A481]/30 focus:border-[#428764] transition-all duration-300 peer bg-white/70 backdrop-blur-sm hover:border-[#63A481]/50"
+              required (focus)="animateInput($event)" (blur)="resetInput($event)" />
+            <label for="password"
+              class="absolute left-4 top-3.5 text-gray-400 pointer-events-none transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:top-1.5 peer-focus:text-sm peer-focus:text-[#428764] bg-white px-1 peer-focus:px-1 -translate-y-6 peer-placeholder-shown:translate-y-0">
+              Contraseña
+            </label>
+            <button type="button" (click)="togglePasswordVisibility()"
+              class="absolute right-4 top-4 text-gray-300 hover:text-[#306B4F] transition-colors duration-300 transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" [attr.d]="
+                    showPassword
+                      ? 'M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21'
+                      : 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
+                  " />
+              </svg>
+            </button>
+          </div>
+          <div class="flex justify-between items-center animate-fade-in delay-300">
+            <div class="flex items-center">
+              <input id="remember" type="checkbox"
+                class="h-4 w-4 rounded border-gray-300 text-[#428764] focus:ring-[#428764] transition-colors duration-200 hover:border-[#428764]" />
+              <label for="remember"
+                class="ml-2 block text-sm text-gray-600 hover:text-gray-800 transition-colors duration-200">Recordarme</label>
+            </div>
+            <a href="#"
+              class="text-sm text-[#428764] hover:text-[#306B4F] hover:underline transition-colors duration-200 transform hover:translate-x-0.5">¿Contraseña
+              olvidada?</a>
+          </div>
+        </div>
+
+        <!-- Botón de submit con animación mejorada -->
+        <div class="animate-fade-in-up delay-300">
+          <button type="submit"
+            class="w-full py-4 px-6 bg-gradient-to-r from-[#63A481] to-[#428764] text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#306B4F] focus:ring-offset-2 relative overflow-hidden group shadow-md cursor-pointer"
+            (mouseenter)="animateButton($event)" (mouseleave)="resetButton($event)">
+            <span class="relative z-10 flex items-center justify-center">
+              <span>Ingresar</span>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+            <span
+              class="absolute inset-0 bg-gradient-to-r from-[#428764] to-[#306B4F] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <!-- Efecto de ripple al hacer clic -->
+            <span class="absolute inset-0 overflow-hidden">
+              <span class="ripple-effect" *ngIf="showRipple" [style.left]="rippleX" [style.top]="rippleY"></span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Enlace a registro con animación -->
+        <div class="text-center pt-4 animate-fade-in delay-500">
+          <p class="text-sm text-gray-500">
+            ¿Primera vez aquí?
+            <a routerLink="/userRegister"
+              class="text-[#428764] hover:text-[#306B4F] font-semibold hover:underline transition-colors duration-300 relative group">
+              <span class="relative inline-block">
+                <span class="relative z-10">Crea una cuenta</span>
+                <span
+                  class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#428764] group-hover:w-full transition-all duration-300 ease-out"></span>
+              </span>
+              <span class="inline-block ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Mensaje de bienvenida con animación -->
+    <div class="mt-8 text-center animate-fade-in delay-700">
+      <div
+        class="inline-flex items-center text-sm text-gray-600 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-gray-200 shadow-sm space-x-2 transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#63A481] animate-spin-slow" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+        <span class="typewriter-slow">Acceso prioritario a ofertas exclusivas</span>
+      </div>
+    </div>
+  </div>
+</div>
