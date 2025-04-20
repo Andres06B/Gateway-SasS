@@ -37,6 +37,7 @@ import { PreferredStaysApplicationComponent } from './pages/Quantum Users/Accomm
 import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-status-applications/reserve-status-applications.component';
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
+import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 
 //import { LandingComponent } from './view/landing/landing.component';
 
@@ -68,24 +69,25 @@ const routes: Routes = [
   { path: 'infohotel', component: InfoHotelComponent,},
   { path: 'infohostal', component: InfoHostalComponent,},
   { path: 'infocabaña', component: InfoCabanaComponent,},
-  {path: 'apphome', component:HomeApplicationComponent},
-  {path: 'appdestination', component:DestinationApplicationComponent},
-  {path: 'UserProfileapp', component:UserProfileApplicationComponent},
-  {path: 'reservationpayments', component:ReservationPaymentsApplicationComponent},
-  {path: 'companionreservation', component:ReserveCompanionsApplicationComponent},
-  {path: 'preferredstays', component:PreferredStaysApplicationComponent},
-  {path: 'reserveStatus', component:ReserveStatusApplicationsComponent},
-  {path: 'myreservation', component:MyreseRevationsApplicationComponent},
-  {path: 'Reservation', component:ReservationsApplicationsComponent},
+  { path: 'apphome', component:HomeApplicationComponent},
+  { path: 'appdestination', component:DestinationApplicationComponent},
+  { path: 'UserProfileapp', component:UserProfileApplicationComponent},
+  { path: 'reservationpayments', component:ReservationPaymentsApplicationComponent},
+  { path: 'companionreservation', component:ReserveCompanionsApplicationComponent},
+  { path: 'preferredstays', component:PreferredStaysApplicationComponent},
+  { path: 'reserveStatus', component:ReserveStatusApplicationsComponent},
+  { path: 'myreservation', component:MyreseRevationsApplicationComponent},
+  { path: 'Reservation', component:ReservationsApplicationsComponent},
+  {path: 'pasarela', component: PasarelaComponent},
 
   //rutas administrativas (protegidas) para el admin de la pagina web
-  {path: 'inicio-adm', component: InicioAdmComponent},
-  {path: 'pagos-adm', component: PagosAdmComponent},
-  {path: 'hoteles-adm', component: HotelesAdmComponent},
-  {path: 'servicios-adm', component: ServiciosAdmComponent},
-  {path: 'premium-adm', component: PremiumAdmComponent},
-  {path: 'vip-adm', component: VipAdmComponent},
-  {path: 'config-adm', component: ConfigAdmComponent},
+  { path: 'inicio-adm', component: InicioAdmComponent},
+  { path: 'pagos-adm', component: PagosAdmComponent},
+  { path: 'hoteles-adm', component: HotelesAdmComponent},
+  { path: 'servicios-adm', component: ServiciosAdmComponent},
+  { path: 'premium-adm', component: PremiumAdmComponent},
+  { path: 'vip-adm', component: VipAdmComponent},
+  { path: 'config-adm', component: ConfigAdmComponent},
 
 
   // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)

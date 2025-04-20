@@ -1,0 +1,421 @@
+<div class="min-h-screen bg-gradient-to-br from-cyan-50 to-white dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Logo y título -->
+      <div class="text-center mb-12">
+        <div class="mx-auto h-16 w-16 bg-cyan-600 rounded-xl flex items-center justify-center shadow-lg mb-4">
+          <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white">
+          <span class="bg-gradient-to-r from-cyan-600 to-cyan-400 bg-clip-text text-transparent">HotelMaster Pro</span>
+        </h1>
+        <p class="mt-2 text-lg text-cyan-600 dark:text-cyan-400">Solución integral para la gestión hotelera</p>
+      </div>
+  
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+        <!-- Barra de progreso -->
+        <div class="bg-gray-50 dark:bg-gray-700 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 h-2 w-2 rounded-full bg-cyan-600"></div>
+                <div class="ml-2 text-xs font-medium text-cyan-600 dark:text-cyan-400">Paso {{paso}} de 3</div>
+              </div>
+              <div class="mt-2 w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                <div class="bg-cyan-600 h-2 rounded-full" [style.width.%]="(paso/3)*100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Contenido -->
+        <div class="p-8">
+          <!-- Paso 1: Registro -->
+          <div *ngIf="paso === 1" class="space-y-6">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Información del Propietario</h2>
+              <p class="mt-1 text-gray-500 dark:text-gray-400">Por favor completa tus datos personales</p>
+            </div>
+  
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre Completo *</label>
+                <input type="text" [(ngModel)]="datosPropietario.nombre" 
+                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+              </div>
+  
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cédula/RUC *</label>
+                <input type="text" [(ngModel)]="datosPropietario.cedula" 
+                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+              </div>
+  
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Correo Electrónico *</label>
+                <input type="email" [(ngModel)]="datosPropietario.email" 
+                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+              </div>
+  
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Teléfono *</label>
+                <input type="tel" [(ngModel)]="datosPropietario.telefono" 
+                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+              </div>
+            </div>
+  
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-6">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white">Información del Hotel</h3>
+              
+              <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre del Hotel *</label>
+                <input type="text" [(ngModel)]="datosHotel.nombre" 
+                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+              </div>
+  
+              <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">País *</label>
+                  <select [(ngModel)]="datosHotel.pais" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                    <option value="">Seleccionar</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="CO">Colombia</option>
+                    <option value="PE">Perú</option>
+                    <option value="MX">México</option>
+                  </select>
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Ciudad *</label>
+                  <input type="text" [(ngModel)]="datosHotel.ciudad" 
+                         class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                </div>
+              </div>
+  
+              <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Dirección *</label>
+                <input type="text" [(ngModel)]="datosHotel.direccion" 
+                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+              </div>
+  
+              <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Número de Habitaciones *</label>
+                <select [(ngModel)]="datosHotel.habitaciones" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                  <option value="1-10">1-10</option>
+                  <option value="11-30">11-30</option>
+                  <option value="31-50">31-50</option>
+                  <option value="51+">51+</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="flex justify-end pt-6">
+              <button (click)="avanzarPaso()" 
+                      class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-cyan-700 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                Siguiente: Elegir Plan
+              </button>
+            </div>
+          </div>
+  
+          <!-- Paso 2: Planes -->
+          <div *ngIf="paso === 2" class="space-y-8">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Elige el plan perfecto para tu hotel</h2>
+              <p class="mt-1 text-gray-500 dark:text-gray-400">Selecciona la opción que mejor se adapte a tus necesidades</p>
+            </div>
+  
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+              <!-- Plan Básico -->
+              <div class="relative border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <div class="absolute top-0 right-0 -mt-3 -mr-3 px-3 py-1 bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-100 text-xs font-bold rounded-full">
+                  POPULAR
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Básico</h3>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">Para pequeños hostales y posadas</p>
+                
+                <div class="mt-4">
+                  <span class="text-4xl font-extrabold text-gray-900 dark:text-white">$49</span>
+                  <span class="text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
+                </div>
+                
+                <ul class="mt-6 space-y-3">
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Hasta 20 habitaciones</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Reservas online</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Facturación electrónica</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-400 dark:text-gray-500 line-through">Check-in móvil</span>
+                  </li>
+                </ul>
+                
+                <button (click)="seleccionarPlan('basico')" 
+                        class="mt-8 w-full px-4 py-2 border border-cyan-600 text-cyan-600 dark:text-cyan-400 rounded-md hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-colors">
+                  Seleccionar Plan
+                </button>
+              </div>
+  
+              <!-- Plan Estándar -->
+              <div class="relative border-2 border-cyan-500 rounded-xl p-6 shadow-lg transform scale-[1.02]">
+                <div class="absolute top-0 right-0 -mt-3 -mr-3 px-3 py-1 bg-cyan-600 text-white text-xs font-bold rounded-full">
+                  RECOMENDADO
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Estándar</h3>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">Para hoteles medianos y boutique</p>
+                
+                <div class="mt-4">
+                  <span class="text-4xl font-extrabold text-gray-900 dark:text-white">$99</span>
+                  <span class="text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
+                </div>
+                
+                <ul class="mt-6 space-y-3">
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Hasta 50 habitaciones</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Check-in móvil</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Reportes avanzados</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-400 dark:text-gray-500 line-through">Integración POS</span>
+                  </li>
+                </ul>
+                
+                <button (click)="seleccionarPlan('estandar')" 
+                        class="mt-8 w-full px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-500 text-white rounded-md hover:from-cyan-700 hover:to-cyan-600 transition-colors">
+                  Seleccionar Plan
+                </button>
+              </div>
+  
+              <!-- Plan Premium -->
+              <div class="relative border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Premium</h3>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">Para cadenas hoteleras y grandes establecimientos</p>
+                
+                <div class="mt-4">
+                  <span class="text-4xl font-extrabold text-gray-900 dark:text-white">$199</span>
+                  <span class="text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
+                </div>
+                
+                <ul class="mt-6 space-y-3">
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Habitaciones ilimitadas</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Integración con POS</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Soporte prioritario 24/7</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="ml-3 text-gray-700 dark:text-gray-300">Entrenamiento personalizado</span>
+                  </li>
+                </ul>
+                
+                <button (click)="seleccionarPlan('premium')" 
+                        class="mt-8 w-full px-4 py-2 border border-cyan-600 text-cyan-600 dark:text-cyan-400 rounded-md hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-colors">
+                  Seleccionar Plan
+                </button>
+              </div>
+            </div>
+  
+            <div class="flex justify-between pt-6">
+              <button (click)="retrocederPaso()" 
+                      class="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                Atrás
+              </button>
+            </div>
+          </div>
+  
+          <!-- Paso 3: Pago -->
+          <div *ngIf="paso === 3 && !pagoExitoso" class="space-y-8">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Método de Pago</h2>
+              <p class="mt-1 text-gray-500 dark:text-gray-400">Completa la información para activar tu plan {{planSeleccionado | titlecase}}</p>
+            </div>
+  
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <div class="space-y-6">
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">Resumen del Pedido</h3>
+                  <div class="mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                    <div class="flex justify-between">
+                      <span class="text-gray-600 dark:text-gray-300">Plan:</span>
+                      <span class="font-medium text-gray-900 dark:text-white">{{planSeleccionado | titlecase}}</span>
+                    </div>
+                    <div class="mt-2 flex justify-between">
+                      <span class="text-gray-600 dark:text-gray-300">Precio:</span>
+                      <span class="font-medium text-gray-900 dark:text-white">{{precioPlan | currency}}</span>
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-gray-200 dark:border-gray-600 flex justify-between">
+                      <span class="text-gray-600 dark:text-gray-300">Total:</span>
+                      <span class="font-bold text-lg text-cyan-600 dark:text-cyan-400">{{precioPlan | currency}}</span>
+                    </div>
+                  </div>
+                </div>
+  
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">Información de Facturación</h3>
+                  <div class="mt-4 space-y-4">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre en la Tarjeta *</label>
+                      <input type="text" [(ngModel)]="datosPago.nombreTarjeta" 
+                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                    </div>
+                    
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Número de Tarjeta *</label>
+                      <input type="text" [(ngModel)]="datosPago.numeroTarjeta" 
+                             class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Vencimiento *</label>
+                        <input type="text" [(ngModel)]="datosPago.vencimiento" placeholder="MM/AA"
+                               class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                      </div>
+                      
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">CVV *</label>
+                        <input type="text" [(ngModel)]="datosPago.cvv" 
+                               class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">Métodos de Pago</h3>
+                <div class="mt-4 grid grid-cols-4 gap-2">
+                  <div class="border rounded-md p-2 flex items-center justify-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visa/visa-original.svg" class="h-8" alt="Visa">
+                  </div>
+                  <div class="border rounded-md p-2 flex items-center justify-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mastercard/mastercard-original.svg" class="h-8" alt="Mastercard">
+                  </div>
+                  <div class="border rounded-md p-2 flex items-center justify-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" class="h-8" alt="American Express">
+                  </div>
+                  <div class="border rounded-md p-2 flex items-center justify-center">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/paypal/paypal-original.svg" class="h-8" alt="PayPal">
+                  </div>
+                </div>
+                
+                <div class="mt-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-sm text-gray-600 dark:text-gray-300">
+                      Tus datos de pago están protegidos con encriptación de 256-bit SSL. No almacenamos información de tu tarjeta.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="mt-6">
+                  <button (click)="procesarPago()" 
+                          class="w-full px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-cyan-700 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 flex items-center justify-center">
+                    <span *ngIf="!procesando">Confirmar Pago</span>
+                    <span *ngIf="procesando">Procesando...</span>
+                    <svg *ngIf="procesando" class="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            <div class="flex justify-between pt-6">
+              <button (click)="retrocederPaso()" 
+                      class="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                Atrás
+              </button>
+            </div>
+          </div>
+  
+          <!-- Paso 4: Confirmación -->
+          <div *ngIf="pagoExitoso" class="text-center py-12">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900">
+              <svg class="h-8 w-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h2 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">¡Registro Completado con Éxito!</h2>
+            <p class="mt-2 text-gray-600 dark:text-gray-300">Tu plan <span class="font-semibold text-cyan-600 dark:text-cyan-400">{{planSeleccionado | titlecase}}</span> ha sido activado correctamente.</p>
+            
+            <div class="mt-8 bg-gray-50 dark:bg-gray-700 rounded-lg p-6 max-w-md mx-auto text-left">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white">Detalles de tu cuenta:</h3>
+              <ul class="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                <li class="flex">
+                  <span class="w-32 font-medium">Hotel:</span>
+                  <span>{{datosHotel.nombre}}</span>
+                </li>
+                <li class="flex">
+                  <span class="w-32 font-medium">Plan:</span>
+                  <span>{{planSeleccionado | titlecase}} ({{precioPlan | currency}}/mes)</span>
+                </li>
+                <li class="flex">
+                  <span class="w-32 font-medium">Usuario:</span>
+                  <span>{{datosPropietario.email}}</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="mt-8">
+              <p class="text-gray-500 dark:text-gray-400 mb-4">Hemos enviado los detalles de acceso a <span class="font-medium text-cyan-600 dark:text-cyan-400">{{datosPropietario.email}}</span></p>
+              <button class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-cyan-700 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                Ir al Panel de Control
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

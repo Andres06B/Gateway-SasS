@@ -65,6 +65,7 @@ import { PreferredStaysApplicationComponent } from './pages/Quantum Users/Accomm
 import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-status-applications/reserve-status-applications.component';
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
+import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 
 
 
@@ -122,6 +123,7 @@ import { ReservationsApplicationsComponent } from './pages/Quantum Users/Accommo
     ReserveStatusApplicationsComponent,
     MyreseRevationsApplicationComponent,
     ReservationsApplicationsComponent,
+    PasarelaComponent,
 
 
 
