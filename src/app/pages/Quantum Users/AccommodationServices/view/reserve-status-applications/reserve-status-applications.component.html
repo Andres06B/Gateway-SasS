@@ -1,0 +1,157 @@
+<app-header-app></app-header-app>
+
+<section class="py-16 bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 sm:text-5xl">
+        <span class="bg-gradient-to-r from-[#428764] to-[#306B4F] bg-clip-text text-transparent">Estado de tu reserva</span>
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">Revisa el estado actual de tus reservas activas</p>
+    </div>
+
+    <!-- Tarjeta de estado de reserva -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden border-l-4 border-[#306B4F]">
+      <div class="p-6 md:p-8">
+        <!-- Encabezado de la reserva -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900">Hotel Boutique Cartagena</h3>
+            <p class="text-gray-600 mt-1">Reserva #CTG-2024-5872</p>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Confirmada
+            </span>
+          </div>
+        </div>
+
+        <!-- Detalles de la reserva -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Detalles de la habitación</h4>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <svg class="h-5 w-5 text-[#306B4F] mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                <div>
+                  <p class="font-medium text-gray-900">Suite Premium Vista al Mar</p>
+                  <p class="text-sm text-gray-500">2 camas queen, balcón privado</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <svg class="h-5 w-5 text-[#306B4F] mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <div>
+                  <p class="font-medium text-gray-900">15 Nov - 20 Nov 2024</p>
+                  <p class="text-sm text-gray-500">5 noches, 2 adultos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Progreso de la reserva</h4>
+            <div class="space-y-4">
+              <!-- Barra de progreso -->
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-[#306B4F] h-2.5 rounded-full" style="width: 75%"></div>
+              </div>
+              
+              <!-- Pasos del proceso -->
+              <div class="flex justify-between text-xs text-gray-500">
+                <div class="flex flex-col items-center">
+                  <div class="w-6 h-6 rounded-full bg-[#306B4F] text-white flex items-center justify-center mb-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="text-[#306B4F] font-medium">Reservado</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <div class="w-6 h-6 rounded-full bg-[#306B4F] text-white flex items-center justify-center mb-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="text-[#306B4F] font-medium">Confirmado</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <div class="w-6 h-6 rounded-full border-2 border-[#306B4F] bg-white mb-1"></div>
+                  <span>Check-in</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <div class="w-6 h-6 rounded-full border-2 border-gray-300 bg-white mb-1"></div>
+                  <span>Completado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acciones -->
+        <div class="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-end gap-3">
+          <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+            Modificar reserva
+          </button>
+          <button class="px-4 py-2 bg-[#306B4F] text-white rounded-lg hover:bg-[#428764] transition-colors">
+            Ver comprobante
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estados posibles -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+        <div class="flex items-center">
+          <div class="p-2 rounded-full bg-blue-100 text-blue-600 mr-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">En espera</h4>
+            <p class="text-sm text-gray-500">Reserva pendiente de confirmación</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-lg border-l-4 border-green-500 shadow-sm">
+        <div class="flex items-center">
+          <div class="p-2 rounded-full bg-green-100 text-green-600 mr-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Confirmada</h4>
+            <p class="text-sm text-gray-500">Reserva aprobada y confirmada</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
+        <div class="flex items-center">
+          <div class="p-2 rounded-full bg-red-100 text-red-600 mr-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Cancelada</h4>
+            <p class="text-sm text-gray-500">Reserva no disponible</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer-app></app-footer-app>

@@ -50,6 +50,22 @@ import { ConfigAdmComponent } from './pages/Quantum Web/dashboard-admin/views-ad
 import { UserRegistrationComponent } from './pages/Quantum Users/user-registration/user-registration.component';
 
 
+import { ReactiveFormsModule } from '@angular/forms';
+
+// app.module.ts
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/home-application/home-application.component';
+import { HeaderAppComponent } from './pages/Quantum Users/AccommodationServices/Components/header-app/header-app.component';
+import { FooterAppComponent } from './pages/Quantum Users/AccommodationServices/Components/footer-app/footer-app.component';
+import { DestinationApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/destination-application/destination-application.component';
+import { UserProfileApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/user-profile-application/user-profile-application.component';
+import { ReservationPaymentsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reservation-payments-application/reservation-payments-application.component';
+import { ReserveCompanionsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-companions-application/reserve-companions-application.component';
+import { PreferredStaysApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/preferred-stays-application/preferred-stays-application.component';
+import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-status-applications/reserve-status-applications.component';
+import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
+import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
+
 
 
 @NgModule({
@@ -95,6 +111,17 @@ import { UserRegistrationComponent } from './pages/Quantum Users/user-registrati
     VipAdmComponent,
     ConfigAdmComponent,
     UserRegistrationComponent,
+    HomeApplicationComponent,
+    HeaderAppComponent,
+    FooterAppComponent,
+    DestinationApplicationComponent,
+    UserProfileApplicationComponent,
+    ReservationPaymentsApplicationComponent,
+    ReserveCompanionsApplicationComponent,
+    PreferredStaysApplicationComponent,
+    ReserveStatusApplicationsComponent,
+    MyreseRevationsApplicationComponent,
+    ReservationsApplicationsComponent,
 
 
 
@@ -103,6 +130,8 @@ import { UserRegistrationComponent } from './pages/Quantum Users/user-registrati
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule, 
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration(withEventReplay())

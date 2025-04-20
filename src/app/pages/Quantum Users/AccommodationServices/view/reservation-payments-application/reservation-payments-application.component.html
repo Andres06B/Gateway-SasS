@@ -1,0 +1,118 @@
+<app-header-app></app-header-app>
+<div class="p-6 border-t">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-semibold text-gray-800 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#306B4F] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        Historial de Reservaciones
+      </h3>
+      <div class="relative">
+        <select class="appearance-none bg-white border border-gray-300 rounded-lg pl-3 pr-8 py-2 text-sm focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] transition">
+          <option>Todos</option>
+          <option>Últimos 3 meses</option>
+          <option>2023</option>
+          <option>2022</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="pagos.length > 0; else noPagos" class="space-y-5">
+      <div *ngFor="let pago of pagos" class="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+        <div class="absolute inset-y-0 left-0 w-1 bg-[#306B4F]"></div>
+        
+        <div class="p-5">
+          <div class="flex justify-between items-start">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-[#306B4F] to-[#428764] flex items-center justify-center text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 group-hover:text-[#306B4F] transition">{{pago.hotelNombre}}</h4>
+                <p class="text-sm text-gray-500 mt-1">
+                  {{pago.fechaEntrada | date:'mediumDate'}} - {{pago.fechaSalida | date:'mediumDate'}} • 
+                  {{pago.detalles.noches}} {{pago.detalles.noches === 1 ? 'noche' : 'noches'}}
+                </p>
+                <div class="mt-2 flex items-center space-x-2">
+                  <span [class]="'px-2.5 py-1 rounded-full text-xs font-semibold ' + 
+                    (pago.estado === 'Completado' ? 'bg-green-50 text-green-700' : 
+                     pago.estado === 'Pendiente' ? 'bg-yellow-50 text-yellow-700' : 
+                     'bg-red-50 text-red-700')">
+                    {{pago.estado}}
+                  </span>
+                  <span class="text-xs text-gray-500">#{{pago.referencia}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-xl font-bold text-[#306B4F]">{{pago.monto | currency:pago.moneda:'symbol':'1.0-0'}}</p>
+              <p class="text-xs text-gray-500 mt-1">{{pago.fechaPago | date:'mediumDate'}}</p>
+            </div>
+          </div>
+          
+          <div class="mt-4 pt-4 border-t border-gray-100">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-3">
+                <div class="flex items-center text-sm text-gray-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                  {{pago.metodoPago}}
+                </div>
+                <div class="flex items-center text-sm text-gray-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  {{pago.detalles.habitacion}}
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button (click)="verDetallePago(pago)" class="px-3 py-1.5 bg-white border border-[#306B4F] text-[#306B4F] text-sm font-medium rounded-lg hover:bg-[#306B4F] hover:text-white transition flex items-center">
+                  Detalles
+                </button>
+                <button class="px-3 py-1.5 bg-[#306B4F] text-white text-sm font-medium rounded-lg hover:bg-[#428764] transition flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Factura
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-center mt-6">
+        <button class="px-4 py-2 text-sm font-medium text-[#306B4F] hover:text-[#428764] transition flex items-center">
+          Cargar más reservaciones
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  
+    <ng-template #noPagos>
+      <div class="text-center py-8 px-4 bg-gray-50 rounded-xl">
+        <div class="mx-auto h-24 w-24 text-gray-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          </svg>
+        </div>
+        <h4 class="mt-4 text-lg font-medium text-gray-700">No hay reservaciones registradas</h4>
+        <p class="mt-1 text-gray-500">Cuando realices una reserva, aparecerá en este historial</p>
+        <button class="mt-5 px-5 py-2.5 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white font-medium rounded-lg hover:shadow-md transition-all transform hover:-translate-y-0.5">
+          Explorar hoteles disponibles
+        </button>
+      </div>
+    </ng-template>
+  </div>
+
+  <app-footer-app></app-footer-app>

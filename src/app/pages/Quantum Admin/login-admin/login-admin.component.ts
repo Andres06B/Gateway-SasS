@@ -10,9 +10,15 @@ import { Component } from '@angular/core';
 export class LoginAdminComponent {
 
   showPassword = false;
- 
+  isClicked = false;
+
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
+  }
+
+  onLoginClick(): void {
+    this.isClicked = true;
+    setTimeout(() => this.isClicked = false, 150);
   }
 
   onSubmit(): void {

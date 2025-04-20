@@ -1,0 +1,80 @@
+/* Animaciones personalizadas */
+@keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .animate-gradient-x {
+    background-size: 200% auto;
+    animation: gradient-x 3s ease infinite;
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.3; }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+  
+  /* Transiciones suaves para elementos interactivos */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .duration-300 {
+    transition-duration: 300ms;
+  }
+  
+  .duration-500 {
+    transition-duration: 500ms;
+  }
+  
+  /* Efectos hover mejorados */
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover\:-translate-y-1:hover {
+    transform: translateY(-4px);
+  }
+  
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+  
+  .group:hover .group-hover\:text-\[\#306B4F\] {
+    color: #306B4F;
+  }
+  
+  .group:hover .group-hover\:border-\[\#306B4F\] {
+    border-color: #306B4F;
+  }
+  
+  .group:hover .group-hover\:bg-\[\#306B4F\]\/20 {
+    background-color: rgba(48, 107, 79, 0.2);
+  }
+  
+  /* Estilos para el select personalizado */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Efecto activo para botones */
+  .active\:scale-90:active {
+    transform: scale(0.9);
+  }

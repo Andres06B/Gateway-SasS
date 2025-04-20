@@ -28,6 +28,15 @@ import { PremiumAdmComponent } from './pages/Quantum Web/dashboard-admin/views-a
 import { VipAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/vip-adm/vip-adm.component';
 import { ConfigAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/config-adm/config-adm.component';
 import { UserRegistrationComponent } from './pages/Quantum Users/user-registration/user-registration.component';
+import { HomeApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/home-application/home-application.component';
+import { DestinationApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/destination-application/destination-application.component';
+import { UserProfileApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/user-profile-application/user-profile-application.component';
+import { ReservationPaymentsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reservation-payments-application/reservation-payments-application.component';
+import { ReserveCompanionsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-companions-application/reserve-companions-application.component';
+import { PreferredStaysApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/preferred-stays-application/preferred-stays-application.component';
+import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-status-applications/reserve-status-applications.component';
+import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
+import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
 
 //import { LandingComponent } from './view/landing/landing.component';
 
@@ -59,6 +68,15 @@ const routes: Routes = [
   { path: 'infohotel', component: InfoHotelComponent,},
   { path: 'infohostal', component: InfoHostalComponent,},
   { path: 'infocabaña', component: InfoCabanaComponent,},
+  {path: 'apphome', component:HomeApplicationComponent},
+  {path: 'appdestination', component:DestinationApplicationComponent},
+  {path: 'UserProfileapp', component:UserProfileApplicationComponent},
+  {path: 'reservationpayments', component:ReservationPaymentsApplicationComponent},
+  {path: 'companionreservation', component:ReserveCompanionsApplicationComponent},
+  {path: 'preferredstays', component:PreferredStaysApplicationComponent},
+  {path: 'reserveStatus', component:ReserveStatusApplicationsComponent},
+  {path: 'myreservation', component:MyreseRevationsApplicationComponent},
+  {path: 'Reservation', component:ReservationsApplicationsComponent},
 
   //rutas administrativas (protegidas) para el admin de la pagina web
   {path: 'inicio-adm', component: InicioAdmComponent},
