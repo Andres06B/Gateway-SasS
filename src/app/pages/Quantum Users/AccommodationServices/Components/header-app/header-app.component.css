@@ -1,0 +1,36 @@
+/* Transiciones suaves */
+nav, .user-menu, .mobile-menu {
+    transition: all 0.3s ease;
+  }
+  
+  /* Mejor espaciado para móviles */
+  @media (max-width: 767px) {
+    .mobile-menu a, .mobile-menu button {
+      margin: 0.25rem 0;
+    }
+    
+    .user-options {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+  }
+  
+  /* Efecto hover más sutil */
+  .nav-link:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Mejor visualización del menú de usuario */
+  .user-menu {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 640px) {
+    .logo-text {
+      font-size: 1rem;
+    }
+    
+    .user-name {
+      font-size: 0.875rem;
+    }
+  }

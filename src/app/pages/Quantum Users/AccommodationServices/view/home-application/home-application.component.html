@@ -1,118 +1,148 @@
 <app-header-app></app-header-app>
 
-<section class="relative bg-gradient-to-b from-[#306B4F]/10 to-white py-16 px-4 sm:px-6 lg:px-8">
-    <!-- Fondo decorativo -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-5"></div>
+<section class="relative bg-gradient-to-b from-[#306B4F]/5 via-white to-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <!-- Fondo decorativo mejorado -->
+    <div class="absolute inset-0 overflow-hidden z-0">
+      <div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#306B4F]/10 to-white/80"></div>
     </div>
     
     <div class="max-w-7xl mx-auto relative z-10">
-      <!-- Encabezado -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      <!-- Encabezado mejorado -->
+      <div class="text-center mb-16">
+        <div class="inline-block bg-[#306B4F]/10 px-6 py-2 rounded-full mb-6">
+          <span class="text-[#306B4F] font-medium">Reserva con confianza</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
           <span class="bg-gradient-to-r from-[#428764] to-[#306B4F] bg-clip-text text-transparent">
-            Bienvenido al Centro de Reservas
+            Centro de Reservas
           </span>
-          <span class="block text-3xl md:text-4xl text-[#306B4F] mt-2">QuantumGateway</span>
         </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Tu portal completo para gestionar todas tus reservas de alojamiento de forma rápida, segura y sencilla.
+        <div class="flex justify-center items-center mb-6">
+          <div class="w-16 h-1 bg-gradient-to-r from-[#428764] to-[#306B4F] rounded-full"></div>
+        </div>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Tu portal completo para gestionar reservas de alojamiento de forma <span class="font-semibold text-[#306B4F]">rápida, segura</span> y <span class="font-semibold text-[#306B4F]">sencilla</span>.
         </p>
       </div>
   
-      <!-- Tarjetas de características -->
+      <!-- Tarjetas de características mejoradas -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Tarjeta 1 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-          <div class="p-6">
-            <div class="w-14 h-14 bg-[#306B4F]/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Tarjeta 1 mejorada -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 border border-[#306B4F]/10 group">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#428764]/10 to-[#306B4F]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Busca tu alojamiento ideal</h3>
-            <p class="text-gray-600">
-              Encuentra hoteles, hostales y cabñas que se adapten a tus necesidades. Filtra por ubicación, precio, comodidades y más.
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Busca tu alojamiento ideal</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Encuentra hoteles, hostales y cabñas que se adapten a tus necesidades con nuestro sistema de filtros avanzado.
             </p>
+            <div class="mt-6">
+              <span class="inline-block bg-[#306B4F]/10 text-[#306B4F] text-sm font-medium px-3 py-1 rounded-full">+1000 opciones</span>
+            </div>
           </div>
         </div>
   
-        <!-- Tarjeta 2 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-          <div class="p-6">
-            <div class="w-14 h-14 bg-[#306B4F]/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Tarjeta 2 mejorada -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 border border-[#306B4F]/10 group">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#428764]/10 to-[#306B4F]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Reserva sin complicaciones</h3>
-            <p class="text-gray-600">
-              Proceso de reserva rápido y sencillo. Solo necesitas unos pocos clics para asegurar tu alojamiento.
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Reserva sin complicaciones</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Proceso de reserva optimizado en solo 3 pasos. Confirma tu alojamiento en menos de 2 minutos.
             </p>
+            <div class="mt-6">
+              <span class="inline-block bg-[#306B4F]/10 text-[#306B4F] text-sm font-medium px-3 py-1 rounded-full">Confirmación instantánea</span>
+            </div>
           </div>
         </div>
   
-        <!-- Tarjeta 3 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-          <div class="p-6">
-            <div class="w-14 h-14 bg-[#306B4F]/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Tarjeta 3 mejorada -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 border border-[#306B4F]/10 group">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#428764]/10 to-[#306B4F]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Pagos 100% seguros</h3>
-            <p class="text-gray-600">
-              Utilizamos tecnología de cifrado avanzada para proteger tus datos y transacciones financieras.
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Pagos 100% seguros</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Cifrado SSL de 256-bit y certificación PCI DSS para proteger todas tus transacciones financieras.
             </p>
+            <div class="mt-6 flex space-x-2">
+              <span class="inline-block bg-[#306B4F]/10 text-[#306B4F] text-sm font-medium px-3 py-1 rounded-full">SSL</span>
+              <span class="inline-block bg-[#306B4F]/10 text-[#306B4F] text-sm font-medium px-3 py-1 rounded-full">PCI DSS</span>
+            </div>
           </div>
         </div>
   
-        <!-- Tarjeta 4 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-          <div class="p-6">
-            <div class="w-14 h-14 bg-[#306B4F]/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Tarjeta 4 mejorada -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 border border-[#306B4F]/10 group">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#428764]/10 to-[#306B4F]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Detalles de tu reserva</h3>
-            <p class="text-gray-600">
-              Visualiza todas las características de las habitaciones que has seleccionado y los servicios incluidos.
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Detalles de tu reserva</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Visualización completa de características, servicios incluidos y políticas de cancelación.
             </p>
+            <div class="mt-6">
+              <span class="inline-block bg-[#306B4F]/10 text-[#306B4F] text-sm font-medium px-3 py-1 rounded-full">Información detallada</span>
+            </div>
           </div>
         </div>
   
-        <!-- Tarjeta 5 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-          <div class="p-6">
-            <div class="w-14 h-14 bg-[#306B4F]/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Tarjeta 5 mejorada -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 border border-[#306B4F]/10 group">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#428764]/10 to-[#306B4F]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Compañeros de viaje</h3>
-            <p class="text-gray-600">
-              Gestiona la información de todas las personas que te acompañarán en tu estadía.
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Compañeros de viaje</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Gestión centralizada de información para todos los huéspedes de tu reserva.
             </p>
+            <div class="mt-6">
+              <span class="inline-block bg-[#306B4F]/10 text-[#306B4F] text-sm font-medium px-3 py-1 rounded-full">Hasta 10 personas</span>
+            </div>
           </div>
         </div>
   
-        <!-- Tarjeta 6 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-          <div class="p-6">
-            <div class="w-14 h-14 bg-[#306B4F]/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Tarjeta 6 mejorada -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 border border-[#306B4F]/10 group">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#428764]/10 to-[#306B4F]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-[#306B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Control total</h3>
-            <p class="text-gray-600">
-              Consulta el estado de tu reserva, realiza modificaciones o cancela cuando lo necesites.
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Control total</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Modifica fechas, cancela con reembolso o consulta el estado de tu reserva en cualquier momento.
             </p>
+            <div class="mt-6">
+              <span class="inline-block bg-[#306B4F]/10 text-[#306B4F] text-sm font-medium px-3 py-1 rounded-full">Flexibilidad</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <app-footer-app></app-footer-app>
+      <!-- Separador decorativo -->
+      <div class="mt-20 mb-12 flex justify-center">
+        <div class="w-24 h-1 bg-gradient-to-r from-[#428764] to-[#306B4F] rounded-full"></div>
+      </div>
+    </div>
+</section>
+
+<app-footer-app></app-footer-app>
