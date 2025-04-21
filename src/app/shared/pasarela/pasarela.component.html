@@ -33,242 +33,376 @@
         <div class="p-8">
           <!-- Paso 1: Registro -->
           <div *ngIf="paso === 1" class="space-y-6">
-            <div>
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Información del Propietario</h2>
-              <p class="mt-1 text-gray-500 dark:text-gray-400">Por favor completa tus datos personales</p>
-            </div>
-  
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre Completo *</label>
-                <input type="text" [(ngModel)]="datosPropietario.nombre" 
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+              <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Información del Propietario</h2>
+                <p class="mt-1 text-gray-500 dark:text-gray-400">Por favor completa tus datos personales</p>
               </div>
-  
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cédula/RUC *</label>
-                <input type="text" [(ngModel)]="datosPropietario.cedula" 
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
-              </div>
-  
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Correo Electrónico *</label>
-                <input type="email" [(ngModel)]="datosPropietario.email" 
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
-              </div>
-  
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Teléfono *</label>
-                <input type="tel" [(ngModel)]="datosPropietario.telefono" 
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
-              </div>
-            </div>
-  
-            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-6">
-              <h3 class="text-lg font-medium text-gray-900 dark:text-white">Información del Hotel</h3>
-              
-              <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre del Hotel *</label>
-                <input type="text" [(ngModel)]="datosHotel.nombre" 
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
-              </div>
-  
-              <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <!-- Nombre Completo -->
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">País *</label>
-                  <select [(ngModel)]="datosHotel.pais" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
-                    <option value="">Seleccionar</option>
+                  <label for="nombre" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre Completo *</label>
+                  <input id="nombre" type="text" [(ngModel)]="datosPropietario.nombre" 
+                         class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                         required
+                         minlength="3"
+                         #nombre="ngModel">
+                  <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="text-red-500 text-xs mt-1">
+                    <div *ngIf="nombre.errors?.['required']">El nombre es requerido</div>
+                    <div *ngIf="nombre.errors?.['minlength']">Debe tener al menos 3 caracteres</div>
+                  </div>
+                </div>
+          
+                <!-- Cédula/RUC -->
+                <div>
+                  <label for="cedula" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cédula/RUC *</label>
+                  <input id="cedula" type="text" [(ngModel)]="datosPropietario.cedula" 
+                         class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                         required
+                         pattern="[0-9]{10,13}"
+                         #cedula="ngModel">
+                  <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="text-red-500 text-xs mt-1">
+                    <div *ngIf="cedula.errors?.['required']">La cédula/RUC es requerida</div>
+                    <div *ngIf="cedula.errors?.['pattern']">Formato inválido (10-13 dígitos)</div>
+                  </div>
+                </div>
+          
+                <!-- Email -->
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Correo Electrónico *</label>
+                  <input id="email" type="email" [(ngModel)]="datosPropietario.email" 
+                         class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                         required
+                         email
+                         #email="ngModel">
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-red-500 text-xs mt-1">
+                    <div *ngIf="email.errors?.['required']">El email es requerido</div>
+                    <div *ngIf="email.errors?.['email']">Formato de email inválido</div>
+                  </div>
+                </div>
+          
+                <!-- Teléfono -->
+                <div>
+                  <label for="telefono" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Teléfono *</label>
+                  <input id="telefono" type="tel" [(ngModel)]="datosPropietario.telefono" 
+                         class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                         required
+                         [pattern]="datosHotel.pais === 'CO' ? '[0-9]{10}' : '[0-9]{7,15}'"
+                         #telefono="ngModel">
+                  <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="text-red-500 text-xs mt-1">
+                    <div *ngIf="telefono.errors?.['required']">El teléfono es requerido</div>
+                    <div *ngIf="telefono.errors?.['pattern'] && datosHotel.pais === 'CO'">
+                      Formato inválido para Colombia (10 dígitos)
+                    </div>
+                    <div *ngIf="telefono.errors?.['pattern'] && datosHotel.pais !== 'CO'">
+                      Formato inválido (7-15 dígitos)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Información del Hotel -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+              <div class="mb-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Información del Hotel</h3>
+                <p class="mt-1 text-gray-500 dark:text-gray-400">Datos del establecimiento que deseas registrar</p>
+              </div>
+              
+              <!-- Nombre del Hotel -->
+              <div class="mb-4">
+                <label for="nombreHotel" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre del Hotel *</label>
+                <input id="nombreHotel" type="text" [(ngModel)]="datosHotel.nombre" 
+                       class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                       required
+                       minlength="3"
+                       #nombreHotel="ngModel">
+                <div *ngIf="nombreHotel.invalid && (nombreHotel.dirty || nombreHotel.touched)" class="text-red-500 text-xs mt-1">
+                  <div *ngIf="nombreHotel.errors?.['required']">El nombre del hotel es requerido</div>
+                  <div *ngIf="nombreHotel.errors?.['minlength']">Debe tener al menos 3 caracteres</div>
+                </div>
+              </div>
+          
+              <!-- País y Ciudad -->
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 mb-4">
+                <!-- País -->
+                <div>
+                  <label for="pais" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">País *</label>
+                  <select id="pais" [(ngModel)]="datosHotel.pais" 
+                          class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                          required
+                          #pais="ngModel">
+                    <option value="" disabled selected>Seleccionar país</option>
                     <option value="EC">Ecuador</option>
                     <option value="CO">Colombia</option>
                     <option value="PE">Perú</option>
                     <option value="MX">México</option>
                   </select>
+                  <div *ngIf="pais.invalid && (pais.dirty || pais.touched)" class="text-red-500 text-xs mt-1">
+                    <div *ngIf="pais.errors?.['required']">El país es requerido</div>
+                  </div>
                 </div>
-  
+          
+                <!-- Ciudad -->
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Ciudad *</label>
-                  <input type="text" [(ngModel)]="datosHotel.ciudad" 
-                         class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                  <label for="ciudad" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Ciudad *</label>
+                  <input id="ciudad" type="text" [(ngModel)]="datosHotel.ciudad" 
+                         class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                         required
+                         minlength="3"
+                         #ciudad="ngModel">
+                  <div *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="text-red-500 text-xs mt-1">
+                    <div *ngIf="ciudad.errors?.['required']">La ciudad es requerida</div>
+                    <div *ngIf="ciudad.errors?.['minlength']">Debe tener al menos 3 caracteres</div>
+                  </div>
                 </div>
               </div>
-  
-              <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Dirección *</label>
-                <input type="text" [(ngModel)]="datosHotel.direccion" 
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+          
+              <!-- Dirección -->
+              <div class="mb-4">
+                <label for="direccion" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Dirección *</label>
+                <input id="direccion" type="text" [(ngModel)]="datosHotel.direccion" 
+                       class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                       required
+                       minlength="5"
+                       #direccion="ngModel">
+                <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="text-red-500 text-xs mt-1">
+                  <div *ngIf="direccion.errors?.['required']">La dirección es requerida</div>
+                  <div *ngIf="direccion.errors?.['minlength']">Debe tener al menos 5 caracteres</div>
+                </div>
               </div>
-  
-              <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Número de Habitaciones *</label>
-                <select [(ngModel)]="datosHotel.habitaciones" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+          
+              <!-- Número de Habitaciones -->
+              <div class="mb-4">
+                <label for="habitaciones" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Número de Habitaciones *</label>
+                <select id="habitaciones" [(ngModel)]="datosHotel.habitaciones" 
+                        class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 transition duration-200"
+                        required
+                        #habitaciones="ngModel">
+                  <option value="" disabled selected>Seleccionar rango</option>
                   <option value="1-10">1-10</option>
                   <option value="11-30">11-30</option>
                   <option value="31-50">31-50</option>
                   <option value="51+">51+</option>
                 </select>
+                <div *ngIf="habitaciones.invalid && (habitaciones.dirty || habitaciones.touched)" class="text-red-500 text-xs mt-1">
+                  <div *ngIf="habitaciones.errors?.['required']">El número de habitaciones es requerido</div>
+                </div>
               </div>
             </div>
-  
-            <div class="flex justify-end pt-6">
+          
+            <!-- Botón Siguiente -->
+            <div class="flex justify-end pt-4">
               <button (click)="avanzarPaso()" 
-                      class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-cyan-700 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                      class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-cyan-700 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
                 Siguiente: Elegir Plan
               </button>
             </div>
           </div>
   
           <!-- Paso 2: Planes -->
-          <div *ngIf="paso === 2" class="space-y-8">
-            <div>
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Elige el plan perfecto para tu hotel</h2>
-              <p class="mt-1 text-gray-500 dark:text-gray-400">Selecciona la opción que mejor se adapte a tus necesidades</p>
-            </div>
-  
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-              <!-- Plan Básico -->
-              <div class="relative border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                <div class="absolute top-0 right-0 -mt-3 -mr-3 px-3 py-1 bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-100 text-xs font-bold rounded-full">
-                  POPULAR
+          <div *ngIf="paso === 2" class="bg-white dark:bg-gray-900 py-8 lg:py-12">
+            <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="max-w-2xl mx-auto text-center mb-8 lg:mb-12">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                  <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 bg-clip-text text-transparent animate-gradient-x">Planes a Medida</span> para tus Datos
+                </h2>
+                <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                  Desde análisis básicos hasta predicciones avanzadas con inteligencia artificial.
+                </p>
+              </div>
+          
+              <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-8">
+                <!-- Plan Básico -->
+                <div class="relative flex flex-col p-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group">
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start">
+                      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Plan Básico</h3>
+                      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Gratis</span>
+                    </div>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">Perfecto para empezar con análisis simples</p>
+                    <div class="mt-6 flex items-baseline">
+                      <span class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">$0</span>
+                      <span class="ml-1 text-lg font-medium text-gray-500 dark:text-gray-400">/siempre</span>
+                    </div>
+                    <ul role="list" class="mt-8 space-y-4">
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Análisis <span class="font-semibold">básicos</span> de datos</p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Exportación a <span class="font-semibold">CSV/Excel</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Soporte por <span class="font-semibold">correo electrónico</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Visualización <span class="font-semibold">Power BI</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Predicciones con <span class="font-semibold">IA</span></p>
+                      </li>
+                    </ul>
+                  </div>
+                  <button (click)="seleccionarPlan('basico')" 
+                          class="mt-8 block w-full py-3 px-6 border border-gray-300 dark:border-gray-600 rounded-xl text-center font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 group-hover:scale-105 active:scale-95">
+                    Empezar Gratis
+                  </button>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Básico</h3>
-                <p class="mt-2 text-gray-500 dark:text-gray-400">Para pequeños hostales y posadas</p>
-                
-                <div class="mt-4">
-                  <span class="text-4xl font-extrabold text-gray-900 dark:text-white">$49</span>
-                  <span class="text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
+          
+                <!-- Plan Avanzado (Destacado) -->
+                <div class="relative z-10 flex flex-col p-8 bg-white dark:bg-gray-800 border-2 border-cyan-500 rounded-2xl shadow-xl transform hover:scale-[1.02] transition-transform duration-500">
+                  <div class="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-sm font-bold rounded-full shadow-lg animate-bounce">
+                    MÁS POPULAR
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Plan Avanzado</h3>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">Visualización avanzada de datos</p>
+                    <div class="mt-6 flex items-baseline">
+                      <span class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">$299</span>
+                      <span class="ml-1 text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
+                    </div>
+                    <ul role="list" class="mt-8 space-y-4">
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Todo en el <span class="font-semibold">Plan Básico</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Dashboards <span class="font-semibold">interactivos</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Integración con <span class="font-semibold">múltiples fuentes</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Soporte <span class="font-semibold">prioritario</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Predicciones con <span class="font-semibold">IA</span></p>
+                      </li>
+                    </ul>
+                  </div>
+                  <button (click)="seleccionarPlan('avanzado')" 
+                          class="mt-8 block w-full py-3 px-6 border border-transparent rounded-xl text-center font-medium bg-gradient-to-r from-cyan-500 to-cyan-600 text-white hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 hover:shadow-lg active:scale-95">
+                    Elegir Plan Avanzado
+                  </button>
                 </div>
-                
-                <ul class="mt-6 space-y-3">
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Hasta 20 habitaciones</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Reservas online</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Facturación electrónica</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-400 dark:text-gray-500 line-through">Check-in móvil</span>
-                  </li>
-                </ul>
-                
-                <button (click)="seleccionarPlan('basico')" 
-                        class="mt-8 w-full px-4 py-2 border border-cyan-600 text-cyan-600 dark:text-cyan-400 rounded-md hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-colors">
-                  Seleccionar Plan
+          
+                <!-- Plan Premium -->
+                <div class="relative flex flex-col p-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group">
+                  <div class="flex-1">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Plan Premium</h3>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">Predicciones avanzadas con inteligencia artificial</p>
+                    <div class="mt-6 flex items-baseline">
+                      <span class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">$899</span>
+                      <span class="ml-1 text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
+                    </div>
+                    <ul role="list" class="mt-8 space-y-4">
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Todo en el <span class="font-semibold">Plan Avanzado</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Modelos de <span class="font-semibold">predicción</span> con IA</p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Entrenamiento de <span class="font-semibold">modelos personalizados</span></p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Soporte <span class="font-semibold">24/7</span> con expertos</p>
+                      </li>
+                      <li class="flex items-start">
+                        <div class="flex-shrink-0 text-cyan-500 dark:text-cyan-400">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <p class="ml-3 text-base text-gray-500 dark:text-gray-400">Informes <span class="font-semibold">executivos</span> mensuales</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <button (click)="seleccionarPlan('premium')" 
+                          class="mt-8 block w-full py-3 px-6 border border-transparent rounded-xl text-center font-medium bg-cyan-600 text-white hover:bg-cyan-700 transition-all duration-300 group-hover:scale-105 active:scale-95">
+                    Elegir Plan Premium
+                  </button>
+                </div>
+              </div>
+          
+              <div class="flex justify-between pt-8">
+                <button (click)="retrocederPaso()" 
+                        class="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  Atrás
                 </button>
               </div>
-  
-              <!-- Plan Estándar -->
-              <div class="relative border-2 border-cyan-500 rounded-xl p-6 shadow-lg transform scale-[1.02]">
-                <div class="absolute top-0 right-0 -mt-3 -mr-3 px-3 py-1 bg-cyan-600 text-white text-xs font-bold rounded-full">
-                  RECOMENDADO
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Estándar</h3>
-                <p class="mt-2 text-gray-500 dark:text-gray-400">Para hoteles medianos y boutique</p>
-                
-                <div class="mt-4">
-                  <span class="text-4xl font-extrabold text-gray-900 dark:text-white">$99</span>
-                  <span class="text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
-                </div>
-                
-                <ul class="mt-6 space-y-3">
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Hasta 50 habitaciones</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Check-in móvil</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Reportes avanzados</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-400 dark:text-gray-500 line-through">Integración POS</span>
-                  </li>
-                </ul>
-                
-                <button (click)="seleccionarPlan('estandar')" 
-                        class="mt-8 w-full px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-500 text-white rounded-md hover:from-cyan-700 hover:to-cyan-600 transition-colors">
-                  Seleccionar Plan
-                </button>
-              </div>
-  
-              <!-- Plan Premium -->
-              <div class="relative border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Premium</h3>
-                <p class="mt-2 text-gray-500 dark:text-gray-400">Para cadenas hoteleras y grandes establecimientos</p>
-                
-                <div class="mt-4">
-                  <span class="text-4xl font-extrabold text-gray-900 dark:text-white">$199</span>
-                  <span class="text-lg font-medium text-gray-500 dark:text-gray-400">/mes</span>
-                </div>
-                
-                <ul class="mt-6 space-y-3">
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Habitaciones ilimitadas</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Integración con POS</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Soporte prioritario 24/7</span>
-                  </li>
-                  <li class="flex items-start">
-                    <svg class="h-5 w-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="ml-3 text-gray-700 dark:text-gray-300">Entrenamiento personalizado</span>
-                  </li>
-                </ul>
-                
-                <button (click)="seleccionarPlan('premium')" 
-                        class="mt-8 w-full px-4 py-2 border border-cyan-600 text-cyan-600 dark:text-cyan-400 rounded-md hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-colors">
-                  Seleccionar Plan
-                </button>
-              </div>
-            </div>
-  
-            <div class="flex justify-between pt-6">
-              <button (click)="retrocederPaso()" 
-                      class="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                Atrás
-              </button>
             </div>
           </div>
-  
           <!-- Paso 3: Pago -->
           <div *ngIf="paso === 3 && !pagoExitoso" class="space-y-8">
             <div>

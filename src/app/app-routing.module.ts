@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginAdminComponent } from './pages/Quantum Admin/login-admin/login-admin.component';
 import { Error404Component } from './shared/Components/error404/error404.component';
