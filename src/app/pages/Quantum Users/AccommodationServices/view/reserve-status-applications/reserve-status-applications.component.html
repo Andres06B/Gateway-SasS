@@ -107,46 +107,73 @@
       </div>
     </div>
 
-    <!-- Estados posibles -->
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
-        <div class="flex items-center">
-          <div class="p-2 rounded-full bg-blue-100 text-blue-600 mr-3">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+    <!-- Estados posibles - Versión mejorada -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Tarjeta En Espera -->
+      <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-md overflow-hidden border border-blue-100 hover:shadow-lg transition-shadow">
+        <div class="p-6">
+          <div class="flex items-start">
+            <div class="p-3 rounded-lg bg-blue-100/80 backdrop-blur-sm mr-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-1">En espera</h3>
+              <p class="text-blue-600 text-sm font-medium mb-2">Procesando tu solicitud</p>
+              <p class="text-gray-600 text-sm">Tu reserva está siendo revisada por nuestro equipo. Te notificaremos cuando sea confirmada.</p>
+            </div>
           </div>
-          <div>
-            <h4 class="font-semibold text-gray-800">En espera</h4>
-            <p class="text-sm text-gray-500">Reserva pendiente de confirmación</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white p-4 rounded-lg border-l-4 border-green-500 shadow-sm">
-        <div class="flex items-center">
-          <div class="p-2 rounded-full bg-green-100 text-green-600 mr-3">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-          </div>
-          <div>
-            <h4 class="font-semibold text-gray-800">Confirmada</h4>
-            <p class="text-sm text-gray-500">Reserva aprobada y confirmada</p>
+          <div class="mt-4 pt-4 border-t border-blue-100/50">
+            <div class="animate-pulse flex items-center">
+              <div class="h-2.5 bg-blue-200 rounded-full w-full"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="bg-white p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
-        <div class="flex items-center">
-          <div class="p-2 rounded-full bg-red-100 text-red-600 mr-3">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
+      <!-- Tarjeta Confirmada -->
+      <div class="bg-gradient-to-br from-green-50 to-white rounded-xl shadow-md overflow-hidden border border-green-100 hover:shadow-lg transition-shadow">
+        <div class="p-6">
+          <div class="flex items-start">
+            <div class="p-3 rounded-lg bg-green-100/80 backdrop-blur-sm mr-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-1">Confirmada</h3>
+              <p class="text-green-600 text-sm font-medium mb-2">¡Reserva aprobada!</p>
+              <p class="text-gray-600 text-sm">Tu habitación está garantizada. Revisa los detalles de tu reserva y prepárate para tu estadía.</p>
+            </div>
           </div>
-          <div>
-            <h4 class="font-semibold text-gray-800">Cancelada</h4>
-            <p class="text-sm text-gray-500">Reserva no disponible</p>
+          <div class="mt-4 pt-4 border-t border-green-100/50">
+            <div class="flex items-center">
+              <div class="h-2.5 bg-green-200 rounded-full w-3/4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta Cancelada -->
+      <div class="bg-gradient-to-br from-red-50 to-white rounded-xl shadow-md overflow-hidden border border-red-100 hover:shadow-lg transition-shadow">
+        <div class="p-6">
+          <div class="flex items-start">
+            <div class="p-3 rounded-lg bg-red-100/80 backdrop-blur-sm mr-4">
+              <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-1">Cancelada</h3>
+              <p class="text-red-600 text-sm font-medium mb-2">Reserva no disponible</p>
+              <p class="text-gray-600 text-sm">Lo sentimos, tu reserva no pudo ser procesada. Contáctanos para conocer alternativas disponibles.</p>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-red-100/50">
+            <div class="flex items-center">
+              <div class="h-2.5 bg-red-200 rounded-full w-1/4"></div>
+            </div>
           </div>
         </div>
       </div>
