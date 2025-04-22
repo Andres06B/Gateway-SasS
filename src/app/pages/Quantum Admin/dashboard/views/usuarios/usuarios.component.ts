@@ -34,6 +34,8 @@ export class UsuariosComponent {
     );
   }
 
+  
+
   get pagedClients(): clients[] {
     const start = (this.currentPage - 1) * this.pageSize;
     return this.Clients.slice(start, start + this.pageSize);

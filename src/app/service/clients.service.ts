@@ -17,4 +17,24 @@ export class ClientsService {
   getClients(): Observable<clients[]> {
     return this.http.get<clients[]>(this.apiURL + '/all');
   }
+
+  findOne(id: number): Observable<clients> {
+    return this.http.get<clients>(`${this.apiURL}/${id}`);
+  }
+
+  createClient(data: clients): Observable<clients> {
+    return this.http.post<clients>(`${this.apiURL}/create`, data);
+  }
+
+  updateClient(id: number, data: Partial<clients>): Observable<clients> {
+    return this.http.patch<clients>(`${this.apiURL}/${id}`, data);
+  }
+
+  deleteClient(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiURL}/${id}`);
+  }
+
+  findReservations(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiURL}/${id}/reservations`);
+  }
 }
