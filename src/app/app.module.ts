@@ -52,7 +52,7 @@ import { UserRegistrationComponent } from './pages/Quantum Users/user-registrati
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 // app.module.ts
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/home-application/home-application.component';
@@ -67,6 +67,7 @@ import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/Accomm
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
+
 
 
 
@@ -135,6 +136,7 @@ import { PasarelaComponent } from './shared/pasarela/pasarela.component';
     FormsModule,
     BrowserAnimationsModule, 
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
