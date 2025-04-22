@@ -10,7 +10,7 @@ import { AdministrativeInformationComponent } from './pages/Quantum Admin/admini
 import { InicioComponent } from './pages/Quantum Admin/dashboard/views/inicio/inicio.component';
 import { PrediccionesComponent } from './pages/Quantum Admin/dashboard/views/predicciones/predicciones.component';
 import { UsuariosComponent } from './pages/Quantum Admin/dashboard/views/usuarios/usuarios.component';
-import { HabitacioenesComponent } from './pages/Quantum Admin/dashboard/views/habitacioenes/habitacioenes.component';
+
 import { PagosComponent } from './pages/Quantum Admin/dashboard/views/pagos/pagos.component';
 import { PaginaWebComponent } from './pages/Quantum Admin/dashboard/views/pagina-web/pagina-web.component';
 import { ReservasComponent } from './pages/Quantum Admin/dashboard/views/reservas/reservas.component';
@@ -39,6 +39,7 @@ import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/Accomm
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
+import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
 
 //import { LandingComponent } from './view/landing/landing.component';
 
@@ -56,7 +57,7 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'predicciones', component: PrediccionesComponent },
   { path: 'usuarios', component: UsuariosComponent },
-  { path: 'habitaciones', component: HabitacioenesComponent },
+  { path: 'habitaciones', component: HabitacionesComponent},
   { path: 'pagos', component: PagosComponent },
   { path: 'pagina-web', component: PaginaWebComponent },
   { path: 'reservas', component: ReservasComponent },

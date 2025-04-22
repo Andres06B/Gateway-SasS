@@ -26,7 +26,7 @@ import { ReservasComponent } from './pages/Quantum Admin/dashboard/views/reserva
 import { PrediccionesComponent } from './pages/Quantum Admin/dashboard/views/predicciones/predicciones.component';
 import { PaginaWebComponent } from './pages/Quantum Admin/dashboard/views/pagina-web/pagina-web.component';
 import { UsuariosComponent } from './pages/Quantum Admin/dashboard/views/usuarios/usuarios.component';
-import { HabitacioenesComponent } from './pages/Quantum Admin/dashboard/views/habitacioenes/habitacioenes.component';
+
 import { PagosComponent } from './pages/Quantum Admin/dashboard/views/pagos/pagos.component';
 import { ConfiguracionComponent } from './pages/Quantum Admin/dashboard/views/configuracion/configuracion.component';
 import { LandingComponent } from './pages/Quantum Web/Landing/landing.component';
@@ -67,6 +67,7 @@ import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/Accomm
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
+import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
 
 
 
@@ -91,7 +92,7 @@ import { PasarelaComponent } from './shared/pasarela/pasarela.component';
     PrediccionesComponent,
     PaginaWebComponent,
     UsuariosComponent,
-    HabitacioenesComponent,
+   
     PagosComponent,
     ConfiguracionComponent,
     LoginWebComponent,
@@ -125,6 +126,7 @@ import { PasarelaComponent } from './shared/pasarela/pasarela.component';
     MyreseRevationsApplicationComponent,
     ReservationsApplicationsComponent,
     PasarelaComponent,
+    HabitacionesComponent,
 
 
 
