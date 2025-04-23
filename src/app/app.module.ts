@@ -138,7 +138,8 @@ import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/hab
     FormsModule,
     BrowserAnimationsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
