@@ -3,13 +3,8 @@ export interface rooms{
     name: string,
     description: string,
     price: number,
-    status: status,
+    status: 'free' | 'busy' | 'booked',
     ability: string,
     image: string,
 }
 
-export interface status{
-    free: string,
-    busy: string,
-    booked: string,
-}
