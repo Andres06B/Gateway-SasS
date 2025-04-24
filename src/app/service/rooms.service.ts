@@ -23,14 +23,18 @@ export class RoomsService {
   }
 
   getRoomByName(name: string): Observable<rooms>{
-    return this.http.get<rooms>(this.apiURL + '/' + name);
+    return this.http.get<rooms>(this.apiURL + '/name/' + name);
   }
 
   getRoomByAdmin(adminId: number): Observable<rooms[]>{
     return this.http.get<rooms[]>(this.apiURL + '/rooms-by-admin/' + adminId);
   }
 
-  createRoom(data: rooms): Observable<rooms>{
+  getRoomByStatus(status: string): Observable<rooms[]>{
+    return this.http.get<rooms[]>(this.apiURL + '/status/' + status);
+  }
+
+  createRoom(data: FormData): Observable<rooms>{
     return this.http.post<rooms>(this.apiURL + '/create', data);
   }
 
