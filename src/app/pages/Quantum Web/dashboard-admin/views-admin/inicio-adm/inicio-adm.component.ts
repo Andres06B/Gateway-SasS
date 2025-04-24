@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './inicio-adm.component.css'
 })
 export class InicioAdmComponent {
+  
 
 }

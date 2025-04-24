@@ -47,7 +47,7 @@
       </div>
 
       <!-- Formulario -->
-      <form (ngSubmit)="onSubmit()" class="space-y-4 sm:space-y-5">
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="space-y-4 sm:space-y-5">
         <!-- Campo Email -->
         <div>
           <label
@@ -76,8 +76,11 @@
             <input
               type="email"
               id="email"
-              placeholder="Ingresa tu correo"
+              name="email"
               required
+              [(ngModel)]="email"
+              #emailModel="ngModel"
+              placeholder="Ingresa tu correo"
               class="w-full bg-gray-50/50 border border-gray-200/60 rounded-lg pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 hover:bg-gray-100/30"
             />
           </div>
@@ -111,8 +114,11 @@
             <input
               [type]="showPassword ? 'text' : 'password'"
               id="password"
-              placeholder="Ingresa tu contraseña"
+              name="password"
               required
+              [(ngModel)]="password"
+              #passwordModel="ngModel"
+              placeholder="Ingresa tu contraseña"
               class="w-full bg-gray-50/50 border border-gray-200/60 rounded-lg pl-10 pr-12 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 hover:bg-gray-100/30"
             />
             <!-- Botón Toggle Password -->
@@ -173,7 +179,7 @@
 
       
         
-        <button routerLink="/inicio"
+        <button
           type="submit"
           (mousedown)="isClicked = true"
           (mouseup)="isClicked = false"

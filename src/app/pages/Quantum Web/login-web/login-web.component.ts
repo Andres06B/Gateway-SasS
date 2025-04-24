@@ -8,13 +8,18 @@ import { Component } from '@angular/core';
 })
 export class LoginWebComponent {
   showPassword = false;
- 
+  
+  constructor(
+  ){}
+
+
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
 
   onSubmit(): void {
-    // Lógica de envío del formulario
     console.log('Formulario enviado');
   }
+
+  
 }
