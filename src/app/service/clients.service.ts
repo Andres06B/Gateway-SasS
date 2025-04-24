@@ -22,6 +22,18 @@ export class ClientsService {
     return this.http.get<clients>(`${this.apiURL}/${id}`);
   }
 
+  findClients(id: number): Observable<clients[]> {
+    return this.http.get<clients[]>(`${this.apiURL}/by-admin/${id}`);
+  }
+
+  findOneByName(name: string): Observable<clients> {
+    return this.http.get<clients>(`${this.apiURL}/by-name/${name}`);
+  }
+
+  findOneByEmail(email: string): Observable<clients> {
+    return this.http.get<clients>(`${this.apiURL}/by-email/${email}`);
+  }
+  
   createClient(data: clients): Observable<clients> {
     return this.http.post<clients>(`${this.apiURL}/create`, data);
   }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../../service/login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,6 +10,14 @@ import { Component } from '@angular/core';
   styleUrl: './login-admin.component.css'
 })
 export class LoginAdminComponent {
+
+  constructor(
+    private loginService:LoginService,
+    private route: Router
+  ){}
+
+  email = '';
+  password = '';
 
   showPassword = false;
   isClicked = false;
@@ -22,8 +32,15 @@ export class LoginAdminComponent {
   }
 
   onSubmit(): void {
-    // Lógica de envío del formulario
-    console.log('Formulario enviado');
+    this.loginService.loginAdmin(this.email, this.password).subscribe({
+      next: res => {
+        console.log('Login exitoso', res);
+        localStorage.setItem('token', res.id);
+        this.route.navigate(['/inicio']);
+      },
+      error: err => console.error('Error en login', err)
+    })
+    
   }
 
 }

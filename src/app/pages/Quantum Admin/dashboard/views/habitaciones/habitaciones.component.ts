@@ -9,18 +9,13 @@ import { RoomsService } from '../../../../../service/rooms.service';
 })
 export class HabitacionesComponent {
   Rooms: rooms[] = []
-  constructor(private habitacionesservices:RoomsService){
 
+  constructor(
+    private roomServices: RoomsService
+  ){}
+  
+  ngOInit(){
+      
   }
-    ngOInit(){
-      this.Habitaciones()
-    }
-    Habitaciones(){
-      this.habitacionesservices.getRooms().subscribe(
-        (data)=>{
-          this.Rooms=data
-          console.log(this.Rooms)
-        }
-      )
-    }
+    
 }

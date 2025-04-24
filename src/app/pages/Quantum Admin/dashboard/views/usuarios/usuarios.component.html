@@ -9,12 +9,6 @@
               <h1 class="text-2xl font-bold text-gray-800">Gestión de Usuarios</h1>
               <p class="text-gray-600">Administra los clientes y huéspedes del sistema</p>
             </div>
-            <button class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg flex items-center text-sm shadow-md transition-all duration-200 transform hover:scale-105">
-              <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
-              </svg>
-              Nuevo Usuario
-            </button>
           </div>
 
           <!-- Panel de estadísticas simplificado -->
@@ -63,22 +57,16 @@
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
             <div class="flex flex-col md:flex-row md:items-center md:space-x-4 space-y-4 md:space-y-0">
               <div class="relative flex-1">
-                <input type="text" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Buscar usuarios...">
+                <input 
+                  type="text" 
+                  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" 
+                  placeholder="Buscar usuarios..." 
+                  (keyup.enter)="onSearch($event)">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                   </svg>
                 </div>
-              </div>
-              
-              <div class="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0 w-full md:w-auto">
-
-                <button class="bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm flex items-center justify-center hover:bg-gray-50">
-                  <svg class="w-4 h-4 mr-1 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"></path>
-                  </svg>
-                  Filtrar
-                </button>
               </div>
             </div>
           </div>
@@ -86,7 +74,7 @@
           <!-- Tabla de usuarios mejorada -->
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
             <div class="px-6 py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <h2 class="font-semibold text-gray-800 mb-2 sm:mb-0">Listado de Usuarios</h2>
+              <h2 class="font-semibold text-gray-800 mb-2 sm:mb-0">Listado de Clientes</h2>
               <div class="flex items-center space-x-2">
                 <button class="p-2 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -108,7 +96,7 @@
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  <tr *ngFor="let c of pagedClients" class="hover:bg-gray-50">
+                  <tr *ngFor="let c of FilteredClient" class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600">
@@ -123,13 +111,21 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ c.phone }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ c.country }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button class="text-cyan-600 hover:text-cyan-900 mr-2">Editar</button>
-                      <button class="text-gray-600 hover:text-gray-900 mr-2">Detalles</button>
-                      <button class="text-blue-600 hover:text-blue-900">Eliminar</button>
+                      <button 
+                        class="text-cyan-600 hover:text-cyan-900 mr-2"
+                        (click)="openEditModal(c)">
+                        Editar
+                      </button>
+                      <button 
+                        class="text-gray-600 hover:text-gray-900 mr-2"
+                        (click)="openDetailsModal(c)">
+                        Detalles
+                      </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
+              <p class="text-xs text-gray-500 px-6">Total: {{ FilteredClient.length }}</p>
             </div>
             
             <!-- Paginación mejorada -->
@@ -143,6 +139,112 @@
                   'px-3 py-1 border border-cyan-500 bg-cyan-50 text-cyan-600': p === currentPage,
                   'px-3 py-1 border border-gray-300 bg-white text-gray-700 hover:bg-gray-50': p !== currentPage}">{{ p }}</button>
                 <button (click)="nextPage()" class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50" [disabled]="currentPage === totalPages">Siguiente</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal para Editar Usuario -->
+          <div *ngIf="modalState !== 'closed'" class="fixed inset-0 z-50 flex items-center justify-center">
+            <!-- Fondo con animación de fade -->
+            <div 
+              class="absolute inset-0 backdrop-blur-sm transition-opacity duration-300 ease-in-out"
+              [class.opacity-0]="modalState === 'closing' || modalState === 'opening'"
+              [class.opacity-100]="modalState === 'open'"
+              (click)="startCloseModal()">
+            </div>
+            
+            <!-- Modal con animaciones -->
+            <div 
+              class="relative bg-white rounded-lg shadow-xl w-96 p-6 transition-all duration-300 ease-in-out transform"
+              [class.opacity-0]="modalState === 'closing' || modalState === 'opening'"
+              [class.opacity-100]="modalState === 'open'"
+              [class.scale-90]="modalState === 'closing' || modalState === 'opening'"
+              [class.scale-100]="modalState === 'open'"
+              [class.translate-y-4]="modalState === 'opening'"
+              [class.translate-y-0]="modalState === 'open'"
+              [class.-translate-y-4]="modalState === 'closing'">
+              
+              <h2 class="text-lg font-semibold text-gray-800 mb-4">Editar Usuario</h2>
+              <div *ngIf="selectedUser">
+                <form (ngSubmit)="saveChanges()">
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                    <input [(ngModel)]="selectedUser.name" name="name" type="text" 
+                           class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input [(ngModel)]="selectedUser.email" name="email" type="email" 
+                           class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                    <input [(ngModel)]="selectedUser.phone" name="phone" type="text" 
+                           class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all">
+                  </div>
+                  <div class="flex justify-end space-x-3">
+                    <button type="button" (click)="startCloseModal()" 
+                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">
+                      Cancelar
+                    </button>
+                    <button type="submit" 
+                            class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal para Ver Detalles -->
+          <div *ngIf="modalState !== 'closed'" class="fixed inset-0 z-50 flex items-center justify-center">
+            <!-- Fondo con animación de fade -->
+            <div 
+              class="absolute inset-0 backdrop-blur-sm transition-opacity duration-300 ease-in-out"
+              [class.opacity-0]="modalState === 'closing' || modalState === 'opening'"
+              [class.opacity-100]="modalState === 'open'"
+              (click)="startCloseDetailsModal()">
+            </div>
+            
+            <!-- Modal con animaciones -->
+            <div 
+              class="relative bg-white rounded-lg shadow-xl w-96 p-6 transition-all duration-300 ease-in-out transform"
+              [class.opacity-0]="modalState === 'closing' || modalState === 'opening'"
+              [class.opacity-100]="modalState === 'open'"
+              [class.scale-90]="modalState === 'closing' || modalState === 'opening'"
+              [class.scale-100]="modalState === 'open'"
+              [class.translate-y-4]="modalState === 'opening'"
+              [class.translate-y-0]="modalState === 'open'"
+              [class.-translate-y-4]="modalState === 'closing'">
+              
+              <h2 class="text-lg font-semibold text-gray-800 mb-4">Detalles del Usuario</h2>
+              
+              <div class="space-y-3">
+                <p class="flex">
+                  <span class="font-medium w-24">Nombre:</span> 
+                  <span>{{ selectedUser?.name }} {{ selectedUser?.last_name }}</span>
+                </p>
+                <p class="flex">
+                  <span class="font-medium w-24">Email:</span> 
+                  <span>{{ selectedUser?.email }}</span>
+                </p>
+                <p class="flex">
+                  <span class="font-medium w-24">Teléfono:</span> 
+                  <span>{{ selectedUser?.phone }}</span>
+                </p>
+                <p class="flex">
+                  <span class="font-medium w-24">País:</span> 
+                  <span>{{ selectedUser?.country }}</span>
+                </p>
+              </div>
+              
+              <div class="flex justify-end mt-6">
+                <button 
+                  (click)="startCloseDetailsModal()" 
+                  class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors">
+                  Cerrar
+                </button>
               </div>
             </div>
           </div>
