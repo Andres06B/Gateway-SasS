@@ -1,5 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-pagina-web',
@@ -8,127 +8,331 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   standalone: false,
 })
 export class PaginaWebComponent implements OnInit {
-  hotelForm: FormGroup;
-  isEditing = false;
-  profileImage: string | null = './assets/default-hotel.png';
-  backgroundImage: string | null = './assets/default-bg.jpg';
-  parallaxOffset = 0;
-  currentYear = new Date().getFullYear();
+  // Modals control
+  showRoomModal: boolean = false;
+  showHotelEditModal: boolean = false;
+  showImageModal: { type: 'cover' | 'profile', show: boolean } = { type: 'cover', show: false };
+  
+  // Form groups
+  hotelForm!: FormGroup;
+  roomForm!: FormGroup;
+  
+  // Hotel data
+  hotelData = {
+    name: 'Hotel Paradise',
+    description: 'Un oasis de lujo y confort en el corazón de la ciudad. Disfrute de una experiencia única con nuestras instalaciones de primera clase.',
+    coverImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945',
+    profileImage: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32',
+    contact: {
+      address: 'Av. Principal 123, Ciudad',
+      phone: '+1 234 567 890',
+      email: 'contacto@hotelparadise.com'
+    },
+    services: ['Piscina', 'Spa', 'Restaurante', 'Gimnasio', 'Bar'],
+    socialMedia: {
+      facebook: 'https://facebook.com/hotelparadise',
+      instagram: 'https://instagram.com/hotelparadise',
+      twitter: 'https://twitter.com/hotelparadise'
+    },
+    amenities: ['wifi', 'pool', 'spa', 'restaurant', 'gym', 'bar']
+  };
+
+  // Rooms data
+  rooms = [
+    {
+      id: 1,
+      name: 'Habitación Deluxe',
+      description: 'Espaciosa habitación con vista al mar y balcón privado.',
+      image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304',
+      price: 150,
+      amenities: ['wifi', 'tv', 'ac', 'minibar'],
+      services: ['Desayuno incluido', 'Limpieza diaria', 'Servicio a la habitación']
+    },
+    {
+      id: 2,
+      name: 'Suite Ejecutiva',
+      description: 'Lujosa suite con sala de estar y jacuzzi privado.',
+      image: 'https://images.unsplash.com/photo-1631049552057-403cdb8f0658',
+      price: 250,
+      amenities: ['wifi', 'tv', 'ac', 'minibar', 'jacuzzi'],
+      services: ['Desayuno buffet', 'Limpieza diaria', 'Servicio a la habitación', 'Acceso a lounge']
+    }
+  ];
+
+  // Available options
+  allAmenities = [
+    { id: 'wifi', name: 'WiFi' },
+    { id: 'tv', name: 'TV' },
+    { id: 'ac', name: 'Aire Acondicionado' },
+    { id: 'minibar', name: 'Minibar' },
+    { id: 'jacuzzi', name: 'Jacuzzi' },
+    { id: 'safe', name: 'Caja Fuerte' },
+    { id: 'balcony', name: 'Balcón' },
+    { id: 'view', name: 'Vista al mar' }
+  ];
+
+  allServices = [
+    'Desayuno incluido',
+    'Desayuno buffet',
+    'Limpieza diaria',
+    'Servicio a la habitación',
+    'Acceso a lounge',
+    'Traslado al aeropuerto',
+    'Spa gratis',
+    'Late checkout'
+  ];
+
+  currentRoomIndex: number | 'new' | null = null;
 
   constructor(private fb: FormBuilder) {
+    this.initForms();
+  }
+
+  ngOnInit(): void {}
+
+  initForms(): void {
+    // Hotel form
     this.hotelForm = this.fb.group({
-      name: ['Hotel Ejemplo', Validators.required],
-      description: [
-        'Un hotel acogedor en el corazón de la ciudad que combina elegancia y comodidad. ' +
-        'Nuestro establecimiento ofrece servicios de primera clase, habitaciones espaciosas ' +
-        'y una gastronomía excepcional para hacer de su estadía una experiencia inolvidable.', 
-        Validators.required
-      ],
-      location: ['Ciudad, País', Validators.required],
-      instagram: ['hotel_ejemplo'],
-      facebook: ['hotel.ejemplo'],
-      rooms: this.fb.array([
-        this.createRoom(
-          'Habitación Standard', 
-          'Amplia habitación con cama doble, baño privado, TV pantalla plana, WiFi gratuito y escritorio de trabajo. Ideal para viajeros de negocios y parejas.', 
-          'Standard', 
-          100
-        ),
-        this.createRoom(
-          'Suite Premium', 
-          'Exclusiva suite con vista al mar, sala de estar independiente, baño de lujo con jacuzzi y amenities premium. Disfrute de nuestro servicio de habitaciones las 24 horas.', 
-          'Suite', 
-          250
-        )
-      ])
+      name: [this.hotelData.name],
+      description: [this.hotelData.description],
+      contact: this.fb.group({
+        address: [this.hotelData.contact.address],
+        phone: [this.hotelData.contact.phone],
+        email: [this.hotelData.contact.email]
+      }),
+      services: this.fb.array(this.hotelData.services),
+      socialMedia: this.fb.group({
+        facebook: [this.hotelData.socialMedia.facebook],
+        instagram: [this.hotelData.socialMedia.instagram],
+        twitter: [this.hotelData.socialMedia.twitter]
+      }),
+      amenities: this.fb.array(this.hotelData.amenities.map(a => this.fb.control(a)))
+    });
+
+    // Room form
+    this.roomForm = this.fb.group({
+      name: [''],
+      description: [''],
+      image: [''],
+      price: [0],
+      amenities: this.fb.array([]),
+      services: this.fb.array([])
     });
   }
 
-  ngOnInit() {
-    this.updateParallax();
+  // Hotel services getter
+  get hotelServices(): FormArray {
+    return this.hotelForm.get('services') as FormArray;
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    this.updateParallax();
+  // Hotel amenities getter
+  get hotelAmenities(): FormArray {
+    return this.hotelForm.get('amenities') as FormArray;
   }
 
-  updateParallax() {
-    this.parallaxOffset = window.pageYOffset;
+  // Room amenities getter
+  get roomAmenities(): FormArray {
+    return this.roomForm.get('amenities') as FormArray;
   }
 
-  createRoom(name: string, description: string, type: string, price: number): FormGroup {
-    return this.fb.group({
-      name: [name, Validators.required],
-      description: [description, Validators.required],
-      type: [type, Validators.required],
-      price: [price, [Validators.required, Validators.min(0)]],
-      image: ['./assets/default-room.jpg']
-    });
+  // Room services getter
+  get roomServices(): FormArray {
+    return this.roomForm.get('services') as FormArray;
   }
 
-  get rooms() {
-    return this.hotelForm.get('rooms') as FormArray;
+  // Add new service to hotel
+  addHotelService(): void {
+    this.hotelServices.push(this.fb.control(''));
   }
 
-  addRoom() {
-    this.rooms.push(this.createRoom('Nueva Habitación', 'Descripción de la habitación', 'Tipo', 0));
+  // Remove service from hotel
+  removeHotelService(index: number): void {
+    this.hotelServices.removeAt(index);
   }
 
-  removeRoom(index: number) {
-    if (this.rooms.length > 1) {
-      this.rooms.removeAt(index);
+  // Toggle hotel amenity
+  toggleHotelAmenity(amenity: string): void {
+    const amenities = this.hotelAmenities;
+    const index = amenities.controls.findIndex(c => c.value === amenity);
+    
+    if (index >= 0) {
+      amenities.removeAt(index);
+    } else {
+      amenities.push(this.fb.control(amenity));
     }
   }
 
-  toggleEdit() {
-    this.isEditing = !this.isEditing;
-    if (!this.isEditing) {
-      window.scrollTo(0, 0);
+  // Check if hotel has amenity
+  hotelHasAmenity(amenity: string): boolean {
+    return this.hotelData.amenities.includes(amenity);
+  }
+
+  // Toggle room amenity
+  toggleRoomAmenity(amenity: string): void {
+    const amenities = this.roomAmenities;
+    const index = amenities.controls.findIndex(c => c.value === amenity);
+    
+    if (index >= 0) {
+      amenities.removeAt(index);
+    } else {
+      amenities.push(this.fb.control(amenity));
     }
   }
 
-  onImageChange(event: any, type: 'profile' | 'background') {
-    const file = event.target.files[0];
-    if (file) {
+  // Check if room has amenity
+  roomHasAmenity(amenity: string): boolean {
+    if (this.currentRoomIndex === 'new') {
+      return this.roomAmenities.value.includes(amenity);
+    } else if (this.currentRoomIndex !== null) {
+      return this.rooms[this.currentRoomIndex].amenities.includes(amenity);
+    }
+    return false;
+  }
+
+  // Add new service to room
+  addRoomService(): void {
+    this.roomServices.push(this.fb.control(''));
+  }
+
+  // Remove service from room
+  removeRoomService(index: number): void {
+    this.roomServices.removeAt(index);
+  }
+
+  // Open room modal for editing or adding
+  openRoomModal(index: number | 'new'): void {
+    this.currentRoomIndex = index;
+    
+    if (index === 'new') {
+      this.roomForm.reset({
+        name: '',
+        description: '',
+        image: '',
+        price: 0,
+        amenities: [],
+        services: []
+      });
+    } else {
+      const room = this.rooms[index];
+      this.roomForm.patchValue({
+        name: room.name,
+        description: room.description,
+        image: room.image,
+        price: room.price
+      });
+      
+      // Clear and set amenities
+      this.roomAmenities.clear();
+      room.amenities.forEach(a => this.roomAmenities.push(this.fb.control(a)));
+      
+      // Clear and set services
+      this.roomServices.clear();
+      room.services.forEach(s => this.roomServices.push(this.fb.control(s)));
+    }
+    
+    this.showRoomModal = true;
+  }
+
+  // Save room changes
+  saveRoom(): void {
+    if (this.roomForm.invalid) return;
+    
+    const roomData = this.roomForm.value;
+    
+    if (this.currentRoomIndex === 'new') {
+      // Add new room
+      this.rooms.push({
+        id: this.rooms.length + 1,
+        name: roomData.name,
+        description: roomData.description,
+        image: roomData.image,
+        price: roomData.price,
+        amenities: roomData.amenities,
+        services: roomData.services
+      });
+    } else {
+      // Update existing room
+      if (this.currentRoomIndex !== null && typeof this.currentRoomIndex === 'number') {
+        this.rooms[this.currentRoomIndex] = {
+          ...this.rooms[this.currentRoomIndex],
+          name: roomData.name,
+          description: roomData.description,
+          image: roomData.image,
+          price: roomData.price,
+          amenities: roomData.amenities,
+          services: roomData.services
+        };
+      }
+    }
+    
+    this.closeRoomModal();
+  }
+
+  // Delete room
+  deleteRoom(index: number): void {
+    this.rooms.splice(index, 1);
+  }
+
+  // Close room modal
+  closeRoomModal(): void {
+    this.showRoomModal = false;
+    this.currentRoomIndex = null;
+  }
+
+  // Save hotel changes
+  saveHotel(): void {
+    if (this.hotelForm.invalid) return;
+    
+    this.hotelData = {
+      ...this.hotelData,
+      name: this.hotelForm.value.name,
+      description: this.hotelForm.value.description,
+      contact: {
+        address: this.hotelForm.value.contact.address,
+        phone: this.hotelForm.value.contact.phone,
+        email: this.hotelForm.value.contact.email
+      },
+      services: this.hotelForm.value.services,
+      socialMedia: {
+        facebook: this.hotelForm.value.socialMedia.facebook,
+        instagram: this.hotelForm.value.socialMedia.instagram,
+        twitter: this.hotelForm.value.socialMedia.twitter
+      },
+      amenities: this.hotelForm.value.amenities
+    };
+    
+    this.showHotelEditModal = false;
+  }
+
+  // Open image modal
+  openImageModal(type: 'cover' | 'profile'): void {
+    this.showImageModal = { type, show: true };
+  }
+
+  // Close image modal
+  closeImageModal(): void {
+    this.showImageModal = { type: 'cover', show: false };
+  }
+
+  // Handle image upload
+  onImageUpload(event: Event, type: 'cover' | 'profile'): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
       const reader = new FileReader();
-      reader.onload = () => {
-        if (type === 'profile') {
-          this.profileImage = reader.result as string;
+      reader.onload = (e: any) => {
+        if (type === 'cover') {
+          this.hotelData.coverImage = e.target.result;
         } else {
-          this.backgroundImage = reader.result as string;
+          this.hotelData.profileImage = e.target.result;
         }
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(input.files[0]);
     }
   }
 
-  onRoomImageChange(event: any, index: number) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.rooms.at(index).get('image')?.setValue(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
+  // Get amenity name by id
+  getAmenityName(id: string): string {
+    const amenity = this.allAmenities.find(a => a.id === id);
+    return amenity ? amenity.name : id;
   }
-
-  saveChanges() {
-    if (this.hotelForm.valid) {
-      this.isEditing = false;
-      console.log('Datos actualizados:', this.hotelForm.value);
-      // Here you would typically send the data to your backend
-    } else {
-      this.markFormGroupTouched(this.hotelForm);
-    }
-  }
-
-  private markFormGroupTouched(formGroup: FormGroup | FormArray) {
-    Object.values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-      if (control instanceof FormGroup || control instanceof FormArray) {
-        this.markFormGroupTouched(control);
-      }
-    });
-  }}
+}

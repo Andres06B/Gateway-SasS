@@ -1,0 +1,88 @@
+/* Base styles */
+:host {
+    display: block;
+    background-color: #f8fafc;
+    min-height: 100vh;
+  }
+  
+  /* Modal styles */
+  .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-container {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  /* Image upload styles */
+  .image-upload-label {
+    transition: all 0.3s ease;
+  }
+  
+  .image-upload-label:hover {
+    border-color: #3b82f6;
+    background-color: #f8fafc;
+  }
+  
+  /* Room card styles */
+  .room-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .room-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Amenity chip styles */
+  .amenity-chip {
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Form input styles */
+  input, textarea, select {
+    transition: border-color 0.2s ease;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2563eb;
+  }
+  
+  .btn-secondary {
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #e2e8f0;
+  }
+  
+  /* Scrollbar styles for modal */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }

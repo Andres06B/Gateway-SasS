@@ -1,500 +1,409 @@
 <app-layout>
-    <div class="min-h-screen bg-gray-50">
-      <!-- View Mode -->
-      <div *ngIf="!isEditing" class="relative">
-        <!-- Hero section with parallax effect -->
-        <div class="relative h-screen max-h-[80vh] bg-gray-900 overflow-hidden">
-          <div class="absolute inset-0 bg-black/30 z-10"></div>
-          <img [src]="backgroundImage" alt="Hotel" 
-               class="w-full h-full object-cover transform scale-100 md:scale-110 transition-all duration-1000 ease-in-out"
-               [style.objectPosition]="'center ' + (parallaxOffset * 0.3) + 'px'">
-          
-          <div class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center text-white">
-            <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full border-4 border-white/80 overflow-hidden bg-white shadow-xl">
-              <img [src]="profileImage" alt="Hotel Logo" class="w-full h-full object-cover">
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-2 drop-shadow-lg">{{hotelForm.get('name')?.value}}</h1>
-            <div class="flex items-center justify-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-              </svg>
-              <p class="text-xl md:text-2xl font-light">{{hotelForm.get('location')?.value}}</p>
-            </div>
-          </div>
-          
-          <div class="absolute bottom-8 left-0 right-0 z-20 flex justify-center">
-            <a href="#about" class="animate-bounce">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-  
-        <!-- About Section -->
-        <section id="about" class="container mx-auto px-4 py-16 max-w-5xl scroll-mt-16">
-          <div class="bg-white rounded-xl shadow-xl overflow-hidden">
-            <div class="p-8 md:p-12">
-              <h2 class="text-3xl font-bold text-gray-800 mb-6 relative inline-block">
-                <span class="relative z-10">Sobre Nosotros</span>
-                <span class="absolute bottom-0 left-0 w-full h-2 bg-blue-100 z-0 opacity-70" style="height: 8px; bottom: 4px;"></span>
-              </h2>
-              <p class="text-gray-600 leading-relaxed text-lg">{{hotelForm.get('description')?.value}}</p>
-            </div>
-          </div>
-        </section>
-  
-        <!-- Rooms Section -->
-        <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
-          <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-              <h2 class="text-4xl font-bold text-gray-800 mb-4">Nuestras Habitaciones</h2>
-              <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div *ngFor="let room of rooms.controls; let i = index" 
-                   class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div class="h-64 bg-gray-200 overflow-hidden relative">
-                  <img [src]="room.get('image')?.value" alt="Habitación" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                  <div class="absolute top-4 right-4">
-                    <span class="bg-white/90 text-blue-800 text-xs font-bold px-3 py-1 rounded-full shadow">
-                      {{room.get('type')?.value}}
-                    </span>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-gray-800 mb-2">{{room.get('name')?.value}}</h3>
-                  <p class="text-gray-600 mb-4">{{room.get('description')?.value}}</p>
-                  <div class="flex justify-between items-center border-t pt-4">
-                    <div>
-                      <span class="text-2xl font-bold text-gray-900">${{room.get('price')?.value | number}}</span>
-                      <span class="text-gray-500 text-sm">/noche</span>
-                    </div>
-                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                      Reservar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-  
-        <!-- Amenities Section -->
-        <section class="py-16 bg-white">
-          <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-              <h2 class="text-4xl font-bold text-gray-800 mb-4">Servicios y Amenidades</h2>
-              <p class="text-gray-600 max-w-2xl mx-auto">Disfrute de nuestros exclusivos servicios diseñados para su comodidad</p>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div class="text-center p-6 rounded-xl hover:bg-gray-50 transition">
-                <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 class="font-semibold text-gray-800 mb-2">WiFi Gratis</h3>
-                <p class="text-gray-600 text-sm">En todas las áreas</p>
-              </div>
-              
-              <div class="text-center p-6 rounded-xl hover:bg-gray-50 transition">
-                <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h3 class="font-semibold text-gray-800 mb-2">Sala de Eventos</h3>
-                <p class="text-gray-600 text-sm">Para reuniones y conferencias</p>
-              </div>
-              
-              <div class="text-center p-6 rounded-xl hover:bg-gray-50 transition">
-                <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
-                  </svg>
-                </div>
-                <h3 class="font-semibold text-gray-800 mb-2">Restaurante</h3>
-                <p class="text-gray-600 text-sm">Cocina internacional</p>
-              </div>
-              
-              <div class="text-center p-6 rounded-xl hover:bg-gray-50 transition">
-                <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                  </svg>
-                </div>
-                <h3 class="font-semibold text-gray-800 mb-2">24/7 Recepción</h3>
-                <p class="text-gray-600 text-sm">Servicio permanente</p>
-              </div>
-            </div>
-          </div>
-        </section>
-  
-        <!-- Testimonials Section -->
-        <section class="py-16 bg-gray-50">
-          <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-              <h2 class="text-4xl font-bold text-gray-800 mb-4">Lo que dicen nuestros huéspedes</h2>
-              <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div class="bg-white p-8 rounded-xl shadow-md">
-                <div class="flex items-center mb-4">
-                  <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden mr-4">
-                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Guest" class="w-full h-full object-cover">
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-gray-800">María González</h4>
-                    <div class="flex text-yellow-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-gray-600 italic">"Excelente servicio y habitaciones muy cómodas. La atención del personal fue impecable y la ubicación perfecta."</p>
-              </div>
-              
-              <div class="bg-white p-8 rounded-xl shadow-md">
-                <div class="flex items-center mb-4">
-                  <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden mr-4">
-                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Guest" class="w-full h-full object-cover">
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-gray-800">Carlos Martínez</h4>
-                    <div class="flex text-yellow-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-gray-600 italic">"El desayuno buffet era increíble con muchas opciones. Volveré seguro en mi próximo viaje de negocios."</p>
-              </div>
-              
-              <div class="bg-white p-8 rounded-xl shadow-md">
-                <div class="flex items-center mb-4">
-                  <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden mr-4">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Guest" class="w-full h-full object-cover">
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-gray-800">Laura Fernández</h4>
-                    <div class="flex text-yellow-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-gray-600 italic">"La suite premium tenía una vista espectacular. El spa del hotel es maravilloso, perfecto para relajarse."</p>
-              </div>
-            </div>
-          </div>
-        </section>
-  
-        <!-- Contact Section -->
-        <section class="py-16 bg-gray-800 text-white">
-          <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 class="text-3xl font-bold mb-6">Contáctenos</h2>
-                <div class="space-y-4">
-                  <div class="flex items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-4 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <p>{{hotelForm.get('location')?.value}}</p>
-                  </div>
-                  <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <p>+1 234 567 890</p>
-                  </div>
-                  <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <p>reservashotelejemplo.com</p>
-                  </div>
-                </div>
-                
-                <div class="mt-8 flex space-x-4">
-                  <a *ngIf="hotelForm.get('instagram')?.value" [href]="'https://instagram.com/' + hotelForm.get('instagram')?.value" target="_blank" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center transition">
-                    <i class="fab fa-instagram text-lg"></i>
-                  </a>
-                  <a *ngIf="hotelForm.get('facebook')?.value" [href]="'https://facebook.com/' + hotelForm.get('facebook')?.value" target="_blank" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center transition">
-                    <i class="fab fa-facebook-f text-lg"></i>
-                  </a>
-                  <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center transition">
-                    <i class="fab fa-twitter text-lg"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <div class="bg-white rounded-xl shadow-xl p-6 text-gray-800">
-                <h3 class="text-xl font-bold mb-4">Envíenos un mensaje</h3>
-                <form class="space-y-4">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                    <input type="text" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input type="email" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
-                    <textarea rows="4" class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
-                  </div>
-                  <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition font-medium">
-                    Enviar Mensaje
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-  
-        <!-- Footer -->
-        <footer class="bg-gray-900 text-white py-8">
-          <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-              <div class="mb-4 md:mb-0">
-                <h3 class="text-xl font-bold">{{hotelForm.get('name')?.value}}</h3>
-                <p class="text-gray-400 text-sm">Tu lugar perfecto para descansar</p>
-              </div>
-              <div class="flex space-x-6">
-                <a href="#" class="text-gray-400 hover:text-white transition">Inicio</a>
-                <a href="#about" class="text-gray-400 hover:text-white transition">Nosotros</a>
-                <a href="#" class="text-gray-400 hover:text-white transition">Habitaciones</a>
-                <a href="#" class="text-gray-400 hover:text-white transition">Contacto</a>
-              </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-              <p>© {{currentYear}} {{hotelForm.get('name')?.value}}. Todos los derechos reservados.</p>
-            </div>
-          </div>
-        </footer>
-  
-        <!-- Edit Button -->
-        <button (click)="toggleEdit()" 
-                class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-xl hover:bg-blue-700 transition transform hover:scale-110 z-50">
-          <i class="fas fa-edit text-xl"></i>
+
+<div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
+  <!-- Cover Image -->
+  <div class="relative h-64 bg-gray-200">
+    <img [src]="hotelData.coverImage" alt="Hotel Cover" class="w-full h-full object-cover">
+    <button (click)="openImageModal('cover')" 
+            class="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition">
+      <i data-lucide="camera" class="w-5 h-5"></i>
+    </button>
+  </div>
+
+  <!-- Profile Image and Basic Info -->
+  <div class="px-6 pt-16 pb-6 relative">
+    <!-- Profile Image -->
+    <div class="absolute -top-16 left-1/2 transform -translate-x-1/2">
+      <div class="relative">
+        <img [src]="hotelData.profileImage" 
+             alt="Hotel Logo" 
+             class="w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg">
+        <button (click)="openImageModal('profile')" 
+                class="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition">
+          <i data-lucide="camera" class="w-4 h-4"></i>
         </button>
       </div>
-  
-      <!-- Edit Mode -->
-      <div *ngIf="isEditing" class="container mx-auto px-4 py-8 max-w-6xl">
-        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-          <!-- Edit Header -->
-          <div class="bg-gray-800 text-white px-6 py-4 flex justify-between items-center">
-            <h2 class="text-2xl font-bold">Editar Página del Hotel</h2>
-            <div class="space-x-3">
-              <button (click)="toggleEdit()" 
-                      class="px-4 py-2 border border-white rounded-lg hover:bg-gray-700 transition">
-                Cancelar
-              </button>
-              <button (click)="saveChanges()" 
-                      class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition font-medium">
-                Guardar Cambios
-              </button>
+    </div>
+
+    <!-- Hotel Name and Edit Button -->
+    <div class="text-center mt-8">
+      <div class="flex justify-center items-center gap-3">
+        <h1 class="text-3xl font-bold text-gray-800">{{ hotelData.name }}</h1>
+        <button (click)="showHotelEditModal = true" 
+                class="text-gray-500 hover:text-blue-600 transition">
+          <i data-lucide="edit-2" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <p class="mt-2 text-gray-600 max-w-2xl mx-auto">{{ hotelData.description }}</p>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="mt-6 bg-gray-50 rounded-lg p-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="flex items-center gap-3">
+          <i data-lucide="map-pin" class="w-5 h-5 text-gray-600"></i>
+          <span>{{ hotelData.contact.address }}</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i data-lucide="phone" class="w-5 h-5 text-gray-600"></i>
+          <span>{{ hotelData.contact.phone }}</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i data-lucide="mail" class="w-5 h-5 text-gray-600"></i>
+          <span>{{ hotelData.contact.email }}</span>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="mt-6 pt-6 border-t border-gray-200">
+        <h3 class="font-semibold text-gray-700 mb-3">Redes Sociales</h3>
+        <div class="flex gap-4">
+          <a *ngIf="hotelData.socialMedia.facebook" [href]="hotelData.socialMedia.facebook" target="_blank" 
+             class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition">
+            <i data-lucide="facebook" class="w-5 h-5"></i>
+          </a>
+          <a *ngIf="hotelData.socialMedia.instagram" [href]="hotelData.socialMedia.instagram" target="_blank" 
+             class="bg-pink-600 text-white p-2 rounded-full hover:bg-pink-700 transition">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+          </a>
+          <a *ngIf="hotelData.socialMedia.twitter" [href]="hotelData.socialMedia.twitter" target="_blank" 
+             class="bg-blue-400 text-white p-2 rounded-full hover:bg-blue-500 transition">
+            <i data-lucide="twitter" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotel Services -->
+    <div class="mt-6">
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Servicios del Hotel</h3>
+      <div class="flex flex-wrap gap-2">
+        <div *ngFor="let service of hotelData.services" 
+             class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+          {{ service }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotel Amenities -->
+    <div class="mt-6">
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Amenidades</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div *ngFor="let amenity of hotelData.amenities" 
+             class="flex items-center gap-2">
+          <i [attr.data-lucide]="amenity" class="w-5 h-5 text-gray-600"></i>
+          <span>{{ getAmenityName(amenity) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rooms Section -->
+    <div class="mt-8">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Habitaciones</h2>
+        <button (click)="openRoomModal('new')" 
+                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
+          <i data-lucide="plus" class="w-4 h-4"></i>
+          <span>Agregar Habitación</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Room Cards -->
+        <div *ngFor="let room of rooms; let i = index" 
+             class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+          <div class="relative">
+            <img [src]="room.image" [alt]="room.name" class="w-full h-48 object-cover">
+            <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
+              ${{ room.price }} / noche
             </div>
           </div>
-  
-          <!-- Edit Content -->
-          <div class="p-6 space-y-8">
-            <!-- Images -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-3">Logo del Hotel</label>
-                <div class="flex items-center space-x-6">
-                  <div class="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200 border-2 border-dashed border-gray-300">
-                    <img [src]="profileImage" alt="Logo" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition">
-                      <span class="text-white text-xs font-medium">Previsualización</span>
-                    </div>
-                  </div>
-                  <div>
-                    <label class="cursor-pointer inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      Cambiar
-                      <input type="file" (change)="onImageChange($event, 'profile')" class="hidden" accept="image/*">
-                    </label>
-                    <p class="text-xs text-gray-500 mt-2">Recomendado: 400×400 px</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-3">Imagen de Fondo</label>
-                <div class="h-48 bg-gray-200 rounded-xl overflow-hidden relative border-2 border-dashed border-gray-300">
-                  <img [src]="backgroundImage" alt="Fondo" class="w-full h-full object-cover">
-                  <label class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center cursor-pointer hover:bg-black/40 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span class="px-4 py-2 bg-white rounded-md text-gray-800 font-medium">Cambiar imagen</span>
-                    <input type="file" (change)="onImageChange($event, 'background')" class="hidden" accept="image/*">
-                  </label>
-                </div>
-                <p class="text-xs text-gray-500 mt-2">Recomendado: 1920×1080 px</p>
-              </div>
-            </div>
-  
-            <!-- Basic Info -->
-            <div class="space-y-6">
-              <h3 class="text-xl font-medium text-gray-800 border-b pb-2">Información Básica</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Hotel*</label>
-                  <input type="text" formControlName="name" 
-                         class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Ubicación*</label>
-                  <input type="text" formControlName="location" 
-                         class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div class="md:col-span-2">
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Descripción*</label>
-                  <textarea formControlName="description" rows="4" 
-                            class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Social Media -->
-            <div class="space-y-6">
-              <h3 class="text-xl font-medium text-gray-800 border-b pb-2">Redes Sociales</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Instagram</label>
-                  <div class="flex">
-                    <span class="inline-flex items-center px-3 bg-gray-100 border border-r-0 rounded-l-md text-gray-500"></span>
-                    <input type="text" formControlName="instagram" 
-                           class="flex-1 border rounded-r-md px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Facebook</label>
-                  <div class="flex">
-                    <span class="inline-flex items-center px-3 bg-gray-100 border border-r-0 rounded-l-md text-gray-500">facebook.com/</span>
-                    <input type="text" formControlName="facebook" 
-                           class="flex-1 border rounded-r-md px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Rooms -->
-            <div class="space-y-6">
-              <div class="flex justify-between items-center border-b pb-2">
-                <h3 class="text-xl font-medium text-gray-800">Habitaciones</h3>
-                <button type="button" (click)="addRoom()" 
-                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm">
-                  <i class="fas fa-plus mr-2"></i>Añadir Habitación
+          <div class="p-4">
+            <div class="flex justify-between items-start">
+              <h3 class="text-lg font-semibold">{{ room.name }}</h3>
+              <div class="flex gap-2">
+                <button (click)="openRoomModal(i)" class="text-blue-600 hover:text-blue-800">
+                  <i data-lucide="edit" class="w-4 h-4"></i>
+                </button>
+                <button (click)="deleteRoom(i)" class="text-red-600 hover:text-red-800">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
               </div>
-              
-              <div class="space-y-6">
-                <div *ngFor="let room of rooms.controls; let i = index" class="border rounded-xl p-6 bg-gray-50">
-                  <div class="flex justify-between items-center mb-4">
-                    <h4 class="font-medium text-gray-800">Habitación #{{i + 1}}</h4>
-                    <button type="button" (click)="removeRoom(i)" 
-                            class="text-red-500 hover:text-red-700 transition">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </div>
-                  
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">Imagen</label>
-                      <div class="h-40 bg-gray-200 rounded-lg overflow-hidden relative">
-                        <img [src]="room.get('image')?.value" alt="Habitación" class="w-full h-full object-cover">
-                        <label class="absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer hover:bg-black/40 transition">
-                          <span class="px-3 py-1 bg-white rounded-md text-gray-800 text-sm">Cambiar imagen</span>
-                          <input type="file" (change)="onRoomImageChange($event, i)" class="hidden" accept="image/*">
-                        </label>
-                      </div>
-                    </div>
-                    
-                    <div class="space-y-4">
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre*</label>
-                        <input type="text" formControlName="name" 
-                               class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                      </div>
-                      <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Tipo*</label>
-                        <input type="text" formControlName="type" 
-                               class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">Precio*</label>
-                      <div class="relative">
-                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
-                        <input type="number" formControlName="price" 
-                               class="w-full pl-8 pr-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                      </div>
-                    </div>
-                    
-                    <div class="md:col-span-2">
-                      <label class="block text-sm font-medium text-gray-700 mb-1">Descripción*</label>
-                      <textarea formControlName="description" rows="3" 
-                                class="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
-                    </div>
-                  </div>
-                </div>
+            </div>
+            <p class="text-gray-600 mt-2 text-sm">{{ room.description }}</p>
+            
+            <!-- Room Amenities -->
+            <div class="mt-3">
+              <h4 class="font-medium text-sm mb-1">Amenidades:</h4>
+              <div class="flex flex-wrap gap-1">
+                <span *ngFor="let amenity of room.amenities" 
+                      class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i [attr.data-lucide]="amenity" class="w-3 h-3"></i>
+                  {{ getAmenityName(amenity) }}
+                </span>
               </div>
+            </div>
+            
+            <!-- Room Services -->
+            <div class="mt-3">
+              <h4 class="font-medium text-sm mb-1">Servicios incluidos:</h4>
+              <ul class="list-disc list-inside text-sm text-gray-600">
+                <li *ngFor="let service of room.services">{{ service }}</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </app-layout>
+  </div>
+</div>
+
+<!-- Hotel Edit Modal -->
+<div *ngIf="showHotelEditModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">Editar Información del Hotel</h3>
+        <button (click)="showHotelEditModal = false" class="text-gray-500 hover:text-gray-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <form [formGroup]="hotelForm" (ngSubmit)="saveHotel()" class="space-y-4">
+        <!-- Basic Info -->
+        <div class="grid grid-cols-1 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Hotel</label>
+            <input formControlName="name" type="text" class="w-full p-2 border rounded">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+            <textarea formControlName="description" rows="3" class="w-full p-2 border rounded"></textarea>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
+            <input formControlName="address" type="text" class="w-full p-2 border rounded">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+            <input formControlName="phone" type="tel" class="w-full p-2 border rounded">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input formControlName="email" type="email" class="w-full p-2 border rounded">
+          </div>
+        </div>
+        
+        <!-- Social Media -->
+        <div class="mt-6">
+          <h4 class="text-lg font-medium mb-2">Redes Sociales</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Facebook</label>
+              <input formControlName="facebook" type="url" class="w-full p-2 border rounded">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Instagram</label>
+              <input formControlName="instagram" type="url" class="w-full p-2 border rounded">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Twitter</label>
+              <input formControlName="twitter" type="url" class="w-full p-2 border rounded">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hotel Services -->
+        <div class="mt-6">
+          <div class="flex justify-between items-center mb-2">
+            <h4 class="text-lg font-medium">Servicios del Hotel</h4>
+            <button type="button" (click)="addHotelService()" class="text-blue-600 hover:text-blue-800 text-sm flex items-center gap-1">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span>Agregar</span>
+            </button>
+          </div>
+          
+          <div formArrayName="services" class="space-y-2">
+            <div *ngFor="let service of hotelServices.controls; let i = index" class="flex items-center gap-2">
+              <input [formControlName]="i" type="text" class="flex-1 p-2 border rounded">
+              <button type="button" (click)="removeHotelService(i)" class="text-red-600 hover:text-red-800">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hotel Amenities -->
+        <div class="mt-6">
+          <h4 class="text-lg font-medium mb-2">Amenidades</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div *ngFor="let amenity of allAmenities" class="flex items-center gap-2">
+              <input type="checkbox" 
+                     [id]="'amenity-'+amenity.id"
+                     [checked]="hotelHasAmenity(amenity.id)"
+                     (change)="toggleHotelAmenity(amenity.id)"
+                     class="rounded text-blue-600">
+              <label [for]="'amenity-'+amenity.id" class="text-sm">{{ amenity.name }}</label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Form Actions -->
+        <div class="flex justify-end gap-3 pt-6">
+          <button type="button" (click)="showHotelEditModal = false" 
+                  class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
+            Cancelar
+          </button>
+          <button type="submit" 
+                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            Guardar Cambios
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Room Edit Modal -->
+<div *ngIf="showRoomModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">{{ currentRoomIndex === 'new' ? 'Agregar' : 'Editar' }} Habitación</h3>
+        <button (click)="closeRoomModal()" class="text-gray-500 hover:text-gray-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <form [formGroup]="roomForm" (ngSubmit)="saveRoom()" class="space-y-4">
+        <!-- Basic Info -->
+        <div class="grid grid-cols-1 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Habitación</label>
+            <input formControlName="name" type="text" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Imagen URL</label>
+            <input formControlName="image" type="url" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Precio por noche</label>
+            <input formControlName="price" type="number" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+            <textarea formControlName="description" rows="3" class="w-full p-2 border rounded" required></textarea>
+          </div>
+        </div>
+        
+        <!-- Room Amenities -->
+        <div class="mt-6">
+          <h4 class="text-lg font-medium mb-2">Amenidades</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div *ngFor="let amenity of allAmenities" class="flex items-center gap-2">
+              <input type="checkbox" 
+                     [id]="'room-amenity-'+amenity.id"
+                     [checked]="roomHasAmenity(amenity.id)"
+                     (change)="toggleRoomAmenity(amenity.id)"
+                     class="rounded text-blue-600">
+              <label [for]="'room-amenity-'+amenity.id" class="text-sm">{{ amenity.name }}</label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Room Services -->
+        <div class="mt-6">
+          <div class="flex justify-between items-center mb-2">
+            <h4 class="text-lg font-medium">Servicios incluidos</h4>
+            <button type="button" (click)="addRoomService()" class="text-blue-600 hover:text-blue-800 text-sm flex items-center gap-1">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span>Agregar</span>
+            </button>
+          </div>
+          
+          <div formArrayName="services" class="space-y-2">
+            <div *ngFor="let service of roomServices.controls; let i = index" class="flex items-center gap-2">
+              <input [formControlName]="i" type="text" class="flex-1 p-2 border rounded">
+              <button type="button" (click)="removeRoomService(i)" class="text-red-600 hover:text-red-800">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Form Actions -->
+        <div class="flex justify-end gap-3 pt-6">
+          <button type="button" (click)="closeRoomModal()" 
+                  class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
+            Cancelar
+          </button>
+          <button type="submit" 
+                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            {{ currentRoomIndex === 'new' ? 'Agregar' : 'Guardar' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Image Upload Modal -->
+<div *ngIf="showImageModal.show" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">Cambiar Imagen de {{ showImageModal.type === 'cover' ? 'Portada' : 'Perfil' }}</h3>
+        <button (click)="closeImageModal()" class="text-gray-500 hover:text-gray-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <div class="space-y-4">
+        <!-- Current Image Preview -->
+        <div class="flex justify-center">
+          <img [src]="showImageModal.type === 'cover' ? hotelData.coverImage : hotelData.profileImage" 
+               [alt]="showImageModal.type === 'cover' ? 'Cover' : 'Profile'" 
+               class="max-h-40 rounded-lg border">
+        </div>
+        
+        <!-- Upload Options -->
+        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer">
+          <input type="file" accept="image/*" (change)="onImageUpload($event, showImageModal.type)" 
+                 class="hidden" id="imageUpload">
+          <label for="imageUpload" class="block cursor-pointer">
+            <i data-lucide="upload-cloud" class="w-10 h-10 mx-auto text-gray-400"></i>
+            <p class="mt-2 font-medium">Haz clic para subir una imagen</p>
+            <p class="text-sm text-gray-500 mt-1">o arrastra y suelta la imagen aquí</p>
+          </label>
+        </div>
+        
+        <!-- Or URL Input -->
+        <div class="text-center text-gray-500">o</div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Usar URL de imagen</label>
+          <input type="url" 
+                 class="w-full p-2 border rounded">
+        </div>
+        
+        <!-- Modal Actions -->
+        <div class="flex justify-end gap-3 pt-4">
+          <button (click)="closeImageModal()" 
+                  class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
+            Cancelar
+          </button>
+          <button (click)="closeImageModal()" 
+                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</app-layout>
