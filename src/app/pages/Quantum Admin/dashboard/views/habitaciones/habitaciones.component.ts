@@ -1,30 +1,32 @@
 import { Component } from '@angular/core';
 import { rooms } from '../interfaces/rooms.interface';
 import { RoomsService } from '../../../../../service/rooms.service';
+
 @Component({
   selector: 'app-habitaciones',
   standalone: false,
   templateUrl: './habitaciones.component.html',
-  styleUrl: './habitaciones.component.css'
+  styleUrl: './habitaciones.component.css',
 })
 export class HabitacionesComponent {
-  Rooms: rooms[] = []
-  filteredRooms: rooms[] = []
-  totalRooms: number = 0
-  freeRooms: number = 0
-  busyRooms: number = 0
-  bookedRooms: number = 0
-  isModalOpen: boolean = false
-  newRoom: Partial<rooms> = {}
+  Rooms: rooms[] = [];
+  filteredRooms: rooms[] = [];
+  totalRooms: number = 0;
+  freeRooms: number = 0;
+  busyRooms: number = 0;
+  bookedRooms: number = 0;
+  isModalOpen: boolean = false;
+  isModalDetailsOpen: boolean = false;
+  isEditing: boolean = false;
+  selectedRoom: any = null;
+  newRoom: Partial<rooms> = {};
   selectedFile: File | null = null;
   AdminId = Number(localStorage.getItem('token'));
 
-  constructor(
-    private roomServices: RoomsService
-  ){}
-  
-  ngOnInit(){
-      this.findAll();
+  constructor(private roomServices: RoomsService) {}
+
+  ngOnInit() {
+    this.findAll();
   }
 
   /*
@@ -45,34 +47,34 @@ export class HabitacionesComponent {
     })
   }
   */
-  
-  findAll(){
+
+  findAll() {
     this.roomServices.getRooms().subscribe({
       next: (rooms) => {
-        this.Rooms = rooms
-        this.filteredRooms = [...this.Rooms]
-        this.calculateRoomStats()
+        this.Rooms = rooms;
+        this.filteredRooms = [...this.Rooms];
+        this.calculateRoomStats();
       },
-      error: err => {
+      error: (err) => {
         console.error('Error al obtener las habitaciones:', err);
-        this.Rooms = []
-        this.filteredRooms = []
-        this.resetRoomStats()
-        alert('Error al obtener las habitaciones')
-      }
-    })
+        this.Rooms = [];
+        this.filteredRooms = [];
+        this.resetRoomStats();
+        alert('Error al obtener las habitaciones');
+      },
+    });
   }
-  
+
   findByName(name: string): void {
     this.roomServices.getRoomByName(name).subscribe({
       next: (room) => {
         this.filteredRooms = [room];
-        console.log(this.filteredRooms)
+        console.log(this.filteredRooms);
       },
       error: (err) => {
         console.error('Error al obtener la habitación:', err);
         this.filteredRooms = [];
-      }
+      },
     });
   }
 
@@ -107,15 +109,17 @@ export class HabitacionesComponent {
       error: (err) => {
         console.error('Error al filtrar habitaciones por estado:', err);
         this.filteredRooms = [];
-      }
+      },
     });
   }
 
   calculateRoomStats(): void {
     this.totalRooms = this.Rooms.length;
-    this.freeRooms = this.Rooms.filter(room => room.status === 'free').length;
-    this.busyRooms = this.Rooms.filter(room => room.status === 'busy').length;
-    this.bookedRooms = this.Rooms.filter(room => room.status === 'booked').length;
+    this.freeRooms = this.Rooms.filter((room) => room.status === 'free').length;
+    this.busyRooms = this.Rooms.filter((room) => room.status === 'busy').length;
+    this.bookedRooms = this.Rooms.filter(
+      (room) => room.status === 'booked'
+    ).length;
   }
 
   resetRoomStats(): void {
@@ -127,12 +131,12 @@ export class HabitacionesComponent {
 
   openModal(): void {
     this.isModalOpen = true;
-    console.log('Abriendo modal de creación de habitación')
+    console.log('Abriendo modal de creación de habitación');
   }
 
   closeModal(): void {
     this.isModalOpen = false;
-    this.newRoom = {}
+    this.newRoom = {};
   }
 
   onFileSelected(event: Event): void {
@@ -145,26 +149,117 @@ export class HabitacionesComponent {
 
   createRoom(): void {
     const formData = new FormData();
-  
+
     formData.append('name', this.newRoom.name || '');
     formData.append('description', this.newRoom.description || '');
     formData.append('price', this.newRoom.price?.toString() || '');
     formData.append('ability', this.newRoom.ability?.toString() || '');
-  
+
     if (this.selectedFile) {
       formData.append('image', this.selectedFile);
     }
-  
+
     this.roomServices.createRoom(formData).subscribe({
       next: (room) => {
         console.log('Habitación creada:', room);
         this.closeModal();
-        this.findAll(); 
+        this.findAll();
       },
       error: (err) => {
         console.error('Error al crear la habitación:', err);
-      }
+      },
     });
   }
-    
+
+  showDeatils(roomId: number): void {
+    this.roomServices.getRoomById(roomId).subscribe({
+      next: (room) => {
+        this.selectedRoom = room;
+        console.log(this.selectedRoom);
+        if (
+          this.selectedRoom.image &&
+          !this.selectedRoom.image.startsWith('http')
+        ) {
+          const baseUrl = 'http://localhost:3000/uploads/rooms';
+          this.selectedRoom.image = `${baseUrl}/${this.selectedRoom.image}`;
+        }
+        this.openDetaislModal();
+      },
+      error: (err) => {
+        console.error('Error al obtener la habitación:', err);
+        this.selectedRoom = null;
+      },
+    });
+  }
+
+  openDetaislModal(): void {
+    this.isModalDetailsOpen = true;
+    console.log('Abriendo modal de detalles de habitación');
+  }
+
+  closeDetaislModal(): void {
+    this.isModalDetailsOpen = false;
+    this.selectedRoom = null;
+  }
+
+  editRoom(): void {
+    if (!this.selectedRoom) {
+      console.error('No hay habitación seleccionada para editar');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('name', this.selectedRoom.name || '');
+    formData.append('description', this.selectedRoom.description || '');
+    formData.append('price', this.selectedRoom.price?.toString() || '');
+    formData.append('ability', this.selectedRoom.ability?.toString() || '');
+
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
+
+    this.roomServices.updateRoom(this.selectedRoom.id, formData).subscribe({
+      next: (udpdateRoom) => {
+        this.Rooms = this.Rooms.map((room) =>
+          room.id === udpdateRoom.id ? udpdateRoom : room
+        );
+        this.filteredRooms = this.Rooms;
+        console.log('Habitación actualizada:', udpdateRoom);
+        this.closeEditModal();
+        this.findAll();
+      },
+      error: (err) => {
+        console.error('Error al actualizar la habitación:', err);
+        this.filteredRooms = this.Rooms;
+      },
+    });
+  }
+
+  openEditModal(roomId: number): void {
+    this.roomServices.getRoomById(roomId).subscribe({
+      next: (room) => {
+        this.selectedRoom = room;
+
+        if (
+          this.selectedRoom.image &&
+          !this.selectedRoom.image.startsWith('http')
+        ) {
+          const baseUrl = 'http://localhost:3000/uploads/rooms';
+          this.selectedRoom.image = `${baseUrl}/${this.selectedRoom.image}`;
+        }
+
+        this.isEditing = true;
+        console.log('Datos de la habitación cargados para edición:', room);
+      },
+      error: (err) => {
+        console.error('Error al obtener los datos de la habitación:', err);
+      },
+    });
+  }
+
+  closeEditModal(): void {
+    this.isEditing = false;
+    this.selectedRoom = null;
+  }
+
 }
