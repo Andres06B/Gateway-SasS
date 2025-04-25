@@ -1,17 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReservationPredictionDTO, WekaResponseDTO } from '../interfaces_weka/wekaResponseDTO';
+import { WekaResponseDTO } from '../interfaces_weka/wekaResponseDTO';
 import { Observable } from 'rxjs';
+import { WeekDay } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WekaService {
-  private apiUrl = 'http://localhost:8080/api/prediccion/predict'; 
+  private apiUrl = 'http://localhost:3000/booking'; 
 
   constructor(private http: HttpClient) {}
 
-  predict(input: ReservationPredictionDTO ): Observable<WekaResponseDTO> {
-    return this.http.post<WekaResponseDTO>(this.apiUrl, input);
+  getPredictions(hotelId: number): Observable<WekaResponseDTO[]>{
+    const url = `${this.apiUrl}/${hotelId}/insights`; 
+    return this.http.get<WekaResponseDTO[]>(url);
   }
 }
