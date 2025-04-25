@@ -8,16 +8,15 @@ import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
   standalone: false,
 })
 export class PaginaWebComponent implements OnInit {
-  // Modals control
+
   showRoomModal: boolean = false;
   showHotelEditModal: boolean = false;
   showImageModal: { type: 'cover' | 'profile', show: boolean } = { type: 'cover', show: false };
   
-  // Form groups
+
   hotelForm!: FormGroup;
   roomForm!: FormGroup;
-  
-  // Hotel data
+
   hotelData = {
     name: 'Hotel Paradise',
     description: 'Un oasis de lujo y confort en el corazón de la ciudad. Disfrute de una experiencia única con nuestras instalaciones de primera clase.',
@@ -37,7 +36,7 @@ export class PaginaWebComponent implements OnInit {
     amenities: ['wifi', 'pool', 'spa', 'restaurant', 'gym', 'bar']
   };
 
-  // Rooms data
+
   rooms = [
     {
       id: 1,
@@ -59,7 +58,6 @@ export class PaginaWebComponent implements OnInit {
     }
   ];
 
-  // Available options
   allAmenities = [
     { id: 'wifi', name: 'WiFi' },
     { id: 'tv', name: 'TV' },
@@ -91,7 +89,7 @@ export class PaginaWebComponent implements OnInit {
   ngOnInit(): void {}
 
   initForms(): void {
-    // Hotel form
+
     this.hotelForm = this.fb.group({
       name: [this.hotelData.name],
       description: [this.hotelData.description],
@@ -109,7 +107,7 @@ export class PaginaWebComponent implements OnInit {
       amenities: this.fb.array(this.hotelData.amenities.map(a => this.fb.control(a)))
     });
 
-    // Room form
+
     this.roomForm = this.fb.group({
       name: [''],
       description: [''],
@@ -120,37 +118,36 @@ export class PaginaWebComponent implements OnInit {
     });
   }
 
-  // Hotel services getter
+
   get hotelServices(): FormArray {
     return this.hotelForm.get('services') as FormArray;
   }
 
-  // Hotel amenities getter
+
   get hotelAmenities(): FormArray {
     return this.hotelForm.get('amenities') as FormArray;
   }
 
-  // Room amenities getter
+
   get roomAmenities(): FormArray {
     return this.roomForm.get('amenities') as FormArray;
   }
 
-  // Room services getter
   get roomServices(): FormArray {
     return this.roomForm.get('services') as FormArray;
   }
 
-  // Add new service to hotel
+
   addHotelService(): void {
     this.hotelServices.push(this.fb.control(''));
   }
 
-  // Remove service from hotel
+
   removeHotelService(index: number): void {
     this.hotelServices.removeAt(index);
   }
 
-  // Toggle hotel amenity
+
   toggleHotelAmenity(amenity: string): void {
     const amenities = this.hotelAmenities;
     const index = amenities.controls.findIndex(c => c.value === amenity);
@@ -162,12 +159,11 @@ export class PaginaWebComponent implements OnInit {
     }
   }
 
-  // Check if hotel has amenity
   hotelHasAmenity(amenity: string): boolean {
     return this.hotelData.amenities.includes(amenity);
   }
 
-  // Toggle room amenity
+
   toggleRoomAmenity(amenity: string): void {
     const amenities = this.roomAmenities;
     const index = amenities.controls.findIndex(c => c.value === amenity);
@@ -179,7 +175,7 @@ export class PaginaWebComponent implements OnInit {
     }
   }
 
-  // Check if room has amenity
+
   roomHasAmenity(amenity: string): boolean {
     if (this.currentRoomIndex === 'new') {
       return this.roomAmenities.value.includes(amenity);
@@ -189,17 +185,17 @@ export class PaginaWebComponent implements OnInit {
     return false;
   }
 
-  // Add new service to room
+
   addRoomService(): void {
     this.roomServices.push(this.fb.control(''));
   }
 
-  // Remove service from room
+
   removeRoomService(index: number): void {
     this.roomServices.removeAt(index);
   }
 
-  // Open room modal for editing or adding
+
   openRoomModal(index: number | 'new'): void {
     this.currentRoomIndex = index;
     
@@ -221,11 +217,11 @@ export class PaginaWebComponent implements OnInit {
         price: room.price
       });
       
-      // Clear and set amenities
+
       this.roomAmenities.clear();
       room.amenities.forEach(a => this.roomAmenities.push(this.fb.control(a)));
       
-      // Clear and set services
+
       this.roomServices.clear();
       room.services.forEach(s => this.roomServices.push(this.fb.control(s)));
     }
@@ -233,14 +229,14 @@ export class PaginaWebComponent implements OnInit {
     this.showRoomModal = true;
   }
 
-  // Save room changes
+
   saveRoom(): void {
     if (this.roomForm.invalid) return;
     
     const roomData = this.roomForm.value;
     
     if (this.currentRoomIndex === 'new') {
-      // Add new room
+
       this.rooms.push({
         id: this.rooms.length + 1,
         name: roomData.name,
@@ -251,7 +247,7 @@ export class PaginaWebComponent implements OnInit {
         services: roomData.services
       });
     } else {
-      // Update existing room
+
       if (this.currentRoomIndex !== null && typeof this.currentRoomIndex === 'number') {
         this.rooms[this.currentRoomIndex] = {
           ...this.rooms[this.currentRoomIndex],
@@ -268,18 +264,16 @@ export class PaginaWebComponent implements OnInit {
     this.closeRoomModal();
   }
 
-  // Delete room
   deleteRoom(index: number): void {
     this.rooms.splice(index, 1);
   }
 
-  // Close room modal
+
   closeRoomModal(): void {
     this.showRoomModal = false;
     this.currentRoomIndex = null;
   }
 
-  // Save hotel changes
   saveHotel(): void {
     if (this.hotelForm.invalid) return;
     
@@ -304,17 +298,16 @@ export class PaginaWebComponent implements OnInit {
     this.showHotelEditModal = false;
   }
 
-  // Open image modal
+
   openImageModal(type: 'cover' | 'profile'): void {
     this.showImageModal = { type, show: true };
   }
 
-  // Close image modal
   closeImageModal(): void {
     this.showImageModal = { type: 'cover', show: false };
   }
 
-  // Handle image upload
+
   onImageUpload(event: Event, type: 'cover' | 'profile'): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -330,7 +323,7 @@ export class PaginaWebComponent implements OnInit {
     }
   }
 
-  // Get amenity name by id
+
   getAmenityName(id: string): string {
     const amenity = this.allAmenities.find(a => a.id === id);
     return amenity ? amenity.name : id;
