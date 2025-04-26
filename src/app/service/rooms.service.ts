@@ -38,7 +38,9 @@ export class RoomsService {
     return this.http.post<rooms>(this.apiURL + '/create', data);
   }
 
-  updateRoom(id: number, data: rooms): Observable<rooms>{
+  updateRoom(id: number, data: FormData): Observable<rooms>{
     return this.http.patch<rooms>(this.apiURL + '/' + id, data);
   }
+
+  
 }
