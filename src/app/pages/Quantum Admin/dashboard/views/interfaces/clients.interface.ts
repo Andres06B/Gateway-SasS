@@ -7,16 +7,8 @@ export interface clients  {
     password: string,
     country: string,
     rol: string,
-    type_document: type_document,
+    type_document: 'CC'| 'TI' | 'TE' | 'PP' | 'PPT'|'NIT',
     number_document: string,
     birth_date: Date,
 }
 
-export interface type_document {
-    CC: string,
-    TI: string,
-    TE: string,
-    PP: string,
-    PPT: string,
-    NIT: string,
-}

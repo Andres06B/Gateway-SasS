@@ -1,23 +1,38 @@
-export interface pago_reserva{
-    id: number,
-    payment_date:payment_date,
-    status: string,
-    amount: number,
-    payment_method: string,
-    created_at: Date,
-    updated_at: Date,
-}
-
-export interface payment_date{
-    pending: string, 
-    canceled: string, 
-    confirmed: string, 
-    refunded: string, 
-}
-
-export interface payment_method{
-    visa: string, 
-    mastercard: string, 
-    paypal: string, 
-    other: string, 
+export interface pago_reserva {
+  id: number;
+  payment_date: Date;
+  status: 'pending' | 'canceled' | 'confirmed' | 'refunded';
+  amount: number;
+  payment_method: 'visa' | 'mastercard' | 'paypal' | 'other';
+  created_at: Date;
+  updated_at: Date;
+  reservation?: {
+    id: number;
+    check_in: string;
+    check_out: string;
+    status: string;
+    created_at: Date;
+    updated_at: Date;
+  };
+  client?: {
+    id: number;
+    name: string;
+    last_name: string;
+    email: string;
+    phone: string;
+    country: string;
+    type_document: string;
+    number_document: string;
+    birth_date: string;
+    rol: string;
+  };
+  room?: {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    ability: string;
+    status: string;
+    image: string;
+  };
 }

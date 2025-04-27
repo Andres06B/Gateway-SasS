@@ -26,10 +26,12 @@ export class HabitacionesComponent {
   constructor(private roomServices: RoomsService) {}
 
   ngOnInit() {
-    this.findAll();
+    //this.findAll();
+    console.log(localStorage.getItem('hotel'))
+    this.findAllRooms();
   }
 
-  /*
+  
   findAllRooms(){
     this.roomServices.getRoomByAdmin(this.AdminId).subscribe({
       next: (rooms) => {
@@ -46,7 +48,7 @@ export class HabitacionesComponent {
       }
     })
   }
-  */
+  
 
   findAll() {
     this.roomServices.getRooms().subscribe({
@@ -150,20 +152,40 @@ export class HabitacionesComponent {
   createRoom(): void {
     const formData = new FormData();
 
+    // Agregar los datos del formulario
     formData.append('name', this.newRoom.name || '');
     formData.append('description', this.newRoom.description || '');
     formData.append('price', this.newRoom.price?.toString() || '');
     formData.append('ability', this.newRoom.ability?.toString() || '');
 
+    // Agregar el archivo seleccionado
     if (this.selectedFile) {
       formData.append('image', this.selectedFile);
     }
 
+    // Agregar el id del hotel directamente
+    const hotelId = Number(localStorage.getItem('hotel')); // Obtener el id del hotel desde localStorage
+    if (!hotelId) {
+      console.error('Hotel ID is missing');
+      alert('No se puede crear la habitación porque falta el ID del hotel.');
+      return;
+    }
+    formData.append('hotelId', hotelId.toString()); // Cambia el nombre del campo si el backend lo requiere
+
+    console.log('Datos enviados al backend:', {
+      name: this.newRoom.name,
+      description: this.newRoom.description,
+      price: this.newRoom.price,
+      ability: this.newRoom.ability,
+      hotelId: hotelId,
+    });
+
+    // Llamar al servicio para crear la habitación
     this.roomServices.createRoom(formData).subscribe({
       next: (room) => {
         console.log('Habitación creada:', room);
         this.closeModal();
-        this.findAll();
+        this.findAllRooms(); // Actualiza la lista de habitaciones
       },
       error: (err) => {
         console.error('Error al crear la habitación:', err);

@@ -15,17 +15,16 @@ export class UsuariosComponent {
   currentPage: number = 1;
   pageSize: number = 30;
   public Math = Math;
-  
+
   selectedUser: clients | null = null;
 
-  modalState: 'closed' | 'opening' | 'open' | 'closing' = 'closed';
-  
+  // Estados separados para los modales
+  editModalState: 'closed' | 'opening' | 'open' | 'closing' = 'closed';
+  detailsModalState: 'closed' | 'opening' | 'open' | 'closing' = 'closed';
 
-  constructor(
-    private clientServices: ClientsService
-  ){}
+  constructor(private clientServices: ClientsService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.findAll();
   }
 
@@ -33,14 +32,14 @@ export class UsuariosComponent {
     this.clientServices.findClients(this.tokenId).subscribe({
       next: (res) => {
         this.Clients = res;
-        this.FilteredClient = [...this.Clients]; 
+        this.FilteredClient = [...this.Clients];
       },
       error: (err) => {
         console.error('Error al obtener los clientes:', err);
         this.Clients = [];
-        this.FilteredClient = []; 
+        this.FilteredClient = [];
         alert('Ocurrió un error al cargar los clientes. Por favor, inténtalo de nuevo más tarde.');
-      }
+      },
     });
   }
 
@@ -69,63 +68,65 @@ export class UsuariosComponent {
     })
   }
 
-  openEditModal(user: any): void {
+  // Abrir modal de edición
+  openEditModal(user: clients): void {
     this.selectedUser = user;
-    this.modalState = 'opening';
-    
-    
+    this.editModalState = 'opening';
+
     setTimeout(() => {
-      this.modalState = 'open';
+      this.editModalState = 'open';
     }, 50);
   }
-  
-  
-  startCloseModal(): void {
-    this.modalState = 'closing';
-    
+
+  // Cerrar modal de edición
+  startCloseEditModal(): void {
+    this.editModalState = 'closing';
+
     setTimeout(() => {
-      this.modalState = 'closed';
-    }, 300); 
+      this.editModalState = 'closed';
+      this.selectedUser = null;
+    }, 300);
   }
 
-  saveChanges(){
-    if(this.selectedUser){
-      this.clientServices.updateClient(this.selectedUser.id, this.selectedUser).subscribe({
-        next: updatedUser => {
-          this.Clients = this.Clients.map(client => client.id === updatedUser.id ? updatedUser : client)
-          this.FilteredClient = this.Clients
-          console.log('Cliente actualizado:', updatedUser)
-          this.startCloseModal()
-        }, 
-        error: err => {
-          console.error('Error al actualizar el cliente', err)
-          this.FilteredClient = this.Clients
-        }
-      })
-    }
-  } 
-
-  openDetailsModal(user: any): void {
+  // Abrir modal de detalles
+  openDetailsModal(user: clients): void {
     this.selectedUser = user;
-    this.modalState = 'opening';
-    
+    this.detailsModalState = 'opening';
+
     setTimeout(() => {
-      this.modalState = 'open';
+      this.detailsModalState = 'open';
     }, 50);
   }
-  
-  
+
+  // Cerrar modal de detalles
   startCloseDetailsModal(): void {
-    this.modalState= 'closing';
-    
-    
+    this.detailsModalState = 'closing';
+
     setTimeout(() => {
-      this.modalState = 'closed';
-    }, 300); 
+      this.detailsModalState = 'closed';
+      this.selectedUser = null;
+    }, 300);
   }
 
-  
-  
+  saveChanges() {
+    if (this.selectedUser) {
+      this.clientServices.updateClient(this.selectedUser.id, this.selectedUser).subscribe({
+        next: (updatedUser) => {
+          this.Clients = this.Clients.map((client) =>
+            client.id === updatedUser.id ? updatedUser : client
+          );
+          this.FilteredClient = this.Clients;
+          console.log('Cliente actualizado:', updatedUser);
+          this.startCloseEditModal(); // Cierra el modal de edición
+        },
+        error: (err) => {
+          console.error('Error al actualizar el cliente', err);
+          this.FilteredClient = this.Clients;
+        },
+      });
+    }
+  }
+
   onSearch(event: Event): void {
     const input = (event.target as HTMLInputElement).value.trim();
   
@@ -144,9 +145,6 @@ export class UsuariosComponent {
       this.findByName(input);
     }
   }
-  
-
-  
 
   get pagedClients(): clients[] {
     const start = (this.currentPage - 1) * this.pageSize;

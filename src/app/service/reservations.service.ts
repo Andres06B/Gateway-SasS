@@ -23,7 +23,7 @@ export class ReservationsService {
   }
 
   findByHotel(id: number): Observable<reservations[]> {
-    return this.http.get<reservations[]>(`${this.baseUrl}/hotel/${id}`);
+    return this.http.get<reservations[]>(`${this.baseUrl}/hotel/reservation/${id}`);
   }
 
   findByStatus(status: string): Observable<reservations[]> {
