@@ -76,7 +76,7 @@ export class ReservasComponent {
       return;
     }
 
-    this.bookingService.findByStatus(selectedStatus).subscribe({
+    this.bookingService.findByStatusByHotel(selectedStatus,this.HotelId).subscribe({
       next: (reservas) => {
         this.filteredBooking = reservas;
       },
