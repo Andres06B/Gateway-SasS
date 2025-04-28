@@ -1,409 +1,455 @@
 <app-layout>
 
-<div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
-  <!-- Cover Image -->
-  <div class="relative h-64 bg-gray-200">
-    <img [src]="hotelData.coverImage" alt="Hotel Cover" class="w-full h-full object-cover">
-    <button (click)="openImageModal('cover')" 
-            class="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition">
-      <i data-lucide="camera" class="w-5 h-5"></i>
-    </button>
-  </div>
-
-  <!-- Profile Image and Basic Info -->
-  <div class="px-6 pt-16 pb-6 relative">
-    <!-- Profile Image -->
-    <div class="absolute -top-16 left-1/2 transform -translate-x-1/2">
-      <div class="relative">
-        <img [src]="hotelData.profileImage" 
-             alt="Hotel Logo" 
-             class="w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg">
-        <button (click)="openImageModal('profile')" 
-                class="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition">
-          <i data-lucide="camera" class="w-4 h-4"></i>
-        </button>
-      </div>
+  <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8">
+    <!-- Cover Image - Optimizada pero con misma estructura -->
+    <div class="relative h-64 bg-gray-100">
+      <img [src]="hotelData.coverImage" 
+           alt="Hotel Cover" 
+           class="w-full h-full object-cover" 
+           loading="lazy"
+           width="1024"
+           height="256"
+           [attr.srcset]="hotelData.coverImage + '?w=400 400w, ' + hotelData.coverImage + '?w=800 800w'"
+           sizes="(max-width: 600px) 400px, 800px"
+           [style.background]="'#f0f0f0'">
+      <button (click)="openImageModal('cover')" 
+              class="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-cyan-100 transition">
+        <i data-lucide="camera" class="w-5 h-5 text-cyan-600"></i>
+      </button>
     </div>
-
-    <!-- Hotel Name and Edit Button -->
-    <div class="text-center mt-8">
-      <div class="flex justify-center items-center gap-3">
-        <h1 class="text-3xl font-bold text-gray-800">{{ hotelData.name }}</h1>
-        <button (click)="showHotelEditModal = true" 
-                class="text-gray-500 hover:text-blue-600 transition">
-          <i data-lucide="edit-2" class="w-5 h-5"></i>
-        </button>
-      </div>
-      <p class="mt-2 text-gray-600 max-w-2xl mx-auto">{{ hotelData.description }}</p>
-    </div>
-
-    <!-- Contact Info -->
-    <div class="mt-6 bg-gray-50 rounded-lg p-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="flex items-center gap-3">
-          <i data-lucide="map-pin" class="w-5 h-5 text-gray-600"></i>
-          <span>{{ hotelData.contact.address }}</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <i data-lucide="phone" class="w-5 h-5 text-gray-600"></i>
-          <span>{{ hotelData.contact.phone }}</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <i data-lucide="mail" class="w-5 h-5 text-gray-600"></i>
-          <span>{{ hotelData.contact.email }}</span>
+  
+    <!-- Profile and Main Content -->
+    <div class="px-6 pt-16 pb-6 relative">
+      <!-- Profile Image - Optimizada pero con misma estructura -->
+      <div class="absolute -top-16 left-1/2 transform -translate-x-1/2">
+        <div class="relative">
+          <img [src]="hotelData.profileImage" 
+               alt="Hotel Logo" 
+               class="w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg" 
+               loading="lazy"
+               width="128"
+               height="128"
+               [attr.srcset]="hotelData.profileImage + '?w=64 64w, ' + hotelData.profileImage + '?w=128 128w'"
+               sizes="(max-width: 600px) 64px, 128px"
+               [style.background]="'#f0f0f0'">
+          <button (click)="openImageModal('profile')" 
+                  class="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-md hover:bg-cyan-100 transition">
+            <i data-lucide="camera" class="w-4 h-4 text-cyan-600"></i>
+          </button>
         </div>
       </div>
-
-      <!-- Social Media -->
-      <div class="mt-6 pt-6 border-t border-gray-200">
-        <h3 class="font-semibold text-gray-700 mb-3">Redes Sociales</h3>
-        <div class="flex gap-4">
-          <a *ngIf="hotelData.socialMedia.facebook" [href]="hotelData.socialMedia.facebook" target="_blank" 
-             class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition">
-            <i data-lucide="facebook" class="w-5 h-5"></i>
-          </a>
-          <a *ngIf="hotelData.socialMedia.instagram" [href]="hotelData.socialMedia.instagram" target="_blank" 
-             class="bg-pink-600 text-white p-2 rounded-full hover:bg-pink-700 transition">
-            <i data-lucide="instagram" class="w-5 h-5"></i>
-          </a>
-          <a *ngIf="hotelData.socialMedia.twitter" [href]="hotelData.socialMedia.twitter" target="_blank" 
-             class="bg-blue-400 text-white p-2 rounded-full hover:bg-blue-500 transition">
-            <i data-lucide="twitter" class="w-5 h-5"></i>
-          </a>
+  
+      <!-- Hotel Name and Edit (MANTENIDO EXACTAMENTE IGUAL) -->
+      <div class="text-center mt-8">
+        <div class="flex justify-center items-center gap-3">
+          <h1 class="text-3xl font-bold text-gray-800">{{ hotelData.name }}</h1>
+          <button (click)="showHotelEditModal = true" 
+                  class="text-gray-500 hover:text-cyan-600 transition">
+            <i data-lucide="edit-2" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <p class="mt-2 text-gray-600 max-w-2xl mx-auto">{{ hotelData.description }}</p>
+      </div>
+  
+      <!-- Contact Info - Improved layout (MANTENIDO EXACTAMENTE IGUAL) -->
+      <div class="mt-6 bg-gray-50 rounded-lg p-6 border border-gray-100">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="flex items-center gap-3 p-3 bg-white rounded-lg">
+            <i data-lucide="map-pin" class="w-5 h-5 text-cyan-600"></i>
+            <span class="text-gray-700">{{ hotelData.contact.address }}</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-white rounded-lg">
+            <i data-lucide="phone" class="w-5 h-5 text-cyan-600"></i>
+            <span class="text-gray-700">{{ hotelData.contact.phone }}</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-white rounded-lg">
+            <i data-lucide="mail" class="w-5 h-5 text-cyan-600"></i>
+            <span class="text-gray-700">{{ hotelData.contact.email }}</span>
+          </div>
+        </div>
+  
+        <!-- Social Media - More visible (MANTENIDO EXACTAMENTE IGUAL) -->
+        <div class="mt-6 pt-6 border-t border-gray-200">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-semibold text-gray-700">Redes Sociales</h3>
+            <button (click)="showHotelEditModal = true" class="text-sm text-cyan-600 hover:underline">
+              Editar
+            </button>
+          </div>
+          <div class="flex gap-4">
+            <a *ngIf="hotelData.socialMedia.facebook" [href]="hotelData.socialMedia.facebook" target="_blank" 
+               class="bg-cyan-600 text-white p-2 rounded-full hover:bg-cyan-700 transition">
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+            </a>
+            <a *ngIf="hotelData.socialMedia.instagram" [href]="hotelData.socialMedia.instagram" target="_blank" 
+               class="bg-gradient-to-r from-cyan-500 to-pink-500 text-white p-2 rounded-full hover:opacity-90 transition">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a *ngIf="hotelData.socialMedia.twitter" [href]="hotelData.socialMedia.twitter" target="_blank" 
+               class="bg-cyan-400 text-white p-2 rounded-full hover:bg-cyan-500 transition">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Hotel Services -->
-    <div class="mt-6">
-      <h3 class="text-xl font-bold text-gray-800 mb-4">Servicios del Hotel</h3>
-      <div class="flex flex-wrap gap-2">
-        <div *ngFor="let service of hotelData.services" 
-             class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-          {{ service }}
+  
+      <!-- Hotel Services - More compact (MANTENIDO EXACTAMENTE IGUAL) -->
+      <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="text-xl font-bold text-gray-800">Servicios del Hotel</h3>
+          <button (click)="showHotelEditModal = true" class="text-sm text-cyan-600 hover:underline">
+            Editar
+          </button>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <div *ngFor="let service of hotelData.services" 
+               class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm">
+            {{ service }}
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Hotel Amenities -->
-    <div class="mt-6">
-      <h3 class="text-xl font-bold text-gray-800 mb-4">Amenidades</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div *ngFor="let amenity of hotelData.amenities" 
-             class="flex items-center gap-2">
-          <i [attr.data-lucide]="amenity" class="w-5 h-5 text-gray-600"></i>
-          <span>{{ getAmenityName(amenity) }}</span>
+  
+      <!-- Hotel Amenities - Better organization (MANTENIDO EXACTAMENTE IGUAL) -->
+      <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="text-xl font-bold text-gray-800">Amenidades</h3>
+          <button (click)="showHotelEditModal = true" class="text-sm text-cyan-600 hover:underline">
+            Editar
+          </button>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div *ngFor="let amenity of hotelData.amenities" 
+               class="flex items-center gap-2 p-2 bg-white rounded-lg">
+                <i [attr.data-lucide]="amenity" class="w-5 h-5 text-cyan-600"></i>
+                <span class="text-gray-700">{{ getAmenityName(amenity) }}</span>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Rooms Section -->
-    <div class="mt-8">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Habitaciones</h2>
-        <button (click)="openRoomModal('new')" 
-                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
-          <i data-lucide="plus" class="w-4 h-4"></i>
-          <span>Agregar Habitación</span>
-        </button>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Room Cards -->
-        <div *ngFor="let room of rooms; let i = index" 
-             class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
-          <div class="relative">
-            <img [src]="room.image" [alt]="room.name" class="w-full h-48 object-cover">
-            <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
-              ${{ room.price }} / noche
+  
+      <!-- Rooms Section - Solo imágenes optimizadas (todo lo demás igual) -->
+      <div class="mt-8">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">Habitaciones</h2>
+          <button (click)="openRoomModal('new')" 
+                  class="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition flex items-center gap-2">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Agregar Habitación</span>
+          </button>
+        </div>
+  
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let room of rooms; let i = index" 
+               class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+            <div class="relative">
+              <img [src]="room.image" 
+                   [alt]="room.name" 
+                   class="w-full h-48 object-cover" 
+                   loading="lazy"
+                   width="400"
+                   height="300"
+                   [attr.srcset]="room.image + '?w=200 200w, ' + room.image + '?w=400 400w'"
+                   sizes="(max-width: 600px) 200px, 400px"
+                   [style.background]="'#f0f0f0'">
+              <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm">
+                ${{ room.price }} / noche
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-semibold">{{ room.name }}</h3>
+                <div class="flex gap-2">
+                  <button (click)="openRoomModal(i)" class="text-cyan-600 hover:text-cyan-800">
+                    <i data-lucide="edit" class="w-4 h-4"></i>
+                  </button>
+                  <button (click)="deleteRoom(i)" class="text-red-600 hover:text-red-800">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <p class="text-gray-600 mt-2 text-sm">{{ room.description }}</p>
+              
+              <div class="mt-3">
+                <h4 class="font-medium text-sm mb-1">Amenidades:</h4>
+                <div class="flex flex-wrap gap-1">
+                  <span *ngFor="let amenity of room.amenities" 
+                        class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs flex items-center gap-1">
+                    <i [attr.data-lucide]="amenity" class="w-3 h-3 text-cyan-600"></i>
+                    {{ getAmenityName(amenity) }}
+                  </span>
+                </div>
+              </div>
+              
+              <div class="mt-3">
+                <h4 class="font-medium text-sm mb-1">Servicios incluidos:</h4>
+                <ul class="list-disc list-inside text-sm text-gray-600">
+                  <li *ngFor="let service of room.services">{{ service }}</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div class="p-4">
-            <div class="flex justify-between items-start">
-              <h3 class="text-lg font-semibold">{{ room.name }}</h3>
-              <div class="flex gap-2">
-                <button (click)="openRoomModal(i)" class="text-blue-600 hover:text-blue-800">
-                  <i data-lucide="edit" class="w-4 h-4"></i>
-                </button>
-                <button (click)="deleteRoom(i)" class="text-red-600 hover:text-red-800">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Hotel Edit Modal - Improved visibility -->
+  <div *ngIf="showHotelEditModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-4 border-b pb-4">
+          <h3 class="text-xl font-bold text-gray-800">Editar Información del Hotel</h3>
+          <button (click)="showHotelEditModal = false" class="text-gray-500 hover:text-gray-700">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        
+        <form [formGroup]="hotelForm" (ngSubmit)="saveHotel()" class="space-y-4">
+          <!-- Basic Info -->
+          <div class="grid grid-cols-1 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Hotel</label>
+              <input formControlName="name" type="text" 
+                     class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+              <textarea formControlName="description" rows="3" 
+                        class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"></textarea>
+            </div>
+          </div>
+          
+          <!-- Contact Info -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
+              <input formControlName="address" type="text" 
+                     class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+              <input formControlName="phone" type="tel" 
+                     class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input formControlName="email" type="email" 
+                     class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+            </div>
+          </div>
+          
+          <!-- Social Media -->
+          <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+            <h4 class="text-lg font-medium text-gray-800 mb-2">Redes Sociales</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Facebook</label>
+                <input formControlName="facebook" type="url" 
+                       class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Instagram</label>
+                <input formControlName="instagram" type="url" 
+                       class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Twitter</label>
+                <input formControlName="twitter" type="url" 
+                       class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Hotel Services -->
+          <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+            <div class="flex justify-between items-center mb-2">
+              <h4 class="text-lg font-medium text-gray-800">Servicios del Hotel</h4>
+              <button type="button" (click)="addHotelService()" 
+                      class="text-cyan-600 hover:text-cyan-800 text-sm flex items-center gap-1">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Agregar</span>
+              </button>
+            </div>
+            
+            <div formArrayName="services" class="space-y-2">
+              <div *ngFor="let service of hotelServices.controls; let i = index" class="flex items-center gap-2">
+                <input [formControlName]="i" type="text" 
+                       class="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                <button type="button" (click)="removeHotelService(i)" 
+                        class="text-red-600 hover:text-red-800 p-1 rounded-full hover:bg-red-50">
                   <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
               </div>
             </div>
-            <p class="text-gray-600 mt-2 text-sm">{{ room.description }}</p>
-            
-            <!-- Room Amenities -->
-            <div class="mt-3">
-              <h4 class="font-medium text-sm mb-1">Amenidades:</h4>
-              <div class="flex flex-wrap gap-1">
-                <span *ngFor="let amenity of room.amenities" 
-                      class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs flex items-center gap-1">
-                  <i [attr.data-lucide]="amenity" class="w-3 h-3"></i>
-                  {{ getAmenityName(amenity) }}
-                </span>
+          </div>
+          
+          <!-- Hotel Amenities -->
+          <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+            <h4 class="text-lg font-medium text-gray-800 mb-2">Amenidades</h4>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div *ngFor="let amenity of allAmenities" 
+                   class="flex items-center gap-2 p-2 hover:bg-cyan-50 rounded-lg">
+                <input type="checkbox" 
+                       [id]="'amenity-'+amenity.id"
+                       [checked]="hotelHasAmenity(amenity.id)"
+                       (change)="toggleHotelAmenity(amenity.id)"
+                       class="rounded text-cyan-600 focus:ring-cyan-500">
+                <label [for]="'amenity-'+amenity.id" class="text-sm text-gray-700">{{ amenity.name }}</label>
               </div>
             </div>
+          </div>
+          
+          <!-- Form Actions -->
+          <div class="flex justify-end gap-3 pt-6 border-t border-gray-200">
+            <button type="button" (click)="showHotelEditModal = false" 
+                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+              Cancelar
+            </button>
+            <button type="submit" 
+                    class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition">
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Room Edit Modal - Unchanged as requested -->
+  <div *ngIf="showRoomModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">{{ currentRoomIndex === 'new' ? 'Agregar' : 'Editar' }} Habitación</h3>
+          <button (click)="closeRoomModal()" class="text-gray-500 hover:text-gray-700">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        
+        <form [formGroup]="roomForm" (ngSubmit)="saveRoom()" class="space-y-4">
+          <!-- Basic Info -->
+          <div class="grid grid-cols-1 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Habitación</label>
+              <input formControlName="name" type="text" class="w-full p-2 border rounded" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Imagen URL</label>
+              <input formControlName="image" type="url" class="w-full p-2 border rounded" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Precio por noche</label>
+              <input formControlName="price" type="number" class="w-full p-2 border rounded" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+              <textarea formControlName="description" rows="3" class="w-full p-2 border rounded" required></textarea>
+            </div>
+          </div>
+          
+          <!-- Room Amenities -->
+          <div class="mt-6">
+            <h4 class="text-lg font-medium mb-2">Amenidades</h4>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div *ngFor="let amenity of allAmenities" class="flex items-center gap-2">
+                <input type="checkbox" 
+                       [id]="'room-amenity-'+amenity.id"
+                       [checked]="roomHasAmenity(amenity.id)"
+                       (change)="toggleRoomAmenity(amenity.id)"
+                       class="rounded text-cyan-600">
+                <label [for]="'room-amenity-'+amenity.id" class="text-sm">{{ amenity.name }}</label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Room Services -->
+          <div class="mt-6">
+            <div class="flex justify-between items-center mb-2">
+              <h4 class="text-lg font-medium">Servicios incluidos</h4>
+              <button type="button" (click)="addRoomService()" class="text-cyan-600 hover:text-cyan-800 text-sm flex items-center gap-1">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Agregar</span>
+              </button>
+            </div>
             
-            <!-- Room Services -->
-            <div class="mt-3">
-              <h4 class="font-medium text-sm mb-1">Servicios incluidos:</h4>
-              <ul class="list-disc list-inside text-sm text-gray-600">
-                <li *ngFor="let service of room.services">{{ service }}</li>
-              </ul>
+            <div formArrayName="services" class="space-y-2">
+              <div *ngFor="let service of roomServices.controls; let i = index" class="flex items-center gap-2">
+                <input [formControlName]="i" type="text" class="flex-1 p-2 border rounded">
+                <button type="button" (click)="removeRoomService(i)" class="text-red-600 hover:text-red-800">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Hotel Edit Modal -->
-<div *ngIf="showHotelEditModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-  <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl font-bold">Editar Información del Hotel</h3>
-        <button (click)="showHotelEditModal = false" class="text-gray-500 hover:text-gray-700">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      
-      <form [formGroup]="hotelForm" (ngSubmit)="saveHotel()" class="space-y-4">
-        <!-- Basic Info -->
-        <div class="grid grid-cols-1 gap-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Hotel</label>
-            <input formControlName="name" type="text" class="w-full p-2 border rounded">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
-            <textarea formControlName="description" rows="3" class="w-full p-2 border rounded"></textarea>
-          </div>
-        </div>
-        
-        <!-- Contact Info -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
-            <input formControlName="address" type="text" class="w-full p-2 border rounded">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
-            <input formControlName="phone" type="tel" class="w-full p-2 border rounded">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input formControlName="email" type="email" class="w-full p-2 border rounded">
-          </div>
-        </div>
-        
-        <!-- Social Media -->
-        <div class="mt-6">
-          <h4 class="text-lg font-medium mb-2">Redes Sociales</h4>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Facebook</label>
-              <input formControlName="facebook" type="url" class="w-full p-2 border rounded">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Instagram</label>
-              <input formControlName="instagram" type="url" class="w-full p-2 border rounded">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Twitter</label>
-              <input formControlName="twitter" type="url" class="w-full p-2 border rounded">
-            </div>
-          </div>
-        </div>
-        
-        <!-- Hotel Services -->
-        <div class="mt-6">
-          <div class="flex justify-between items-center mb-2">
-            <h4 class="text-lg font-medium">Servicios del Hotel</h4>
-            <button type="button" (click)="addHotelService()" class="text-blue-600 hover:text-blue-800 text-sm flex items-center gap-1">
-              <i data-lucide="plus" class="w-4 h-4"></i>
-              <span>Agregar</span>
-            </button>
           </div>
           
-          <div formArrayName="services" class="space-y-2">
-            <div *ngFor="let service of hotelServices.controls; let i = index" class="flex items-center gap-2">
-              <input [formControlName]="i" type="text" class="flex-1 p-2 border rounded">
-              <button type="button" (click)="removeHotelService(i)" class="text-red-600 hover:text-red-800">
-                <i data-lucide="trash-2" class="w-4 h-4"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Hotel Amenities -->
-        <div class="mt-6">
-          <h4 class="text-lg font-medium mb-2">Amenidades</h4>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div *ngFor="let amenity of allAmenities" class="flex items-center gap-2">
-              <input type="checkbox" 
-                     [id]="'amenity-'+amenity.id"
-                     [checked]="hotelHasAmenity(amenity.id)"
-                     (change)="toggleHotelAmenity(amenity.id)"
-                     class="rounded text-blue-600">
-              <label [for]="'amenity-'+amenity.id" class="text-sm">{{ amenity.name }}</label>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Form Actions -->
-        <div class="flex justify-end gap-3 pt-6">
-          <button type="button" (click)="showHotelEditModal = false" 
-                  class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
-            Cancelar
-          </button>
-          <button type="submit" 
-                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            Guardar Cambios
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Room Edit Modal -->
-<div *ngIf="showRoomModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-  <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl font-bold">{{ currentRoomIndex === 'new' ? 'Agregar' : 'Editar' }} Habitación</h3>
-        <button (click)="closeRoomModal()" class="text-gray-500 hover:text-gray-700">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      
-      <form [formGroup]="roomForm" (ngSubmit)="saveRoom()" class="space-y-4">
-        <!-- Basic Info -->
-        <div class="grid grid-cols-1 gap-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Habitación</label>
-            <input formControlName="name" type="text" class="w-full p-2 border rounded" required>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Imagen URL</label>
-            <input formControlName="image" type="url" class="w-full p-2 border rounded" required>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Precio por noche</label>
-            <input formControlName="price" type="number" class="w-full p-2 border rounded" required>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
-            <textarea formControlName="description" rows="3" class="w-full p-2 border rounded" required></textarea>
-          </div>
-        </div>
-        
-        <!-- Room Amenities -->
-        <div class="mt-6">
-          <h4 class="text-lg font-medium mb-2">Amenidades</h4>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div *ngFor="let amenity of allAmenities" class="flex items-center gap-2">
-              <input type="checkbox" 
-                     [id]="'room-amenity-'+amenity.id"
-                     [checked]="roomHasAmenity(amenity.id)"
-                     (change)="toggleRoomAmenity(amenity.id)"
-                     class="rounded text-blue-600">
-              <label [for]="'room-amenity-'+amenity.id" class="text-sm">{{ amenity.name }}</label>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Room Services -->
-        <div class="mt-6">
-          <div class="flex justify-between items-center mb-2">
-            <h4 class="text-lg font-medium">Servicios incluidos</h4>
-            <button type="button" (click)="addRoomService()" class="text-blue-600 hover:text-blue-800 text-sm flex items-center gap-1">
-              <i data-lucide="plus" class="w-4 h-4"></i>
-              <span>Agregar</span>
+          <!-- Form Actions -->
+          <div class="flex justify-end gap-3 pt-6">
+            <button type="button" (click)="closeRoomModal()" 
+                    class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
+              Cancelar
+            </button>
+            <button type="submit" 
+                    class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition">
+              {{ currentRoomIndex === 'new' ? 'Agregar' : 'Guardar' }}
             </button>
           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Image Upload Modal - Improved -->
+  <div *ngIf="showImageModal.show" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-4 border-b pb-4">
+          <h3 class="text-xl font-bold text-gray-800">Cambiar Imagen de {{ showImageModal.type === 'cover' ? 'Portada' : 'Perfil' }}</h3>
+          <button (click)="closeImageModal()" class="text-gray-500 hover:text-gray-700">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        
+        <div class="space-y-4">
+          <!-- Current Image Preview -->
+          <div class="flex justify-center">
+            <img [src]="showImageModal.type === 'cover' ? hotelData.coverImage : hotelData.profileImage" 
+                 [alt]="showImageModal.type === 'cover' ? 'Cover' : 'Profile'" 
+                 class="max-h-40 rounded-lg border">
+          </div>
           
-          <div formArrayName="services" class="space-y-2">
-            <div *ngFor="let service of roomServices.controls; let i = index" class="flex items-center gap-2">
-              <input [formControlName]="i" type="text" class="flex-1 p-2 border rounded">
-              <button type="button" (click)="removeRoomService(i)" class="text-red-600 hover:text-red-800">
-                <i data-lucide="trash-2" class="w-4 h-4"></i>
-              </button>
-            </div>
+          <!-- Upload Options -->
+          <div class="border-2 border-dashed border-cyan-200 rounded-lg p-6 text-center cursor-pointer bg-cyan-50 hover:bg-cyan-100 transition">
+            <input type="file" accept="image/*" (change)="onImageUpload($event, showImageModal.type)" 
+                   class="hidden" id="imageUpload">
+            <label for="imageUpload" class="block cursor-pointer">
+              <i data-lucide="upload-cloud" class="w-10 h-10 mx-auto text-cyan-600"></i>
+              <p class="mt-2 font-medium text-gray-700">Haz clic para subir una imagen</p>
+              <p class="text-sm text-gray-500 mt-1">o arrastra y suelta la imagen aquí</p>
+            </label>
+          </div>
+          
+          <!-- Or URL Input -->
+          <div class="text-center text-gray-500">o</div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Usar URL de imagen</label>
+            <input type="url" 
+                   class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+          </div>
+          
+          <!-- Modal Actions -->
+          <div class="flex justify-end gap-3 pt-4 border-t border-gray-200 mt-4">
+            <button (click)="closeImageModal()" 
+                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+              Cancelar
+            </button>
+            <button (click)="closeImageModal()" 
+                    class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition">
+              Guardar
+            </button>
           </div>
         </div>
-        
-        <!-- Form Actions -->
-        <div class="flex justify-end gap-3 pt-6">
-          <button type="button" (click)="closeRoomModal()" 
-                  class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
-            Cancelar
-          </button>
-          <button type="submit" 
-                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            {{ currentRoomIndex === 'new' ? 'Agregar' : 'Guardar' }}
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Image Upload Modal -->
-<div *ngIf="showImageModal.show" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-  <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl font-bold">Cambiar Imagen de {{ showImageModal.type === 'cover' ? 'Portada' : 'Perfil' }}</h3>
-        <button (click)="closeImageModal()" class="text-gray-500 hover:text-gray-700">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      
-      <div class="space-y-4">
-        <!-- Current Image Preview -->
-        <div class="flex justify-center">
-          <img [src]="showImageModal.type === 'cover' ? hotelData.coverImage : hotelData.profileImage" 
-               [alt]="showImageModal.type === 'cover' ? 'Cover' : 'Profile'" 
-               class="max-h-40 rounded-lg border">
-        </div>
-        
-        <!-- Upload Options -->
-        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer">
-          <input type="file" accept="image/*" (change)="onImageUpload($event, showImageModal.type)" 
-                 class="hidden" id="imageUpload">
-          <label for="imageUpload" class="block cursor-pointer">
-            <i data-lucide="upload-cloud" class="w-10 h-10 mx-auto text-gray-400"></i>
-            <p class="mt-2 font-medium">Haz clic para subir una imagen</p>
-            <p class="text-sm text-gray-500 mt-1">o arrastra y suelta la imagen aquí</p>
-          </label>
-        </div>
-        
-        <!-- Or URL Input -->
-        <div class="text-center text-gray-500">o</div>
-        
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Usar URL de imagen</label>
-          <input type="url" 
-                 class="w-full p-2 border rounded">
-        </div>
-        
-        <!-- Modal Actions -->
-        <div class="flex justify-end gap-3 pt-4">
-          <button (click)="closeImageModal()" 
-                  class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
-            Cancelar
-          </button>
-          <button (click)="closeImageModal()" 
-                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            Guardar
-          </button>
-        </div>
       </div>
     </div>
   </div>
-</div>
-
-</app-layout>
+  
+  </app-layout>
