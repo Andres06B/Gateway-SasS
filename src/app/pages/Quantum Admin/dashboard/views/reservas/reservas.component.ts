@@ -49,26 +49,6 @@ export class ReservasComponent {
   }
  
 
-  // FUNCION PARA FILTRAR POR HOTEL, SE DEBE DESCOMENTAR CUANDO SE TENGA EL ID DEL HOTEL
-  /*
-  findAll(): void {
-    this.bookingService.findAll().subscribe({
-      next: (data) => {
-        this.Booking = data;
-        this.filteredBooking = [...this.Booking];
-        this.calcularEstadisticas();
-        
-      },
-      error: (err) => {
-        console.error('Error al obtener los reservas:', err);
-        this.Booking = [];
-        this.filteredBooking = [];
-        
-      }
-    })
-  }
-  */
-
   onFilteredByStatus(event: Event): void {
     const selectedStatus = (event.target as HTMLSelectElement).value;
     if (!selectedStatus){

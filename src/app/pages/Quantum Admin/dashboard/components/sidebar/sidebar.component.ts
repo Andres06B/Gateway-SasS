@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-
+  getStatus(key: string): string {
+    const value = localStorage.getItem(key);
+    return value === 'true' ? 'Activo' : 'Inactivo';
+  }
 }

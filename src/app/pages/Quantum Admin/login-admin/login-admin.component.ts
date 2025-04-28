@@ -26,16 +26,20 @@ export class LoginAdminComponent {
     this.showPassword = !this.showPassword;
   }
 
+  
   onLoginClick(): void {
     this.isClicked = true;
     setTimeout(() => this.isClicked = false, 150);
   }
+  
 
   onSubmit(): void {
     this.loginService.loginAdmin(this.email, this.password).subscribe({
       next: res => {
         console.log('Login exitoso', res);
         localStorage.setItem('token', res.id);
+        localStorage.setItem('vip', res.has_vip_service)
+        localStorage.setItem('premium', res.has_premium_service)
         this.route.navigate(['/inicio']);
       },
       error: err => console.error('Error en login', err)
