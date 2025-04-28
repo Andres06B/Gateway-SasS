@@ -9,6 +9,7 @@ import { ReservationsService } from '../../../../../service/reservations.service
 })
 export class ReservasComponent {
   Booking: any[] = [];
+  prueba: any[] = [];
   filteredBooking: any[] = [];
   totalBookings: number = 0;
   confirmedBookings: number = 0;
@@ -17,14 +18,39 @@ export class ReservasComponent {
   selectedBooking: any = null;
   openDetailsModal: boolean = false;
   openEditModal: boolean = false;
+  HotelId: number = Number(localStorage.getItem('hotel'));
 
   constructor(
     private bookingService: ReservationsService
   ){}
 
   ngOnInit(){
-    this.findAll();
+    this.findByHotel();
+    
   }
+
+ // FUNCION PARA FILTRAR POR HOTEL, SE DEBE DESCOMENTAR CUANDO SE TENGA EL ID DEL HOTEL
+  findByHotel(): void {
+    this.bookingService.findByHotel(this.HotelId).subscribe({
+      next: (data) => {
+        this.Booking = data;
+        console.log(this.Booking.length)
+        this.filteredBooking = [...this.Booking];
+        console.log(this.filteredBooking);
+        this.calcularEstadisticas();
+      },
+      error: (err) => {
+        console.error('Error al obtener los reservas:', err);
+        this.Booking = [];
+        this.filteredBooking = [];
+        this.resetEstadisticas();
+      }
+    })
+  }
+ 
+
+  // FUNCION PARA FILTRAR POR HOTEL, SE DEBE DESCOMENTAR CUANDO SE TENGA EL ID DEL HOTEL
+  /*
   findAll(): void {
     this.bookingService.findAll().subscribe({
       next: (data) => {
@@ -41,6 +67,7 @@ export class ReservasComponent {
       }
     })
   }
+  */
 
   onFilteredByStatus(event: Event): void {
     const selectedStatus = (event.target as HTMLSelectElement).value;
@@ -49,7 +76,7 @@ export class ReservasComponent {
       return;
     }
 
-    this.bookingService.findByStatus(selectedStatus).subscribe({
+    this.bookingService.findByStatusByHotel(selectedStatus,this.HotelId).subscribe({
       next: (reservas) => {
         this.filteredBooking = reservas;
       },
@@ -66,6 +93,13 @@ export class ReservasComponent {
     this.confirmedBookings = this.Booking.filter(booking => booking.status === 'confirmed').length;
     this.refundedBookings = this.Booking.filter(booking => booking.status === 'refunded').length;
     this.canceledBookings = this.Booking.filter(booking => booking.status === 'canceled').length;
+  }
+
+  resetEstadisticas(): void {
+    this.totalBookings = 0;
+    this.confirmedBookings = 0;
+    this.refundedBookings = 0;
+    this.canceledBookings = 0;
   }
 
   calcularNoches(checkIn: string, checkOut: string): number {

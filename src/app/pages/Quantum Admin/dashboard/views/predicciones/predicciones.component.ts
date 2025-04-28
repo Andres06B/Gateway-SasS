@@ -15,6 +15,7 @@ export class PrediccionesComponent {
   currentClientId: number | null = null;
   loading: boolean = false;
   error: string | null = null;
+  hotelId: number = Number(localStorage.getItem('hotel'));
 
   constructor(
     private prediccionesService: WekaService,
@@ -23,7 +24,7 @@ export class PrediccionesComponent {
   ) {}
 
   ngOnInit() {
-    this.prediccionesService.getPredictions(3).subscribe({
+    this.prediccionesService.getPredictions(this.hotelId).subscribe({
       next: (predictions) => {
         console.log(predictions);
         this.ListaPredicciones = predictions;
