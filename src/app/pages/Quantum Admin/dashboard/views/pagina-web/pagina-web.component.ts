@@ -118,6 +118,13 @@ export class PaginaWebComponent implements OnInit {
     });
   }
 
+  getOptimizedImage(url: string, width: number, quality = 80): string {
+    if(url.includes('cloudinary.com')) {
+      return url.replace('/upload/', `/upload/w_${width},q_${quality}/`);
+    }
+    return url; // Fallback si no es Cloudinary
+  }
+
 
   get hotelServices(): FormArray {
     return this.hotelForm.get('services') as FormArray;

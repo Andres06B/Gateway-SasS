@@ -1,59 +1,271 @@
 
 <app-header-app></app-header-app>
 
-<section class="py-16 bg-gradient-to-b from-white to-[#f0f8f4] relative overflow-hidden">
-  <!-- Elementos decorativos -->
+<!-- Sección Informativa Premium -->
+<section class="relative bg-white overflow-hidden">
+  <!-- Efectos decorativos de fondo -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-    <div class="absolute top-20 left-10 w-40 h-40 bg-[#428764]/10 rounded-full filter blur-3xl"></div>
-    <div class="absolute bottom-10 right-20 w-60 h-60 bg-[#306B4F]/10 rounded-full filter blur-3xl"></div>
-    <div class="absolute top-1/3 right-1/4 w-32 h-32 bg-[#428764]/10 rounded-full filter blur-3xl"></div>
+    <div class="absolute top-20 left-1/4 w-48 h-48 bg-[#428764]/5 rounded-full filter blur-3xl"></div>
+    <div class="absolute bottom-10 right-1/4 w-64 h-64 bg-[#306B4F]/5 rounded-full filter blur-3xl"></div>
   </div>
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Encabezado con animación -->
-    <div class="text-center mb-12 transform transition-all duration-500 hover:scale-105">
-      <h2 class="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
-        <span class="bg-gradient-to-r from-[#428764] to-[#306B4F] bg-clip-text text-transparent animate-gradient-x">Reserva ahora</span>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <!-- Encabezado con estadísticas -->
+    <div class="text-center mb-16">
+      <span class="inline-block px-4 py-2 bg-[#f0f8f4] text-[#306B4F] rounded-full text-sm font-semibold mb-4">
+        ✨ Más de 10,000 viajeros felices en 2024
+      </span>
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">
+        Descubre <span class="bg-gradient-to-r from-[#428764] to-[#306B4F] bg-clip-text text-transparent">Colombia</span> con nosotros
       </h2>
-      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto relative">
-        <span class="relative inline-block">
-          Encuentra tu alojamiento perfecto en los mejores destinos de Colombia
-          <span class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#428764] to-[#306B4F] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-        </span>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Encuentra alojamientos perfectos y experiencias únicas en los destinos más fascinantes del país.
       </p>
     </div>
 
-    <!-- Tarjeta del formulario con efecto hover -->
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-      <!-- Banner superior animado -->
-      <div class="bg-gradient-to-r from-[#428764] to-[#306B4F] p-4 text-white text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 opacity-20 animate-pulse-slow"></div>
-        <div class="relative z-10">
-          <h3 class="text-xl font-bold animate-bounce-slow">¡Oferta especial por temporada!</h3>
-          <p class="text-sm opacity-90 mt-1">15% de descuento en reservas de más de 5 noches</p>
+    <!-- Tarjeta combinada con pestañas funcionales -->
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-16 border border-gray-100">
+      <!-- Sección superior con pestañas -->
+      <div class="border-b border-gray-200">
+        <div class="flex -mb-px" id="tabs">
+          <button 
+            class="tab-button flex-1 py-4 px-1 text-center border-b-2 font-medium text-lg"
+            [class.border-[#306B4F]]="activeTab === 'destinos'"
+            [class.text-[#306B4F]]="activeTab === 'destinos'"
+            [class.border-transparent]="activeTab !== 'destinos'"
+            [class.text-gray-500]="activeTab !== 'destinos'"
+            (click)="changeTab('destinos')"
+          >
+            Destinos populares
+          </button>
+          <button 
+            class="tab-button flex-1 py-4 px-1 text-center border-b-2 font-medium text-lg"
+            [class.border-[#306B4F]]="activeTab === 'experiencias'"
+            [class.text-[#306B4F]]="activeTab === 'experiencias'"
+            [class.border-transparent]="activeTab !== 'experiencias'"
+            [class.text-gray-500]="activeTab !== 'experiencias'"
+            (click)="changeTab('experiencias')"
+          >
+            Experiencias
+          </button>
+          <button 
+            class="tab-button flex-1 py-4 px-1 text-center border-b-2 font-medium text-lg"
+            [class.border-[#306B4F]]="activeTab === 'tips'"
+            [class.text-[#306B4F]]="activeTab === 'tips'"
+            [class.border-transparent]="activeTab !== 'tips'"
+            [class.text-gray-500]="activeTab !== 'tips'"
+            (click)="changeTab('tips')"
+          >
+            Tips de viaje
+          </button>
         </div>
       </div>
 
-      <!-- Formulario -->
+      <!-- Contenido de pestañas -->
       <div class="p-6 md:p-8">
-        <form>
-          <!-- Destino con efecto focus -->
-          <div class="mb-6 group">
-            <label for="destination" class="block text-lg font-medium text-gray-800 mb-2 flex items-center transition-all duration-300 group-hover:text-[#306B4F]">
-              <svg class="w-5 h-5 mr-2 text-[#306B4F] transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Contenido Destinos -->
+        <div class="tab-content" *ngIf="activeTab === 'destinos'">
+          <!-- Grid de destinos -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Destino -->
+            <a *ngFor="let dest of destinations" href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 h-48">
+              <img [src]="dest.image" 
+                   [alt]="dest.name" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex flex-col justify-end p-4">
+                <h3 class="text-white font-bold text-xl">{{dest.name}}</h3>
+                <div class="flex items-center mt-1">
+                  <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  <span class="text-white/90 text-sm ml-1">{{dest.rating}} ({{dest.reviews | number}})</span>
+                </div>
+              </div>
+              <span *ngIf="dest.badge" class="absolute top-3 right-3 bg-[#306B4F] text-white text-xs font-bold px-3 py-1 rounded-full">
+                {{dest.badge}}
+              </span>
+            </a>
+          </div>
+
+          <!-- Estadísticas destacadas -->
+          <div class="bg-[#f0f8f4] rounded-xl p-6 md:p-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+              <div *ngFor="let stat of stats" class="p-4">
+                <div class="text-3xl font-bold text-[#306B4F] mb-2">{{stat.value}}</div>
+                <div class="text-gray-700">{{stat.label}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido Experiencias -->
+        <div class="tab-content" *ngIf="activeTab === 'experiencias'">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Experiencias únicas en Colombia</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Experiencia -->
+            <div *ngFor="let exp of experiences" class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+              <div class="relative h-48">
+                <img [src]="exp.image" 
+                     [alt]="exp.title" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-[#306B4F] text-white text-xs font-bold px-2 py-1 rounded">
+                  {{exp.location}}
+                </span>
+              </div>
+              <div class="p-5">
+                <h4 class="font-bold text-lg mb-2">{{exp.title}}</h4>
+                <p class="text-gray-600 mb-3">{{exp.description}}</p>
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-[#306B4F]">{{formatPrice(exp.price)}} por persona</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido Tips de Viaje -->
+        <div class="tab-content" *ngIf="activeTab === 'tips'">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Consejos para tu viaje perfecto</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Tip -->
+            <div *ngFor="let tip of travelTips" class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+              <div class="h-48 overflow-hidden">
+                <img [src]="tip.image" 
+                     [alt]="tip.title" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-5">
+                <span class="inline-block px-2 py-1 bg-[#f0f8f4] text-[#306B4F] text-xs font-semibold rounded mb-2">
+                  {{tip.category}}
+                </span>
+                <h4 class="font-bold text-lg mb-2">{{tip.title}}</h4>
+                <p class="text-gray-600 mb-3">{{tip.description}}</p>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#f0f8f4] rounded-xl p-6">
+            <h4 class="font-bold text-lg mb-3 text-[#306B4F]">📌 Consejo del día</h4>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-[#306B4F] text-white p-2 rounded-lg mr-4">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900">Reserva con anticipación en temporada alta (diciembre-enero, junio-julio) para asegurar los mejores alojamientos a precios razonables.</p>
+                <p class="text-gray-600 mt-1">Los precios pueden subir hasta un 40% en estas fechas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonios y beneficios (sección inferior) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Testimonios -->
+      <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <svg class="w-6 h-6 text-[#306B4F] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+          </svg>
+          Lo que dicen nuestros viajeros
+        </h3>
+        <div class="space-y-6">
+          <!-- Testimonio -->
+          <div *ngFor="let test of testimonials" class="bg-white p-5 rounded-xl shadow-sm">
+            <div class="flex items-center mb-3">
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-gray-300 overflow-hidden mr-3">
+                  <img [src]="test.photo" alt="Usuario" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <div class="font-medium">{{test.name}}</div>
+                  <div class="flex items-center text-sm text-gray-500">
+                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    {{test.rating}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">{{test.comment}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beneficios -->
+      <div class="bg-[#f0f8f4] rounded-2xl p-6 md:p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <svg class="w-6 h-6 text-[#306B4F] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          Por qué reservar con nosotros
+        </h3>
+        <div class="space-y-4">
+          <div *ngFor="let benefit of benefits" class="flex items-start">
+            <div class="flex-shrink-0 bg-[#306B4F] p-2 rounded-lg text-white mr-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="benefit.icon"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">{{benefit.title}}</h4>
+              <p class="text-gray-700">{{benefit.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Sección de Búsqueda Elegante -->
+<section class="py-16 bg-gradient-to-b from-white to-[#f8fcf9] relative overflow-hidden">
+  <!-- Elementos decorativos abstractos -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMzAsMjQ2LDIzNSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')]"></div>
+    <div class="absolute top-20 left-10 w-40 h-40 bg-[#428764]/5 rounded-full filter blur-3xl"></div>
+    <div class="absolute bottom-10 right-20 w-60 h-60 bg-[#306B4F]/5 rounded-full filter blur-3xl"></div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Tarjeta de formulario minimalista -->
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-500 hover:shadow-3xl">
+      <!-- Encabezado elegante -->
+      <div class="bg-gradient-to-r from-[#428764] to-[#306B4F] p-6 text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')]"></div>
+        <div class="relative z-10">
+          <h3 class="text-2xl font-bold mb-2">Encuentra tu hotel ideal</h3>
+          <p class="text-sm opacity-90">Mejor precio garantizado • Cancelación gratuita en la mayoría de hoteles</p>
+        </div>
+      </div>
+
+      <!-- Formulario simplificado -->
+      <div class="p-8">
+        <form class="space-y-6">
+          <!-- Destino con estilo mejorado -->
+          <div class="space-y-2">
+            <label class="block text-lg font-medium text-gray-700 flex items-center">
+              <svg class="w-5 h-5 mr-2 text-[#306B4F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
-              ¿A dónde viajas?
+              Destino
             </label>
             <div class="relative">
-              <select id="destination" class="block w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] bg-white shadow-sm transition-all duration-300 hover:shadow-md focus:shadow-md appearance-none">
-                <option value="" disabled selected>Selecciona un destino</option>
-                <option value="cartagena">Cartagena - Caribe paradisíaco</option>
-                <option value="bogota">Bogotá - Capital cultural</option>
-                <option value="barranquilla">Barranquilla - Carnaval y diversión</option>
+              <select class="block w-full px-5 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] bg-white appearance-none transition-all duration-200 hover:border-gray-400 focus:shadow-md">
+                <option value="" disabled selected>¿A dónde te diriges?</option>
+                <option value="cartagena">Cartagena - Joya del Caribe</option>
                 <option value="medellin">Medellín - Ciudad de la eterna primavera</option>
-                <option value="santa-marta">Santa Marta - Montañas y playas</option>
+                <option value="bogota">Bogotá - Capital cultural</option>
+                <option value="santa-marta">Santa Marta - Paraíso natural</option>
+                <option value="barranquilla">Barranquilla - Capital del Carnaval</option>
               </select>
               <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <svg class="w-5 h-5 text-[#306B4F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,139 +275,81 @@
             </div>
           </div>
 
-          <!-- Fechas con diseño mejorado -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="group">
-              <label for="check-in" class="block text-lg font-medium text-gray-800 mb-2 flex items-center transition-all duration-300 group-hover:text-[#306B4F]">
-                <svg class="w-5 h-5 mr-2 text-[#306B4F] transition-all duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Fechas en línea -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label class="block text-lg font-medium text-gray-700 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#306B4F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                Check-in
+                Llegada
               </label>
               <div class="relative">
-                <input type="date" id="check-in" class="block w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] shadow-sm transition-all duration-300 hover:shadow-md focus:shadow-md">
+                <input type="date" class="block w-full px-5 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] transition-all duration-200 hover:border-gray-400 focus:shadow-md">
                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <svg class="w-5 h-5 text-[#306B4F] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
                 </div>
               </div>
             </div>
-            <div class="group">
-              <label for="check-out" class="block text-lg font-medium text-gray-800 mb-2 flex items-center transition-all duration-300 group-hover:text-[#306B4F]">
-                <svg class="w-5 h-5 mr-2 text-[#306B4F] transition-all duration-300 group-hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            
+            <div class="space-y-2">
+              <label class="block text-lg font-medium text-gray-700 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#306B4F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                Check-out
+                Salida
               </label>
               <div class="relative">
-                <input type="date" id="check-out" class="block w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] shadow-sm transition-all duration-300 hover:shadow-md focus:shadow-md">
+                <input type="date" class="block w-full px-5 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] transition-all duration-200 hover:border-gray-400 focus:shadow-md">
                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <svg class="w-5 h-5 text-[#306B4F] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Huéspedes con interacción mejorada -->
-          <div class="mb-8">
-            <label class="block text-lg font-medium text-gray-800 mb-2 flex items-center group">
-              <svg class="w-5 h-5 mr-2 text-[#306B4F] transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              </svg>
-              Huéspedes
-            </label>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="flex items-center justify-between p-4 border border-gray-300 rounded-lg hover:border-[#306B4F] transition-all duration-300 group">
-                <span class="font-medium text-gray-800 group-hover:text-[#306B4F] transition-colors duration-300">Adultos</span>
-                <div class="flex items-center space-x-3">
-                  <button type="button" class="w-8 h-8 rounded-full bg-[#306B4F] text-white flex items-center justify-center hover:bg-[#428764] transition-all duration-300 active:scale-90 shadow-md hover:shadow-lg">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                    </svg>
-                  </button>
-                  <span class="w-8 text-center font-medium group-hover:text-[#306B4F] transition-colors duration-300">2</span>
-                  <button type="button" class="w-8 h-8 rounded-full bg-[#306B4F] text-white flex items-center justify-center hover:bg-[#428764] transition-all duration-300 active:scale-90 shadow-md hover:shadow-lg">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div class="flex items-center justify-between p-4 border border-gray-300 rounded-lg hover:border-[#306B4F] transition-all duration-300 group">
-                <span class="font-medium text-gray-800 group-hover:text-[#306B4F] transition-colors duration-300">Niños</span>
-                <div class="flex items-center space-x-3">
-                  <button type="button" class="w-8 h-8 rounded-full bg-[#306B4F] text-white flex items-center justify-center hover:bg-[#428764] transition-all duration-300 active:scale-90 shadow-md hover:shadow-lg">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                    </svg>
-                  </button>
-                  <span class="w-8 text-center font-medium group-hover:text-[#306B4F] transition-colors duration-300">0</span>
-                  <button type="button" class="w-8 h-8 rounded-full bg-[#306B4F] text-white flex items-center justify-center hover:bg-[#428764] transition-all duration-300 active:scale-90 shadow-md hover:shadow-lg">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Botón de búsqueda animado -->
-          <button type="submit" class="w-full py-4 px-6 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white text-lg font-bold rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center relative overflow-hidden group">
+          <!-- Botón de búsqueda elegante -->
+          <button type="submit" class="w-full py-4 px-6 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white text-lg font-bold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center relative overflow-hidden group">
             <span class="absolute inset-0 bg-gradient-to-r from-[#306B4F] to-[#428764] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             <span class="relative z-10 flex items-center">
-              <svg class="w-6 h-6 mr-2 transition-all duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 mr-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
-              Buscar alojamiento
+              Buscar hoteles
             </span>
           </button>
         </form>
       </div>
 
-      <!-- Beneficios con animación -->
-      <div class="bg-gray-50 p-6 md:p-8 border-t border-gray-200">
-        <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-          <svg class="w-5 h-5 mr-2 text-[#306B4F] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          Beneficios al reservar con nosotros
-        </h3>
+      <!-- Beneficios en grid minimalista -->
+      <div class="bg-gray-50 p-6 border-t border-gray-200">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="flex items-start p-3 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-md">
-            <div class="flex-shrink-0 bg-[#306B4F]/10 p-2 rounded-lg text-[#306B4F] mr-3 transition-all duration-300 group-hover:bg-[#306B4F]/20">
-              <svg class="w-5 h-5 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          <div class="flex items-center p-3">
+            <div class="flex-shrink-0 bg-[#306B4F]/10 p-2 rounded-lg text-[#306B4F] mr-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
             <div>
-              <h4 class="font-medium text-gray-800">Reserva rápida</h4>
-              <p class="text-sm text-gray-600">Confirmación inmediata</p>
+              <h4 class="font-medium text-gray-800">Sin cargos ocultos</h4>
             </div>
           </div>
-          <div class="flex items-start p-3 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-md">
-            <div class="flex-shrink-0 bg-[#306B4F]/10 p-2 rounded-lg text-[#306B4F] mr-3 transition-all duration-300 group-hover:bg-[#306B4F]/20">
-              <svg class="w-5 h-5 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.2s;">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+          <div class="flex items-center p-3">
+            <div class="flex-shrink-0 bg-[#306B4F]/10 p-2 rounded-lg text-[#306B4F] mr-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
             <div>
-              <h4 class="font-medium text-gray-800">Pago seguro</h4>
-              <p class="text-sm text-gray-600">Datos protegidos</p>
+              <h4 class="font-medium text-gray-800">Mejor precio garantizado</h4>
             </div>
           </div>
-          <div class="flex items-start p-3 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-md">
-            <div class="flex-shrink-0 bg-[#306B4F]/10 p-2 rounded-lg text-[#306B4F] mr-3 transition-all duration-300 group-hover:bg-[#306B4F]/20">
-              <svg class="w-5 h-5 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.4s;">
+          <div class="flex items-center p-3">
+            <div class="flex-shrink-0 bg-[#306B4F]/10 p-2 rounded-lg text-[#306B4F] mr-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
               </svg>
             </div>
             <div>
-              <h4 class="font-medium text-gray-800">Cancelación flexible</h4>
-              <p class="text-sm text-gray-600">Sin cargos en 24h</p>
+              <h4 class="font-medium text-gray-800">Reserva segura</h4>
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ export class UserProfileApplicationComponent {
     tipoDocumento: 'CC',
     dni: '1234567890',
     fechaNacimiento: '1990-05-15',
-    correo: 'maria.gonzalez@example.com'
+    correo: 'Juan.Camilo@example.com'
   };
 
   constructor(private fb: FormBuilder) {}

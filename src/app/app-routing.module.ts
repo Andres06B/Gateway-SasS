@@ -34,12 +34,11 @@ import { DestinationApplicationComponent } from './pages/Quantum Users/Accommoda
 import { UserProfileApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/user-profile-application/user-profile-application.component';
 import { ReservationPaymentsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reservation-payments-application/reservation-payments-application.component';
 import { ReserveCompanionsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-companions-application/reserve-companions-application.component';
-import { PreferredStaysApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/preferred-stays-application/preferred-stays-application.component';
-import { ReserveStatusApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-status-applications/reserve-status-applications.component';
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
+import { PreferredStaysApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/preferred-stays-application/preferred-stays-application.component';
 
 //import { LandingComponent } from './view/landing/landing.component';
 
@@ -77,7 +76,7 @@ const routes: Routes = [
   { path: 'reservationpayments', component:ReservationPaymentsApplicationComponent},
   { path: 'companionreservation', component:ReserveCompanionsApplicationComponent},
   { path: 'preferredstays', component:PreferredStaysApplicationComponent},
-  { path: 'reserveStatus', component:ReserveStatusApplicationsComponent},
+
   { path: 'myreservation', component:MyreseRevationsApplicationComponent},
   { path: 'Reservation', component:ReservationsApplicationsComponent},
   {path: 'pasarela', component: PasarelaComponent},

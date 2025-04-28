@@ -1,5 +1,7 @@
-<app-header-app></app-header-app>
-<div class="p-6 border-t">
+<section class="min-h-screen flex flex-col">
+  <app-header-app></app-header-app>
+  
+  <div class="flex-1 p-6 border-t">
     <div class="flex justify-between items-center mb-6">
       <h3 class="text-xl font-semibold text-gray-800 flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#306B4F] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -8,11 +10,14 @@
         Historial de Reservaciones
       </h3>
       <div class="relative">
-        <select class="appearance-none bg-white border border-gray-300 rounded-lg pl-3 pr-8 py-2 text-sm focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] transition">
-          <option>Todos</option>
-          <option>Últimos 3 meses</option>
-          <option>2023</option>
-          <option>2022</option>
+        <select 
+          class="appearance-none bg-white border border-gray-300 rounded-lg pl-3 pr-8 py-2 text-sm focus:ring-2 focus:ring-[#306B4F] focus:border-[#306B4F] transition"
+          (change)="filtrarReservaciones($event)">
+          <option value="todos">Todos</option>
+          <option value="3meses">Últimos 3 meses</option>
+          <option value="2023">2025</option>
+          <option value="2022">2024</option>
+          <option value="pendientes">Falta por pagar</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -20,8 +25,8 @@
       </div>
     </div>
   
-    <div *ngIf="pagos.length > 0; else noPagos" class="space-y-5">
-      <div *ngFor="let pago of pagos" class="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+    <div *ngIf="pagosFiltrados.length > 0; else noPagos" class="space-y-5">
+      <div *ngFor="let pago of pagosFiltrados" class="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
         <div class="absolute inset-y-0 left-0 w-1 bg-[#306B4F]"></div>
         
         <div class="p-5">
@@ -73,17 +78,9 @@
                   {{pago.detalles.habitacion}}
                 </div>
               </div>
-              <div class="flex space-x-2">
-                <button (click)="verDetallePago(pago)" class="px-3 py-1.5 bg-white border border-[#306B4F] text-[#306B4F] text-sm font-medium rounded-lg hover:bg-[#306B4F] hover:text-white transition flex items-center">
-                  Detalles
-                </button>
-                <button class="px-3 py-1.5 bg-[#306B4F] text-white text-sm font-medium rounded-lg hover:bg-[#428764] transition flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Factura
-                </button>
-              </div>
+              <button *ngIf="pago.estado === 'Pendiente'" class="px-3 py-1.5 bg-red-50 text-red-600 text-xs font-semibold rounded-lg hover:bg-red-100 transition">
+                Pagar ahora
+              </button>
             </div>
           </div>
         </div>
@@ -116,3 +113,4 @@
   </div>
 
   <app-footer-app></app-footer-app>
+</section>

@@ -81,13 +81,7 @@ export class HeaderAppComponent {
       bgColor: 'bg-orange-50',
       iconColor: 'text-orange-500'
     },
-    { 
-      path: '/reserveStatus', 
-      label: 'Estado de reserva', 
-      icon: 'M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm3 1h6v4H6V6zm0 6h6v4H6v-4zm-2 4h2v2H4v-2zm0-4h2v2H4v-4zm0-4h2v2H4V8zm8 8h2v2h-2v-2zm0-4h2v2h-2v-4zm0-4h2v2h-2V8z',
-      bgColor: 'bg-blue-50',
-      iconColor: 'text-blue-500'
-    }
+    
   ];
 
   constructor(public router: Router) {}

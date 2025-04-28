@@ -8,278 +8,211 @@
         <span class="bg-gradient-to-r from-[#428764] to-[#306B4F] bg-clip-text text-transparent">Tus estadías preferidas</span>
       </h2>
       <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
-        Clasificadas por tus categorías favoritas y seleccionadas especialmente para ti
+        Un recorrido por los lugares que has disfrutado y a los que has regresado
       </p>
     </div>
 
-    <!-- Filtros interactivos -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
-      <button 
-        *ngFor="let category of categories" 
-        (click)="setActiveCategory(category)"
-        class="px-6 py-3 rounded-full text-sm font-medium transition-all"
-        [ngClass]="{
-          'bg-gradient-to-r from-[#428764] to-[#306B4F] text-white shadow-md': activeCategory === category,
-          'bg-white border border-gray-300 text-gray-700 hover:border-[#306B4F] hover:text-[#306B4F]': activeCategory !== category
-        }">
-        {{category}}
-      </button>
-    </div>
-
-    <!-- Contenido por categoría -->
-    <div class="space-y-12">
-      <!-- Hoteles -->
-      <div *ngIf="activeCategory === 'Hoteles'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Tarjeta Hotel 1 -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-          <div class="relative h-72">
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                 alt="Hotel Cartagena" class="w-full h-full object-cover">
-            <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              4.8
-            </div>
-            <div class="absolute bottom-4 left-4">
-              <span class="bg-[#306B4F] text-white text-xs px-3 py-1 rounded-full shadow-sm">5 visitas</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900">Hotel Boutique Cartagena</h3>
-                <p class="text-gray-600 mt-2 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  Ciudad Amurallada
-                </p>
-              </div>
-            </div>
-            
-            <div class="mt-6 flex items-center">
-              <div class="flex -space-x-2">
-                <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amigo 1">
-                <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Amigo 2">
-              </div>
-              <span class="ml-3 text-gray-500">Tú y 2 amigos</span>
-            </div>
-            
-            <button class="mt-8 w-full bg-gradient-to-r from-[#428764] to-[#306B4F] text-white py-3 rounded-xl hover:shadow-md transition-all flex items-center justify-center group">
-              <span class="font-medium">Reservar nuevamente</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Tarjeta Hotel 2 -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-          <div class="relative h-72">
-            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                 alt="Hotel Bogotá" class="w-full h-full object-cover">
-            <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              4.6
-            </div>
-            <div class="absolute bottom-4 left-4">
-              <span class="bg-[#306B4F] text-white text-xs px-3 py-1 rounded-full shadow-sm">3 visitas</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900">Grand Hotel Bogotá</h3>
-                <p class="text-gray-600 mt-2 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  Zona G, Bogotá
-                </p>
-              </div>
-            </div>
-            
-            <div class="mt-6">
-              <div class="mt-4 flex items-center text-sm text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-                </svg>
-                Última visita: Marzo 2024
-              </div>
-            </div>
-            
-            <button class="mt-8 w-full bg-gradient-to-r from-[#428764] to-[#306B4F] text-white py-3 rounded-xl hover:shadow-md transition-all flex items-center justify-center group">
-              <span class="font-medium">Ver disponibilidad</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hostales -->
-      <div *ngIf="activeCategory === 'Hostales'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Tarjeta Hostal 1 -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-          <div class="relative h-72">
-            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                 alt="Hostal San Andrés" class="w-full h-full object-cover">
-            <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              4.5
-            </div>
-            <div class="absolute bottom-4 left-4">
-              <span class="bg-[#306B4F] text-white text-xs px-3 py-1 rounded-full shadow-sm">2 visitas</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900">Hostal Caribe Azul</h3>
-                <p class="text-gray-600 mt-2 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  San Andrés Isla
-                </p>
-              </div>
-            </div>
-            
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Playa cercana</span>
-              <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Hammocks</span>
-              <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Desayuno incluido</span>
-            </div>
-            
-            <button class="mt-8 w-full bg-gradient-to-r from-[#428764] to-[#306B4F] text-white py-3 rounded-xl hover:shadow-md transition-all flex items-center justify-center group">
-              <span class="font-medium">Reservar ahora</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cabañas -->
-      <div *ngIf="activeCategory === 'Cabañas'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Tarjeta Cabaña 1 -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-          <div class="relative h-72">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                 alt="Cabaña Salento" class="w-full h-full object-cover">
-            <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-bold flex items-center shadow-md">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              4.9
-            </div>
-            <div class="absolute bottom-4 left-4">
-              <span class="bg-[#306B4F] text-white text-xs px-3 py-1 rounded-full shadow-sm">3 visitas</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900">Cabañas Valle de Cocora</h3>
-                <p class="text-gray-600 mt-2 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  Salento, Quindío
-                </p>
-              </div>
-            </div>
-            
-            <div class="mt-6 flex items-center text-gray-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-              </svg>
-              Última visita: Diciembre 2023
-            </div>
-            
-            <div class="mt-4">
-              <p class="text-gray-600">"La mejor experiencia en medio de la naturaleza"</p>
-            </div>
-            
-            <button class="mt-8 w-full bg-gradient-to-r from-[#428764] to-[#306B4F] text-white py-3 rounded-xl hover:shadow-md transition-all flex items-center justify-center group">
-              <span class="font-medium">Reservar nuevamente</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección de beneficios -->
-    <div class="mt-20 bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div class="md:flex">
-        <div class="md:w-1/3 bg-gradient-to-b from-[#306B4F] to-[#428764] p-10 text-white">
-          <h3 class="text-2xl font-bold mb-6">Tus beneficios exclusivos</h3>
-          <p class="mb-8">Como viajero frecuente, disfrutas de ventajas especiales en tus reservas.</p>
+    <!-- Listado de estadías -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Tarjeta 1 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 group">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Hotel Cartagena" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           
-          <div class="space-y-6">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 bg-white/20 p-2 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          <!-- Badge de visitas -->
+          <div class="absolute bottom-4 left-4 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white text-xs px-3 py-1 rounded-full shadow-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            5 visitas
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">Hotel Boutique Cartagena</h3>
+              <p class="text-gray-600 mt-2 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-              </div>
-              <div class="ml-4">
-                <p class="font-medium">10% de descuento</p>
-                <p class="text-sm opacity-90">En tu próxima reserva</p>
-              </div>
+                Ciudad Amurallada, Cartagena
+              </p>
             </div>
-            
-            <div class="flex items-center">
-              <div class="flex-shrink-0 bg-white/20 p-2 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            <span class="text-sm font-medium text-[#306B4F]">Hotel</span>
+          </div>
+          
+          <div class="mt-4 flex items-center text-sm text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            Última visita: Noviembre 2023
+          </div>
+          
+          <div class="mt-4">
+            <p class="text-gray-600 italic">"Siempre regresamos por la atención personalizada y la ubicación privilegiada"</p>
+          </div>
+          
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Piscina</span>
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Desayuno</span>
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Terraza</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 group">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Cabaña Salento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          
+          <div class="absolute bottom-4 left-4 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white text-xs px-3 py-1 rounded-full shadow-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            3 visitas
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">Cabañas Valle de Cocora</h3>
+              <p class="text-gray-600 mt-2 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
+                Salento, Quindío
+              </p>
+            </div>
+            <span class="text-sm font-medium text-[#306B4F]">Cabaña</span>
+          </div>
+          
+          <div class="mt-4 flex items-center text-sm text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            Última visita: Agosto 2023
+          </div>
+          
+          <div class="mt-4">
+            <p class="text-gray-600 italic">"Nuestro refugio favorito para conectar con la naturaleza"</p>
+          </div>
+          
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Fogata</span>
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Jacuzzi</span>
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Senderos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 group">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Hostal San Andrés" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          
+          <div class="absolute bottom-4 left-4 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white text-xs px-3 py-1 rounded-full shadow-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            2 visitas
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">Hostal Caribe Azul</h3>
+              <p class="text-gray-600 mt-2 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                San Andrés Isla
+              </p>
+            </div>
+            <span class="text-sm font-medium text-[#306B4F]">Hostal</span>
+          </div>
+          
+          <div class="mt-4 flex items-center text-sm text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-[#428764]" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            Última visita: Enero 2024
+          </div>
+          
+          <div class="mt-4">
+            <p class="text-gray-600 italic">"El mejor lugar para mochileros con playa privada y ambiente relajado"</p>
+          </div>
+          
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Playa</span>
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Hammocks</span>
+            <span class="bg-[#428764]/10 text-[#306B4F] text-xs px-3 py-1.5 rounded-full font-medium">Bar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de recuerdos -->
+    <div class="mt-20 bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+      <div class="md:flex">
+        <div class="md:w-1/3 bg-gradient-to-b from-[#306B4F] to-[#428764] p-10 text-white relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 rounded-full"></div>
+          <div class="absolute -right-5 -bottom-5 w-20 h-20 bg-white/10 rounded-full"></div>
+          <div class="relative z-10">
+            <h3 class="text-2xl font-bold mb-6">Tus estadías en números</h3>
+            <p class="mb-8 opacity-90">Un resumen de tus experiencias de viaje</p>
+            
+            <div class="space-y-6">
+              <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                <p class="text-3xl font-bold">12</p>
+                <p class="text-sm opacity-90">Estadías completadas</p>
               </div>
-              <div class="ml-4">
-                <p class="font-medium">Check-in prioritario</p>
-                <p class="text-sm opacity-90">En hoteles seleccionados</p>
+              
+              <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                <p class="text-3xl font-bold">47</p>
+                <p class="text-sm opacity-90">Noches disfrutadas</p>
               </div>
             </div>
           </div>
         </div>
         
         <div class="md:w-2/3 p-10">
-          <h3 class="text-2xl font-bold text-gray-800 mb-6">¿Listo para tu próxima aventura?</h3>
-          <p class="text-gray-600 mb-8">Basado en tus estadías anteriores, tenemos recomendaciones personalizadas para ti.</p>
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">Tus recuerdos de viaje</h3>
+          <p class="text-gray-600 mb-8">Estos son los lugares que más has disfrutado y a los que has regresado.</p>
           
-          <div class="bg-[#306B4F]/10 rounded-xl p-6 border border-[#306B4F]/20">
-            <div class="flex">
-              <div class="flex-shrink-0 text-[#306B4F]">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div class="ml-4">
-                <h4 class="font-medium text-gray-800">Recomendación del mes</h4>
-                <p class="mt-2 text-gray-600">Te recomendamos explorar el Eje Cafetero en temporada baja. Tenemos ofertas especiales en cabañas con vistas espectaculares.</p>
-                <button class="mt-4 inline-flex items-center text-[#306B4F] font-medium hover:text-[#428764] transition-colors">
-                  Ver ofertas
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="aspect-square overflow-hidden rounded-lg">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                   alt="Recuerdo 1" class="w-full h-full object-cover hover:scale-105 transition-transform">
             </div>
+            <div class="aspect-square overflow-hidden rounded-lg">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                   alt="Recuerdo 2" class="w-full h-full object-cover hover:scale-105 transition-transform">
+            </div>
+            <div class="aspect-square overflow-hidden rounded-lg">
+              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                   alt="Recuerdo 3" class="w-full h-full object-cover hover:scale-105 transition-transform">
+            </div>
+          </div>
+          
+          <div class="mt-6 text-center">
+            <button class="inline-flex items-center text-[#306B4F] font-medium hover:text-[#428764] transition-colors group">
+              Ver más recuerdos
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
