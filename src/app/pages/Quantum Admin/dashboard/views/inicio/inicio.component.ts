@@ -4,6 +4,10 @@ import { ClientsService } from '../../../../../service/clients.service';
 import { RoomsService } from '../../../../../service/rooms.service';
 import { PagoReservaService } from '../../../../../service/pago-reserva.service';
 import { ReservationsService } from '../../../../../service/reservations.service';
+import { rooms } from '../interfaces/rooms.interface';
+import { pago_reserva } from '../interfaces/pago_reserva.interface';
+import { reservations } from '../interfaces/reservations.interface';
+import { clients } from '../interfaces/clients.interface';
 
 @Component({
   selector: 'app-inicio',
@@ -14,14 +18,13 @@ import { ReservationsService } from '../../../../../service/reservations.service
 export class InicioComponent {
   tokenId = Number(localStorage.getItem('token'));
   hotelId: any = null;
+  clientsList: clients[] = [];
+  roomsList: rooms[] = [];
+  paymentsList: pago_reserva[] = [];
+  reservationsList: reservations[] = [];
 
-  // Listas para almacenar los datos
-  clientsList: any[] = [];
-  roomsList: any[] = [];
-  paymentsList: any[] = [];
-  reservationsList: any[] = [];
+  
 
-  totalBalance: number = 0;
 
   constructor(
     private AdminService: HotelAdminService,
@@ -48,7 +51,7 @@ export class InicioComponent {
   getClients() {
     this.client.findClients(this.tokenId).subscribe({
       next: (data) => {
-        this.clientsList = data; // Guardar los datos en la lista
+        this.clientsList = data; 
         console.log(this.clientsList);
       }
     });
@@ -57,7 +60,7 @@ export class InicioComponent {
   getRooms() {
     this.room.getRoomByAdmin(this.tokenId).subscribe({
       next: (data) => {
-        this.roomsList = data; // Guardar los datos en la lista
+        this.roomsList = data; 
         console.log(this.roomsList);
       }
     });
@@ -66,7 +69,7 @@ export class InicioComponent {
   getPayments() {
     this.payment.findAllByHotel(this.hotelId).subscribe({
       next: (data) => {
-        this.paymentsList = data; // Guardar los datos en la lista
+        this.paymentsList = data; 
         console.log(this.paymentsList);
       }
     });
@@ -75,7 +78,7 @@ export class InicioComponent {
   getReservations() {
     this.booking.findByHotel(this.hotelId).subscribe({
       next: (data) => {
-        this.reservationsList = data; // Guardar los datos en la lista
+        this.reservationsList = data; 
         console.log(this.reservationsList);
       }
     });
@@ -86,4 +89,51 @@ export class InicioComponent {
     return this.paymentsList.reduce((total, payment) => total + Number(payment.amount), 0);
   }
 
+
+  calculateBusyRooms(): number {
+    return this.roomsList.filter(room => room.status === 'busy').length;
+  }
+
+  calculateFreeRooms(): number {
+    return this.roomsList.filter(room => room.status === 'free').length;
+  }
+
+  calculateBookingRooms(): number {
+    return this.roomsList.filter(room => room.status === 'booked').length;
+  }
+
+  
+  calculateConfirmedPayments(): number {
+    return this.paymentsList.filter(payment => payment.status === 'confirmed').length;
+  }
+
+  calculatePendingPayments(): number {
+    return this.paymentsList.filter(payment => payment.status === 'pending').length;
+  }
+
+  calculateConfirmedReservations(): number {
+    return this.reservationsList.filter(reservation => reservation.status === 'confirmed').length;
+  }
+
+  calculateCanceledReservations(): number {
+    return this.reservationsList.filter(reservation => reservation.status === 'canceled').length;
+  }
+
+  calculateRefundedReservations(): number {
+    return this.reservationsList.filter(reservation => reservation.status === 'refunded').length;
+  }
+
+  calculateTotalConfirmedBalance(): number {
+    return this.paymentsList
+      .filter(payment => payment.status === 'confirmed')
+      .reduce((total, payment) => total + Number(payment.amount), 0);
+  }
+  
+  
+  
+  getStatus(key: string): string {
+    const value = localStorage.getItem(key);
+    return value === 'true' ? 'Activo' : 'Inactivo';
+  }
+  
 }
