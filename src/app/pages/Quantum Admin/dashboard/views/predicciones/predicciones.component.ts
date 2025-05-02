@@ -1,42 +1,51 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Renderer2, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import * as XLSX from 'xlsx';
 import { WekaService } from '../../../../../service/weka.service';
 import { ClientsService } from '../../../../../service/clients.service';
 import { reservations } from '../interfaces/reservations.interface';
+import { WekaResponseDTO } from '../../../../../interfaces_weka/wekaResponseDTO';
+
 @Component({
   selector: 'app-predicciones',
   standalone: false,
   templateUrl: './predicciones.component.html',
-  styleUrl: './predicciones.component.css'
+  styleUrls: ['./predicciones.component.css']
 })
-export class PrediccionesComponent {
-  ListaPredicciones: any[] = [];
+export class PrediccionesComponent implements OnInit {
+  ListaPredicciones: WekaResponseDTO[] = [];
   detallesReservas: reservations[] = [];
   modalState: 'open' | 'closing' | 'closed' = 'closed';
   currentClientId: number | null = null;
   loading: boolean = false;
   error: string | null = null;
-  hotelId: number = Number(localStorage.getItem('hotel'));
+  hotelId: number = 0;
+  fileName = 'Predicciones.xlsx';
 
   constructor(
     private prediccionesService: WekaService,
     private clientService: ClientsService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.hotelId = Number(localStorage.getItem('hotel'));
+    }
     this.prediccionesService.getPredictions(this.hotelId).subscribe({
-      next: (predictions) => {
+      next: (predictions: WekaResponseDTO[]) => {
         console.log(predictions);
         this.ListaPredicciones = predictions;
         console.log(this.ListaPredicciones);
       },
-      error: err => {
+      error: (err: any) => {
         console.error('Error al obtener las predicciones:', err);
       }
     });
   }
 
-  openModal(clientId: number) {
+  openModal(clientId: number): void {
     this.currentClientId = clientId;
     this.modalState = 'open';
     this.loading = true;
@@ -44,11 +53,32 @@ export class PrediccionesComponent {
     this.detallesReservas = [];
     
     this.renderer.addClass(document.body, 'overflow-hidden');
-    
     this.findDetails(clientId);
   }
 
-  closeModal() {
+  exportToExcel(): void {
+    // Preparar los datos para Excel
+    const data = this.ListaPredicciones.map(prediccion => {
+      return {
+        'ID Cliente': prediccion.client_id,
+        'Predicción': prediccion.prediction,
+        'Probabilidad (Cancelada)': prediccion.probabilities['cancelada'],
+        'Probabilidad (No Cancelada)': prediccion.probabilities['no cancelada'],
+        'Fecha de Predicción': new Date().toLocaleDateString(),
+        'Hotel ID': this.hotelId
+      };
+    });
+
+    // Crear el libro de trabajo y la hoja
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Predicciones');
+
+    // Guardar el archivo
+    XLSX.writeFile(wb, this.fileName);
+  }
+
+  closeModal(): void {
     this.modalState = 'closing';
     setTimeout(() => {
       this.modalState = 'closed';
@@ -59,15 +89,15 @@ export class PrediccionesComponent {
     }, 300);
   }
 
-  findDetails(id: number) {
+  findDetails(id: number): void {
     this.loading = true;
     this.clientService.findReservations(id).subscribe({
-      next: (reserva) => {
+      next: (reserva: reservations[]) => {
         this.detallesReservas = reserva;
         this.loading = false;
         console.log(this.detallesReservas);
       },
-      error: err => {
+      error: (err: any) => {
         this.loading = false;
         this.error = 'Error al obtener los detalles de la reserva. Intente nuevamente.';
         console.error('Error al obtener los detalles de la reserva:', err);
@@ -75,7 +105,7 @@ export class PrediccionesComponent {
     });
   }
 
-  formatDate(date: Date): string {
+  formatDate(date: Date | string): string {
     if (!date) return 'N/A';
     
     // Convertir string a objeto Date si es necesario
