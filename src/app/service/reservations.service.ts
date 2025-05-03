@@ -34,5 +34,9 @@ export class ReservationsService {
     return this.http.get<reservations[]>(`${this.baseUrl}/status/${status}/hotel/${hotelId}`);
   }
 
+  findByClient(id: number, client: number): Observable<reservations> {
+    return this.http.get<reservations>(`${this.baseUrl}/reservation/${id}/client/${client}`);
+  }
+
 
 }
