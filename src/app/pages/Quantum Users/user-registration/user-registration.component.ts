@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClientsService } from '../../../service/clients.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -12,7 +13,19 @@ export class UserRegistrationComponent {
   showRipple = false;
   rippleX = '0px';
   rippleY = '0px';
-  
+
+  formData = {
+    name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    password: '',
+    country: '',
+    type_document: '',
+    number_document: '',
+    birth_date: new Date()
+  }
+
   particles = Array.from({ length: 15 }, (_, i) => ({
     left: `${Math.random() * 100}%`,
     top: `${Math.random() * 100}%`,
@@ -49,5 +62,15 @@ export class UserRegistrationComponent {
     const input = event.target as HTMLInputElement;
     const parent = input.parentElement;
     parent?.classList.remove('ring-2', 'ring-[#63A481]/30');
+  }
+
+
+  constructor(
+    private client: ClientsService
+  ) { }
+
+
+  createClient() {
+    
   }
 }

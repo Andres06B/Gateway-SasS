@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { clients } from '../pages/Quantum Admin/dashboard/views/interfaces/clients.interface';
+import { Clients } from '../interface/clients.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class ClientsService {
     return this.http.get<clients>(`${this.apiURL}/by-email/${email}`);
   }
   
-  createClient(data: clients): Observable<clients> {
-    return this.http.post<clients>(`${this.apiURL}/create`, data);
+  createClient(data: Clients): Observable<Clients> {
+    return this.http.post<Clients>(`${this.apiURL}/create`, data);
   }
 
   updateClient(id: number, data: Partial<clients>): Observable<clients> {
