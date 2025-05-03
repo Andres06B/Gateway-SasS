@@ -12,8 +12,8 @@ export class WekaService {
 
   constructor(private http: HttpClient) {}
 
-  getPredictions(hotelId: number): Observable<WekaResponseDTO[]>{
-    const url = `${this.apiUrl}/${hotelId}/insights`; 
+  getPredictions(hotelId: number, month: number): Observable<WekaResponseDTO[]>{
+    const url = `${this.apiUrl}/insights/${hotelId}?Mes=${month}`; 
     return this.http.get<WekaResponseDTO[]>(url);
   }
 }

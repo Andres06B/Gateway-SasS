@@ -9,7 +9,9 @@ import { ReservationsService } from "../../../../../service/reservations.service
   styleUrl: "./predicciones.component.css",
 })
 export class PrediccionesComponent {
-  ListaPredicciones: any[] = []
+  ListaPredicciones: any[] = [];
+  originalPredictions: any[] = []; // Para guardar el orden original
+  isSorted: boolean = false; // Bandera para alternar el orden
   selectedBooking: any = null
   modalState: "open" | "closing" | "closed" = "closed"
   currentClientId: number | null = null
@@ -18,6 +20,26 @@ export class PrediccionesComponent {
   hotelId: number = Number(localStorage.getItem("hotel"))
   currentBookingId: number | null = null
 
+  months = [
+    { name: "Enero", value: 1 },
+    { name: "Febrero", value: 2 },
+    { name: "Marzo", value: 3 },
+    { name: "Abril", value: 4 },
+    { name: "Mayo", value: 5 },
+    { name: "Junio", value: 6 },
+    { name: "Julio", value: 7 },
+    { name: "Agosto", value: 8 },
+    { name: "Septiembre", value: 9 },
+    { name: "Octubre", value: 10 },
+    { name: "Noviembre", value: 11 },
+    { name: "Diciembre", value: 12 },
+  ];
+
+  selectedMonth: number = new Date().getMonth() + 1;
+
+
+
+
   constructor(
     private bookingService: ReservationsService,
     private renderer: Renderer2,
@@ -25,16 +47,48 @@ export class PrediccionesComponent {
   ) {}
 
   ngOnInit() {
-    this.prediccionesService.getPredictions(this.hotelId).subscribe({
+    this.FindPredict(this.selectedMonth)
+  }
+
+  onMonthChange(event: Event) {
+    const select = (event.target as HTMLSelectElement).value
+    this.selectedMonth = Number(select)
+    console.log(this.selectedMonth)
+    this.FindPredict(this.selectedMonth)
+
+  }
+
+  FindPredict(month: number) {
+    this.prediccionesService.getPredictions(this.hotelId, month).subscribe({
       next: (predictions) => {
-        console.log(predictions)
-        this.ListaPredicciones = predictions
-        console.log(this.ListaPredicciones)
+        console.log(predictions);
+        this.ListaPredicciones = predictions;
+        this.originalPredictions = [...predictions]; // Guarda el orden original
+        console.log(this.ListaPredicciones);
       },
       error: (err) => {
-        console.error("Error al obtener las predicciones:", err)
+        console.error("Error al obtener las predicciones:", err);
       },
-    })
+    });
+  }
+
+  sortPredictions(): void {
+    if (this.isSorted) {
+      // Si ya está ordenado, vuelve al orden original
+      this.ListaPredicciones = [...this.originalPredictions];
+    } else {
+      // Ordena por canceladas primero
+      this.ListaPredicciones.sort((a, b) => {
+        if (a.prediction === 'cancelada' && b.prediction !== 'cancelada') {
+          return -1; // Las canceladas van primero
+        }
+        if (a.prediction !== 'cancelada' && b.prediction === 'cancelada') {
+          return 1; // Las no canceladas van después
+        }
+        return 0; // Mantén el orden si son iguales
+      });
+    }
+    this.isSorted = !this.isSorted; // Alterna el estado
   }
 
   openModal(clientId: number, id: number) {
