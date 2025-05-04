@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ClientsService } from '../../../../../service/clients.service';
+import { Clients } from '../../../../../interface/clients.interface';
 
 @Component({
   selector: 'app-user-profile-application',
@@ -19,29 +21,78 @@ export class UserProfileApplicationComponent {
   fechaRegistro = new Date('2023-01-15');
   fechaActualizacion = new Date();
 
-  // Datos de ejemplo del usuario (deberías obtenerlos de tu servicio de autenticación)
+  idCliente: number = Number(localStorage.getItem('id'))
+  cliente: Clients = {
+    name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    type_document: 'CC' as 'CC' | 'TI' | 'TE' | 'PP' | 'PPT' | 'NIT', 
+    number_document: '',
+    birth_date: new Date(),
+  }
+
   usuario = {
-    nombre: 'Juan Camilo',
-    apellido: 'perez',
-    telefono: '3101234567',
-    tipoDocumento: 'CC',
-    dni: '1234567890',
-    fechaNacimiento: '1990-05-15',
-    correo: 'Juan.Camilo@example.com'
+    nombre: '',
+    apellido: '',
+    telefono: '',
+    tipoDocumento: '',
+    dni: '',
+    fechaNacimiento: new Date(),
+    correo: ''
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private client: ClientsService
+  
+  ) {}
+
+  findClient(): void {
+    this.client.findOne(this.idCliente).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.cliente = response;
+
+        // Actualiza los valores del formulario con los datos del cliente
+        this.formularioPerfil.patchValue({
+          nombre: this.cliente.name,
+          apellido: this.cliente.last_name,
+          telefono: this.cliente.phone,
+          tipoDocumento: this.cliente.type_document,
+          dni: this.cliente.number_document,
+          fechaNacimiento: this.cliente.birth_date,
+          correo: this.cliente.email
+        });
+
+        this.usuario = {
+          nombre: this.cliente.name,
+          apellido: this.cliente.last_name,
+          telefono: this.cliente.phone,
+          tipoDocumento: this.cliente.type_document,
+          dni: this.cliente.number_document,
+          fechaNacimiento: this.cliente.birth_date,
+          correo: this.cliente.email
+        };
+      },
+      error: (err) => {
+        console.error('Error al obtener el cliente:', err);
+      }
+    });
+  }
 
   ngOnInit(): void {
+    this.findClient()
     this.inicializarFormulario();
     this.inicializarFormularioPassword();
+    
   }
 
   inicializarFormulario(): void {
     this.formularioPerfil = this.fb.group({
       nombre: [this.usuario.nombre, Validators.required],
       apellido: [this.usuario.apellido, Validators.required],
-      telefono: [this.usuario.telefono, [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      telefono: [this.usuario.telefono, [Validators.required]],
       tipoDocumento: [this.usuario.tipoDocumento, Validators.required],
       dni: [this.usuario.dni, Validators.required],
       fechaNacimiento: [this.usuario.fechaNacimiento, Validators.required],
@@ -51,7 +102,6 @@ export class UserProfileApplicationComponent {
 
   inicializarFormularioPassword(): void {
     this.formularioPassword = this.fb.group({
-      passwordActual: ['', Validators.required],
       nuevaPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmarPassword: ['', Validators.required]
     }, { validator: this.coincidenContrasenas('nuevaPassword', 'confirmarPassword') });
@@ -90,29 +140,59 @@ export class UserProfileApplicationComponent {
   }
 
   guardarCambios(): void {
+  
     if (this.formularioPerfil.valid) {
-      // Aquí iría la lógica para guardar los cambios en el backend
-      console.log('Datos guardados:', this.formularioPerfil.value);
-      alert('Tus cambios se han guardado correctamente');
-      
-      // Actualizar los datos del usuario localmente
-      this.usuario = {
-        ...this.usuario,
-        ...this.formularioPerfil.value
+      const updatedClient: Clients = {
+        name: this.formularioPerfil.value.nombre,
+        last_name: this.formularioPerfil.value.apellido,
+        email: this.formularioPerfil.value.correo,
+        phone: this.formularioPerfil.value.telefono,
+        type_document: this.formularioPerfil.value.tipoDocumento,
+        number_document: this.formularioPerfil.value.dni,
+        birth_date: this.formularioPerfil.value.fechaNacimiento
       };
-      this.fechaActualizacion = new Date();
+  
+      this.client.updateClient(this.idCliente, updatedClient).subscribe({
+        next: (response) => {
+          console.log('Perfil actualizado:', response);
+          alert('Tu perfil ha sido actualizado correctamente');
+          this.usuario = {
+            nombre: updatedClient.name,
+            apellido: updatedClient.last_name,
+            telefono: updatedClient.phone,
+            tipoDocumento: updatedClient.type_document,
+            dni: updatedClient.number_document,
+            fechaNacimiento: updatedClient.birth_date,
+            correo: updatedClient.email
+          };
+        },
+        error: (err) => {
+          console.error('Error al actualizar el perfil:', err);
+          alert('Hubo un error al actualizar tu perfil. Por favor, inténtalo de nuevo.');
+        }
+      });
     } else {
-      alert('Por favor completa todos los campos correctamente');
+      alert('Por favor completa todos los campos correctamente antes de guardar los cambios.');
     }
   }
 
   cambiarPassword(): void {
     if (this.formularioPassword.valid) {
-      // Aquí iría la lógica para cambiar la contraseña en el backend
-      console.log('Cambio de contraseña:', this.formularioPassword.value);
-      alert('Tu contraseña ha sido actualizada correctamente');
-      this.formularioPassword.reset();
-      this.fechaActualizacion = new Date();
+      const nuevaPassword = this.formularioPassword.value.nuevaPassword;
+
+      // Update the client's password using the updateClient service
+      this.client.updateClient(this.idCliente, { password: nuevaPassword }).subscribe({
+        next: (response) => {
+          console.log('Contraseña actualizada:', response);
+          alert('Tu contraseña ha sido actualizada correctamente');
+          this.formularioPassword.reset();
+          this.fechaActualizacion = new Date();
+        },
+        error: (err) => {
+          console.error('Error al actualizar la contraseña:', err);
+          alert('Hubo un error al actualizar tu contraseña. Por favor, inténtalo de nuevo.');
+        }
+      });
     } else {
       alert('Por favor completa todos los campos correctamente y asegúrate que las contraseñas coincidan');
     }
