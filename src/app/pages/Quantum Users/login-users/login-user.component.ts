@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../../service/login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
   styleUrl: './login-user.component.css'
 })
 export class LoginUserComponent {
+
+
 buttonActive($event: MouseEvent) {
 throw new Error('Method not implemented.');
 }
@@ -25,12 +29,29 @@ throw new Error('Method not implemented.');
     delay: `${Math.random() * 5}s`
   }));
 
-  constructor() { }
+  constructor(
+    private login: LoginService,
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
-    // Inicialización si es necesaria
+  loginData = {
+    email: '',
+    password: ''
   }
 
+  LoginUser( ): void {
+    const { email, password } = this.loginData;
+    this.login.loginClient(email, password).subscribe({
+      next: (res) => {
+        console.log(res);
+        localStorage.setItem('id', res.id);
+        setTimeout(() => {
+          this.router.navigate(['/apphome']);
+        }, 1000);
+      }
+    })
+  }
+  
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
@@ -67,4 +88,13 @@ throw new Error('Method not implemented.');
       this.showRipple = false;
     }, 600);
   }
+
+  
+
+
+
+
+
+
+
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClientsService } from '../../../service/clients.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration',
@@ -21,7 +22,7 @@ export class UserRegistrationComponent {
     phone: '',
     password: '',
     country: '',
-    type_document: '',
+    type_document: 'CC' as 'CC' | 'TI' | 'TE' | 'PP' | 'PPT' | 'NIT',
     number_document: '',
     birth_date: new Date()
   }
@@ -66,11 +67,24 @@ export class UserRegistrationComponent {
 
 
   constructor(
-    private client: ClientsService
+    private client: ClientsService,
+    private router: Router
   ) { }
 
 
   createClient() {
-    
+    this.client.createClient(this.formData).subscribe({
+      next: (res) => {
+        console.log(res);
+        setTimeout(() => {
+          this.router.navigate(['/loginUser'])
+        }, 2000)
+        
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Error al crear el cliente');
+      }
+    })
   }
 }
