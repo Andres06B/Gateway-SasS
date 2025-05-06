@@ -1,88 +1,101 @@
 /* Base styles */
 :host {
-    display: block;
-    background-color: #f8fafc;
-    min-height: 100vh;
+  display: block;
+  min-height: 100vh;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+      opacity: 0;
+      transform: translateY(20px);
   }
-  
-  /* Modal styles */
-  .modal-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+  to { 
+      opacity: 1;
+      transform: translateY(0);
   }
-  
-  .modal-container {
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-  
-  /* Image upload styles */
-  .image-upload-label {
-    transition: all 0.3s ease;
-  }
-  
-  .image-upload-label:hover {
-    border-color: #3b82f6;
-    background-color: #f8fafc;
-  }
-  
-  /* Room card styles */
-  .room-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .room-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Amenity chip styles */
-  .amenity-chip {
-    transition: background-color 0.2s ease;
-  }
-  
-  /* Form input styles */
-  input, textarea, select {
-    transition: border-color 0.2s ease;
-  }
-  
-  input:focus, textarea:focus, select:focus {
-    border-color: #3b82f6;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  }
-  
-  /* Button styles */
-  .btn-primary {
-    transition: background-color 0.2s ease;
-  }
-  
-  .btn-primary:hover {
-    background-color: #2563eb;
-  }
-  
-  .btn-secondary {
-    transition: background-color 0.2s ease;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #e2e8f0;
-  }
-  
-  /* Scrollbar styles for modal */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bae6fd;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7dd3fc;
+}
+
+/* Custom transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Image hover effects */
+img {
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+/* Button hover effects */
+button {
+  transition: all 0.2s ease;
+}
+
+/* Card shadows */
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Gradient text */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Input focus styles */
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+  outline: none;
+}
+
+/* Backdrop filter for modals */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+/* Custom border radius */
+.rounded-xl {
+  border-radius: 12px;
+}
+
+/* Special hover effect for cards */
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}

@@ -41,28 +41,28 @@ export class ReservationsApplicationsComponent implements OnInit{
 
   experiences = [
     {
-      image: 'https://images.unsplash.com/photo-1587974310734-8aac16601f0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+      image: 'https://www.worldmoments.org/wp-content/uploads/2018/02/cartagena_playa_blanca1-e1523469922549.jpg',
       location: 'Cartagena',
       title: 'Tour histórico por la ciudad amurallada',
       description: 'Descubre los secretos mejor guardados de la Cartagena colonial con guías expertos.',
       price: 120000
     },
     {
-      image: 'https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+      image: 'https://colombianadventure.co/wp-content/uploads/2019/01/Salento-1080x675.jpg',
       location: 'Eje Cafetero',
       title: 'Experiencia cafetera en finca tradicional',
       description: 'Vive el proceso completo del café, desde la recolección hasta la taza.',
       price: 85000
     },
     {
-      image: 'https://images.unsplash.com/photo-1584291885855-f7387e6e54a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+      image: 'https://poporotours.com/wp-content/uploads/2022/04/parque-tayrona.webp',
       location: 'Santa Marta',
       title: 'Excursión al Parque Tayrona',
       description: 'Disfruta de las playas más hermosas de Colombia en este tour guiado.',
       price: 150000
     },
     {
-      image: 'https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+      image: 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/12/37/cf/18.jpg',
       location: 'Medellín',
       title: 'Tour a Guatapé y Piedra del Peñol',
       description: 'Descubre el embalse más hermoso de Antioquia y sube los 740 escalones de la Piedra.',
