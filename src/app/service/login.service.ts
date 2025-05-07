@@ -9,6 +9,7 @@ export class LoginService {
 
   apiUrlAdmin = 'http://localhost:3000/auth/login/user'
   apiUrlClient = 'http://localhost:3000/auth/login/client'
+  apiUrlSuperAdmin = 'http://localhost:3000/auth/login-super-admin'
 
   constructor(
     private http: HttpClient
@@ -26,5 +27,11 @@ export class LoginService {
    */
   loginClient(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrlClient, { email, password });
+  }
+  /**
+   * Login para super administradores
+   */
+  loginSuperAdmin(email: string, password: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlSuperAdmin, { email, password });
   }
 }
