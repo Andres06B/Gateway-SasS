@@ -39,6 +39,7 @@ import { ReservationsApplicationsComponent } from './pages/Quantum Users/Accommo
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
 import { PreferredStaysApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/preferred-stays-application/preferred-stays-application.component';
+import { HotelViewComponent } from './pages/Quantum Users/AccommodationServices/view/hotel-view/hotel-view.component';
 
 //import { LandingComponent } from './view/landing/landing.component';
 
@@ -79,6 +80,7 @@ const routes: Routes = [
 
   { path: 'myreservation', component:MyreseRevationsApplicationComponent},
   { path: 'Reservation', component:ReservationsApplicationsComponent},
+  { path: 'vistahotel', component:HotelViewComponent},
   {path: 'pasarela', component: PasarelaComponent},
 
   //rutas administrativas (protegidas) para el admin de la pagina web

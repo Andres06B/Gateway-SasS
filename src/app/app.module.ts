@@ -68,6 +68,7 @@ import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/Accom
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
+import { HotelViewComponent } from './pages/Quantum Users/AccommodationServices/view/hotel-view/hotel-view.component';
 
 
 
@@ -127,6 +128,7 @@ import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/hab
     ReservationsApplicationsComponent,
     PasarelaComponent,
     HabitacionesComponent,
+    HotelViewComponent,
 
 
 

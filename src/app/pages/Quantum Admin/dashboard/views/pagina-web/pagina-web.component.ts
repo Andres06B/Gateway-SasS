@@ -20,7 +20,7 @@ export class PaginaWebComponent implements OnInit {
     name: 'CT Prime Suites',
     description: 'Hospitalidad de alto nivel en el corazón de Cartagena. Diseñado para viajeros exigentes, combinamos tecnología, confort y un estilo contemporáneo en cada suite. Vive una experiencia premium, ya sea por negocios o placer.',
     coverImage: 'https://media.istockphoto.com/id/1217644893/es/foto/hermosa-vista-panor%C3%A1mica-a%C3%A9rea-de-la-isla-del-distrito-de-bocagrande-cartagena-colombia.jpg?s=612x612&w=0&k=20&c=tBmaV-XafKtdVmXC_tv60FxIkPprdhVM4Bf3VRQ3GJM=',
-    profileImage: 'https://sdmntprwestus2.oaiusercontent.com/files/00000000-89f4-61f8-b7c0-e9a23732ff40/raw?se=2025-05-06T06%3A15%3A32Z&sp=r&sv=2024-08-04&sr=b&scid=fde1ce44-d6ba-578e-a9f0-dd7f72c4dffa&skoid=b53ae837-f585-4db7-b46f-2d0322fce5a9&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-06T03%3A24%3A37Z&ske=2025-05-07T03%3A24%3A37Z&sks=b&skv=2024-08-04&sig=SLdfj/zpA0qQOcg6NR2VPee8221itqiw24xazr9ZBCo%3D',
+    profileImage: 'https://images.adsttc.com/media/images/6324/bca9/f48d/350c/1130/1365/medium_jpg/hotel-landmark-plan-b-arquitectos_5.jpg?1663352044',
     contact: {
       address: 'Calle 35 #3-47, Centro Histórico, Cartagena, Colombia',
       phone: '+57 305 142485712',

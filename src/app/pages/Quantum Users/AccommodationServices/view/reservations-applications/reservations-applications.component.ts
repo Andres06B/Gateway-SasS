@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reservations-applications',
@@ -6,13 +7,49 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './reservations-applications.component.html',
   styleUrl: './reservations-applications.component.css'
 })
-export class ReservationsApplicationsComponent implements OnInit{
+export class ReservationsApplicationsComponent implements OnInit {
+
+  hovering = false;
+
   activeTab: string = 'destinos';
+  searchPerformed = false;
+  selectedDestination = '';
+  selectedCheckIn = '';
+  selectedCheckOut = '';
+  searchForm: FormGroup;
   
+  // Hoteles de ejemplo (solo 1 disponible en Cartagena, otros próximos)
+  hotels = [
+    {
+      id: 1,
+      name: 'CT Prime Suites',
+      city: 'cartagena',
+      image: 'https://images.adsttc.com/media/images/6324/bca9/f48d/350c/1130/1365/medium_jpg/hotel-landmark-plan-b-arquitectos_5.jpg?1663352044',
+      rating: 4.8,
+      available: true,
+    },
+    {
+      id: 2,
+      name: 'Hotel Dann Carlton Medellín',
+      city: 'medellin',
+      image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+      rating: 4.7,
+      available: false,
+    },
+    {
+      id: 3,
+      name: 'Hotel Tequendama Bogotá',
+      city: 'bogota',
+      image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+      rating: 4.5,
+      available: false,
+    }
+  ];
+
   // Datos para las pestañas
   destinations = [
     {
-      image: 'https://imgs.search.brave.com/CLwxCghoPjh1YUkPPs_QnWWZEp54RyYbPLEC4vVtaqk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk3LzkzLzEy/LzM2MF9GXzI5Nzkz/MTI2OV9vUG9rYzNt/UTJ0TUlmcnZDanIy/bmd3aUw1RURVN3pS/bC5qcGc',
+      image: 'https://mlqfmr3rpryd.i.optimole.com/cb:JBSP.a525/w:auto/h:auto/q:100/ig:avif/https://cartagena-tours.co/wp-content/uploads/2023/12/Torre-del-Reloj-en-Cartagena-de-Indias-Colombia.jpg',
       name: 'Cartagena',
       rating: 4.8,
       reviews: 1240,
@@ -25,15 +62,14 @@ export class ReservationsApplicationsComponent implements OnInit{
       reviews: 980
     },
     {
-      image: 'https://imgs.search.brave.com/ceJhvsVuN3cUkHWwgi6VrpQAwQvme6nuftueffDnIjE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zYW5k/YWx0YW5tYW4uY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDI0/LzA5L2hvdGVsLmpw/Zw',
-      name: 'Santa Marta',
-      rating: 4.9,
-      reviews: 1540,
-      badge: 'Mejor valorado'
-    },
-    {
       image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
       name: 'Bogotá',
+      rating: 4.6,
+      reviews: 890
+    },
+    {
+      image: 'https://denomades-blog.imgix.net/blog/wp-content/uploads/2024/07/31024711/5.jpg?auto=compress%2Cformat&ixlib=php-3.3.1',
+      name: 'Santa Marta',
       rating: 4.6,
       reviews: 890
     }
@@ -84,7 +120,7 @@ export class ReservationsApplicationsComponent implements OnInit{
       description: 'Guía completa de transporte: avión, bus y opciones privadas.'
     },
     {
-      image: 'https://imgs.search.brave.com/eyCqPY10g7HocyE_xqHp1zdPidel2xhQzYM3_8cuC6U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z291cm1ldC5jb20u/Y28vd3AtY29udGVu/dC91cGxvYWRzLzIw/MjEvMDUvZ2FzdHJv/bm9taWEtY29sb21i/aWFuYS5qcGc',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq4z-esEG-iewR_JSiupg8oR3wHfrjSshxGw&s',
       category: 'Gastronomía',
       title: 'Platos que no puedes perderte',
       description: 'La guía gastronómica esencial para cada región de Colombia.'
@@ -136,9 +172,76 @@ export class ReservationsApplicationsComponent implements OnInit{
     }
   ];
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.searchForm = this.fb.group({
+      destination: ['', Validators.required],
+      checkIn: ['', [Validators.required, this.futureDateValidator()]],
+      checkOut: ['', [Validators.required, this.futureDateValidator()]]
+    }, { validator: this.dateComparisonValidator });
+  }
 
   ngOnInit(): void {
+    this.setMinDateForInputs();
+  }
+
+  private setMinDateForInputs(): void {
+    const today = new Date().toISOString().split('T')[0];
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    dateInputs.forEach((input: any) => {
+      input.min = today;
+    });
+  }
+
+  futureDateValidator() {
+    return (control: { value: string }) => {
+      const selectedDate = new Date(control.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      return selectedDate >= today ? null : { pastDate: true };
+    };
+  }
+
+  dateComparisonValidator(group: FormGroup) {
+    const checkIn = group.get('checkIn')?.value;
+    const checkOut = group.get('checkOut')?.value;
+
+    if (!checkIn || !checkOut) return null;
+
+    const checkInDate = new Date(checkIn);
+    const checkOutDate = new Date(checkOut);
+
+    return checkOutDate > checkInDate ? null : { dateOrder: true };
+  }
+
+  searchHotels(): void {
+    if (this.searchForm.invalid) {
+      this.markFormGroupTouched(this.searchForm);
+      return;
+    }
+
+    const formValues = this.searchForm.value;
+    this.selectedDestination = formValues.destination;
+    this.selectedCheckIn = formValues.checkIn;
+    this.selectedCheckOut = formValues.checkOut;
+    this.searchPerformed = true;
+
+    setTimeout(() => {
+      const resultsSection = document.getElementById('search-results');
+      if (resultsSection) {
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 
   changeTab(tab: string): void {
@@ -147,5 +250,10 @@ export class ReservationsApplicationsComponent implements OnInit{
 
   formatPrice(price: number): string {
     return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(price);
+  }
+
+  getFilteredHotels(): any[] {
+    if (!this.selectedDestination) return [];
+    return this.hotels.filter(hotel => hotel.city === this.selectedDestination);
   }
 }
