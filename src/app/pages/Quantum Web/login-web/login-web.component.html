@@ -35,13 +35,14 @@
       </div>
   
       <!-- Formulario mejorado -->
-      <form class="space-y-6">
-        <!-- Campo Email mejorado -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <!-- Campo Email -->
         <div class="group">
           <div class="relative">
             <input 
               type="email" 
               id="email" 
+              formControlName="email"
               required
               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#06B6D4]/50 focus:border-transparent peer"
               placeholder=" "
@@ -52,20 +53,16 @@
             >
               Correo Electrónico
             </label>
-            <div class="absolute right-4 top-3 text-gray-400 group-hover:text-[#06B6D4] transition-colors duration-300">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </div>
           </div>
         </div>
   
-        <!-- Campo Contraseña mejorado -->
+        <!-- Campo Contraseña -->
         <div class="group">
           <div class="relative">
             <input 
               [type]="showPassword ? 'text' : 'password'" 
               id="password" 
+              formControlName="password"
               required
               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#06B6D4]/50 focus:border-transparent peer"
               placeholder=" "
@@ -76,15 +73,10 @@
             >
               Contraseña
             </label>
-            <div class="absolute right-4 top-3 text-gray-400 group-hover:text-[#06B6D4] transition-colors duration-300">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-              </svg>
-            </div>
             <button 
               type="button" 
               (click)="togglePasswordVisibility()"
-              class="absolute right-12 top-3 text-gray-400 hover:text-[#06B6D4] transition-colors duration-300"
+              class="absolute right-4 top-3 text-gray-400 hover:text-[#06B6D4] transition-colors duration-300"
             >
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path *ngIf="!showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -108,7 +100,7 @@
         </div>
   
         <!-- Botón de Inicio de Sesión -->
-        <button routerLink="/inicio-adm"
+        <button 
           type="submit" 
           class="w-full bg-gradient-to-r from-[#0891B2] to-[#06B6D4] text-white py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#06B6D4]/50 focus:ring-offset-2"
         >
