@@ -14,36 +14,6 @@
 
         <!-- Panel de métricas Premium simplificado -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          <!-- Hoteles con Premium -->
-          <div class="bg-white p-4 rounded-lg shadow border border-gray-200">
-            <div class="flex items-start justify-between">
-              <div>
-                <p class="text-sm font-medium text-gray-500 flex items-center">
-                  <svg class="w-4 h-4 mr-1 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V7a1 1 0 10-2 0v3H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path>
-                    <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
-                  </svg>
-                  Hoteles Premium
-                </p>
-                <p class="text-xl font-bold mt-1 text-gray-800">42</p>
-              </div>
-              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full flex items-center">
-                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path>
-                </svg>
-                +18%
-              </span>
-            </div>
-            <div class="mt-2">
-              <div class="flex items-center justify-between text-xs text-gray-500">
-                <span>Meta anual</span>
-                <span>60 hoteles</span>
-              </div>
-              <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
-                <div class="bg-cyan-600 h-1.5 rounded-full" style="width: 70%"></div>
-              </div>
-            </div>
-          </div>
           
           <!-- Ingresos Premium -->
           <div class="bg-white p-4 rounded-lg shadow border border-gray-200">
@@ -55,144 +25,60 @@
               </div>
               <div>
                 <p class="text-sm text-gray-500">Ingresos Premium</p>
-                <p class="text-lg font-semibold">$24,800/mes</p>
+                <p class="text-lg font-semibold">{{ totalBalance |  currency }}</p>
               </div>
-            </div>
-            <div class="mt-2 flex items-center">
-              <span class="text-xs text-gray-500">Renovación promedio:</span>
-              <span class="text-xs font-medium ml-1">88%</span>
             </div>
           </div>
           
-          <!-- Beneficios más usados -->
-          <div class="bg-white p-4 rounded-lg shadow border border-gray-200">
-            <div class="flex items-center">
-              <div class="p-2 rounded-lg bg-[#ECFEFF] text-[#06B6D4] mr-3">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <div>
-                <p class="text-sm text-gray-500">Beneficio Top</p>
-                <p class="text-lg font-semibold">Analítica Avanzada</p>
-              </div>
-            </div>
-            <div class="mt-2">
-              <span class="text-xs text-gray-500">Usado por 92% de clientes</span>
-            </div>
-          </div>
         </div>
 
         <!-- Tabla de hoteles premium -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
           <div class="px-4 py-3 sm:px-6 border-b border-gray-200 flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2">
             <h2 class="font-semibold text-gray-800">Hoteles con Plan Premium</h2>
-            <div class="flex items-center gap-1">
-              <span class="text-sm text-gray-500">Mostrar:</span>
-              <select class="border border-gray-300 rounded-lg px-2 py-1 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-sm">
-                <option>10</option>
-                <option>25</option>
-                <option>50</option>
-              </select>
-            </div>
           </div>
           
           <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
-                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hotel</th>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
                   <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Plan</th>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
                   <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Inicio</th>
-                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Renovación</th>
-                  <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <!-- Hotel 1 -->
-                <tr class="hover:bg-gray-50">
+                <tr *ngFor="let item of payments" class="hover:bg-gray-50">
+                  <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ item.id }}</td>
                   <td class="px-4 py-3 whitespace-nowrap">
                     <div class="flex items-center">
                       <div class="flex-shrink-0 h-8 w-8 rounded-full bg-[#ECFEFF] flex items-center justify-center text-[#06B6D4] text-xs">
-                        CA
+                        {{ item.user.name | slice:0:2 | uppercase }}
                       </div>
                       <div class="ml-3">
-                        <div class="text-sm font-medium text-gray-900">Costa Azul</div>
-                        <div class="text-xs text-gray-500">120 hab.</div>
+                        <div class="text-sm font-medium text-gray-900">{{ item.user.name }} {{ item.user.last_name }}</div>
+                        <div class="text-sm text-gray-500">{{ item.user.email }}</div>
                       </div>
                     </div>
                   </td>
                   <td class="px-4 py-3 whitespace-nowrap">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#CFFAFE] text-[#0891B2]">
-                      Premium Plus
+                      {{ item.name }}
                     </span>
                   </td>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">15/03/2023</td>
+                  <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">${{ item.price }}</td>
                   <td class="px-4 py-3 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <span class="text-sm font-medium mr-2">15/09/2023</span>
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        Auto
-                      </span>
-                    </div>
-                  </td>
-                  <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
-                    <div class="flex justify-end gap-2">
-                      <button class="text-[#0891B2] hover:text-[#0E7490]">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                        </svg>
-                      </button>
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                
-                <!-- Hotel 2 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="px-4 py-3 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0 h-8 w-8 rounded-full bg-[#ECFEFF] flex items-center justify-center text-[#06B6D4] text-xs">
-                        BL
-                      </div>
-                      <div class="ml-3">
-                        <div class="text-sm font-medium text-gray-900">Boutique Luna</div>
-                        <div class="text-xs text-gray-500">24 hab.</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-4 py-3 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#CFFAFE] text-[#0891B2]">
-                      Premium
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full" [ngClass]="{
+                      'bg-green-100 text-green-800': item.active,
+                      'bg-red-100 text-red-800': !item.active
+                    }">
+                      {{ item.active ? 'Activo' : 'Inactivo' }}
                     </span>
                   </td>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">22/05/2023</td>
-                  <td class="px-4 py-3 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <span class="text-sm font-medium mr-2">22/11/2023</span>
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                        Pendiente
-                      </span>
-                    </div>
-                  </td>
-                  <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
-                    <div class="flex justify-end gap-2">
-                      <button class="text-[#0891B2] hover:text-[#0E7490]">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                        </svg>
-                      </button>
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </td>
+                  <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ item.created_at | date: 'dd/MM/yyyy' }}</td>
                 </tr>
               </tbody>
             </table>

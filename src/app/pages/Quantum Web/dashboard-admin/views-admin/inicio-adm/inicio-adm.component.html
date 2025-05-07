@@ -23,8 +23,7 @@
                 </div>
                 <div>
                   <p class="text-xs font-medium text-gray-600">Ingresos VIP</p>
-                  <p class="text-lg font-bold text-gray-800">$89,200</p>
-                  <p class="text-xs text-green-600">+18% vs mes anterior</p>
+                  <p class="text-lg font-bold text-gray-800">{{ totalPriceVip | currency }}</p>
                 </div>
               </div>
             </div>
@@ -40,8 +39,8 @@
                 </div>
                 <div>
                   <p class="text-xs font-medium text-gray-600">Ingresos Premium</p>
-                  <p class="text-lg font-bold text-gray-800">$42,300</p>
-                  <p class="text-xs text-green-600">+9% vs mes anterior</p>
+                  <p class="text-lg font-bold text-gray-800">{{totalPricePremium | currency }}</p>
+                  
                 </div>
               </div>
             </div>
@@ -56,8 +55,7 @@
                 </div>
                 <div>
                   <p class="text-xs font-medium text-gray-600">Hoteles Activos</p>
-                  <p class="text-lg font-bold text-gray-800">28</p>
-                  <p class="text-xs text-green-600">+3 nuevos</p>
+                  <p class="text-lg font-bold text-gray-800">{{hotel.length}}</p>
                 </div>
               </div>
             </div>
@@ -85,16 +83,16 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                   <tr class="hover:bg-gray-50">
-                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">Hotel Costa Azul</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">VIP</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">$12,500</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">15/07/2023</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">{{hotel[0].name}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{vipUsers[0].name}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">{{vipUsers[0].price | currency }}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{vipUsers[0].created_at | date:'dd/MM/yyyy' }}</td>
                   </tr>
                   <tr class="hover:bg-gray-50">
-                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">Gran Hotel Sol</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">Premium</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">$9,800</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">12/07/2023</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">{{hotel[0].name}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{premiumUsers[0].name}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">{{premiumUsers[0].price | currency}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ premiumUsers[0].created_at | date:'dd/MM/yyyy' }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -102,45 +100,7 @@
           </div>
         </div>
 
-        <!-- Sección de Hoteles (Solo info básica) -->
-        <div>
-          <h2 class="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Hoteles Activos</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            <!-- Tarjeta Hotel 1 -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-              <div class="p-4 sm:p-5">
-                <div class="flex items-start">
-                  <div class="flex-shrink-0 h-12 w-12 rounded-lg bg-[#ECFEFF] flex items-center justify-center text-[#06B6D4] mr-3 sm:mr-4">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                    </svg>
-                  </div>
-                  <div class="flex-1">
-                    <h3 class="text-sm sm:text-base font-medium text-gray-800">Hotel Costa Azul</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 mt-1">VIP · Renovación: 15/01/2024</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Tarjeta Hotel 2 -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-              <div class="p-4 sm:p-5">
-                <div class="flex items-start">
-                  <div class="flex-shrink-0 h-12 w-12 rounded-lg bg-[#ECFEFF] flex items-center justify-center text-[#06B6D4] mr-3 sm:mr-4">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                    </svg>
-                  </div>
-                  <div class="flex-1">
-                    <h3 class="text-sm sm:text-base font-medium text-gray-800">Gran Hotel Sol</h3>
-                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Premium · Renovación: 25/07/2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </main>
     </div>
   </div>
