@@ -38,7 +38,6 @@ export class LoginWebComponent {
           setTimeout( () => {
             this.rt.navigate(['/inicio-adm'])
           }, 2000)
-
         }
 
        

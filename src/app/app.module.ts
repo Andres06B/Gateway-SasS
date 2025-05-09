@@ -69,6 +69,7 @@ import { ReservationsApplicationsComponent } from './pages/Quantum Users/Accommo
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
 import { HotelViewComponent } from './pages/Quantum Users/AccommodationServices/view/hotel-view/hotel-view.component';
+import { GraficasAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/graficas-adm/graficas-adm.component';
 
 
 
@@ -129,6 +130,7 @@ import { HotelViewComponent } from './pages/Quantum Users/AccommodationServices/
     PasarelaComponent,
     HabitacionesComponent,
     HotelViewComponent,
+    GraficasAdmComponent,
 
 
 

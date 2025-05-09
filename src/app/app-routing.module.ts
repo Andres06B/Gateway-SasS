@@ -40,6 +40,7 @@ import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
 import { PreferredStaysApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/preferred-stays-application/preferred-stays-application.component';
 import { HotelViewComponent } from './pages/Quantum Users/AccommodationServices/view/hotel-view/hotel-view.component';
+import { GraficasAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/graficas-adm/graficas-adm.component';
 
 //import { LandingComponent } from './view/landing/landing.component';
 
@@ -91,6 +92,8 @@ const routes: Routes = [
   { path: 'premium-adm', component: PremiumAdmComponent},
   { path: 'vip-adm', component: VipAdmComponent},
   { path: 'config-adm', component: ConfigAdmComponent},
+  { path: 'graficas-adm', component: GraficasAdmComponent},
+
 
 
   // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)
