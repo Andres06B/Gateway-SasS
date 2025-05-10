@@ -1,25 +1,25 @@
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+/* Animaciones */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
 }
-@keyframes cloud1 {
-  0% { transform: translateX(-20px); opacity: 0.8; }
-  100% { transform: translateX(calc(100vw + 100px)); opacity: 0.8; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-@keyframes cloud2 {
-  0% { transform: translateX(calc(100vw + 100px)); opacity: 0.7; }
-  100% { transform: translateX(-200px); opacity: 0.7; }
+
+/* Cursor pointer para elementos clickeables */
+.cursor-pointer {
+  cursor: pointer;
 }
-@keyframes cloud3 {
-  0% { transform: translateX(-100px); opacity: 0.6; }
-  100% { transform: translateX(calc(100vw + 150px)); opacity: 0.6; }
+
+/* Estilos para los botones con hover */
+button:hover {
+  transition: all 0.3s ease;
 }
-@keyframes cloud4 {
-  0% { transform: translateX(calc(100vw + 50px)); opacity: 0.5; }
-  100% { transform: translateX(-150px); opacity: 0.5; }
-}
-.animate-float { animation: float 4s ease-in-out infinite; }
-.animate-cloud1 { animation: cloud1 60s linear infinite; }
-.animate-cloud2 { animation: cloud2 70s linear infinite 15s; }
-.animate-cloud3 { animation: cloud3 80s linear infinite 10s; }
-.animate-cloud4 { animation: cloud4 90s linear infinite 20s; }

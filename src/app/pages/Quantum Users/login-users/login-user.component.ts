@@ -11,14 +11,9 @@ import { Router } from '@angular/router';
 })
 export class LoginUserComponent {
 
-
-buttonActive($event: MouseEvent) {
-throw new Error('Method not implemented.');
-}
-  showPassword = false;
-  showRipple = false;
-  rippleX = '0px';
-  rippleY = '0px';
+ showPassword = false;
+  showErrorModal = false;
+  errorMessage = '';
   
   // Partículas decorativas
   particles = Array(10).fill(0).map((_, i) => ({
@@ -39,17 +34,36 @@ throw new Error('Method not implemented.');
     password: ''
   }
 
-  LoginUser( ): void {
-    const { email, password } = this.loginData;
-    this.login.loginClient(email, password).subscribe({
+  LoginUser(): void {
+    // Validación de campos vacíos
+    if (!this.loginData.email || !this.loginData.password) {
+      this.openErrorModal('Por favor complete todos los campos');
+      return;
+    }
+
+    // Validación de formato de email simple
+    if (!this.loginData.email.includes('@') || !this.loginData.email.includes('.')) {
+      this.openErrorModal('Por favor ingrese un correo electrónico válido');
+      return;
+    }
+
+    this.login.loginClient(this.loginData.email, this.loginData.password).subscribe({
       next: (res) => {
         console.log(res);
         localStorage.setItem('id', res.id);
         setTimeout(() => {
           this.router.navigate(['/apphome']);
         }, 1000);
+      },
+      error: (err) => {
+        console.error('Error en login', err);
+        if (err.status === 401) {
+          this.openErrorModal('Credenciales incorrectas o usuario no registrado');
+        } else {
+          this.openErrorModal('Error al conectar con el servidor. Intente nuevamente.');
+        }
       }
-    })
+    });
   }
   
   togglePasswordVisibility(): void {
@@ -76,17 +90,13 @@ throw new Error('Method not implemented.');
     button.classList.remove('shadow-xl');
   }
 
-  createRipple(event: MouseEvent): void {
-    const button = event.currentTarget as HTMLElement;
-    const rect = button.getBoundingClientRect();
-    
-    this.rippleX = `${event.clientX - rect.left}px`;
-    this.rippleY = `${event.clientY - rect.top}px`;
-    this.showRipple = true;
-    
-    setTimeout(() => {
-      this.showRipple = false;
-    }, 600);
+  openErrorModal(message: string) {
+    this.errorMessage = message;
+    this.showErrorModal = true;
+  }
+
+  closeErrorModal() {
+    this.showErrorModal = false;
   }
 
   

@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class UserRegistrationComponent {
   showPassword = false;
-  showConfirmPassword = false;
-  showRipple = false;
-  rippleX = '0px';
-  rippleY = '0px';
+  showSuccessModal = false;
+  showErrorModal = false;
+  errorMessage = '';
+  termsAccepted = false;
 
   formData = {
     name: '',
@@ -35,12 +35,13 @@ export class UserRegistrationComponent {
     delay: `${Math.random() * 5}s`
   }));
 
+  constructor(
+    private client: ClientsService,
+    private router: Router
+  ) { }
+
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
-  }
-
-  toggleConfirmPasswordVisibility(): void {
-    this.showConfirmPassword = !this.showConfirmPassword;
   }
 
   animateButton(event: MouseEvent): void {
@@ -65,26 +66,62 @@ export class UserRegistrationComponent {
     parent?.classList.remove('ring-2', 'ring-[#63A481]/30');
   }
 
+  openSuccessModal(): void {
+    this.showSuccessModal = true;
+    setTimeout(() => {
+      this.closeSuccessModal();
+      this.router.navigate(['/loginUser']);
+    }, 3000);
+  }
 
-  constructor(
-    private client: ClientsService,
-    private router: Router
-  ) { }
+  closeSuccessModal(): void {
+    this.showSuccessModal = false;
+  }
 
+  openErrorModal(message: string): void {
+    this.errorMessage = message;
+    this.showErrorModal = true;
+  }
+
+  closeErrorModal(): void {
+    this.showErrorModal = false;
+  }
 
   createClient() {
+    // Validación de campos vacíos
+    if (!this.formData.name || !this.formData.last_name || !this.formData.email || 
+        !this.formData.phone || !this.formData.password || !this.formData.country || 
+        !this.formData.number_document || !this.formData.birth_date) {
+      this.openErrorModal('Por favor complete todos los campos requeridos');
+      return;
+    }
+
+    // Validación de email
+    if (!this.validateEmail(this.formData.email)) {
+      this.openErrorModal('Por favor ingrese un correo electrónico válido');
+      return;
+    }
+
+    // Validación de términos
+    if (!this.termsAccepted) {
+      this.openErrorModal('Debe aceptar los términos y condiciones');
+      return;
+    }
+
     this.client.createClient(this.formData).subscribe({
       next: (res) => {
         console.log(res);
-        setTimeout(() => {
-          this.router.navigate(['/loginUser'])
-        }, 2000)
-        
+        this.openSuccessModal();
       },
       error: (err) => {
         console.error(err);
-        alert('Error al crear el cliente');
+        this.openErrorModal(err.error?.message || 'Error al crear el usuario. Por favor intente nuevamente.');
       }
-    })
+    });
+  }
+
+  private validateEmail(email: string): boolean {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
   }
 }

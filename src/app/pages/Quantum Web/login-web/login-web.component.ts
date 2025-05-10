@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../../service/login.service';
 import { Router } from '@angular/router';
@@ -11,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrl: './login-web.component.css'
 })
 export class LoginWebComponent {
+  showRegistrationModal = false;
+  showErrorModal = false;
+  errorMessage = '';
   showPassword = false;
   loginForm: FormGroup;
 
@@ -25,6 +27,25 @@ export class LoginWebComponent {
     });
   }
 
+  // Modal de registro
+  openRegistrationModal() {
+    this.showRegistrationModal = true;
+  }
+
+  closeRegistrationModal() {
+    this.showRegistrationModal = false;
+  }
+
+  // Modal de error
+  openErrorModal(message: string) {
+    this.errorMessage = message;
+    this.showErrorModal = true;
+  }
+
+  closeErrorModal() {
+    this.showErrorModal = false;
+  }
+
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
@@ -35,15 +56,22 @@ export class LoginWebComponent {
       this.loginService.loginSuperAdmin(email, password).subscribe({
         next: (response) => {
           console.log('Login successful', response);
-          setTimeout( () => {
-            this.rt.navigate(['/inicio-adm'])
-          }, 2000)
+          setTimeout(() => {
+            this.rt.navigate(['/inicio-adm']);
+          }, 2000);
+        },
+        error: (err) => {
+          console.error('Login error', err);
+          this.openErrorModal(err.error?.message || 'Credenciales incorrectas o usuario no registrado');
         }
-
-       
       });
     } else {
-      console.error('Form is invalid');
+      if (this.loginForm.get('email')?.errors?.['required'] || 
+          this.loginForm.get('password')?.errors?.['required']) {
+        this.openErrorModal('Por favor complete todos los campos');
+      } else if (this.loginForm.get('email')?.errors?.['email']) {
+        this.openErrorModal('Por favor ingrese un correo electrónico válido');
+      }
     }
   }
 }
