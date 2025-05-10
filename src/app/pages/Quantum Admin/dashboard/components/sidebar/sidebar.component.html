@@ -1,223 +1,390 @@
 <!-- Sidebar -->
-<aside id="sidebar" 
-        class="fixed top-0 left-0 z-20 flex flex-col h-screen w-80 bg-white text-gray-900 shadow-xl border-r border-cyan-100">
-    
-    <!-- Logo con efecto premium -->
-    <div class="flex items-center justify-center h-28 px-6 border-b border-cyan-100">
-      <div class="flex items-center space-x-4 group transform hover:scale-105 transition-transform">
-      <div class="p-3 rounded-xl bg-cyan-100 group-hover:bg-cyan-200 transition-all duration-300 group-hover:rotate-12 shadow-sm">
-        <svg class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+<aside
+  id="sidebar"
+  class="fixed top-0 left-0 z-20 flex flex-col h-screen w-80 bg-white text-gray-900 shadow-xl border-r border-cyan-100"
+>
+  <!-- Logo con efecto premium -->
+  <div
+    class="flex items-center justify-center h-28 px-6 border-b border-cyan-100"
+  >
+    <div
+      class="flex items-center space-x-4 group transform hover:scale-105 transition-transform"
+    >
+      <div
+        class="p-3 rounded-xl bg-cyan-100 group-hover:bg-cyan-200 transition-all duration-300 group-hover:rotate-12 shadow-sm"
+      >
+        <svg
+          class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+          ></path>
         </svg>
       </div>
-      <span class="text-2xl font-bold tracking-tight">Quantum<span class="text-cyan-600 font-extrabold">Adm</span></span>
-      </div>
+      <span class="text-2xl font-bold tracking-tight"
+        >Quantum<span class="text-cyan-600 font-extrabold">Adm</span></span
+      >
     </div>
+  </div>
 
-    <!-- Menú principal -->
-    <div class="flex-1 overflow-y-auto overflow-x-hidden py-8 px-6">
-      <nav class="space-y-3">
-        <!-- Inicio -->
-        <a href="/inicio" class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group border border-transparent hover:border-cyan-100">
-          <div class="absolute left-0 w-1.5 h-8 bg-cyan-600 rounded-r-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-          <div class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300">
-            <svg class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-            </svg>
-          </div>
-          <span>Inicio</span>
-        </a>
+  <!-- Menú principal -->
+  <div class="flex-1 overflow-y-auto overflow-x-hidden py-8 px-6">
+    <nav class="space-y-3">
+      <!-- Inicio -->
+      <a
+        href="/inicio"
+        class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group border border-transparent hover:border-cyan-100"
+      >
+        <div
+          class="absolute left-0 w-1.5 h-8 bg-cyan-600 rounded-r-full opacity-0 group-hover:opacity-100 transition-all duration-300"
+        ></div>
+        <div
+          class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300"
+        >
+          <svg
+            class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+            ></path>
+          </svg>
+        </div>
+        <span>Inicio</span>
+      </a>
 
-        <!-- Usuarios -->
-        <a href="/usuarios" class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group">
-          <div class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300">
-            <svg class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z"></path>
-            </svg>
-          </div>
-          <span>Usuarios</span>
-        </a>
+      <!-- Usuarios -->
+      <a
+        href="/usuarios"
+        class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group"
+      >
+        <div
+          class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300"
+        >
+          <svg
+            class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z"
+            ></path>
+          </svg>
+        </div>
+        <span>Usuarios</span>
+      </a>
 
-        <!-- Habitaciones -->
-        <a href="/habitaciones" class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group">
-          <div class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300">
-            <svg class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
-            </svg>
-          </div>
-          <span>Habitaciones</span>
-          <span class="ml-auto px-3 py-1 text-sm font-bold bg-cyan-100 text-cyan-800 rounded-full">24</span>
-        </a>
+      <!-- Habitaciones -->
+      <a
+        href="/habitaciones"
+        class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group"
+      >
+        <div
+          class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300"
+        >
+          <svg
+            class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+          </svg>
+        </div>
+        <span>Habitaciones</span>
+        <span
+          class="ml-auto px-3 py-1 text-sm font-bold bg-cyan-100 text-cyan-800 rounded-full"
+          >24</span
+        >
+      </a>
 
-        <!-- Pagos -->
-        <a href="/pagos" class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group">
-          <div class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300 group-hover:animate-pulse">
-            <svg class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          <span>Pagos</span>
-        </a>
+      <!-- Pagos -->
+      <a
+        href="/pagos"
+        class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group"
+      >
+        <div
+          class="p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300 group-hover:animate-pulse"
+        >
+          <svg
+            class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <span>Pagos</span>
+      </a>
 
-        <!-- Reservas -->
-        <a href="/reservas" class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group overflow-hidden">
-          <div class="relative p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300">
-            <svg class="relative z-10 w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-            </svg>
-            <div class="absolute inset-0 rounded-lg bg-cyan-200/50 group-hover:animate-ripple"></div>
-          </div>
-          <span>Reservas</span>
-        </a>
+      <!-- Reservas -->
+      <a
+        href="/reservas"
+        class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group overflow-hidden"
+      >
+        <div
+          class="relative p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300"
+        >
+          <svg
+            class="relative z-10 w-6 h-6 text-cyan-600 group-hover:text-cyan-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <div
+            class="absolute inset-0 rounded-lg bg-cyan-200/50 group-hover:animate-ripple"
+          ></div>
+        </div>
+        <span>Reservas</span>
+      </a>
 
-        <a href="/pagina-web" class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group mt-6 overflow-hidden">
-          <div class="relative p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300">
-            <svg class="relative z-10 w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
-            </svg>
-            <div class="absolute inset-0 rounded-lg bg-cyan-200/50 group-hover:animate-ripple"></div>
-          </div>
-          <span class="text-black">Página Web</span>
-          <span class="ml-auto px-2 py-0.5 text-xs font-bold bg-cyan-100 text-cyan-800 rounded-full">NUEVO</span>
-        </a>
-    
-
-      </nav>
-
-
-      <!-- Separador Zona Premium -->
+      <a
+        href="/pagina-web"
+        class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm hover:translate-x-2 group mt-6 overflow-hidden"
+      >
+        <div
+          class="relative p-3 mr-5 rounded-lg bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300"
+        >
+          <svg
+            class="relative z-10 w-6 h-6 text-cyan-600 group-hover:text-cyan-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <div
+            class="absolute inset-0 rounded-lg bg-cyan-200/50 group-hover:animate-ripple"
+          ></div>
+        </div>
+        <span class="text-black">Página Web</span>
+        <span
+          class="ml-auto px-2 py-0.5 text-xs font-bold bg-cyan-100 text-cyan-800 rounded-full"
+          >NUEVO</span
+        >
+      </a>
+    </nav>
+    <!-- Menú Premium -->
+    <nav class="space-y-3">
+      <!-- Separador Sistema -->
       <div class="relative my-8 mx-5">
         <div class="absolute inset-0 flex items-center">
           <div class="w-full border-t border-cyan-200/50"></div>
         </div>
         <div class="relative flex justify-center">
-          <span class="px-4 py-1.5 text-xs font-bold bg-gradient-to-r from-cyan-600 to-cyan-500 text-white rounded-full border border-cyan-700 shadow-md shadow-cyan-200/50">
-            Zona Premium
+          <span
+            class="px-4 py-1.5 text-xs font-bold bg-gradient-to-r from-cyan-600 to-cyan-500 text-white rounded-full border border-cyan-700 shadow-md shadow-cyan-200/50"
+          >
+            Zona Vip
           </span>
         </div>
       </div>
 
-      <!-- Menú Premium -->
-      <nav class="space-y-3">
-        <!-- Gráficos -->
-        <a 
-          href="/graficos" 
-          class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:shadow-cyan-sm hover:translate-x-2 group overflow-hidden"
-          [class.pointer-events-none]="getStatus('premium') === 'Inactivo'"
-          [class.opacity-50]="getStatus('premium') === 'Inactivo'"
+      <!-- Predicciones -->
+      <a
+        href="/predicciones"
+        class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:shadow-cyan-sm hover:translate-x-2 group overflow-hidden bg-gradient-to-r from-cyan-50/50 to-cyan-100/30 hover:from-cyan-100/50 hover:to-cyan-200/30"
+        [class.pointer-events-none]="getStatus('vip') === 'Inactivo'"
+        [class.opacity-50]="getStatus('vip') === 'Inactivo'"
+      >
+        <div
+          class="p-3 mr-5 rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-600 group-hover:from-cyan-600 group-hover:to-cyan-700 transition-all duration-300 shadow-md"
         >
-          <div class="absolute inset-0 bg-gradient-to-r from-white via-cyan-50/80 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div class="relative z-10 p-3 mr-5 rounded-lg bg-gradient-to-br from-cyan-100 to-cyan-50 group-hover:from-cyan-200 group-hover:to-cyan-100 transition-all duration-300 shadow-inner">
-            <svg class="w-6 h-6 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
-            </svg>
-          </div>
-          <span class="relative z-10 font-semibold text-cyan-900">Gráficos</span>
-          <div class="absolute right-0 top-0 bottom-0 w-1 bg-cyan-500 rounded-l-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        </a>
-
-        <!-- Separador Sistema -->
-        <div class="relative my-8 mx-5">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-cyan-200/50"></div>
-          </div>
-          <div class="relative flex justify-center">
-            <span class="px-4 py-1.5 text-xs font-bold bg-gradient-to-r from-cyan-600 to-cyan-500 text-white rounded-full border border-cyan-700 shadow-md shadow-cyan-200/50">
-              Zona Vip
-            </span>
-          </div>
-        </div>
-
-        <!-- Predicciones -->
-        <a 
-          href="/predicciones" 
-          class="relative flex items-center px-6 py-5 text-base font-medium rounded-xl transition-all duration-300 hover:shadow-cyan-sm hover:translate-x-2 group overflow-hidden bg-gradient-to-r from-cyan-50/50 to-cyan-100/30 hover:from-cyan-100/50 hover:to-cyan-200/30"
-          [class.pointer-events-none]="getStatus('vip') === 'Inactivo'"
-          [class.opacity-50]="getStatus('vip') === 'Inactivo'"
-        >
-          <div class="p-3 mr-5 rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-600 group-hover:from-cyan-600 group-hover:to-cyan-700 transition-all duration-300 shadow-md">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          <span class="font-semibold text-cyan-900">Predicciones</span>
-          <div class="absolute inset-0 border border-cyan-200 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-        </a>
-      </nav>
-
-      <!-- Separador Sistema -->
-      <div class="relative my-8 mx-5">
-        <div class="absolute inset-0 flex items-center">
-          <div class="w-full border-t border-cyan-100"></div>
-        </div>
-        <div class="relative flex justify-center">
-          <span class="px-3 text-sm text-cyan-400 bg-white rounded-full">Sistema</span>
-        </div>
-      </div>
-
-      <!-- Menú Sistema -->
-      <nav class="space-y-3">
-        <!-- Configuración -->
-        <a href="/configuracion" class="flex items-center px-6 py-4 text-base font-medium rounded-lg transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm group">
-          <div class="p-2.5 mr-4 rounded-md bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300">
-            <svg class="w-5 h-5 text-cyan-600 group-hover:text-cyan-800" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          <span>Configuración</span>
-        </a>
-      </nav>
-    </div>
-
-    <!-- Usuario -->
-    <div class="p-6 border-t border-cyan-100 bg-white">
-      <div class="flex items-center group">
-        <div class="relative">
-          <img class="w-12 h-12 rounded-full border-2 border-cyan-200 group-hover:border-cyan-300 transition-colors duration-300" src="https://cdn-icons-png.flaticon.com/512/180/180658.png" alt="Usuario">
-          <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white"></div>
-        </div>
-        <div class="ml-4 overflow-hidden">
-          <p class="text-base font-semibold">Administrador</p>
-          <p class="text-sm font-medium text-gray-500 transition-all duration-300 group-hover:text-gray-700">admixurysuite.com</p>
-        </div>
-        <button class="ml-auto p-2 rounded-full text-cyan-400 hover:text-cyan-700 hover:bg-cyan-100 transition-colors duration-300">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          <svg
+            class="w-6 h-6 text-white"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z"
+              clip-rule="evenodd"
+            ></path>
           </svg>
-        </button>
+        </div>
+        <span class="font-semibold text-cyan-900">Predicciones</span>
+        <div
+          class="absolute inset-0 border border-cyan-200 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+      </a>
+    </nav>
+
+    <!-- Separador Sistema -->
+    <div class="relative my-8 mx-5">
+      <div class="absolute inset-0 flex items-center">
+        <div class="w-full border-t border-cyan-100"></div>
+      </div>
+      <div class="relative flex justify-center">
+        <span class="px-3 text-sm text-cyan-400 bg-white rounded-full"
+          >Sistema</span
+        >
       </div>
     </div>
+
+    <!-- Menú Sistema -->
+    <nav class="space-y-3">
+      <!-- Configuración -->
+      <a
+        href="/configuracion"
+        class="flex items-center px-6 py-4 text-base font-medium rounded-lg transition-all duration-300 hover:bg-cyan-50 hover:shadow-sm group"
+      >
+        <div
+          class="p-2.5 mr-4 rounded-md bg-cyan-100 group-hover:bg-cyan-200 transition-colors duration-300"
+        >
+          <svg
+            class="w-5 h-5 text-cyan-600 group-hover:text-cyan-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <span>Configuración</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Usuario -->
+  <div class="p-6 border-t border-cyan-100 bg-white">
+    <div class="flex items-center group">
+      <div class="relative">
+        <img
+          class="w-12 h-12 rounded-full border-2 border-cyan-200 group-hover:border-cyan-300 transition-colors duration-300"
+          src="https://cdn-icons-png.flaticon.com/512/180/180658.png"
+          alt="Usuario"
+        />
+        <div
+          class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white"
+        ></div>
+      </div>
+      <div class="ml-4 overflow-hidden">
+        <p class="text-base font-semibold">Administrador</p>
+        <p
+          class="text-sm font-medium text-gray-500 transition-all duration-300 group-hover:text-gray-700"
+        >
+          admixurysuite.com
+        </p>
+      </div>
+      <button
+        class="ml-auto p-2 rounded-full text-cyan-400 hover:text-cyan-700 hover:bg-cyan-100 transition-colors duration-300"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fill-rule="evenodd"
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
 </aside>
 
 <!-- Navbar Minimalista -->
-<nav class="fixed left-80 right-0 h-16 bg-white border-b border-cyan-100 z-10 flex items-center justify-end px-6">
+<nav
+  class="fixed left-80 right-0 h-16 bg-white border-b border-cyan-100 z-10 flex items-center justify-end px-6"
+>
   <div class="relative group">
     <button class="flex items-center focus:outline-none">
       <div class="relative">
-        <img class="w-8 h-8 rounded-full border border-cyan-200" src="https://ui-avatars.com/api/?name=Admin&background=06B6D4&color=fff&size=128" alt="Usuario">
-        <div class="absolute bottom-0 right-0 w-2 h-2 bg-green-400 rounded-full border border-white"></div>
+        <img
+          class="w-8 h-8 rounded-full border border-cyan-200"
+          src="https://ui-avatars.com/api/?name=Admin&background=06B6D4&color=fff&size=128"
+          alt="Usuario"
+        />
+        <div
+          class="absolute bottom-0 right-0 w-2 h-2 bg-green-400 rounded-full border border-white"
+        ></div>
       </div>
     </button>
-    
+
     <!-- Menú desplegable -->
-    <div class="hidden group-hover:block absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md border border-cyan-100 py-1 z-20">
-      <a href="#" class="flex items-center px-4 py-2 text-sm text-cyan-800 hover:bg-cyan-50">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+    <div
+      class="hidden group-hover:block absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md border border-cyan-100 py-1 z-20"
+    >
+      <a
+        href="#"
+        class="flex items-center px-4 py-2 text-sm text-cyan-800 hover:bg-cyan-50"
+      >
+        <svg
+          class="w-4 h-4 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          />
         </svg>
         Perfil
       </a>
-      <a href="#" class="flex items-center px-4 py-2 text-sm text-cyan-800 hover:bg-cyan-50">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c-.94 1.543.826 3.31 2.37 2.37a1.724 1.724 0 002.572 1.065c.426 1.756 2.924 1.756 3.35 0a1.724 1.724 0 002.573-1.066c1.543.94 3.31-.826 2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+      <a
+        href="#"
+        class="flex items-center px-4 py-2 text-sm text-cyan-800 hover:bg-cyan-50"
+      >
+        <svg
+          class="w-4 h-4 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c-.94 1.543.826 3.31 2.37 2.37a1.724 1.724 0 002.572 1.065c.426 1.756 2.924 1.756 3.35 0a1.724 1.724 0 002.573-1.066c1.543.94 3.31-.826 2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
         </svg>
         Configuración
       </a>
       <div class="border-t border-cyan-100 my-1"></div>
-      <a href="#" class="flex items-center px-4 py-2 text-sm text-cyan-800 hover:bg-cyan-50">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+      <a
+        href="#"
+        class="flex items-center px-4 py-2 text-sm text-cyan-800 hover:bg-cyan-50"
+      >
+        <svg
+          class="w-4 h-4 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+          />
         </svg>
         Cerrar sesión
       </a>

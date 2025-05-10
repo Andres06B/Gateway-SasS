@@ -31,28 +31,6 @@ export class MyreseRevationsApplicationComponent {
       price: '$1,850,000 COP'
     },
     {
-      id: 'BOG-2024-9821',
-      propertyName: 'Grand Hotel Bogotá',
-      roomType: 'Habitación Ejecutiva',
-      type: 'hotel',
-      image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      dates: '5 Dic - 10 Dic 2024 (5 noches)',
-      guests: '1 adulto',
-      status: 'in_process',
-      price: '$1,250,000 COP'
-    },
-    {
-      id: 'SAN-2024-3467',
-      propertyName: 'Hostal Caribe Azul',
-      roomType: 'Dormitorio Privado',
-      type: 'hostel',
-      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      dates: '10 Ene - 15 Ene 2024 (5 noches)',
-      guests: '2 adultos',
-      status: 'completed',
-      price: '$850,000 COP'
-    },
-    {
       id: 'SAL-2024-1256',
       propertyName: 'Cabañas Valle de Cocora',
       roomType: 'Cabaña Familiar',
@@ -62,28 +40,6 @@ export class MyreseRevationsApplicationComponent {
       guests: '2 adultos, 2 niños',
       status: 'cancelled',
       price: '$1,200,000 COP'
-    },
-    {
-      id: 'MED-2024-7890',
-      propertyName: 'Hotel Medellín Plaza',
-      roomType: 'Habitación Doble',
-      type: 'hotel',
-      image: 'https://images.unsplash.com/photo-1501117716987-c8e1ecb210d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      dates: '1 Feb - 5 Feb 2024 (4 noches)',
-      guests: '2 adultos',
-      status: 'completed',
-      price: '$1,000,000 COP'
-    },
-    {
-      id: 'CLO-2024-4563',
-      propertyName: 'Hostal Cali Dreams',
-      roomType: 'Dormitorio Compartido',
-      type: 'hostel',
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      dates: '10 Mar - 15 Mar 2024 (5 noches)',
-      guests: '1 adulto',
-      status: 'cancelled',
-      price: '$450,000 COP'
     },
     {
       id: 'SMR-2024-1122',
@@ -97,15 +53,15 @@ export class MyreseRevationsApplicationComponent {
       price: '$2,000,000 COP'
     },
     {
-      id: 'BOG-2024-3345',
-      propertyName: 'Hostal Bogotá Central',
-      roomType: 'Habitación Privada',
+      id: 'CLO-2024-4563',
+      propertyName: 'Hostal Cali Dreams',
+      roomType: 'Dormitorio Compartido',
       type: 'hostel',
-      image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      dates: '5 May - 10 May 2024 (5 noches)',
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      dates: '10 Mar - 15 Mar 2024 (5 noches)',
       guests: '1 adulto',
-      status: 'in_process',
-      price: '$600,000 COP'
+      status: 'cancelled',
+      price: '$450,000 COP'
     }
   ];
 

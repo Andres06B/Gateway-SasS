@@ -24,21 +24,6 @@ export class ReservationPaymentsApplicationComponent {
       }
     },
     {
-      hotelNombre: 'Hotel Medellín Plaza',
-      fechaEntrada: new Date('2024-07-20'),
-      fechaSalida: new Date('2024-07-25'),
-      fechaPago: null,
-      monto: 1200000,
-      moneda: 'COP',
-      estado: 'Pendiente',
-      referencia: 'RES20240720123',
-      metodoPago: 'No pagado',
-      detalles: {
-        noches: 5,
-        habitacion: 'Habitación Deluxe'
-      }
-    },
-    {
       hotelNombre: 'Hotel Cali Sol',
       fechaEntrada: new Date('2024-12-01'),
       fechaSalida: new Date('2024-12-05'),
@@ -51,21 +36,6 @@ export class ReservationPaymentsApplicationComponent {
       detalles: {
         noches: 4,
         habitacion: 'Habitación Estándar'
-      }
-    },
-    {
-      hotelNombre: 'Hotel Cartagena Mar',
-      fechaEntrada: new Date('2024-05-10'),
-      fechaSalida: new Date('2024-05-15'),
-      fechaPago: null,
-      monto: 2000000,
-      moneda: 'COP',
-      estado: 'Falta de pagar',
-      referencia: 'RES20240510123',
-      metodoPago: 'No pagado',
-      detalles: {
-        noches: 5,
-        habitacion: 'Suite Premium'
       }
     },
     {
@@ -84,21 +54,6 @@ export class ReservationPaymentsApplicationComponent {
       }
     },
     {
-      hotelNombre: 'Hotel Santa Marta Playa',
-      fechaEntrada: new Date('2005-08-10'),
-      fechaSalida: new Date('2005-08-15'),
-      fechaPago: null,
-      monto: 750000,
-      moneda: 'COP',
-      estado: 'Pendiente',
-      referencia: 'RES20050810123',
-      metodoPago: 'No pagado',
-      detalles: {
-        noches: 5,
-        habitacion: 'Habitación Deluxe'
-      }
-    },
-    {
       hotelNombre: 'Hotel Pereira Campestre',
       fechaEntrada: new Date('2005-12-01'),
       fechaSalida: new Date('2005-12-05'),
@@ -114,21 +69,6 @@ export class ReservationPaymentsApplicationComponent {
       }
     },
     {
-      hotelNombre: 'Hotel Villavicencio Llanos',
-      fechaEntrada: new Date('2005-09-10'),
-      fechaSalida: new Date('2005-09-15'),
-      fechaPago: null,
-      monto: 1000000,
-      moneda: 'COP',
-      estado: 'Falta de pagar',
-      referencia: 'RES20050910123',
-      metodoPago: 'No pagado',
-      detalles: {
-        noches: 5,
-        habitacion: 'Suite Premium'
-      }
-    },
-    {
       hotelNombre: 'Hotel Manizales Nevado',
       fechaEntrada: new Date('2024-02-15'),
       fechaSalida: new Date('2024-02-20'),
@@ -141,21 +81,6 @@ export class ReservationPaymentsApplicationComponent {
       detalles: {
         noches: 5,
         habitacion: 'Habitación Deluxe'
-      }
-    },
-    {
-      hotelNombre: 'Hotel Pasto Andes',
-      fechaEntrada: new Date('2024-10-05'),
-      fechaSalida: new Date('2024-10-10'),
-      fechaPago: null,
-      monto: 900000,
-      moneda: 'COP',
-      estado: 'Pendiente',
-      referencia: 'RES20241005123',
-      metodoPago: 'No pagado',
-      detalles: {
-        noches: 5,
-        habitacion: 'Habitación Estándar'
       }
     }
   ];
