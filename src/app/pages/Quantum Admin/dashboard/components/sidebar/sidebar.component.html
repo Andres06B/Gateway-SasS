@@ -98,10 +98,6 @@
           </svg>
         </div>
         <span>Habitaciones</span>
-        <span
-          class="ml-auto px-3 py-1 text-sm font-bold bg-cyan-100 text-cyan-800 rounded-full"
-          >24</span
-        >
       </a>
 
       <!-- Pagos -->
@@ -270,21 +266,21 @@
   <div class="p-6 border-t border-cyan-100 bg-white">
     <div class="flex items-center group">
       <div class="relative">
-        <img
-          class="w-12 h-12 rounded-full border-2 border-cyan-200 group-hover:border-cyan-300 transition-colors duration-300"
-          src="https://cdn-icons-png.flaticon.com/512/180/180658.png"
-          alt="Usuario"
-        />
+        <div
+            class="w-9 h-9 rounded-full border-2 border-cyan-100 group-hover:border-cyan-200 transition-all duration-200 flex items-center justify-center bg-gray-300 text-white font-bold"
+          >
+            {{ getAdminInitials() }}
+        </div>
         <div
           class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white"
         ></div>
       </div>
       <div class="ml-4 overflow-hidden">
-        <p class="text-base font-semibold">Administrador</p>
+        <p class="text-base font-semibold">{{ adminInfo?.name }} {{ adminInfo?.last_name }}</p>
         <p
           class="text-sm font-medium text-gray-500 transition-all duration-300 group-hover:text-gray-700"
         >
-          admixurysuite.com
+          {{ adminInfo?.email }}
         </p>
       </div>
       <button
