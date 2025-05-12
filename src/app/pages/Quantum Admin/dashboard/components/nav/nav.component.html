@@ -1,71 +1,132 @@
-<!-- Premium Navbar with #011147 color palette -->
-<nav class="fixed left-80 right-0 h-20 bg-white shadow-sm z-10 flex items-center justify-between px-8 border-b border-[#011147]/15">
-  <!-- Left Section -->
+<!-- Navbar mejorado con tonos cyan y tipografía mejor contrastada -->
+<nav class="fixed left-80 right-0 h-20 bg-white shadow-sm z-10 flex items-center justify-between px-8 border-b border-gray-100">
+  <!-- Parte izquierda - Título/Breadcrumbs mejorado -->
   <div class="flex items-center space-x-6">
-    <!-- Title with refined gradient -->
-    <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#011147] to-[#02246a] bg-clip-text text-transparent transition-all duration-500 hover:from-[#02246a] hover:to-[#011147]">
+    <!-- Título con gradiente cyan más suave -->
+    <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-cyan-500 to-cyan-600 bg-clip-text text-transparent">
       Dashboard Administrativo
     </h1>
 
-    <!-- Breadcrumbs -->
+    <!-- Separador decorativo mejorado -->
+    <div class="h-6 w-px bg-gradient-to-b from-transparent via-cyan-300/50 to-transparent"></div>
+    
+    <!-- Breadcrumbs opcional -->
     <div class="hidden md:flex items-center space-x-2 text-sm">
-      <svg class="w-4 h-4 text-[#011147]/70 hover:text-[#011147] transition-colors duration-300" fill="currentColor" viewBox="0 0 20 20">
+      <svg class="w-4 h-4 text-cyan-400/70" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
       </svg>
     </div>
   </div>
 
-  <!-- Right Section -->
+  <!-- Parte derecha - Acciones mejoradas -->
   <div class="flex items-center space-x-6">
-    <!-- User Profile -->
+    <!-- Botón de notificaciones -->
+    
+    
+    <!-- Perfil de usuario mejorado -->
     <div class="relative group">
-      <button class="flex items-center space-x-3 focus:outline-none group transition-all duration-300 hover:scale-[1.02]">
+      <button class="flex items-center space-x-3 focus:outline-none group">
         <div class="relative">
-          <img class="w-9 h-9 rounded-full border-2 border-[#011147]/20 group-hover:border-[#011147]/40 transition-all" 
-               src="https://cdn-icons-png.flaticon.com/512/180/180658.png"
-               alt="Usuario">
-          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white shadow-xs"></div>
+          <div
+            class="w-9 h-9 rounded-full border-2 border-cyan-100 group-hover:border-cyan-200 transition-all duration-200 flex items-center justify-center bg-gray-300 text-white font-bold"
+          >
+            {{ getAdminInitials() }}
+          </div>
+          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-white"></div>
         </div>
-        <div class="hidden md:block text-left transition-all duration-300 group-hover:translate-x-1">
-          <p class="text-sm font-medium text-gray-800 group-hover:text-[#011147] transition-colors">Administrador</p>
-          <p class="text-xs text-gray-500 group-hover:text-[#011147]/80 transition-colors">adminquantumadm.com</p>
+        <div class="hidden md:block text-left">
+          <p class="text-sm font-medium text-gray-800">
+            {{ adminInfo?.name }} {{ adminInfo?.last_name }}
+          </p>
+          <p class="text-xs text-gray-500">{{ adminInfo?.email }}</p>
         </div>
-        <svg class="w-4 h-4 text-gray-500 group-hover:text-[#011147] group-hover:rotate-180 transition-all" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        <svg
+          class="w-4 h-4 text-gray-500 group-hover:text-cyan-600 transition-colors"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          ></path>
         </svg>
       </button>
 
-      <!-- Dropdown Menu -->
-      <div class="hidden group-hover:block absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-[#011147]/15 py-1 z-20 transition-all origin-top transform scale-95 group-hover:scale-100">
-        <div class="px-4 py-3 border-b border-[#011147]/15 transition-colors hover:bg-[#011147]/08">
-          <p class="text-sm font-medium text-gray-800">Administrador</p>
-          <p class="text-xs text-gray-500 truncate">adminquantumadm.com</p>
+      <!-- Menú desplegable -->
+      <div
+        class="hidden group-hover:block absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-1 z-20 transition-all duration-200 transform origin-top"
+      >
+        <div class="px-4 py-3 border-b border-gray-100">
+          <p class="text-sm font-medium text-gray-800">
+            {{ adminInfo?.name }} {{ adminInfo?.last_name }}
+          </p>
+          <p class="text-xs text-gray-500 truncate">{{ adminInfo?.email }}</p>
         </div>
-        
-        <a href="/inicio" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/08 hover:text-[#011147] transition-all hover:translate-x-1">
-          <svg class="w-4 h-4 mr-3 text-[#011147]/70 group-hover:text-[#011147]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+
+        <a
+          href="/inicio"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+        >
+          <svg
+            class="w-4 h-4 mr-3 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            ></path>
           </svg>
           <span>Inicio</span>
         </a>
-        
-        <a href="/configuracion" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/08 hover:text-[#011147] transition-all hover:translate-x-1">
-          <svg class="w-4 h-4 mr-3 text-[#011147]/70 group-hover:text-[#011147]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        <a
+          href="/configuracion"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+        >
+          <svg
+            class="w-4 h-4 mr-3 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            ></path>
           </svg>
           <span>Configuración</span>
         </a>
-        
-        <div class="border-t border-[#011147]/15 my-1"></div>
-        
-        <a href="/loginAdmin" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/08 hover:text-[#011147] transition-all hover:translate-x-1">
-          <svg class="w-4 h-4 mr-3 text-[#011147]/70 group-hover:text-[#011147]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+
+        <div class="border-t border-gray-100 my-1"></div>
+
+        <a
+          href="/loginAdmin"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+        >
+          <svg
+            class="w-4 h-4 mr-3 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+            ></path>
           </svg>
           <span>Cerrar sesión</span>
         </a>
-      </div>
-    </div>
-  </div>
-</nav>
