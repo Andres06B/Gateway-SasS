@@ -107,12 +107,13 @@
     <div class="p-6 border-t border-[#011147]/20 bg-white">
       <div class="flex items-center group">
         <div class="relative">
-          <img class="w-12 h-12 rounded-full border-2 border-[#011147]/20 group-hover:border-[#011147]/30 transition-colors duration-300" src="https://ui-avatars.com/api/?name=Admin&background=011147&color=fff&size=128" alt="Usuario">
-          <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white"></div>
+          <div class="w-10 h-10 rounded-full border-2 border-[#306B4F] flex items-center justify-center bg-[#E5F4EB] text-[#306B4F] font-bold text-lg shadow-md transform transition-all duration-300 group-hover:border-[#4a9a72] group-hover:scale-110">
+            {{ getUserInitials() }}
+          </div>  
         </div>
         <div class="ml-4 overflow-hidden">
-          <p class="text-base font-semibold">Administrador</p>
-          <p class="text-sm font-medium text-gray-500 transition-all duration-300 group-hover:text-gray-700">admixurysuite.com</p>
+          <p class="text-base font-semibold">{{ dataUser.name }} {{ dataUser.lastName }}</p>
+          <p class="text-sm font-medium text-gray-500 transition-all duration-300 group-hover:text-gray-700">{{dataUser.email}}</p>
         </div>
         <button class="ml-auto p-2 rounded-full text-[#011147]/50 hover:text-[#011147] hover:bg-[#011147]/10 transition-colors duration-300">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

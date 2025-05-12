@@ -1,19 +1,23 @@
 <!-- Navbar con tonos azul oscuro (#011147) -->
-<nav class="fixed left-80 right-0 h-20 bg-white shadow-sm z-10 flex items-center justify-between px-8 border-b border-gray-100">
+<nav
+  class="fixed left-80 right-0 h-20 bg-white shadow-sm z-10 flex items-center justify-between px-8 border-b border-gray-100">
   <!-- Parte izquierda - Título/Breadcrumbs -->
   <div class="flex items-center space-x-6">
     <!-- Título con gradiente azul oscuro -->
-    <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#011147] to-[#023e8a] bg-clip-text text-transparent">
+    <h1
+      class="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#011147] to-[#023e8a] bg-clip-text text-transparent">
       Quantum Gateway Admin
     </h1>
 
     <!-- Separador decorativo -->
     <div class="h-6 w-px bg-gradient-to-b from-transparent via-[#011147]/30 to-transparent"></div>
-    
+
     <!-- Breadcrumbs opcional -->
     <div class="hidden md:flex items-center space-x-2 text-sm">
       <svg class="w-4 h-4 text-[#011147]/50" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        <path fill-rule="evenodd"
+          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+          clip-rule="evenodd"></path>
       </svg>
     </div>
   </div>
@@ -24,99 +28,120 @@
     <div class="relative group">
       <button class="flex items-center space-x-3 focus:outline-none group">
         <div class="relative">
-          <img class="w-9 h-9 rounded-full border-2 border-[#011147]/20 group-hover:border-[#011147]/40 transition-all duration-200" 
-               src="https://ui-avatars.com/api/?name=Admin&background=011147&color=fff&size=128" 
-               alt="Usuario">
+          <div class="w-10 h-10 rounded-full border-2 border-[#306B4F] flex items-center justify-center bg-[#E5F4EB] text-[#306B4F] font-bold text-lg shadow-md transform transition-all duration-300 group-hover:border-[#4a9a72] group-hover:scale-110">
+            {{ getUserInitials() }}
+          </div>
           <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-white"></div>
         </div>
         <div class="hidden md:block text-left">
-          <p class="text-sm font-medium text-gray-800">Administrador</p>
-          <p class="text-xs text-gray-500">adminquantumadm.com</p>
+          <p class="text-sm font-medium text-gray-800">
+            {{ dataUser.name }} {{ dataUser.lastName }}
+          </p>
+          <p class="text-xs text-gray-500">{{ dataUser.email }}</p>
         </div>
-        <svg class="w-4 h-4 text-gray-500 group-hover:text-[#011147] transition-colors" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        <svg class="w-4 h-4 text-gray-500 group-hover:text-[#011147] transition-colors" fill="currentColor"
+          viewBox="0 0 20 20">
+          <path fill-rule="evenodd"
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
         </svg>
       </button>
 
       <!-- Menú desplegable -->
-      <div class="hidden group-hover:block absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-1 z-20 transition-all duration-200 transform origin-top">
+      <div
+        class="hidden group-hover:block absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-1 z-20 transition-all duration-200 transform origin-top">
         <div class="px-4 py-3 border-b border-gray-100">
-          <p class="text-sm font-medium text-gray-800">Administrador</p>
-          <p class="text-xs text-gray-500 truncate">adminquantumadm.com</p>
+          <p class="text-sm font-medium text-gray-800">
+            {{ dataUser.name }} {{ dataUser.lastName }}
+          </p>
+          <p class="text-xs text-gray-500 truncate">{{ dataUser.email }}</p>
         </div>
-        
-        <a href="/inicio-adm" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/10 hover:text-[#011147] transition-colors">
+
+        <a href="/inicio-adm"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/10 hover:text-[#011147] transition-colors">
           <svg class="w-4 h-4 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
           </svg>
           <span>Inicio</span>
         </a>
-        <a href="/config-adm" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/10 hover:text-[#011147] transition-colors">
+        <a href="/config-adm"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/10 hover:text-[#011147] transition-colors">
           <svg class="w-4 h-4 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+            </path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
           </svg>
           <span>Configuración</span>
         </a>
-        
+
         <div class="border-t border-gray-100 my-1"></div>
-        
-        <a href="/loginCorp" 
-           class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/10 hover:text-[#011147] transition-colors"
-           (click)="openLogoutModal($event)">
+
+        <a href="/loginCorp"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/10 hover:text-[#011147] transition-colors"
+          (click)="openLogoutModal($event)">
           <svg class="w-4 h-4 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
           </svg>
           <span>Cerrar sesión</span>
         </a>
       </div>
     </div>
   </div>
-<!-- Modal de confirmación mejorado -->
-<div *ngIf="showLogoutModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-  <div class="bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-md border border-gray-200">
-    <!-- Header del modal -->
-    <div class="bg-gradient-to-r from-[#011147] to-[#023e8a] p-5 flex items-center">
-      <svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-      </svg>
-      <h3 class="text-xl font-bold text-white">Confirmar acción</h3>
-    </div>
-    
-    <!-- Contenido del modal -->
-    <div class="p-6">
-      <div class="flex items-start">
-        <svg class="w-6 h-6 text-yellow-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+  <!-- Modal de confirmación mejorado -->
+  <div *ngIf="showLogoutModal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-md border border-gray-200">
+      <!-- Header del modal -->
+      <div class="bg-gradient-to-r from-[#011147] to-[#023e8a] p-5 flex items-center">
+        <svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
         </svg>
-        <div>
-          <p class="text-gray-700 font-medium mb-2">¿Estás seguro de que deseas cerrar sesión?</p>
-          <p class="text-gray-500 text-sm">Serás redirigido a la página de inicio de sesión y deberás ingresar tus credenciales nuevamente.</p>
+        <h3 class="text-xl font-bold text-white">Confirmar acción</h3>
+      </div>
+
+      <!-- Contenido del modal -->
+      <div class="p-6">
+        <div class="flex items-start">
+          <svg class="w-6 h-6 text-yellow-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <div>
+            <p class="text-gray-700 font-medium mb-2">
+              ¿Estás seguro de que deseas cerrar sesión?
+            </p>
+            <p class="text-gray-500 text-sm">
+              Serás redirigido a la página de inicio de sesión y deberás
+              ingresar tus credenciales nuevamente.
+            </p>
+          </div>
+        </div>
+
+        <!-- Botones de acción - Modifica estas líneas -->
+        <div class="mt-6 flex justify-end space-x-3">
+          <button (click)="closeLogoutModal()"
+            class="px-5 py-2.5 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-all duration-200 flex items-center cursor-pointer">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Cancelar
+          </button>
+          <button (click)="confirmLogout()"
+            class="px-5 py-2.5 text-sm font-medium rounded-lg bg-gradient-to-r from-[#011147] to-[#023e8a] text-white hover:from-[#023e8a] hover:to-[#011147] transition-all duration-200 shadow-md flex items-center cursor-pointer">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Sí, cerrar sesión
+          </button>
         </div>
       </div>
-      
-<!-- Botones de acción - Modifica estas líneas -->
-<div class="mt-6 flex justify-end space-x-3">
-  <button 
-    (click)="closeLogoutModal()"
-    class="px-5 py-2.5 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-all duration-200 flex items-center cursor-pointer"
-  >
-    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-    </svg>
-    Cancelar
-  </button>
-  <button 
-    (click)="confirmLogout()"
-    class="px-5 py-2.5 text-sm font-medium rounded-lg bg-gradient-to-r from-[#011147] to-[#023e8a] text-white hover:from-[#023e8a] hover:to-[#011147] transition-all duration-200 shadow-md flex items-center cursor-pointer"
-  >
-    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-    </svg>
-    Sí, cerrar sesión
-  </button>
-</div>
     </div>
   </div>
-</div>
 </nav>

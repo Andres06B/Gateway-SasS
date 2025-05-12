@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClientsService } from '../../../../../service/clients.service';
 
 interface NavLink {
   path: string;
@@ -26,8 +27,10 @@ export class HeaderAppComponent {
   
   mobileMenuOpen = false;
   userMenuOpen = false;
-  userName = 'Juan Pérez';
-  userPhoto = '';
+  userData = {
+    name: '',
+    lastName: '',
+  }
 
   // Configuración de enlaces de navegación
   navLinks: NavLink[] = [
@@ -84,7 +87,32 @@ export class HeaderAppComponent {
     
   ];
 
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    private client: ClientsService
+  ) {}
+
+  ClientId: number = Number(localStorage.getItem('id'));
+  ngOnInit(): void {
+    console.log(this.ClientId);
+    this.getUserName();
+  }
+
+  getUserName(): void {
+    this.client.findOne(this.ClientId).subscribe({
+      next: (res) => {
+        this.userData.name = res.name;
+        this.userData.lastName = res.last_name;
+      }
+    })
+  }
+
+  getUserInitials(): string {
+    if (this.userData.name && this.userData.lastName) {
+      return `${this.userData.name.charAt(0).toUpperCase()}${this.userData.lastName.charAt(0).toUpperCase()}`;
+    }
+    return '';
+  }
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
@@ -109,7 +137,7 @@ export class HeaderAppComponent {
   onLogout(): void {
     // Lógica para cerrar sesión
     console.log('Sesión cerrada');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/loginUser']);
     this.mobileMenuOpen = false;
     this.userMenuOpen = false;
   }

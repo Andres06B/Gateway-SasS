@@ -31,9 +31,14 @@ export class InicioAdmComponent {
   premiumUsersList() {
     this.payment.findPremiumUsers().subscribe({
       next: (res) => {
-        this.premiumUsers = res;
-        console.log(this.premiumUsers);
-        this.calculateTotalPricePremium();
+        if (res.length === 0) {
+          console.log("No hay usuarios premium");
+          this.premiumUsers = [];
+        } else {
+          this.premiumUsers = res;
+          console.log("Premiun user: ", this.premiumUsers);
+          this.calculateTotalPricePremium();
+        }
       },
       error: (err) => {
         console.log(err);
@@ -69,13 +74,13 @@ export class InicioAdmComponent {
 
   calculateTotalPriceVip(): void {
     this.totalPriceVip = this.vipUsers.reduce((total, user) => {
-      return total + (user.price || 0); // Asegurarse de que price tenga un valor válido
+      return total + (user.price || 0); 
     }, 0);
   } 
 
   calculateTotalPricePremium(): void {
     this.totalPricePremium = this.premiumUsers.reduce((total, user) => {
-      return total + (user.price || 0); // Asegurarse de que price tenga un valor válido
+      return total + (user.price || 0); 
     }, 0);
   }
 
