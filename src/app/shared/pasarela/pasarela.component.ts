@@ -41,7 +41,7 @@ export class PasarelaComponent {
   // Precios de los planes
   get precioPlan() {
     switch(this.planSeleccionado) {
-      case 'basico': return 49;
+      case 'basico': return 0;
       case 'estandar': return 99;
       case 'premium': return 199;
       default: return 0;
