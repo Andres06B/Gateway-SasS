@@ -97,6 +97,9 @@ export class LoginUserComponent {
 
   handlerError(status: number) {
     switch (status) {
+      case 401:
+        this.openErrorModal('Usuario no autorizado. Verifique sus credenciales.');
+        break;
       case 500:
         this.openErrorModal('Error al conectar con el servidor. Intente nuevamente.');
         break;

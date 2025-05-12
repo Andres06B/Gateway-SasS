@@ -56,13 +56,14 @@ export class LoginWebComponent {
       this.loginService.loginSuperAdmin(email, password).subscribe({
         next: (response) => {
           console.log('Login successful', response);
+          localStorage.setItem('token', response.accessToken);
           setTimeout(() => {
             this.rt.navigate(['/inicio-adm']);
-          }, 2000);
+          }, 1000);
         },
         error: (err) => {
           console.error('Login error', err);
-          this.openErrorModal(err.error?.message || 'Credenciales incorrectas o usuario no registrado');
+          this.handlerError(err.status);
         }
       });
     } else {
@@ -74,4 +75,21 @@ export class LoginWebComponent {
       }
     }
   }
+
+  handlerError(status: number) {
+    switch (status) {
+      case 401:
+        this.openErrorModal('Usuario no autorizado. Verifique sus credenciales.');
+        break;
+      case 500:
+        this.openErrorModal('Error al conectar con el servidor. Intente nuevamente.');
+        break;
+      case 404:
+        this.openErrorModal('Credenciales incorrectas o usuario no registrado')
+        break
+      default:
+        this.openErrorModal('Error desconocido. Intente nuevamente.');
+    }
+  }
+  
 }
