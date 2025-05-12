@@ -57,11 +57,7 @@ export class LoginUserComponent {
       },
       error: (err) => {
         console.error('Error en login', err);
-        if (err.status === 401) {
-          this.openErrorModal('Credenciales incorrectas o usuario no registrado');
-        } else {
-          this.openErrorModal('Error al conectar con el servidor. Intente nuevamente.');
-        }
+        this.handlerError(err.status);
       }
     });
   }
@@ -99,7 +95,18 @@ export class LoginUserComponent {
     this.showErrorModal = false;
   }
 
-  
+  handlerError(status: number) {
+    switch (status) {
+      case 500:
+        this.openErrorModal('Error al conectar con el servidor. Intente nuevamente.');
+        break;
+      case 404:
+        this.openErrorModal('Credenciales incorrectas o usuario no registrado')
+        break
+      default:
+        this.openErrorModal('Error desconocido. Intente nuevamente.');
+    }
+  }
 
 
 

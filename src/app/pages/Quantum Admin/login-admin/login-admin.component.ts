@@ -59,17 +59,29 @@ export class LoginAdminComponent {
         localStorage.setItem('token', res.id);
         localStorage.setItem('vip', res.has_vip_service);
         localStorage.setItem('premium', res.has_premium_service);
-        this.route.navigate(['/inicio']);
+        setTimeout(() => {
+          this.route.navigate(['/inicio']);
+        }, 1000);
+        
       },
       error: err => {
         console.error('Error en login', err);
-        if (err.status === 401) {
-          this.openErrorModal('Credenciales incorrectas o usuario no registrado');
-        } else {
-          this.openErrorModal('Error al conectar con el servidor. Intente nuevamente.');
-        }
+        this.handlerError(err.status);
       }
     });
+  }
+
+  handlerError(status: number) {
+    switch (status) {
+      case 500:
+        this.openErrorModal('Error al conectar con el servidor. Intente nuevamente.');
+        break;
+      case 404:
+        this.openErrorModal('Credenciales incorrectas o usuario no registrado')
+        break
+      default:
+        this.openErrorModal('Error desconocido. Intente nuevamente.');
+    }
   }
 
 }

@@ -52,7 +52,6 @@ export class InicioComponent {
     this.client.findClients(this.tokenId).subscribe({
       next: (data) => {
         this.clientsList = data; 
-        console.log(this.clientsList);
       }
     });
   }
@@ -61,7 +60,6 @@ export class InicioComponent {
     this.room.getRoomByAdmin(this.tokenId).subscribe({
       next: (data) => {
         this.roomsList = data; 
-        console.log(this.roomsList);
       }
     });
   }
@@ -70,7 +68,6 @@ export class InicioComponent {
     this.payment.findAllByHotel(this.hotelId).subscribe({
       next: (data) => {
         this.paymentsList = data; 
-        console.log(this.paymentsList);
       }
     });
   }
@@ -79,7 +76,6 @@ export class InicioComponent {
     this.booking.findByHotel(this.hotelId).subscribe({
       next: (data) => {
         this.reservationsList = data; 
-        console.log(this.reservationsList);
       }
     });
   }
