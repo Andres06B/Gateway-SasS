@@ -1,34 +1,31 @@
-<!-- Navbar mejorado con tonos cyan y tipografía mejor contrastada -->
+<!-- Navbar actualizado con paleta basada en #011147 -->
 <nav class="fixed left-80 right-0 h-20 bg-white shadow-sm z-10 flex items-center justify-between px-8 border-b border-gray-100">
-  <!-- Parte izquierda - Título/Breadcrumbs mejorado -->
+  <!-- Parte izquierda - Título/Breadcrumbs actualizado -->
   <div class="flex items-center space-x-6">
-    <!-- Título con gradiente cyan más suave -->
-    <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-cyan-500 to-cyan-600 bg-clip-text text-transparent">
+    <!-- Título con gradiente azul marino -->
+    <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#011147] to-[#0a2a8f] bg-clip-text text-transparent">
       Dashboard Administrativo
     </h1>
 
-    <!-- Separador decorativo mejorado -->
-    <div class="h-6 w-px bg-gradient-to-b from-transparent via-cyan-300/50 to-transparent"></div>
+    <!-- Separador decorativo actualizado -->
+    <div class="h-6 w-px bg-gradient-to-b from-transparent via-[#011147]/30 to-transparent"></div>
     
     <!-- Breadcrumbs opcional -->
     <div class="hidden md:flex items-center space-x-2 text-sm">
-      <svg class="w-4 h-4 text-cyan-400/70" fill="currentColor" viewBox="0 0 20 20">
+      <svg class="w-4 h-4 text-[#011147]/70" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
       </svg>
     </div>
   </div>
 
-  <!-- Parte derecha - Acciones mejoradas -->
+  <!-- Parte derecha - Acciones actualizadas -->
   <div class="flex items-center space-x-6">
-    <!-- Botón de notificaciones -->
-    
-    
-    <!-- Perfil de usuario mejorado -->
+    <!-- Perfil de usuario actualizado -->
     <div class="relative group">
       <button class="flex items-center space-x-3 focus:outline-none group">
         <div class="relative">
           <div
-            class="w-9 h-9 rounded-full border-2 border-cyan-100 group-hover:border-cyan-200 transition-all duration-200 flex items-center justify-center bg-gray-300 text-white font-bold"
+            class="w-9 h-9 rounded-full border-2 border-[#011147]/10 group-hover:border-[#011147]/20 transition-all duration-200 flex items-center justify-center bg-gray-300 text-white font-bold"
           >
             {{ getAdminInitials() }}
           </div>
@@ -41,7 +38,7 @@
           <p class="text-xs text-gray-500">{{ adminInfo?.email }}</p>
         </div>
         <svg
-          class="w-4 h-4 text-gray-500 group-hover:text-cyan-600 transition-colors"
+          class="w-4 h-4 text-gray-500 group-hover:text-[#011147] transition-colors"
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -53,7 +50,7 @@
         </svg>
       </button>
 
-      <!-- Menú desplegable -->
+      <!-- Menú desplegable actualizado -->
       <div
         class="hidden group-hover:block absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 py-1 z-20 transition-all duration-200 transform origin-top"
       >
@@ -66,7 +63,7 @@
 
         <a
           href="/inicio"
-          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/5 hover:text-[#011147] transition-colors"
         >
           <svg
             class="w-4 h-4 mr-3 text-gray-500"
@@ -85,7 +82,7 @@
         </a>
         <a
           href="/configuracion"
-          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/5 hover:text-[#011147] transition-colors"
         >
           <svg
             class="w-4 h-4 mr-3 text-gray-500"
@@ -113,7 +110,7 @@
 
         <a
           href="/loginAdmin"
-          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/5 hover:text-[#011147] transition-colors"
         >
           <svg
             class="w-4 h-4 mr-3 text-gray-500"
@@ -130,3 +127,7 @@
           </svg>
           <span>Cerrar sesión</span>
         </a>
+      </div>
+    </div>
+  </div>
+</nav>

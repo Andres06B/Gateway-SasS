@@ -4,7 +4,7 @@
     <!-- Logo flotante con efecto -->
     <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 z-10 w-24 h-24 group">
       <a href="/about" class="cursor-pointer">
-        <div class="w-full h-full bg-gradient-to-r from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-float hover:rotate-12 transition-all duration-300 cursor-pointer">
+        <div class="w-full h-full bg-[#011147] rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-float hover:rotate-12 transition-all duration-300 cursor-pointer">
           <svg class="h-10 w-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           </svg>
@@ -23,10 +23,10 @@
     <div class="pt-16 px-6 sm:px-8 pb-8">
       <!-- Títulos -->
       <div class="text-center mb-6">
-        <h1 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-500 to-cyan-700 bg-clip-text text-transparent">
+        <h1 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#011147] to-[#011147]/90 bg-clip-text text-transparent">
           Quantum Gateway
         </h1>
-        <p class="text-cyan-600 text-sm sm:text-base font-medium mt-1">
+        <p class="text-[#011147] text-sm sm:text-base font-medium mt-1">
           Portal Administrativo
         </p>
       </div>
@@ -37,14 +37,14 @@
         <div>
           <label for="email" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Correo Electrónico</label>
           <div class="relative group">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-cyan-500 group-hover:text-cyan-600 transition-colors">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#011147] group-hover:text-[#011147]/90 transition-colors">
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
             <input type="email" id="email" name="email" required [(ngModel)]="email" #emailModel="ngModel"
               placeholder="Ingresa tu correo"
-              class="w-full bg-gray-50/50 border border-gray-200/60 rounded-lg pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 hover:bg-gray-100/30 cursor-pointer" />
+              class="w-full bg-gray-50/50 border border-gray-200/60 rounded-lg pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#011147] focus:border-transparent transition-all duration-300 hover:bg-gray-100/30 cursor-pointer" />
           </div>
         </div>
 
@@ -52,17 +52,17 @@
         <div>
           <label for="password" class="block text-sm sm:text-base font-medium text-gray-600 mb-1 sm:mb-2">Contraseña</label>
           <div class="relative group">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-cyan-500 group-hover:text-cyan-600 transition-colors">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#011147] group-hover:text-[#011147]/90 transition-colors">
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
             <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" required
               [(ngModel)]="password" #passwordModel="ngModel" placeholder="Ingresa tu contraseña"
-              class="w-full bg-gray-50/50 border border-gray-200/60 rounded-lg pl-10 pr-12 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 hover:bg-gray-100/30 cursor-pointer" />
+              class="w-full bg-gray-50/50 border border-gray-200/60 rounded-lg pl-10 pr-12 py-2 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#011147] focus:border-transparent transition-all duration-300 hover:bg-gray-100/30 cursor-pointer" />
             <!-- Botón Toggle Password -->
             <button type="button" (click)="togglePasswordVisibility()"
-              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-cyan-600 transition-colors cursor-pointer"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#011147] transition-colors cursor-pointer"
               aria-label="Alternar visibilidad de la contraseña">
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path *ngIf="!showPassword" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -75,25 +75,17 @@
         <!-- Botón de Inicio de Sesión -->
         <button type="submit" (mousedown)="isClicked = true" (mouseup)="isClicked = false"
           (mouseleave)="isClicked = false" [class.transform]="isClicked" [class.scale-95]="isClicked"
-          class="w-full relative overflow-hidden group bg-gradient-to-r from-cyan-600 to-cyan-800 text-white font-medium py-2 sm:py-3 px-4 rounded-xl shadow hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 cursor-pointer">
+          class="w-full relative overflow-hidden group bg-[#011147] text-white font-medium py-2 sm:py-3 px-4 rounded-xl shadow hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#011147] focus:ring-offset-2 cursor-pointer">
           <span class="flex items-center justify-center relative z-10">
             <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
             </svg>
             <span class="text-sm sm:text-base">Iniciar Sesión</span>
           </span>
-          <span class="absolute inset-0 bg-gradient-to-r from-cyan-700 to-cyan-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="absolute inset-0 bg-[#011147]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         </button>
 
         <!-- Enlace para registrarse -->
-        <div class="text-center pt-2">
-          <a [routerLink]="['/pasarela']" class="text-sm text-cyan-600 hover:text-cyan-700 transition-colors flex items-center justify-center cursor-pointer">
-            <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-            </svg>
-            ¿No tienes cuenta? Regístrate aquí
-          </a>
-        </div>
       </form>
     </div>
 
