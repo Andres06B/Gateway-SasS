@@ -70,6 +70,9 @@ import { PasarelaComponent } from './shared/pasarela/pasarela.component';
 import { HabitacionesComponent } from './pages/Quantum Admin/dashboard/views/habitaciones/habitaciones.component';
 import { HotelViewComponent } from './pages/Quantum Users/AccommodationServices/view/hotel-view/hotel-view.component';
 import { GraficasAdmComponent } from './pages/Quantum Web/dashboard-admin/views-admin/graficas-adm/graficas-adm.component';
+import { AsistenteQAComponent } from './shared/Components/asistente-qa/asistente-qa.component';
+import { AsistenteQWComponent } from './shared/Components/asistente-qw/asistente-qw.component';
+import { AsistenteQuComponent } from './shared/Components/asistente-qu/asistente-qu.component';
 
 
 
@@ -132,6 +135,9 @@ import { GraficasAdmComponent } from './pages/Quantum Web/dashboard-admin/views-
     HabitacionesComponent,
     HotelViewComponent,
     GraficasAdmComponent,
+    AsistenteQAComponent,
+    AsistenteQWComponent,
+    AsistenteQuComponent,
 
 
 
