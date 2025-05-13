@@ -95,7 +95,6 @@ const routes: Routes = [
   { path: 'graficas-adm', component: GraficasAdmComponent},
 
 
-
   // Redirecciones y captura de rutas no encontradas (DEBE IR AL FINAL)
   { path: '**', redirectTo: 'error404', pathMatch: 'full' },
 ];

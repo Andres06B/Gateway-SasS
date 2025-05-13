@@ -13,12 +13,21 @@ export class PasarelaComponent {
   pagoExitoso = false;
   procesando = false;
 
-  // Datos del propietario (mantenidos)
+  // Tipos de documento disponibles (según la entidad User)
+  tiposDocumento = ['CC', 'TI', 'TE', 'PP', 'PPT', 'NIT'];
+
+  // Datos del usuario/propietario (actualizados según entidad User)
   datosPropietario = {
     nombre: '',
-    cedula: '',
+    last_name: '', // Nuevo campo según entidad
     email: '',
-    telefono: ''
+    password: '', // Nuevo campo según entidad
+    type_document: 'CC', // Actualizado según entidad
+    number_document: '', // Cambiado de 'cedula' para coincidir con entidad
+    phone: '',
+    country: '', // Nuevo campo según entidad
+    city: '', // Nuevo campo según entidad
+    rol: 'user' // Valor por defecto según entidad
   };
 
   // Datos del hotel (mantenidos)
@@ -30,43 +39,48 @@ export class PasarelaComponent {
     habitaciones: '1-10'
   };
 
-  // Datos de pago (actualizados con las nuevas propiedades + las originales)
+  // Datos de pago (actualizados)
   datosPago = {
-    // Originales
-    nombreTarjeta: '',         // Mantenido por compatibilidad
-    numeroTarjeta: '',         // Mantenido por compatibilidad
-    vencimiento: '',           // Mantenido por compatibilidad
-    cvv: '',                   // Mantenido por compatibilidad
-    
-    // Nuevos campos
-    cardholder_name: '',       // Nombre del titular (nuevo)
-    card_number: '',           // Número de tarjeta (nuevo)
-    expiration_date: '',       // Fecha vencimiento (nuevo formato MM/YY)
-    phone: '',                 // Teléfono de contacto (nuevo)
-    amount: 0,                 // Monto total (nuevo)
-    email: '',                 // Email del comprador (se tomará de datosPropietario)
-    type_document: 'CC',       // Tipo documento (por defecto cédula)
-    number_document: ''        // Número documento (se tomará de datosPropietario.cedula)
+    cardholder_name: '',       // Nombre del titular
+    card_number: '',           // Número de tarjeta
+    expiration_date: '',       // Fecha vencimiento (MM/YY)
+    cvv: '',                   // Código de seguridad
+    phone: '',                 // Teléfono de contacto
+    amount: 0,                 // Monto total
+    email: '',                 // Email del comprador
+    type_document: 'CC',       // Tipo documento
+    number_document: '',       // Número documento
+    has_premium_service: false, // Nuevo según entidad
+    has_vip_service: false      // Nuevo según entidad
   };
+confirmPassword: any;
 
-  // Precios de los planes (mantenido)
+  // Precios de los planes (actualizados)
   get precioPlan() {
     switch(this.planSeleccionado) {
       case 'basico': return 49;
-      case 'estandar': return 99;
       case 'premium': return 199;
+      case 'vip': return 399;
       default: return 0;
     }
   }
 
-  // Métodos existentes (mantenidos)
+  // Métodos existentes (actualizados)
   avanzarPaso() {
     // Actualizar datos relacionados antes de avanzar
     if (this.paso === 1) {
       // Preparar datos para el pago
       this.datosPago.email = this.datosPropietario.email;
-      this.datosPago.number_document = this.datosPropietario.cedula;
-      this.datosPago.phone = this.datosPropietario.telefono;
+      this.datosPago.number_document = this.datosPropietario.number_document;
+      this.datosPago.phone = this.datosPropietario.phone;
+      this.datosPago.type_document = this.datosPropietario.type_document;
+      
+      // Actualizar servicios según plan seleccionado
+      if (this.planSeleccionado === 'premium') {
+        this.datosPago.has_premium_service = true;
+      } else if (this.planSeleccionado === 'vip') {
+        this.datosPago.has_vip_service = true;
+      }
     }
     
     if (this.paso === 2) {
@@ -87,11 +101,6 @@ export class PasarelaComponent {
 
   // Método procesarPago actualizado
   procesarPago() {
-    // Sincronizar datos antiguos con nuevos (para compatibilidad)
-    this.datosPago.nombreTarjeta = this.datosPago.cardholder_name;
-    this.datosPago.numeroTarjeta = this.datosPago.card_number;
-    this.datosPago.vencimiento = this.datosPago.expiration_date;
-    
     // Validar campos antes de procesar
     if (!this.validarDatosPago()) {
       console.error('Validación fallida');
@@ -100,7 +109,7 @@ export class PasarelaComponent {
 
     this.procesando = true;
     
-    // Simular procesamiento de pago (mantenido)
+    // Simular procesamiento de pago
     setTimeout(() => {
       this.pagoExitoso = true;
       this.procesando = false;
@@ -108,7 +117,7 @@ export class PasarelaComponent {
     }, 2000);
   }
 
-  // Nuevo método de validación
+  // Método de validación actualizado
   private validarDatosPago(): boolean {
     // Validar campos requeridos
     const camposRequeridos = [
@@ -117,7 +126,12 @@ export class PasarelaComponent {
       this.datosPago.expiration_date,
       this.datosPago.cvv,
       this.datosPago.phone,
-      this.datosPago.amount > 0
+      this.datosPago.amount > 0,
+      this.datosPropietario.nombre,
+      this.datosPropietario.last_name,
+      this.datosPropietario.email,
+      this.datosPropietario.number_document,
+      this.datosPropietario.phone
     ];
 
     if (camposRequeridos.some(campo => !campo)) {
@@ -143,24 +157,31 @@ export class PasarelaComponent {
       return false;
     }
 
+    // Validar email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.datosPropietario.email)) {
+      console.error('Email inválido');
+      return false;
+    }
+
     return true;
   }
 
-  // Método adicional para compatibilidad
-  getDatosCompletosPago() {
+  // Método para obtener todos los datos del usuario
+  getDatosUsuario() {
+    return {
+      ...this.datosPropietario,
+      // Añadir campos adicionales según la entidad User
+      rol: 'user', // O 'admin' si es necesario
+      payments: [], // Inicializar array de pagos
+      admin_hotel: [] // Inicializar array de admin_hotels
+    };
+  }
+
+  // Método para obtener todos los datos del pago
+  getDatosPago() {
     return {
       ...this.datosPago,
-      // Mantener compatibilidad con nombres antiguos
-      nombreTarjeta: this.datosPago.cardholder_name,
-      numeroTarjeta: this.datosPago.card_number,
-      vencimiento: this.datosPago.expiration_date,
-      // Datos del usuario
-      usuario: {
-        nombre: this.datosPropietario.nombre,
-        email: this.datosPropietario.email,
-        telefono: this.datosPropietario.telefono
-      },
-      // Datos del hotel
+      user: this.getDatosUsuario(), // Relación con el usuario
       hotel: {
         ...this.datosHotel
       }
