@@ -19,6 +19,9 @@ export class ReservasComponent {
   openDetailsModal: boolean = false;
   openEditModal: boolean = false;
   HotelId: number = Number(localStorage.getItem('hotel'));
+  currentPage = 1
+  pageSize = 30 // Puedes ajustar esto según tus necesidades
+  public Math = Math
 
   constructor(
     private bookingService: ReservationsService
@@ -53,6 +56,7 @@ export class ReservasComponent {
     const selectedStatus = (event.target as HTMLSelectElement).value;
     if (!selectedStatus){
       this.filteredBooking = [...this.Booking];
+      this.currentPage = 1 
       return;
     }
 
@@ -126,6 +130,24 @@ export class ReservasComponent {
       }
     })
   }
+
+  onPageChange(page: number): void {
+      console.log("Cambiando a página:", page)
+      this.currentPage = page
+    }
+  
+    // Este método es opcional, puedes usarlo en lugar del pipe slice
+    get pagedClients(): any[] {
+      const start = (this.currentPage - 1) * this.pageSize
+      const end = start + this.pageSize
+      const result = this.filteredBooking.slice(start, Math.min(end, this.filteredBooking.length))
+      console.log(`Mostrando ${result.length} clientes de ${this.filteredBooking.length} (página ${this.currentPage})`)
+      return result
+    }
+  
+    get totalPages(): number {
+      return Math.ceil(this.filteredBooking.length / this.pageSize)
+    }
 
 
 }

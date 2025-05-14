@@ -72,6 +72,7 @@ import { GraficasAdmComponent } from './pages/Quantum Web/dashboard-admin/views-
 import { AsistenteQAComponent } from './shared/Components/asistente-qa/asistente-qa.component';
 import { AsistenteQWComponent } from './shared/Components/asistente-qw/asistente-qw.component';
 import { AsistenteQuComponent } from './shared/Components/asistente-qu/asistente-qu.component';
+import { PaginationComponent } from './shared/pagination/pagination.component';
 
 
 
@@ -136,6 +137,7 @@ import { AsistenteQuComponent } from './shared/Components/asistente-qu/asistente
     AsistenteQAComponent,
     AsistenteQWComponent,
     AsistenteQuComponent,
+    PaginationComponent,
 
 
 
