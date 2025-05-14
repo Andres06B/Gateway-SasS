@@ -61,7 +61,6 @@ import { FooterAppComponent } from './pages/Quantum Users/AccommodationServices/
 import { DestinationApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/destination-application/destination-application.component';
 import { UserProfileApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/user-profile-application/user-profile-application.component';
 import { ReservationPaymentsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reservation-payments-application/reservation-payments-application.component';
-import { ReserveCompanionsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-companions-application/reserve-companions-application.component';
 import { PreferredStaysApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/preferred-stays-application/preferred-stays-application.component';
 
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
@@ -127,7 +126,6 @@ import { AsistenteQuComponent } from './shared/Components/asistente-qu/asistente
     DestinationApplicationComponent,
     UserProfileApplicationComponent,
     ReservationPaymentsApplicationComponent,
-    ReserveCompanionsApplicationComponent,
     PreferredStaysApplicationComponent,
     MyreseRevationsApplicationComponent,
     ReservationsApplicationsComponent,
