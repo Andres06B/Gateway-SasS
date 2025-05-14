@@ -33,7 +33,7 @@ import { HomeApplicationComponent } from './pages/Quantum Users/AccommodationSer
 import { DestinationApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/destination-application/destination-application.component';
 import { UserProfileApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/user-profile-application/user-profile-application.component';
 import { ReservationPaymentsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reservation-payments-application/reservation-payments-application.component';
-import { ReserveCompanionsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-companions-application/reserve-companions-application.component';
+//import { ReserveCompanionsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/reserve-companions-application/reserve-companions-application.component';
 import { MyreseRevationsApplicationComponent } from './pages/Quantum Users/AccommodationServices/view/myrese-revations-application/myrese-revations-application.component';
 import { ReservationsApplicationsComponent } from './pages/Quantum Users/AccommodationServices/view/reservations-applications/reservations-applications.component';
 import { PasarelaComponent } from './shared/pasarela/pasarela.component';
@@ -76,7 +76,7 @@ const routes: Routes = [
   { path: 'appdestination', component:DestinationApplicationComponent},
   { path: 'UserProfileapp', component:UserProfileApplicationComponent},
   { path: 'reservationpayments', component:ReservationPaymentsApplicationComponent},
-  { path: 'companionreservation', component:ReserveCompanionsApplicationComponent},
+  //{ path: 'companionreservation', component:ReserveCompanionsApplicationComponent},
   { path: 'preferredstays', component:PreferredStaysApplicationComponent},
 
   { path: 'myreservation', component:MyreseRevationsApplicationComponent},

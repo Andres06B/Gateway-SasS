@@ -180,7 +180,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr *ngFor="let reserva of filteredBooking" class="hover:bg-gray-50 transition-colors duration-200">
+                <tr *ngFor="let reserva of filteredBooking | slice: (currentPage-1) * pageSize : (currentPage) * pageSize" class="hover:bg-gray-50 transition-colors duration-200">
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     #RES-{{ reserva.id }}
                   </td>
@@ -244,31 +244,18 @@
                 </tr>
               </tbody>
             </table>
+            <p class="text-xs text-gray-500 px-6">Total: {{ filteredBooking.length }}</p>
           </div>
-          <div class="px-6 py-3 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
-            <div class="text-sm text-gray-500">
-              Mostrando <span class="font-medium">1</span> a
-              <span class="font-medium">3</span> de
-              <span class="font-medium">568</span> reservas
-            </div>
-            <div class="flex space-x-2">
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200">
-                Anterior
-              </button>
-              <button
-                class="px-3 py-1 border border-cyan-500 bg-cyan-50 text-cyan-600 rounded-lg text-sm font-medium transition-colors duration-200">
-                1
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200">
-                2
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200">
-                Siguiente
-              </button>
-            </div>
+
+
+          <div class="px-6 py-3 bg-gray-50 border-t border-gray-200">
+              <app-pagination 
+                [currentPage]="currentPage"
+                [totalPages]="totalPages"
+                [pageSize]="pageSize"
+                [totalItems]="filteredBooking.length"
+                (pageChange)="onPageChange($event)">
+              </app-pagination>
           </div>
         </div>
       </main>
