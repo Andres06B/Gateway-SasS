@@ -1,287 +1,520 @@
 <app-header-app></app-header-app>
 
 <div class="min-h-screen bg-gradient-to-b from-white to-[#f8fcf9]">
-    <!-- Main Hotel Container -->
-    <div class="max-w-7xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden my-8 border border-gray-100">
-      <!-- Cover Image with Gradient Overlay -->
-      <div class="relative h-80 bg-gradient-to-r from-[#428764] to-[#306B4F]">
-        <img [src]="hotelData.coverImage" 
-             alt="Hotel Cover" 
-             class="w-full h-full object-cover opacity-90" 
-             loading="lazy"
-             width="1024"
-             height="320">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+  <!-- Main Hotel Container -->
+  <div class="max-w-7xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden my-8 border border-gray-100">
+    <!-- Cover Image with Gradient Overlay -->
+    <div class="relative h-80 bg-gradient-to-r from-[#428764] to-[#306B4F]">
+      <img [src]="hotelData.coverImage" alt="Hotel Cover" class="w-full h-full object-cover opacity-90" loading="lazy"
+        width="1024" height="320" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+    </div>
+
+    <!-- Profile and Main Content -->
+    <div class="px-6 pt-20 pb-8 relative">
+      <!-- Profile Image -->
+      <div class="absolute -top-16 left-1/2 transform -translate-x-1/2">
+        <div class="relative group">
+          <div
+            class="absolute inset-0 rounded-full bg-gradient-to-r from-[#428764] to-[#306B4F] blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300">
+          </div>
+          <img [src]="hotelData.profileImage" alt="Hotel Logo"
+            class="relative w-32 h-32 rounded-full border-4 border-white object-cover shadow-xl z-10" loading="lazy"
+            width="128" height="128" />
+        </div>
       </div>
-    
-      <!-- Profile and Main Content -->
-      <div class="px-6 pt-20 pb-8 relative">
-        <!-- Profile Image -->
-        <div class="absolute -top-16 left-1/2 transform -translate-x-1/2">
-          <div class="relative group">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-[#428764] to-[#306B4F] blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
-            <img [src]="hotelData.profileImage" 
-                 alt="Hotel Logo" 
-                 class="relative w-32 h-32 rounded-full border-4 border-white object-cover shadow-xl z-10" 
-                 loading="lazy"
-                 width="128"
-                 height="128">
-          </div>
+
+      <!-- Hotel Name and Description -->
+      <div class="text-center mt-8">
+        <div
+          class="inline-flex items-center bg-[#f0f8f4] text-[#306B4F] px-4 py-2 rounded-full text-sm font-medium mb-4">
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+            </path>
+          </svg>
+          {{ hotelData.category }}
         </div>
-    
-        <!-- Hotel Name and Description -->
-        <div class="text-center mt-8">
-          <div class="inline-flex items-center bg-[#f0f8f4] text-[#306B4F] px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+        <h1
+          class="text-4xl font-bold text-gray-800 bg-gradient-to-r from-[#428764] to-[#306B4F] bg-clip-text text-transparent">
+          {{ hotelData.name }}
+        </h1>
+        <div class="flex justify-center items-center mt-2">
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+              </path>
             </svg>
-            {{ hotelData.category }}
+            <span class="ml-1 font-medium text-gray-700">{{
+              hotelData.rating
+              }}</span>
+            <span class="mx-2 text-gray-400">•</span>
+            <span class="text-gray-600">{{ hotelData.reviews }} reseñas</span>
           </div>
-          <h1 class="text-4xl font-bold text-gray-800 bg-gradient-to-r from-[#428764] to-[#306B4F] bg-clip-text text-transparent">{{ hotelData.name }}</h1>
-          <div class="flex justify-center items-center mt-2">
-            <div class="flex items-center">
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-              </svg>
-              <span class="ml-1 font-medium text-gray-700">{{ hotelData.rating }}</span>
-              <span class="mx-2 text-gray-400">•</span>
-              <span class="text-gray-600">{{ hotelData.reviews }} reseñas</span>
-            </div>
-          </div>
-          <p class="mt-4 text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ hotelData.description }}</p>
         </div>
-    
-        <!-- Contact Info -->
-        <div class="mt-8 bg-gradient-to-br from-[#f0f8f4] to-white rounded-2xl p-6 border border-[#e0f0e8] shadow-sm">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#428764] transition-all hover:shadow-md group">
-              <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F] group-hover:bg-[#306B4F] group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="text-sm font-medium text-gray-500">Dirección</h4>
-                <span class="text-gray-700 font-medium">{{ hotelData.contact.address }}</span>
-              </div>
+        <p class="mt-4 text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          {{ hotelData.description }}
+        </p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="mt-8 bg-gradient-to-br from-[#f0f8f4] to-white rounded-2xl p-6 border border-[#e0f0e8] shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div
+            class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#428764] transition-all hover:shadow-md group">
+            <div
+              class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F] group-hover:bg-[#306B4F] group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
             </div>
-            
-            <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#428764] transition-all hover:shadow-md group">
-              <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F] group-hover:bg-[#306B4F] group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="text-sm font-medium text-gray-500">Teléfono</h4>
-                <span class="text-gray-700 font-medium">{{ hotelData.contact.phone }}</span>
-              </div>
-            </div>
-            
-            <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#428764] transition-all hover:shadow-md group">
-              <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F] group-hover:bg-[#306B4F] group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="text-sm font-medium text-gray-500">Email</h4>
-                <span class="text-gray-700 font-medium">{{ hotelData.contact.email }}</span>
-              </div>
+            <div>
+              <h4 class="text-sm font-medium text-gray-500">Dirección</h4>
+              <span class="text-gray-700 font-medium">{{
+                hotelData.contact.address
+                }}</span>
             </div>
           </div>
-    
-          <!-- Social Media -->
-          <div class="mt-8 pt-6 border-t border-[#e0f0e8]">
-            <h3 class="font-semibold text-gray-700 flex items-center gap-2 mb-4 text-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#306B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="18" cy="5" r="3"/>
-                <circle cx="6" cy="12" r="3"/>
-                <circle cx="18" cy="19" r="3"/>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+
+          <div
+            class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#428764] transition-all hover:shadow-md group">
+            <div
+              class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F] group-hover:bg-[#306B4F] group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              Síguenos en redes sociales
-            </h3>
-            <div class="flex gap-4">
-              <a *ngIf="hotelData.socialMedia.facebook" [href]="hotelData.socialMedia.facebook" target="_blank" 
-                 class="bg-[#3b5998] text-white px-5 py-3 rounded-xl hover:bg-[#2d4373] transition-all hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
-                <span>Facebook</span>
-              </a>
-              <a *ngIf="hotelData.socialMedia.instagram" [href]="hotelData.socialMedia.instagram" target="_blank" 
-                 class="bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white px-5 py-3 rounded-xl hover:opacity-90 transition-all hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-                <span>Instagram</span>
-              </a>
-              <a *ngIf="hotelData.socialMedia.twitter" [href]="hotelData.socialMedia.twitter" target="_blank" 
-                 class="bg-[#1da1f2] text-white px-5 py-3 rounded-xl hover:bg-[#0d8ddb] transition-all hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                </svg>
-                <span>Twitter</span>
-              </a>
+            </div>
+            <div>
+              <h4 class="text-sm font-medium text-gray-500">Teléfono</h4>
+              <span class="text-gray-700 font-medium">{{
+                hotelData.contact.phone
+                }}</span>
+            </div>
+          </div>
+
+          <div
+            class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#428764] transition-all hover:shadow-md group">
+            <div
+              class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F] group-hover:bg-[#306B4F] group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-sm font-medium text-gray-500">Email</h4>
+              <span class="text-gray-700 font-medium">{{
+                hotelData.contact.email
+                }}</span>
             </div>
           </div>
         </div>
-    
-        <!-- Hotel Services -->
-        <div class="mt-8 p-8 bg-gradient-to-br from-[#f0f8f4] to-white rounded-2xl border border-[#e0f0e8] shadow-sm">
-          <h3 class="text-2xl font-bold text-gray-800 flex items-center gap-3 mb-6">
-            <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-              </svg>
-            </div>
-            Servicios del Hotel
+
+        <!-- Social Media -->
+        <div class="mt-8 pt-6 border-t border-[#e0f0e8]">
+          <h3 class="font-semibold text-gray-700 flex items-center gap-2 mb-4 text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="#306B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+            </svg>
+            Síguenos en redes sociales
           </h3>
-          <div class="flex flex-wrap gap-3">
-            <div *ngFor="let service of hotelData.services" 
-                 class="bg-white border border-[#e0f0e8] text-[#306B4F] px-5 py-3 rounded-xl text-sm font-medium shadow-sm hover:shadow-md flex items-center gap-2 transition-all hover:border-[#306B4F]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#306B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
+          <div class="flex gap-4">
+            <a *ngIf="hotelData.socialMedia.facebook" [href]="hotelData.socialMedia.facebook" target="_blank"
+              class="bg-[#3b5998] text-white px-5 py-3 rounded-xl hover:bg-[#2d4373] transition-all hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
-              {{ service }}
+              <span>Facebook</span>
+            </a>
+            <a *ngIf="hotelData.socialMedia.instagram" [href]="hotelData.socialMedia.instagram" target="_blank"
+              class="bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white px-5 py-3 rounded-xl hover:opacity-90 transition-all hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a *ngIf="hotelData.socialMedia.twitter" [href]="hotelData.socialMedia.twitter" target="_blank"
+              class="bg-[#1da1f2] text-white px-5 py-3 rounded-xl hover:bg-[#0d8ddb] transition-all hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+              </svg>
+              <span>Twitter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Services -->
+      <div class="mt-8 p-8 bg-gradient-to-br from-[#f0f8f4] to-white rounded-2xl border border-[#e0f0e8] shadow-sm">
+        <h3 class="text-2xl font-bold text-gray-800 flex items-center gap-3 mb-6">
+          <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+          </div>
+          Servicios del Hotel
+        </h3>
+        <div class="flex flex-wrap gap-3">
+          <div *ngFor="let service of hotelData.services"
+            class="bg-white border border-[#e0f0e8] text-[#306B4F] px-5 py-3 rounded-xl text-sm font-medium shadow-sm hover:shadow-md flex items-center gap-2 transition-all hover:border-[#306B4F]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="#306B4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+            {{ service }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Amenities -->
+      <div class="mt-8 p-8 bg-gradient-to-br from-[#f0f8f4] to-white rounded-2xl border border-[#e0f0e8] shadow-sm">
+        <h3 class="text-2xl font-bold text-gray-800 flex items-center gap-3 mb-6">
+          <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          Amenidades
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div *ngFor="let amenity of hotelData.amenities"
+            class="flex items-center gap-4 p-4 bg-white rounded-xl border border-[#e0f0e8] hover:border-[#306B4F] transition-all hover:shadow-md">
+            <div class="p-3 bg-[#e0f0e8] rounded-lg text-[#306B4F]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-gray-700 font-medium">
+                {{ getAmenityName(amenity) }}
+              </h4>
             </div>
           </div>
         </div>
-    
-        <!-- Hotel Amenities -->
-        <div class="mt-8 p-8 bg-gradient-to-br from-[#f0f8f4] to-white rounded-2xl border border-[#e0f0e8] shadow-sm">
-          <h3 class="text-2xl font-bold text-gray-800 flex items-center gap-3 mb-6">
-            <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-              </svg>
-            </div>
-            Amenidades
-          </h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div *ngFor="let amenity of hotelData.amenities" 
-                 class="flex items-center gap-4 p-4 bg-white rounded-xl border border-[#e0f0e8] hover:border-[#306B4F] transition-all hover:shadow-md">
-              <div class="p-3 bg-[#e0f0e8] rounded-lg text-[#306B4F]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="text-gray-700 font-medium">{{ getAmenityName(amenity) }}</h4>
-              </div>
-            </div>
+      </div>
+
+      <!-- Rooms Section -->
+      <div class="mt-12">
+        <h2 class="text-3xl font-bold text-gray-800 flex items-center gap-3 mb-8">
+          <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 4v16" />
+              <path d="M2 8h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2" />
+              <path d="M2 12h18a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H2" />
+              <circle cx="6" cy="16" r="2" />
+            </svg>
           </div>
-        </div>
-    
-        <!-- Rooms Section -->
-        <div class="mt-12">
-            <h2 class="text-3xl font-bold text-gray-800 flex items-center gap-3 mb-8">
-              <div class="p-3 bg-[#e0f0e8] rounded-xl text-[#306B4F]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 4v16"/>
-                  <path d="M2 8h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2"/>
-                  <path d="M2 12h18a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H2"/>
-                  <circle cx="6" cy="16" r="2"/>
-                </svg>
+          Nuestras Habitaciones
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div *ngFor="let room of rooms"
+            class="border border-[#e0f0e8] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+            <div class="relative overflow-hidden h-60">
+              <img [src]="room.image" [alt]="room.name"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy" width="400" height="300" />
+
+              <div
+                class="absolute bottom-4 right-4 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
+                {{ formatPrice(room.price) }} / noche
               </div>
-              Nuestras Habitaciones
-            </h2>
-          
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div *ngFor="let room of rooms"
-                   class="border border-[#e0f0e8] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
-                
-                <div class="relative overflow-hidden h-60">
-                  <img [src]="room.image"
-                       [alt]="room.name"
-                       class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                       loading="lazy"
-                       width="400"
-                       height="300">
-          
-                  <div class="absolute bottom-4 right-4 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
-                    {{ formatPrice(room.price) }} / noche
-                  </div>
-          
-                  <div class="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs font-bold shadow-lg"
-                       [ngClass]="{
-                         'bg-green-500 text-white': room.status === 'disponible',
-                         'bg-red-500 text-white': room.status === 'ocupado'
-                       }">
-                    {{ room.status === 'ocupado' ? 'Ocupada' : 'Disponible' }}
+
+              <div class="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs font-bold shadow-lg" [ngClass]="{
+                  'bg-green-500 text-white': room.status === 'disponible',
+                  'bg-red-500 text-white': room.status === 'ocupado'
+                }">
+                {{ room.status === "ocupado" ? "Ocupada" : "Disponible" }}
+              </div>
+            </div>
+
+            <div class="p-6 bg-white">
+              <div class="flex justify-between items-start">
+                <h3 class="text-xl font-bold text-gray-800">{{ room.name }}</h3>
+                <span class="text-sm text-gray-500">{{ room.size }} m²</span>
+              </div>
+
+              <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+                {{ room.description }}
+              </p>
+
+              <div class="mt-4 pt-4 border-t border-[#e0f0e8]">
+                <h4 class="font-medium text-sm mb-3 flex items-center gap-2 text-[#306B4F]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  Amenidades:
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span *ngFor="let amenity of room.amenities"
+                    class="bg-[#f0f8f4] text-[#306B4F] px-3 py-1 rounded-full text-xs flex items-center gap-2 font-medium border border-[#e0f0e8]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    {{ getAmenityName(amenity) }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-[#e0f0e8]">
+                <h4 class="font-medium text-sm mb-3 flex items-center gap-2 text-[#306B4F]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  Servicios incluidos:
+                </h4>
+                <ul class="space-y-2">
+                  <li *ngFor="let service of room.services" class="flex items-start gap-2 text-sm text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                      stroke="#306B4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6L9 17 4 12" />
+                    </svg>
+                    <span>{{ service }}</span>
+                  </li>
+                </ul>
+                              <!-- Reserve Button -->
+              <button (click)="reserveRoom(room.id)"
+                class="mt-6 w-full bg-gradient-to-r from-[#428764] to-[#306B4F] text-white py-4 px-6 rounded-xl hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+                [disabled]="room.status !== 'disponible'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+                {{
+                room.status === "disponible" ? "Reservar" : "No disponible"
+                }}
+              </button>
+
+              <!-- Modal Container -->
+              <div *ngIf="showModal"
+                class="fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-300" [ngClass]="{
+                  'bg-black bg-opacity-20': showModal,
+                  'opacity-0 pointer-events-none': !showModal
+                }">
+                <!-- Confirmation Modal -->
+                <div *ngIf="currentModal === 'confirmation'"
+                  class="bg-white rounded-xl w-full max-w-md mx-4 transform transition-all duration-300" [ngClass]="{
+                    'scale-95 opacity-0': !showModal,
+                    'scale-100 opacity-100': showModal
+                  }">
+                  <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                      Confirmar tus datos
+                    </h3>
+
+                    <form class="space-y-4" (ngSubmit)="confirmData()">
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label class="block text-sm font-medium text-gray-600 mb-1">Nombre</label>
+                          <input type="text" [(ngModel)]="userData.nombre" name="nombre" required
+                            class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                        </div>
+                        <div>
+                          <label class="block text-sm font-medium text-gray-600 mb-1">Apellido</label>
+                          <input type="text" [(ngModel)]="userData.apellido" name="apellido" required
+                            class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Tipo de Documento</label>
+                        <select [(ngModel)]="userData.tipoDocumento" name="tipoDocumento" required
+                          class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent">
+                          <option value="">Seleccione...</option>
+                          <option value="CC">Cédula de Ciudadanía</option>
+                          <option value="CE">Cédula de Extranjería</option>
+                          <option value="PA">Pasaporte</option>
+                          <option value="TI">Tarjeta de Identidad</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Número de Documento</label>
+                        <input type="text" [(ngModel)]="userData.numeroDocumento" name="numeroDocumento" required
+                          class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                      </div>
+
+                      <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Fecha de Nacimiento</label>
+                        <input type="date" [(ngModel)]="userData.fechaNacimiento" name="fechaNacimiento" required
+                          class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                      </div>
+
+                      <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Correo Electrónico</label>
+                        <input type="email" [(ngModel)]="userData.email" name="email" required
+                          class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                      </div>
+
+                      <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Teléfono</label>
+                        <input type="tel" [(ngModel)]="userData.telefono" name="telefono" required
+                          class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                      </div>
+
+                      <div class="mt-8 flex justify-end space-x-3">
+                        <button type="button" (click)="closeModals()"
+                          class="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                          Cancelar
+                        </button>
+                        <button type="submit"
+                          class="px-5 py-2.5 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white rounded-lg hover:opacity-90 transition-all font-medium shadow-md">
+                          Confirmar
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                
-                <div class="p-6 bg-white">
-                  <div class="flex justify-between items-start">
-                    <h3 class="text-xl font-bold text-gray-800">{{ room.name }}</h3>
-                    <span class="text-sm text-gray-500">{{ room.size }} m²</span>
-                  </div>
-          
-                  <p class="text-gray-600 mt-2 text-sm leading-relaxed">{{ room.description }}</p>
-          
-                  <div class="mt-4 pt-4 border-t border-[#e0f0e8]">
-                    <h4 class="font-medium text-sm mb-3 flex items-center gap-2 text-[#306B4F]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                      </svg>
-                      Amenidades:
-                    </h4>
-                    <div class="flex flex-wrap gap-2">
-                      <span *ngFor="let amenity of room.amenities"
-                            class="bg-[#f0f8f4] text-[#306B4F] px-3 py-1 rounded-full text-xs flex items-center gap-2 font-medium border border-[#e0f0e8]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                          <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                        {{ getAmenityName(amenity) }}
-                      </span>
+
+                <!-- Payment Modal -->
+                <div *ngIf="currentModal === 'payment'"
+                  class="bg-white rounded-xl w-full max-w-md mx-4 transform transition-all duration-300" [ngClass]="{
+                    'scale-95 opacity-0': !showModal,
+                    'scale-100 opacity-100': showModal
+                  }">
+                  <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                      Procesar pago
+                    </h3>
+
+                    <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                      <h4 class="font-semibold text-lg">
+                        {{ selectedRoom?.name }}
+                      </h4>
+                      <p class="text-2xl font-bold text-[#306B4F] mt-1">
+                        {{ formatPrice(selectedRoom?.price) }}
+                      </p>
+                    </div>
+
+                    <!-- Payment Form Simulation -->
+                    <div class="space-y-4 mb-6">
+                      <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Número de Tarjeta</label>
+                        <div class="relative">
+                          <input type="text" placeholder="1234 5678 9012 3456"
+                            class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent pl-12" />
+                          <div class="absolute left-3 top-2.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none"
+                              viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-2 gap-4">
+                        <div>
+                          <label class="block text-sm font-medium text-gray-600 mb-1">Fecha de Expiración</label>
+                          <input type="text" placeholder="MM/AA"
+                            class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                        </div>
+                        <div>
+                          <label class="block text-sm font-medium text-gray-600 mb-1">CVV</label>
+                          <div class="relative">
+                            <input type="text" placeholder="•••"
+                              class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                            <div class="absolute right-3 top-2.5">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Nombre en la Tarjeta</label>
+                        <input type="text" placeholder="Nombre Completo"
+                          class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#306B4F] focus:border-transparent" />
+                      </div>
+                    </div>
+
+                    <div class="flex justify-end space-x-3">
+                      <button (click)="closeModals()"
+                        class="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                        Cancelar
+                      </button>
+                      <button (click)="processPayment()"
+                        class="px-5 py-2.5 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white rounded-lg hover:opacity-90 transition-all font-medium shadow-md">
+                        Pagar ahora
+                      </button>
                     </div>
                   </div>
-          
-                  <div class="mt-6 pt-4 border-t border-[#e0f0e8]">
-                    <h4 class="font-medium text-sm mb-3 flex items-center gap-2 text-[#306B4F]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <polyline points="22 4 12 14.01 9 11.01"/>
-                      </svg>
-                      Servicios incluidos:
-                    </h4>
-                    <ul class="space-y-2">
-                      <li *ngFor="let service of room.services" class="flex items-start gap-2 text-sm text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#306B4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M20 6L9 17 4 12"/>
-                        </svg>
-                        <span>{{ service }}</span>
-                      </li>
-                    </ul>
-                  </div>
-          
-                  <!-- Reserve Button -->
-                  <button (click)="reserveRoom(room.id)"
-                          class="mt-6 w-full bg-gradient-to-r from-[#428764] to-[#306B4F] text-white py-4 px-6 rounded-xl hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
-                          [disabled]="room.status === 'ocupado'">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                    Reservar
-                  </button>
                 </div>
+
+                <!-- Success Modal -->
+                <div *ngIf="currentModal === 'success'"
+                  class="bg-white rounded-xl w-full max-w-md mx-4 transform transition-all duration-300 text-center"
+                  [ngClass]="{
+                    'scale-95 opacity-0': !showModal,
+                    'scale-100 opacity-100': showModal
+                  }">
+                  <div class="p-8">
+                    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-50 mb-5">
+                      <svg class="h-8 w-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                      ¡Reserva confirmada!
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                      Tu reserva para
+                      <span class="font-semibold">{{
+                        selectedRoom?.name
+                        }}</span>
+                      ha sido exitosa.
+                    </p>
+
+                    <button (click)="closeModals()"
+                      class="px-8 py-2.5 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white rounded-lg hover:opacity-90 transition-all font-medium shadow-md mx-auto">
+                      Continuar
+                    </button>
+                  </div>
+                </div>
+              </div>
               </div>
             </div>
           </div>
-          
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <app-footer-app></app-footer-app>
+<app-footer-app></app-footer-app>

@@ -1,10 +1,42 @@
 import { Component } from '@angular/core';
 
+type RoomStatus = 'disponible' | 'ocupado';
+
+interface Room {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
+  size: number;
+  status: RoomStatus;
+  amenities: string[];
+  services: string[];
+}
+
+interface Amenity {
+  id: string;
+  name: string;
+  icon?: string;
+}
+
+interface UserData {
+  nombre: string;
+  apellido: string;
+  tipoDocumento: 'CC' | 'CE' | 'PA' | 'TI' | '';
+  numeroDocumento: string;
+  fechaNacimiento: string;
+  email: string;
+  telefono: string;
+}
+
+type ModalType = 'confirmation' | 'payment' | 'success';
+
 @Component({
   selector: 'app-hotel-view',
-  standalone: false,
   templateUrl: './hotel-view.component.html',
-  styleUrl: './hotel-view.component.css'
+  standalone: false,
+  styleUrls: ['./hotel-view.component.css']
 })
 export class HotelViewComponent {
   hotelData = {
@@ -29,101 +61,206 @@ export class HotelViewComponent {
     amenities: ['wifi', 'pool', 'spa', 'restaurant', 'gym', 'bar', 'parking']
   };
 
-  rooms = [    
-      {
-        id: 1,
-        name: 'Suite Caribe',
-        description: 'Inspirada en el Caribe colombiano, esta suite ofrece vistas al mar y una experiencia de lujo total.',
-        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
-        price: 1200000,
-        size: 120,
-        status: 'disponible',
-        amenities: ['wifi', 'tv', 'ac', 'minibar', 'jacuzzi', ],
-        services: ['Desayuno buffet', 'Atención personalizada', 'Acceso a piscina'],
-      },
-      {
-        id: 2,
-        name: 'Suite Colonial',
-        description: 'Decoración colonial con detalles modernos y una atmósfera cálida perfecta para el descanso.',
-        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
-        price: 1150000,
-        size: 110,
-        status: 'ocupada',
-        amenities: ['wifi', 'tv', 'ac', 'safe', 'workspace'],
-        services: ['Desayuno incluido', 'Room service', 'Acceso a spa']
-      },
-      {
-        id: 3,
-        name: 'Suite Tropical',
-        description: 'Relájate con la frescura tropical, balcones privados y decoración con plantas naturales.',
-        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
-        price: 1100000,
-        size: 105,
-      
-        status: 'disponible',
-        amenities: ['wifi', 'ac', 'minibar', 'balcony', 'view'],
-        services: ['Desayuno tropical', 'Limpieza diaria', 'Wi-Fi rápido']
-      },
-      {
-        id: 4,
-        name: 'Suite Marina',
-        description: 'Vistas panorámicas a la bahía, decoración náutica y espacio amplio para familias.',
-        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
-        price: 1250000,
-        size: 130,
-        status: 'ocupada',
-        amenities: ['wifi', 'tv', 'ac', 'safe', 'balcony', 'view'],
-        services: ['Desayuno a la habitación', 'Mayordomo', 'Traslado en yate']
-      },
-      {
-        id: 5,
-        name: 'Suite Zen',
-        description: 'Espacios minimalistas con iluminación suave y vista al jardín interno, ideal para relajarse.',
-        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
-        price: 1000000,
-        size: 100,
-        status: 'disponible',
-        amenities: ['wifi', 'tv', 'ac', 'minibar', 'workspace'],
-        services: ['Desayuno saludable', 'Clases de yoga', 'Spa incluido']
-      },
-      {
-        id: 6,
-        name: 'Suite Bohemia',
-        description: 'Decoración artística, colores vivos y una terraza privada con hamacas.',
-        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
-        price: 950000,
-        size: 95,
-        status: 'disponible',
-        amenities: ['wifi', 'tv', 'ac', 'balcony', 'workspace'],
-        services: ['Desayuno continental', 'Asistencia personalizada', 'Acceso al lounge']
-      }
-        
+  rooms: Room[] = [
+    {
+      id: 1,
+      name: 'Suite Caribe',
+      description: 'Inspirada en el Caribe colombiano, esta suite ofrece vistas al mar y una experiencia de lujo total.',
+      image: '',
+      price: 1200000,
+      size: 120,
+      status: 'disponible',
+      amenities: ['wifi', 'tv', 'ac', 'minibar', 'jacuzzi'],
+      services: ['Desayuno buffet', 'Atención personalizada', 'Acceso a piscina'],
+    },
+    {
+      id: 2,
+      name: 'Suite Colonial',
+      description: 'Decoración colonial con detalles modernos y una atmósfera cálida perfecta para el descanso.',
+         image: '',
+      price: 1150000,
+      size: 110,
+      status: 'ocupado',
+      amenities: ['wifi', 'tv', 'ac', 'safe', 'workspace'],
+      services: ['Desayuno incluido', 'Room service', 'Acceso a spa']
+    },
+    {
+      id: 3,
+      name: 'Suite Tropical',
+      description: 'Relájate con la frescura tropical, balcones privados y decoración con plantas naturales.',
+         image: '',
+      price: 1100000,
+      size: 105,
+      status: 'disponible',
+      amenities: ['wifi', 'ac', 'minibar', 'balcony', 'view'],
+      services: ['Desayuno tropical', 'Limpieza diaria', 'Wi-Fi rápido']
+    },
+    {
+      id: 4,
+      name: 'Suite Marina',
+      description: 'Vistas panorámicas a la bahía, decoración náutica y espacio amplio para familias.',
+   image: '',
+      price: 1250000,
+      size: 130,
+      status: 'ocupado',
+      amenities: ['wifi', 'tv', 'ac', 'safe', 'balcony', 'view'],
+      services: ['Desayuno a la habitación', 'Mayordomo', 'Traslado en yate']
+    },
+    {
+      id: 5,
+      name: 'Suite Zen',
+      description: 'Espacios minimalistas con iluminación suave y vista al jardín interno, ideal para relajarse.',
+   image: '',
+      price: 1000000,
+      size: 100,
+      status: 'disponible',
+      amenities: ['wifi', 'tv', 'ac', 'minibar', 'workspace'],
+      services: ['Desayuno saludable', 'Clases de yoga', 'Spa incluido']
+    },
+    {
+      id: 6,
+      name: 'Suite Bohemia',
+      description: 'Decoración artística, colores vivos y una terraza privada con hamacas.',
+   image: '',
+      price: 950000,
+      size: 95,
+      status: 'disponible',
+      amenities: ['wifi', 'tv', 'ac', 'balcony', 'workspace'],
+      services: ['Desayuno continental', 'Asistencia personalizada', 'Acceso al lounge']
+    }
   ];
 
-  allAmenities = [
-    { id: 'wifi', name: 'WiFi de alta velocidad' },
-    { id: 'tv', name: 'TV pantalla plana' },
-    { id: 'ac', name: 'Aire acondicionado' },
-    { id: 'minibar', name: 'Minibar surtido' },
-    { id: 'jacuzzi', name: 'Jacuzzi privado' },
-    { id: 'safe', name: 'Caja fuerte digital' },
-    { id: 'balcony', name: 'Balcón privado' },
-    { id: 'view', name: 'Vista al mar' },
-    { id: 'workspace', name: 'Área de trabajo' },
-    { id: 'pool', name: 'Acceso a piscina infinity' },
-    { id: 'spa', name: 'Acceso al spa' },
-    { id: 'restaurant', name: 'Restaurante gourmet' },
-    { id: 'gym', name: 'Gimnasio equipado' },
-    { id: 'bar', name: 'Bar exclusivo' },
-    { id: 'parking', name: 'Parqueadero privado' }
+  allAmenities: Amenity[] = [
+    { id: 'wifi', name: 'WiFi de alta velocidad', icon: 'wifi' },
+    { id: 'tv', name: 'TV pantalla plana', icon: 'tv' },
+    { id: 'ac', name: 'Aire acondicionado', icon: 'snowflake' },
+    { id: 'minibar', name: 'Minibar surtido', icon: 'glass-martini-alt' },
+    { id: 'jacuzzi', name: 'Jacuzzi privado', icon: 'hot-tub' },
+    { id: 'safe', name: 'Caja fuerte digital', icon: 'lock' },
+    { id: 'balcony', name: 'Balcón privado', icon: 'door-open' },
+    { id: 'view', name: 'Vista al mar', icon: 'mountain' },
+    { id: 'workspace', name: 'Área de trabajo', icon: 'laptop' },
+    { id: 'pool', name: 'Acceso a piscina infinity', icon: 'swimming-pool' },
+    { id: 'spa', name: 'Acceso al spa', icon: 'spa' },
+    { id: 'restaurant', name: 'Restaurante gourmet', icon: 'utensils' },
+    { id: 'gym', name: 'Gimnasio equipado', icon: 'dumbbell' },
+    { id: 'bar', name: 'Bar exclusivo', icon: 'cocktail' },
+    { id: 'parking', name: 'Parqueadero privado', icon: 'parking' }
   ];
+
+  showModal = false;
+  currentModal: ModalType | null = null;
+  selectedRoom: Room | null = null;
+  
+  userData: UserData = {
+    nombre: '',
+    apellido: '',
+    tipoDocumento: '',
+    numeroDocumento: '',
+    fechaNacimiento: '',
+    email: '',
+    telefono: ''
+  };
 
   getAmenityName(id: string): string {
     const amenity = this.allAmenities.find(a => a.id === id);
     return amenity ? amenity.name : id;
   }
 
-  formatPrice(price: number): string {
+  reserveRoom(roomId: number): void {
+    const room = this.rooms.find(r => r.id === roomId);
+    if (!room) return;
+    
+    this.selectedRoom = room;
+    if (this.selectedRoom.status === 'disponible') {
+      this.showModal = true;
+      this.currentModal = 'confirmation';
+    }
+  }
+
+  confirmData(): void {
+    if (this.validateUserData()) {
+      this.currentModal = 'payment';
+    } else {
+      alert('Por favor complete todos los campos requeridos correctamente');
+    }
+  }
+
+  validateUserData(): boolean {
+    // Validación básica de campos requeridos
+    const requiredFields = [
+      this.userData.nombre,
+      this.userData.apellido,
+      this.userData.tipoDocumento,
+      this.userData.numeroDocumento,
+      this.userData.fechaNacimiento,
+      this.userData.email,
+      this.userData.telefono
+    ];
+    
+    if (requiredFields.some(field => !field)) {
+      return false;
+    }
+
+    // Validación de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.userData.email)) {
+      return false;
+    }
+
+    // Validación de teléfono (mínimo 7 dígitos)
+    if (this.userData.telefono.replace(/\D/g, '').length < 7) {
+      return false;
+    }
+
+    return true;
+  }
+
+  processPayment(): void {
+    // Simulación de pago exitoso
+    setTimeout(() => {
+      this.currentModal = 'success';
+      
+      // Enviar datos al backend (simulado)
+      const reservationData = {
+        room: this.selectedRoom,
+        user: this.userData,
+        paymentDate: new Date(),
+        reservationId: Math.random().toString(36).substring(2, 15)
+      };
+      
+      console.log('Reserva creada:', reservationData);
+      
+      // Actualizar estado de la habitación
+      if (this.selectedRoom) {
+        this.selectedRoom.status = 'ocupado';
+      }
+    }, 1500);
+  }
+
+  closeModals(): void {
+    this.showModal = false;
+    setTimeout(() => {
+      this.currentModal = null;
+      this.resetUserData();
+    }, 300);
+  }
+
+  private resetUserData(): void {
+    this.userData = {
+      nombre: '',
+      apellido: '',
+      tipoDocumento: '',
+      numeroDocumento: '',
+      fechaNacimiento: '',
+      email: '',
+      telefono: ''
+    };
+  }
+
+  formatPrice(price: number | undefined): string {
+    if (!price) return '$0';
+    
     return new Intl.NumberFormat('es-CO', {
       style: 'currency',
       currency: 'COP',
@@ -131,11 +268,13 @@ export class HotelViewComponent {
     }).format(price);
   }
 
-  reserveRoom(roomId: number): void {
-    const room = this.rooms.find(r => r.id === roomId);
-    if (room) {
-      alert(`Reserva solicitada para: ${room.name}\nPrecio: ${this.formatPrice(room.price)}`);
-      // Aquí podrías implementar la lógica de navegación a la página de reservas
-    }
+  getRoomStatusClass(status: RoomStatus): string {
+    return status === 'disponible' 
+      ? 'bg-green-500 text-white' 
+      : 'bg-red-500 text-white';
+  }
+
+  getRoomStatusText(status: RoomStatus): string {
+    return status === 'disponible' ? 'Disponible' : 'Ocupada';
   }
 }
