@@ -124,7 +124,7 @@
         <input
           id="nombre"
           type="text"
-          [(ngModel)]="datosPropietario.nombre"
+          [(ngModel)]="datosPropietario.name"
           class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200"
           required
           minlength="3"
@@ -335,14 +335,14 @@
         #pais="ngModel"
       >
         <option value="">Seleccione un país</option>
-        <option value="CO">Colombia</option>
-        <option value="EC">Ecuador</option>
-        <option value="PE">Perú</option>
-        <option value="MX">México</option>
-        <option value="AR">Argentina</option>
-        <option value="CL">Chile</option>
-        <option value="US">Estados Unidos</option>
-        <option value="ES">España</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Ecuador">Ecuador</option>
+        <option value="Perú">Perú</option>
+        <option value="México">México</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Chile">Chile</option>
+        <option value="Estados Unidos">Estados Unidos</option>
+        <option value="España">España</option>
       </select>
       <div *ngIf="pais.invalid && (pais.dirty || pais.touched)" class="text-red-500 text-xs mt-1 flex items-start">
         <svg class="w-3 h-3 mr-1 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -842,7 +842,7 @@
           <!-- Botón Siguiente -->
           <div class="flex justify-end pt-4">
             <button
-              (click)="avanzarPaso()"
+              (click)="createUser()"
               class="px-6 py-3 bg-gradient-to-r from-[#011147] to-[#011147]/80 border border-transparent rounded-lg shadow-sm text-base font-medium text-white hover:from-[#011147] hover:to-[#011147]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#011147] transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
             >
               Siguiente: Elegir Plan

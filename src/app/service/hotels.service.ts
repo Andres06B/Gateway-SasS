@@ -18,4 +18,8 @@ export class HotelsService {
     return this.http.get<hotels[]>(this.apiUrl + '/all') 
   }
 
+  createHotel(hotel: hotels): Observable<hotels>{
+    return this.http.post<hotels>(this.apiUrl + '/create', hotel);
+  }
+
 }

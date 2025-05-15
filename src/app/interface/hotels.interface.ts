@@ -1,5 +1,5 @@
 export interface hotels {
-    id: number;
+    id?: number;
     name: string;
     description: string;
     type_accomodation: 'hotel' | 'hostel' | 'motel' | 'airbnb' | 'other';

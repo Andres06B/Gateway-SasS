@@ -214,35 +214,14 @@
           </div>
 
           <!-- Paginación mejorada -->
-          <div
-            class="px-6 py-3 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <div class="text-sm text-gray-500 mb-2 sm:mb-0">
-              Mostrando <span class="font-medium">1</span> a
-              <span class="font-medium">3</span> de
-              <span class="font-medium">120</span> habitaciones
-            </div>
-            <div class="flex space-x-1">
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50"
-                disabled>
-                Anterior
-              </button>
-              <button class="px-3 py-1 border border-[#011147] bg-[#011147]/10 text-[#011147] rounded-lg text-sm font-medium">
-                1
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                2
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                3
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                Siguiente
-              </button>
-            </div>
+          <div class="px-6 py-3 bg-gray-50 border-t border-gray-200">
+              <app-pagination 
+                [currentPage]="currentPage"
+                [totalPages]="totalPages"
+                [pageSize]="pageSize"
+                [totalItems]="Rooms.length"
+                (pageChange)="onPageChange($event)">
+              </app-pagination>
           </div>
         </div>
       </main>

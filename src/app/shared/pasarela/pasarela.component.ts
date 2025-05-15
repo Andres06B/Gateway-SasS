@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UsersService } from '../../service/users.service';
+import { HotelsService } from '../../service/hotels.service';
 
 @Component({
   selector: 'app-pasarela',
@@ -13,21 +15,35 @@ export class PasarelaComponent {
   pagoExitoso = false;
   procesando = false;
 
+  constructor(
+    private user: UsersService,
+    private hotel: HotelsService
+  ){}
+
+  createUser() {
+    this.user.createUser(this.datosPropietario).subscribe({
+      next: (user) => {
+        console.log(user);
+        this.avanzarPaso();
+      },
+    })
+  }
+
   // Tipos de documento disponibles (según la entidad User)
   tiposDocumento = ['CC', 'TI', 'TE', 'PP', 'PPT', 'NIT'];
 
   // Datos del usuario/propietario (actualizados según entidad User)
   datosPropietario = {
-    nombre: '',
+    name: '',
     last_name: '', // Nuevo campo según entidad
     email: '',
     password: '', // Nuevo campo según entidad
-    type_document: 'CC', // Actualizado según entidad
+    type_document: 'CC' as 'CC' | 'TI' | 'TE' | 'PP' | 'PPT' | 'NIT', // Actualizado según entidad
     number_document: '', // Cambiado de 'cedula' para coincidir con entidad
     phone: '',
     country: '', // Nuevo campo según entidad
     city: '', // Nuevo campo según entidad
-    rol: 'user' // Valor por defecto según entidad
+    rol: 'admin' as 'admin' | 'user' // Valor por defecto según entidad
   };
 
   // Datos del hotel (mantenidos)
@@ -74,13 +90,6 @@ confirmPassword: any;
       this.datosPago.number_document = this.datosPropietario.number_document;
       this.datosPago.phone = this.datosPropietario.phone;
       this.datosPago.type_document = this.datosPropietario.type_document;
-      
-      // Actualizar servicios según plan seleccionado
-      if (this.planSeleccionado === 'premium') {
-        this.datosPago.has_premium_service = true;
-      } else if (this.planSeleccionado === 'vip') {
-        this.datosPago.has_vip_service = true;
-      }
     }
     
     if (this.paso === 2) {
@@ -127,7 +136,7 @@ confirmPassword: any;
       this.datosPago.cvv,
       this.datosPago.phone,
       this.datosPago.amount > 0,
-      this.datosPropietario.nombre,
+      this.datosPropietario.name,
       this.datosPropietario.last_name,
       this.datosPropietario.email,
       this.datosPropietario.number_document,
