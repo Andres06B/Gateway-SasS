@@ -9,7 +9,7 @@ import { HotelsService } from '../../service/hotels.service';
   styleUrl: './pasarela.component.css',
 })
 export class PasarelaComponent {
-  
+
   paso = 1;
   planSeleccionado = '';
   pagoExitoso = false;
@@ -18,7 +18,7 @@ export class PasarelaComponent {
   constructor(
     private user: UsersService,
     private hotel: HotelsService
-  ){}
+  ) { }
 
   createUser() {
     this.user.createUser(this.datosPropietario).subscribe({
@@ -49,7 +49,11 @@ export class PasarelaComponent {
   // Datos del hotel (mantenidos)
   datosHotel = {
     nombre: '',
-    pais: 'CO', // Valor por defecto para Colombia
+    descripcion: '',
+    type_accomodation: '',
+    pais: '',
+    numero: '',
+    email: '',
     ciudad: '',
     direccion: '',
     habitaciones: '1-10'
@@ -69,11 +73,11 @@ export class PasarelaComponent {
     has_premium_service: false, // Nuevo según entidad
     has_vip_service: false      // Nuevo según entidad
   };
-confirmPassword: any;
+  confirmPassword: any;
 
   // Precios de los planes (actualizados)
   get precioPlan() {
-    switch(this.planSeleccionado) {
+    switch (this.planSeleccionado) {
       case 'basico': return 49;
       case 'premium': return 199;
       case 'vip': return 399;
@@ -91,11 +95,11 @@ confirmPassword: any;
       this.datosPago.phone = this.datosPropietario.phone;
       this.datosPago.type_document = this.datosPropietario.type_document;
     }
-    
+
     if (this.paso === 2) {
       this.datosPago.amount = this.precioPlan;
     }
-    
+
     this.paso++;
   }
 
@@ -117,7 +121,7 @@ confirmPassword: any;
     }
 
     this.procesando = true;
-    
+
     // Simular procesamiento de pago
     setTimeout(() => {
       this.pagoExitoso = true;
