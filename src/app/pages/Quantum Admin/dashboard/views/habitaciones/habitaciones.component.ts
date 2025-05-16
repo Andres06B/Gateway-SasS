@@ -22,6 +22,9 @@ export class HabitacionesComponent {
   newRoom: Partial<rooms> = {};
   selectedFile: File | null = null;
   AdminId = Number(localStorage.getItem('token'));
+  currentPage = 1
+  pageSize = 15 // Puedes ajustar esto según tus necesidades
+  public Math = Math
 
   constructor(private roomServices: RoomsService) {}
 
@@ -283,5 +286,23 @@ export class HabitacionesComponent {
     this.isEditing = false;
     this.selectedRoom = null;
   }
+
+  onPageChange(page: number): void {
+      console.log("Cambiando a página:", page)
+      this.currentPage = page
+    }
+  
+    // Este método es opcional, puedes usarlo en lugar del pipe slice
+    get pagedClients(): any[] {
+      const start = (this.currentPage - 1) * this.pageSize
+      const end = start + this.pageSize
+      const result = this.Rooms.slice(start, Math.min(end, this.Rooms.length))
+      console.log(`Mostrando ${result.length} Habitaciones de ${this.Rooms.length} (página ${this.currentPage})`)
+      return result
+    }
+  
+    get totalPages(): number {
+      return Math.ceil(this.Rooms.length / this.pageSize)
+    }
 
 }

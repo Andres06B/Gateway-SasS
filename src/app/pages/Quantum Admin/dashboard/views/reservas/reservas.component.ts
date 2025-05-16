@@ -20,7 +20,7 @@ export class ReservasComponent {
   openEditModal: boolean = false;
   HotelId: number = Number(localStorage.getItem('hotel'));
   currentPage = 1
-  pageSize = 30 // Puedes ajustar esto según tus necesidades
+  pageSize = 15 // Puedes ajustar esto según tus necesidades
   public Math = Math
 
   constructor(

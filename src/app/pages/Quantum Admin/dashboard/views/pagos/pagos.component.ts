@@ -16,6 +16,9 @@ export class PagosComponent {
   totalBalance: number = 0;
   private searchTimeout: any;
   detailsModalState: 'closed' | 'opening' | 'open' | 'closing' = 'closed';
+  currentPage = 1
+  pageSize = 15 // Puedes ajustar esto según tus necesidades
+  public Math = Math
 
   selectedPayment: pago_reserva | null = null
   
@@ -157,31 +160,48 @@ export class PagosComponent {
     }, 300)
   }
 
-showDetails(id: number): void {
-  this.paymentService.findById(id).subscribe({
-    next: (data) => {
-      this.selectedPayment = data;
-      this.detailsModalState = 'opening';
+  showDetails(id: number): void {
+    this.paymentService.findById(id).subscribe({
+      next: (data) => {
+        this.selectedPayment = data;
+        this.detailsModalState = 'opening';
 
-      setTimeout(() => {
-        this.detailsModalState = 'open';
-      }, 50);
-    },
-    error: (err) => {
-      console.error('Error al obtener los datos:',err)
+        setTimeout(() => {
+          this.detailsModalState = 'open';
+        }, 50);
+      },
+      error: (err) => {
+        console.error('Error al obtener los datos:',err)
+      }
+    })
+  }
+
+  closeDetails(): void {
+    this.detailsModalState = 'closing';
+
+    setTimeout(() => {
+      this.detailsModalState = 'closed';
+      this.selectedPayment = null;
+    }, 300); // Duración de la animación
+  }
+
+  onPageChange(page: number): void {
+      console.log("Cambiando a página:", page)
+      this.currentPage = page
     }
-  })
-}
-
-closeDetails(): void {
-  this.detailsModalState = 'closing';
-
-  setTimeout(() => {
-    this.detailsModalState = 'closed';
-    this.selectedPayment = null;
-  }, 300); // Duración de la animación
-}
-
+  
+    // Este método es opcional, puedes usarlo en lugar del pipe slice
+    get pagedClients(): any[] {
+      const start = (this.currentPage - 1) * this.pageSize
+      const end = start + this.pageSize
+      const result = this.payments.slice(start, Math.min(end, this.payments.length))
+      console.log(`Mostrando ${result.length} clientes de ${this.payments.length} (página ${this.currentPage})`)
+      return result
+    }
+  
+    get totalPages(): number {
+      return Math.ceil(this.payments.length / this.pageSize)
+    }
 
 
 

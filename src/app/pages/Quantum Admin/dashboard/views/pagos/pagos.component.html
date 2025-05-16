@@ -168,7 +168,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr *ngFor="let payment of payments">
+                <tr *ngFor="let payment of pagedClients">
                   <!-- Ref. -->
                   <td class="px-4 py-3 text-sm text-gray-500">{{ payment.id }}</td>
 
@@ -219,34 +219,14 @@
           </div>
 
           <!-- Paginación responsive -->
-          <div
-            class="px-4 py-3 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div class="text-sm text-gray-500">
-              Mostrando <span class="font-medium">1</span> a <span class="font-medium">2</span> de <span
-                class="font-medium">128</span>
-            </div>
-            <div class="flex flex-1 sm:flex-none justify-between sm:justify-start gap-1">
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50"
-                disabled>
-                Anterior
-              </button>
-              <button class="px-3 py-1 border border-[#011147] bg-[#011147]/10 text-[#011147] rounded-lg text-sm font-medium">
-                1
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                2
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                3
-              </button>
-              <button
-                class="px-3 py-1 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                Siguiente
-              </button>
-            </div>
+          <div class="px-6 py-3 bg-gray-50 border-t border-gray-200">
+              <app-pagination 
+                [currentPage]="currentPage"
+                [totalPages]="totalPages"
+                [pageSize]="pageSize"
+                [totalItems]="payments.length"
+                (pageChange)="onPageChange($event)">
+              </app-pagination>
           </div>
           <div *ngIf="detailsModalState !== 'closed'" class="fixed inset-0 z-50 flex items-center justify-center">
             <!-- Fondo con animación de fade -->
