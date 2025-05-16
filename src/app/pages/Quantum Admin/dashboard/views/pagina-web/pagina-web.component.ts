@@ -12,6 +12,10 @@ import { rooms } from '../../../../../interface/rooms.interface';
   standalone: false,
 })
 export class PaginaWebComponent implements OnInit {
+saving: any;
+onHotelImageSelected($event: Event) {
+throw new Error('Method not implemented.');
+}
 
   showRoomModal: boolean = false;
   showHotelEditModal: boolean = false;
@@ -27,7 +31,8 @@ export class PaginaWebComponent implements OnInit {
     city: '',
     address: '',
     phone: '',
-    email: ''
+    email: '',
+    image: '',
   };
 
   rooms: rooms[] = [];
