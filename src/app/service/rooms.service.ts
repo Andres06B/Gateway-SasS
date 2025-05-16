@@ -18,6 +18,10 @@ export class RoomsService {
     return this.http.get<rooms[]>(this.apiURL + '/all');
   }
 
+  getRoomsWithImages(): Observable<rooms[]>{
+    return this.http.get<rooms[]>(this.apiURL + '/all/images')
+  }
+
   getRoomById(id: number): Observable<rooms>{
     return this.http.get<rooms>(this.apiURL + '/' + id);
   }
