@@ -3,10 +3,12 @@
     <!-- Hero Section -->
     <div class="text-center mb-16">
       <!-- Animated Logo Container -->
-      <div class="mx-auto h-20 w-20 bg-[#011147] rounded-2xl flex items-center justify-center shadow-lg mb-6 animate-pulse">
-        <svg class="h-12 w-12 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-        </svg>
+      <div class="mx-auto h-20 w-20 bg-[#011147] rounded-2xl flex items-center justify-center shadow-lg mb-6 animate-pulse ">
+        <a href="/about">
+          <svg class="h-12 w-12 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+          </svg>
+        </a>
       </div>
 
       <!-- Main Heading with Gradient Animation -->
@@ -486,7 +488,7 @@
       Nombre del Hotel *
     </label>
     <div class="relative">
-      <input id="nombreHotel" type="text" [(ngModel)]="datosHotel.nombre" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="3" #nombreHotel="ngModel" />
+      <input id="nombreHotel" type="text" [(ngModel)]="datosHotel.name" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="3" #nombreHotel="ngModel" />
       <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
@@ -513,7 +515,7 @@
       Descripción del Hotel *
     </label>
     <div class="relative">
-      <textarea id="descripcionHotel" [(ngModel)]="datosHotel.descripcion" rows="3" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="10" #descripcionHotel="ngModel"></textarea>
+      <textarea id="descripcionHotel" [(ngModel)]="datosHotel.description" rows="3" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="10" #descripcionHotel="ngModel"></textarea>
       <div class="absolute inset-y-0 left-0 pl-3 pt-3 flex items-start pointer-events-none">
         <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -580,7 +582,7 @@
         País *
       </label>
       <div class="relative">
-        <select id="pais" [(ngModel)]="datosHotel.ciudad" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200 appearance-none" required #pais="ngModel">
+        <select id="pais" [(ngModel)]="datosHotel.country" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200 appearance-none" required #pais="ngModel">
           <option value="" disabled selected>Seleccionar país</option>
           <option value="CO">Colombia</option>
           <option value="MX">México</option>
@@ -620,7 +622,7 @@
         Ciudad *
       </label>
       <div class="relative">
-        <input id="ciudad" type="text" [(ngModel)]="datosHotel.pais" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="3" #ciudad="ngModel" />
+        <input id="ciudad" type="text" [(ngModel)]="datosHotel.city" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="3" #ciudad="ngModel" />
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -650,7 +652,7 @@
       Dirección *
     </label>
     <div class="relative">
-      <input id="direccion" type="text" [(ngModel)]="datosHotel.direccion" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="5" #direccion="ngModel" />
+      <input id="direccion" type="text" [(ngModel)]="datosHotel.address" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required minlength="5" #direccion="ngModel" />
       <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -680,7 +682,7 @@
         Teléfono *
       </label>
       <div class="relative">
-        <input id="telefono" type="tel" [(ngModel)]="datosHotel.numero" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required pattern="[0-9]{7,15}" #telefono="ngModel" />
+        <input id="telefono" type="tel" [(ngModel)]="datosHotel.phone" class="mt-1 block w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 shadow-sm focus:border-[#011147] focus:ring-2 focus:ring-[#011147]/30 transition duration-200" required pattern="[0-9]{7,15}" #telefono="ngModel" />
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
@@ -727,7 +729,8 @@
   </div>
 
   <!-- Botones de Acción -->
-  <div class="flex flex-col sm:flex-row gap-4 justify-end mt-6">
+   <!---
+    <div class="flex flex-col sm:flex-row gap-4 justify-end mt-6">
     <button type="button" class="py-2.5 px-5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors focus:ring-2 focus:ring-gray-300 focus:outline-none">
       <div class="flex items-center justify-center">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -736,7 +739,7 @@
         Cancelar
       </div>
     </button>
-    <button type="submit" class="py-2.5 px-5 bg-[#011147] text-white rounded-lg hover:bg-[#011147]/90 transition-colors focus:ring-2 focus:ring-[#011147]/30 focus:outline-none" [disabled]="">
+    <button (click)="createHotel()" type="submit" class="py-2.5 px-5 bg-[#011147] text-white rounded-lg hover:bg-[#011147]/90 transition-colors focus:ring-2 focus:ring-[#011147]/30 focus:outline-none" [disabled]="">
       <div class="flex items-center justify-center">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -745,12 +748,13 @@
       </div>
     </button>
   </div>
+   -->
 </div>
 
           <!-- Botón Siguiente -->
           <div class="flex justify-end pt-4">
             <button
-              (click)="createUser()"
+              (click)="avanzar()"
               class="px-6 py-3 bg-gradient-to-r from-[#011147] to-[#011147]/80 border border-transparent rounded-lg shadow-sm text-base font-medium text-white hover:from-[#011147] hover:to-[#011147]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#011147] transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
             >
               Siguiente: Elegir Plan
@@ -1631,7 +1635,7 @@
                       >
                         Hotel
                       </p>
-                      <p class="text-base">{{ datosHotel.nombre }}</p>
+                      <p class="text-base">{{ datosHotel.name }}</p>
                     </div>
                   </li>
 
