@@ -20,13 +20,55 @@ export class PasarelaComponent {
     private hotel: HotelsService
   ) { }
 
-  createUser() {
-    this.user.createUser(this.datosPropietario).subscribe({
-      next: (user) => {
-        console.log(user);
-        this.avanzarPaso();
-      },
-    })
+
+  async avanzar(){
+    try{
+      await this.createUser()
+      await this.createHotel()
+      this.avanzarPaso()
+    } catch (err ){
+      console.error(err)
+    }
+  }
+
+  createUser(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (!this.validarDatosPropietario()) {
+        console.error('Faltan datos del propietario');
+        reject('Faltan datos del propietario');
+        return;
+      }
+      this.user.createUser(this.datosPropietario).subscribe({
+        next: (user) => {
+          console.log(user);
+          resolve(user);
+        },
+        error: (err) => {
+          console.error('Error al crear usuario:', err);
+          reject(err);
+        }
+      });
+    });
+  }
+
+  createHotel(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (!this.validarDatosHotel()) {
+        console.error('Faltan datos del hotel');
+        reject('Faltan datos del hotel');
+        return;
+      }
+      this.hotel.createHotel(this.datosHotel).subscribe({
+        next: (rsp) => {
+          console.log(rsp);
+          resolve(rsp);
+        },
+        error: (err) => {
+          console.error('Error al crear hotel:', err);
+          reject(err);
+        }
+      });
+    });
   }
 
   // Tipos de documento disponibles (según la entidad User)
@@ -48,15 +90,15 @@ export class PasarelaComponent {
 
   // Datos del hotel (mantenidos)
   datosHotel = {
-    nombre: '',
-    descripcion: '',
-    type_accomodation: '',
-    pais: '',
-    numero: '',
+    name: '',
+    description: '', // changed from 'descripcion'
+    type_accomodation: 'hotel' as 'hotel' | 'hostel' | 'motel' | 'airbnb' | 'other',
+    country: '',
+    phone: '',
     email: '',
-    ciudad: '',
-    direccion: '',
-    habitaciones: '1-10'
+    city: '',
+    address: '',
+    image: '', // added this property
   };
 
   // Datos de pago (actualizados)
@@ -87,6 +129,14 @@ export class PasarelaComponent {
 
   // Métodos existentes (actualizados)
   avanzarPaso() {
+    if (this.paso === 1 && !this.validarDatosPropietario()) {
+      console.error('Faltan datos del propietario');
+      return;
+    }
+    if (this.paso === 2 && !this.validarDatosHotel()) {
+      console.error('Faltan datos del hotel');
+      return;
+    }
     // Actualizar datos relacionados antes de avanzar
     if (this.paso === 1) {
       // Preparar datos para el pago
@@ -199,5 +249,35 @@ export class PasarelaComponent {
         ...this.datosHotel
       }
     };
+  }
+
+  private validarDatosPropietario(): boolean {
+    const campos = [
+      this.datosPropietario.name,
+      this.datosPropietario.last_name,
+      this.datosPropietario.email,
+      this.datosPropietario.password,
+      this.datosPropietario.type_document,
+      this.datosPropietario.number_document,
+      this.datosPropietario.phone,
+      this.datosPropietario.country,
+      this.datosPropietario.city,
+      this.datosPropietario.rol
+    ];
+    return campos.every(campo => campo && campo.toString().trim() !== '');
+  }
+
+  private validarDatosHotel(): boolean {
+    const campos = [
+      this.datosHotel.name,
+      this.datosHotel.description,
+      this.datosHotel.type_accomodation,
+      this.datosHotel.country,
+      this.datosHotel.phone,
+      this.datosHotel.email,
+      this.datosHotel.city,
+      this.datosHotel.address,
+    ];
+    return campos.every(campo => campo && campo.toString().trim() !== '');
   }
 }
