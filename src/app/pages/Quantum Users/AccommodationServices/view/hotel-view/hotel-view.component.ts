@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Clients } from '../../../../../interface/clients.interface';
@@ -8,6 +8,8 @@ import { HotelsService } from '../../../../../service/hotels.service';
 import { RoomsService } from '../../../../../service/rooms.service';
 import { ReservationsService } from '../../../../../service/reservations.service';
 import { reservations } from '../../../../../pages/Quantum Admin/dashboard/views/interfaces/reservations.interface';
+import { PagoReservaService } from '../../../../../service/pago-reserva.service';
+import { pago_reserva } from '../../../../../interface/pago_reserva.interface';
 
 @Component({
   selector: 'app-hotel-view',
@@ -15,7 +17,7 @@ import { reservations } from '../../../../../pages/Quantum Admin/dashboard/views
   templateUrl: './hotel-view.component.html',
   styleUrls: ['./hotel-view.component.css'],
 })
-export class HotelViewComponent {
+export class HotelViewComponent implements OnInit, OnDestroy {
   hotel: hotels | null = null;
   rooms: rooms[] = [];
   loading: boolean = true;
@@ -30,6 +32,14 @@ export class HotelViewComponent {
   cardCvv: string = '';
   checkInDate: string = '';
   checkOutDate: string = '';
+  showPaymentSuccessModal: boolean = false;
+  reservationNumber: number | null = null;
+  totalAmount: number = 0;
+  confirmationModalState: 'closed' | 'opening' | 'open' | 'closing' = 'closed';
+  paymentModalState: 'closed' | 'opening' | 'open' | 'closing' = 'closed';
+  successModalState: 'closed' | 'opening' | 'open' | 'closing' = 'closed';
+  isProcessingPayment: boolean = false;
+  private roomsInterval: any;
 
   userData: Clients = {
     name: '',
@@ -42,11 +52,10 @@ export class HotelViewComponent {
   };
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private hotelService: HotelsService,
     private roomsService: RoomsService,
-    private reservationsService: ReservationsService
+    private reservationsService: ReservationsService,
+    private paymentBooking: PagoReservaService,
   ) { }
 
   ngOnInit(): void {
@@ -57,10 +66,27 @@ export class HotelViewComponent {
     if (hotelId) {
       this.loadHotelDetails(parseInt(hotelId));
       this.loadRooms(parseInt(hotelId));
+      this.startRoomsInterval(parseInt(hotelId));
     } else {
       this.error = 'No se encontró el hotel seleccionado';
       this.loading = false;
     }
+  }
+
+  ngOnDestroy(): void {
+    if (this.roomsInterval) {
+      clearInterval(this.roomsInterval);
+    }
+  }
+
+  private startRoomsInterval(hotelId: number): void {
+    if (this.roomsInterval) {
+      clearInterval(this.roomsInterval);
+    }
+    
+    this.roomsInterval = setInterval(() => {
+      this.loadRooms(hotelId);
+    }, 20000);
   }
 
   private loadHotelDetails(hotelId: number): void {
@@ -80,7 +106,9 @@ export class HotelViewComponent {
   private loadRooms(hotelId: number): void {
     this.roomsService.getRoomByHotel(hotelId).subscribe({
       next: (data) => {
-        this.rooms = data;
+        if (JSON.stringify(this.rooms) !== JSON.stringify(data)) {
+          this.rooms = data;
+        }
       },
       error: (error) => {
         console.error('Error al cargar las habitaciones:', error);
@@ -121,39 +149,129 @@ export class HotelViewComponent {
     this.reservationsService.createReservation(reservationData).subscribe({
       next: (response) => {
         console.log('Reserva creada exitosamente:', response);
-        this.showPaymentModal = false;
-        // Redirigir a la página de confirmación o dashboard
-        this.router.navigate(['/dashboard']);
+        if (response.id) {
+          this.createPayment(response.id);
+        } else {
+          console.error('No se recibió ID de la reserva');
+        }
       },
       error: (error) => {
         console.error('Error al crear la reserva:', error);
-        // Aquí podrías mostrar un mensaje de error al usuario
+      }
+    });
+  }
+
+  private createPayment(reservationId: number): void {
+    const userId = localStorage.getItem('id');
+    if (!userId || !this.selectedRoomId) {
+      console.error('Faltan datos necesarios para el pago');
+      this.isProcessingPayment = false;
+      return;
+    }
+
+    // Obtener el precio de la habitación seleccionada
+    const selectedRoom = this.rooms.find(room => room.id === this.selectedRoomId);
+    if (!selectedRoom) {
+      console.error('No se encontró la habitación seleccionada');
+      this.isProcessingPayment = false;
+      return;
+    }
+
+    // Crear el objeto de pago
+    const paymentData: pago_reserva = {
+      id: 0,
+      payment_date: new Date(),
+      status: 'confirmed',
+      amount: selectedRoom.price ?? 0,
+      payment_method: this.paymentMethod === 'credit' ? 'visa' : 'mastercard',
+      created_at: new Date(),
+      updated_at: new Date(),
+      reservation: {
+        id: reservationId,
+      },
+      client: {
+        id: parseInt(userId),
+      },
+      room: {
+        id: this.selectedRoomId,
+      }
+    };
+
+    // Crear el pago
+    this.paymentBooking.create(paymentData).subscribe({
+      next: (response) => {
+        console.log('Pago procesado exitosamente:', response);
+        this.isProcessingPayment = false;
+        this.paymentModalState = 'closing';
+        setTimeout(() => {
+          this.paymentModalState = 'closed';
+          this.reservationNumber = response.id;
+          this.totalAmount = response.amount;
+          this.successModalState = 'opening';
+          setTimeout(() => {
+            this.successModalState = 'open';
+          }, 50);
+        }, 300);
+      },
+      error: (error) => {
+        console.error('Error al procesar el pago:', error);
+        this.isProcessingPayment = false;
       }
     });
   }
 
   processPayment(): void {
+    if (!this.validatePaymentData()) {
+      console.error('Por favor complete todos los campos del pago');
+      return;
+    }
+    this.isProcessingPayment = true;
     this.createReserve();
+  }
+
+  private validatePaymentData(): boolean {
+    return !!(
+      this.cardNumber &&
+      this.cardName &&
+      this.cardExpiry &&
+      this.cardCvv &&
+      this.paymentMethod
+    );
   }
 
   reserveRoom(roomId: number): void {
     this.selectedRoomId = roomId;
-    this.showConfirmationModal = true;
+    this.confirmationModalState = 'opening';
+    setTimeout(() => {
+      this.confirmationModalState = 'open';
+    }, 50);
   }
 
   confirmReservation(): void {
-    this.showConfirmationModal = false;
-    this.showPaymentModal = true;
+    this.confirmationModalState = 'closing';
+    setTimeout(() => {
+      this.confirmationModalState = 'closed';
+      this.paymentModalState = 'opening';
+      setTimeout(() => {
+        this.paymentModalState = 'open';
+      }, 50);
+    }, 300);
   }
 
   cancelReservation(): void {
-    this.showConfirmationModal = false;
-    this.selectedRoomId = null;
+    this.confirmationModalState = 'closing';
+    setTimeout(() => {
+      this.confirmationModalState = 'closed';
+      this.selectedRoomId = null;
+    }, 300);
   }
 
   cancelPayment(): void {
-    this.showPaymentModal = false;
-    this.selectedRoomId = null;
+    this.paymentModalState = 'closing';
+    setTimeout(() => {
+      this.paymentModalState = 'closed';
+      this.selectedRoomId = null;
+    }, 300);
   }
 
   getStatusClass(status: string): string {
@@ -220,5 +338,12 @@ export class HotelViewComponent {
       currency: 'COP',
       minimumFractionDigits: 0
     }).format(price);
+  }
+
+  closePaymentSuccess(): void {
+    this.successModalState = 'closing';
+    setTimeout(() => {
+      this.successModalState = 'closed';
+    }, 300);
   }
 }

@@ -196,8 +196,23 @@
 <app-footer-app></app-footer-app>
 
 <!-- Modal de Confirmación -->
-<div *ngIf="showConfirmationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+<div *ngIf="confirmationModalState !== 'closed'" class="fixed inset-0 flex items-center justify-center z-50">
+  <div 
+    class="absolute inset-0 bg-white/60 backdrop-blur-md transition-opacity duration-300 ease-in-out"
+    [class.opacity-0]="confirmationModalState === 'closing' || confirmationModalState === 'opening'"
+    [class.opacity-100]="confirmationModalState === 'open'"
+    (click)="cancelReservation()">
+  </div>
+  
+  <div 
+    class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative z-10 overflow-hidden transform transition-all duration-300 ease-in-out"
+    [class.opacity-0]="confirmationModalState === 'closing' || confirmationModalState === 'opening'"
+    [class.opacity-100]="confirmationModalState === 'open'"
+    [class.scale-90]="confirmationModalState === 'closing' || confirmationModalState === 'opening'"
+    [class.scale-100]="confirmationModalState === 'open'"
+    [class.translate-y-4]="confirmationModalState === 'opening'"
+    [class.translate-y-0]="confirmationModalState === 'open'"
+    [class.-translate-y-4]="confirmationModalState === 'closing'">
     <h3 class="text-2xl font-bold text-gray-800 mb-4">Confirmar Reserva</h3>
     <p class="text-gray-600 mb-6">¿Estás seguro que deseas reservar esta habitación?</p>
     
@@ -224,11 +239,26 @@
 </div>
 
 <!-- Modal de Pago -->
-<div *ngIf="showPaymentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+<div *ngIf="paymentModalState !== 'closed'" class="fixed inset-0 flex items-center justify-center z-50">
+  <div 
+    class="absolute inset-0 bg-white/60 backdrop-blur-md transition-opacity duration-300 ease-in-out"
+    [class.opacity-0]="paymentModalState === 'closing' || paymentModalState === 'opening'"
+    [class.opacity-100]="paymentModalState === 'open'"
+    (click)="!isProcessingPayment && cancelPayment()">
+  </div>
+  
+  <div 
+    class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative z-10 overflow-hidden transform transition-all duration-300 ease-in-out"
+    [class.opacity-0]="paymentModalState === 'closing' || paymentModalState === 'opening'"
+    [class.opacity-100]="paymentModalState === 'open'"
+    [class.scale-90]="paymentModalState === 'closing' || paymentModalState === 'opening'"
+    [class.scale-100]="paymentModalState === 'open'"
+    [class.translate-y-4]="paymentModalState === 'opening'"
+    [class.translate-y-0]="paymentModalState === 'open'"
+    [class.-translate-y-4]="paymentModalState === 'closing'">
     <h3 class="text-2xl font-bold text-gray-800 mb-4">Información de Pago</h3>
     
-    <form class="space-y-4">
+    <form class="space-y-4" [class.opacity-50]="isProcessingPayment" [class.pointer-events-none]="isProcessingPayment">
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Método de Pago</label>
         <select [(ngModel)]="paymentMethod" name="paymentMethod" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#428764] focus:border-transparent">
@@ -259,12 +289,95 @@
       </div>
     </form>
 
+    <!-- Loading Overlay -->
+    <div *ngIf="isProcessingPayment" class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center">
+      <div class="text-center">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#428764] border-t-transparent mb-4"></div>
+        <p class="text-[#428764] font-medium mb-4">Procesando pago...</p>
+        <button 
+          (click)="cancelPayment()" 
+          class="flex-1 px-6 py-3 border border-gray-300 rounded-xl text-gray-600 hover:bg-gray-50 transition-colors">
+          Cancelar pago
+        </button>
+      </div>
+    </div>
+
     <div class="mt-8 flex gap-4">
-      <button (click)="cancelPayment()" class="flex-1 px-6 py-3 border border-gray-300 rounded-xl text-gray-600 hover:bg-gray-50 transition-colors">
+      <button 
+        (click)="cancelPayment()" 
+        class="flex-1 px-6 py-3 border border-gray-300 rounded-xl text-gray-600 hover:bg-gray-50 transition-colors"
+        [disabled]="isProcessingPayment">
         Cancelar
       </button>
-      <button (click)="processPayment()" class="flex-1 px-6 py-3 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white rounded-xl hover:opacity-90 transition-opacity">
-        Pagar
+      <button 
+        (click)="processPayment()" 
+        class="flex-1 px-6 py-3 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white rounded-xl hover:opacity-90 transition-opacity"
+        [disabled]="isProcessingPayment">
+        {{ isProcessingPayment ? 'Procesando...' : 'Pagar' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Éxito de Pago -->
+<div *ngIf="successModalState !== 'closed'" class="fixed inset-0 flex items-center justify-center z-50">
+  <div 
+    class="absolute inset-0 bg-white/60 backdrop-blur-md transition-opacity duration-300 ease-in-out"
+    [class.opacity-0]="successModalState === 'closing' || successModalState === 'opening'"
+    [class.opacity-100]="successModalState === 'open'"
+    (click)="closePaymentSuccess()">
+  </div>
+  
+  <div 
+    class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative z-10 overflow-hidden transform transition-all duration-300 ease-in-out"
+    [class.opacity-0]="successModalState === 'closing' || successModalState === 'opening'"
+    [class.opacity-100]="successModalState === 'open'"
+    [class.scale-90]="successModalState === 'closing' || successModalState === 'opening'"
+    [class.scale-100]="successModalState === 'open'"
+    [class.translate-y-4]="successModalState === 'opening'"
+    [class.translate-y-0]="successModalState === 'open'"
+    [class.-translate-y-4]="successModalState === 'closing'">
+    <div class="text-center">
+      <div class="flex justify-center mb-4">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#428764]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+      </div>
+      
+      <h3 class="text-2xl font-bold text-gray-800 mb-2">¡Pago Realizado con Éxito!</h3>
+      <p class="text-gray-600 mb-6">Tu reserva ha sido confirmada y el pago procesado correctamente.</p>
+      
+      <div class="bg-gray-50 rounded-xl p-4 mb-6">
+        <div class="space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-600">Número de Reserva:</span>
+            <span class="font-medium">#{{ reservationNumber }}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-600">Check-in:</span>
+            <span class="font-medium">{{ checkInDate | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-600">Check-out:</span>
+            <span class="font-medium">{{ checkOutDate | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-600">Total Pagado:</span>
+            <span class="font-medium text-[#428764]">{{ formatPrice(totalAmount) }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <p class="text-sm text-gray-500 mb-6">
+        Hemos enviado un correo electrónico con los detalles de tu reserva.
+      </p>
+    </div>
+
+    <div class="mt-4">
+      <button (click)="closePaymentSuccess()" class="w-full px-6 py-3 bg-gradient-to-r from-[#428764] to-[#306B4F] text-white rounded-xl hover:opacity-90 transition-opacity">
+        Continuar
       </button>
     </div>
   </div>
