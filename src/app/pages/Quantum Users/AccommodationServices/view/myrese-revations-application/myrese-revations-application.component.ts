@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ReservationsService } from '../../../../../service/reservations.service';
+import { reservations } from '../../../../../pages/Quantum Admin/dashboard/views/interfaces/reservations.interface';
 
 @Component({
   selector: 'app-myrese-revations-application',
@@ -6,7 +8,38 @@ import { Component } from '@angular/core';
   templateUrl: './myrese-revations-application.component.html',
   styleUrl: './myrese-revations-application.component.css'
 })
-export class MyreseRevationsApplicationComponent {
+export class MyreseRevationsApplicationComponent implements OnInit {
+  reservations: reservations[] = [];
+  loading: boolean = true;
+  error: string | null = null;
+
+  constructor(private reservationsService: ReservationsService) { }
+
+  ngOnInit(): void {
+    this.loadUserReservations();
+  }
+
+  private loadUserReservations(): void {
+    const userId = localStorage.getItem('id');
+    if (!userId) {
+      this.error = 'No se encontró el ID del usuario';
+      this.loading = false;
+      return;
+    }
+
+    this.reservationsService.findByBookingsByClient(parseInt(userId)).subscribe({
+      next: (data) => {
+        this.reservations = data;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error al cargar las reservas:', error);
+        this.error = 'Error al cargar las reservas';
+        this.loading = false;
+      }
+    });
+  }
+
   // Estado de los filtros
   filters = {
     status: 'all', // 'all', 'upcoming', 'past', 'cancelled'
@@ -105,34 +138,30 @@ export class MyreseRevationsApplicationComponent {
   }
 
   // Obtener clase de estado para el badge
-  getStatusClass(status: string) {
+  getStatusClass(status: string): string {
     switch (status) {
       case 'confirmed':
         return 'bg-green-100 text-green-800';
-      case 'in_process':
-        return 'bg-blue-100 text-blue-800';
-      case 'completed':
-        return 'bg-gray-100 text-gray-800';
-      case 'cancelled':
+      case 'canceled':
         return 'bg-red-100 text-red-800';
+      case 'refunded':
+        return 'bg-yellow-100 text-yellow-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
   }
 
   // Obtener texto de estado
-  getStatusText(status: string) {
+  getStatusText(status: string): string {
     switch (status) {
       case 'confirmed':
         return 'Confirmada';
-      case 'in_process':
-        return 'En proceso';
-      case 'completed':
-        return 'Completada';
-      case 'cancelled':
+      case 'canceled':
         return 'Cancelada';
+      case 'refunded':
+        return 'Reembolsada';
       default:
-        return '';
+        return status;
     }
   }
 
@@ -148,5 +177,14 @@ export class MyreseRevationsApplicationComponent {
       default:
         return { class: 'bg-gray-100 text-gray-800', text: '' };
     }
+  }
+
+  formatDate(date: Date | undefined): string {
+    if (!date) return 'Fecha no disponible';
+    return new Date(date).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   }
 }
