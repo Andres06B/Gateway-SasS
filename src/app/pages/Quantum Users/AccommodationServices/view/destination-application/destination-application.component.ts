@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -70,28 +69,9 @@ export class DestinationApplicationComponent {
   ];
 
   destinosFiltrados = this.todosDestinos;
-
-  // Datos del usuario (simulados)
-  nombreUsuario = 'Juan Pérez'; // Nuevo campo para el nombre del usuario
-  fotoUsuario = 'https://randomuser.me/api/portraits/men/32.jpg'; // URL de foto de perfil
-  fechaRegistro = formatDate(new Date(2022, 5, 15), 'dd/MM/yyyy', 'en-US');
-  reservasCompletadas = 8;
-  destinosVisitados = 5;
-  nivelActual = "Explorador";
-  progresoNivel = 65;
-  destinoRecomendado = "Cartagena de Indias"; // Nuevo campo para el destino recomendado
-
-  // Niveles posibles (para lógica futura)
-  niveles = [
-    { nombre: "Novato", minReservas: 0 },
-    { nombre: "Explorador", minReservas: 5 },
-    { nombre: "Viajero", minReservas: 10 },
-    { nombre: "Experto", minReservas: 20 },
-    { nombre: "Leyenda", minReservas: 35 }
-  ];
+  destinoRecomendado = "Cartagena de Indias";
 
   constructor(private router: Router) {
-    this.calcularNivel();
     this.obtenerDestinoRecomendado();
   }
 
@@ -105,47 +85,16 @@ export class DestinationApplicationComponent {
     }
   }
 
-  // Lógica para determinar el nivel actual y progreso
-  calcularNivel(): void {
-    if (this.reservasCompletadas >= 20) {
-      this.nivelActual = "Experto";
-      this.progresoNivel = ((this.reservasCompletadas - 20) / 15) * 100;
-    } else if (this.reservasCompletadas >= 10) {
-      this.nivelActual = "Viajero";
-      this.progresoNivel = ((this.reservasCompletadas - 10) / 10) * 100;
-    } else if (this.reservasCompletadas >= 5) {
-      this.nivelActual = "Explorador";
-      this.progresoNivel = ((this.reservasCompletadas - 5) / 5) * 100;
-    } else {
-      this.nivelActual = "Novato";
-      this.progresoNivel = (this.reservasCompletadas / 5) * 100;
-    }
-  }
-
-  // Nueva función para determinar el destino recomendado
+  // Función para determinar el destino recomendado
   obtenerDestinoRecomendado(): void {
-    // Lógica simple: recomendamos el destino mejor calificado que no haya visitado
-    // En una app real, esto vendría de un servicio con lógica más compleja
-    const destinosNoVisitados = this.todosDestinos.filter(d => 
-      !['Cartagena de Indias', 'San Andrés Isla'].includes(d.nombre) // Simulando destinos ya visitados
-    );
+    // Lógica simple: recomendamos el destino mejor calificado 
+    const destinosPorCalificacion = [...this.todosDestinos]
+      .sort((a, b) => parseFloat(b.calificacion) - parseFloat(a.calificacion));
     
-    if (destinosNoVisitados.length > 0) {
-      // Ordenar por calificación y tomar el mejor
-      destinosNoVisitados.sort((a, b) => parseFloat(b.calificacion) - parseFloat(a.calificacion));
-      this.destinoRecomendado = destinosNoVisitados[0].nombre;
-    } else {
-      this.destinoRecomendado = 'San Andrés Isla'; // Default si todos han sido visitados
-    }
+    this.destinoRecomendado = destinosPorCalificacion[0].nombre;
   }
 
   explorarDestinos(): void {
     this.router.navigate(['/destinos-recomendados']);
-    // Aquí podrías añadir tracking de analytics si es necesario
   }
-
-  // Función eliminada ya que quitamos el botón de historial
-  // verHistorial(): void {
-  //   this.router.navigate(['/usuario/historial']);
-  // }
 }

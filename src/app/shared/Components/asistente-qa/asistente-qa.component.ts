@@ -9,11 +9,9 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AsistenteQAComponent implements OnInit {
   isOpen = false;
-  messages: { text: string; sender: 'user' | 'assistant'; loading?: boolean }[] = [];
   userInput = '';
+  messages: { text: string; sender: 'user' | 'assistant'; loading?: boolean }[] = [];
   showSuggestedQuestions = true;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   suggestedQuestions = [
     "¿Qué es Quantum Gateway?",
@@ -25,7 +23,7 @@ export class AsistenteQAComponent implements OnInit {
     "¿Cómo puedo contactarlos?"
   ];
 
-  knowledgeBase = {
+  private knowledgeBase: Record<string, string> = {
     "quantum gateway": "Quantum Gateway es un sistema de gestión hotelera premium que incluye control de habitaciones, gestión de reservas, facturación y análisis predictivo con IA.",
     "características": "Nuestro sistema ofrece: panel administrativo completo, gestión de huéspedes, programación inteligente, sistema de pagos integrado y reportes financieros en tiempo real.",
     "precios": "Ofrecemos un Plan Básico gratuito y un Plan Premium a $3,500,000 COP/mes con IA predictiva y soporte 24/7.",
@@ -35,65 +33,58 @@ export class AsistenteQAComponent implements OnInit {
     "contacto": "Puedes contactarnos al +57 (302) 8667326 o por email a contactoquantumgateway.com. Soporte disponible 24/7."
   };
 
-  greetings = [
+  private greetings = [
     "¡Hola! Soy el asistente de Quantum Gateway. ¿En qué puedo ayudarte hoy?",
     "Hola, ¿qué información necesitas sobre nuestro sistema de gestión hotelera?",
     "Bienvenido al asistente virtual de Quantum Gateway. ¿Cómo puedo asistirte?"
   ];
 
-  ngOnInit() {
-    this.addAssistantMessage(this.greetings[Math.floor(Math.random() * this.greetings.length)]);
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    this.addAssistantMessage(this.getRandomGreeting());
   }
 
-  toggleChat() {
+  toggleChat(): void {
     this.isOpen = !this.isOpen;
-    if (this.isOpen) {
-      this.showSuggestedQuestions = true;
+    if (this.isOpen && this.messages.length === 0) {
+      this.addAssistantMessage(this.getRandomGreeting());
     }
+    this.showSuggestedQuestions = true;
   }
 
-  addAssistantMessage(text: string) {
-    this.messages.push({ text, sender: 'assistant' });
-    this.scrollToBottom();
-  }
+  sendMessage(): void {
+    const input = this.userInput.trim();
+    if (!input) return;
 
-  addUserMessage(text: string) {
-    this.messages.push({ text, sender: 'user' });
+    this.addUserMessage(input);
+    this.userInput = '';
     this.showSuggestedQuestions = false;
-    this.scrollToBottom();
+
+    this.addLoadingMessage();
+
+    setTimeout(() => {
+      this.removeLoadingMessage();
+      this.processUserMessage(input.toLowerCase());
+    }, 800);
   }
 
-  sendMessage() {
-    if (this.userInput.trim()) {
-      this.addUserMessage(this.userInput);
-      const question = this.userInput.toLowerCase();
-      this.userInput = '';
-
-      this.messages.push({ text: '', sender: 'assistant', loading: true });
-      this.scrollToBottom();
-
-      setTimeout(() => {
-        this.messages.pop();
-        this.processQuestion(question);
-      }, 800);
-    }
-  }
-
-  sendSuggestedQuestion(question: string) {
+  sendSuggestedQuestion(question: string): void {
     this.userInput = question;
     this.sendMessage();
   }
 
-  processQuestion(question: string) {
-    let response = '';
+  private processUserMessage(message: string): void {
     const matchedKey = Object.keys(this.knowledgeBase).find(key =>
-      question.includes(key.toLowerCase())
+      message.includes(key.toLowerCase())
     );
 
-    if (question.includes('hola') || question.includes('buenos días') || question.includes('buenas tardes')) {
-      response = this.greetings[Math.floor(Math.random() * this.greetings.length)];
-    } else if (matchedKey && matchedKey in this.knowledgeBase) {
-      response = this.knowledgeBase[matchedKey as keyof typeof this.knowledgeBase];
+    let response: string;
+
+    if (this.isGreeting(message)) {
+      response = this.getRandomGreeting();
+    } else if (matchedKey) {
+      response = this.knowledgeBase[matchedKey];
     } else {
       response = "Puedo ayudarte con información sobre: características, precios, integraciones, seguridad y más. ¿Qué te gustaría saber?";
       this.showSuggestedQuestions = true;
@@ -102,19 +93,47 @@ export class AsistenteQAComponent implements OnInit {
     this.addAssistantMessage(response);
   }
 
-  scrollToBottom() {
+  private isGreeting(message: string): boolean {
+    return ['hola', 'buenos días', 'buenas tardes', 'buenas noches'].some(g => message.includes(g));
+  }
+
+  private getRandomGreeting(): string {
+    return this.greetings[Math.floor(Math.random() * this.greetings.length)];
+  }
+
+  private addUserMessage(text: string): void {
+    this.messages.push({ text, sender: 'user' });
+    this.scrollToBottom();
+  }
+
+  private addAssistantMessage(text: string): void {
+    this.messages.push({ text, sender: 'assistant' });
+    this.scrollToBottom();
+  }
+
+  private addLoadingMessage(): void {
+    this.messages.push({ text: '', sender: 'assistant', loading: true });
+    this.scrollToBottom();
+  }
+
+  private removeLoadingMessage(): void {
+    const index = this.messages.findIndex(m => m.loading);
+    if (index !== -1) this.messages.splice(index, 1);
+  }
+
+  private scrollToBottom(): void {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => {
-        const chatContainer = document.getElementById('chat-messages');
-        if (chatContainer) {
-          chatContainer.scrollTop = chatContainer.scrollHeight;
+        const container = document.getElementById('chat-messages');
+        if (container) {
+          container.scrollTop = container.scrollHeight;
         }
       }, 0);
     }
   }
 
   @HostListener('document:keydown.enter', ['$event'])
-  handleEnterKey(event: KeyboardEvent) {
+  handleEnterKey(event: KeyboardEvent): void {
     if (this.isOpen) {
       event.preventDefault();
       this.sendMessage();

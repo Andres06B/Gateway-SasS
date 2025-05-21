@@ -108,22 +108,12 @@
 
         <div class="border-t border-gray-100 my-1"></div>
 
-        <a
-          href="/loginAdmin"
-          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/5 hover:text-[#011147] transition-colors"
-        >
-          <svg
-            class="w-4 h-4 mr-3 text-gray-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            ></path>
+        <a href="/loginAdmin"
+          class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-[#011147]/10 hover:text-[#011147] transition-colors"
+          (click)="openLogoutModal($event)">
+          <svg class="w-4 h-4 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
           </svg>
           <span>Cerrar sesión</span>
         </a>
@@ -131,3 +121,57 @@
     </div>
   </div>
 </nav>
+
+<!-- Modal de confirmación mejorado -->
+<div *ngIf="showLogoutModal"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-md border border-gray-200">
+    <!-- Header del modal -->
+    <div class="bg-gradient-to-r from-[#011147] to-[#023e8a] p-5 flex items-center">
+      <svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+      <h3 class="text-xl font-bold text-white">Confirmar acción</h3>
+    </div>
+
+    <!-- Contenido del modal -->
+    <div class="p-6">
+      <div class="flex items-start">
+        <svg class="w-6 h-6 text-yellow-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <div>
+          <p class="text-gray-700 font-medium mb-2">
+            ¿Estás seguro de que deseas cerrar sesión?
+          </p>
+          <p class="text-gray-500 text-sm">
+            Serás redirigido a la página de inicio de sesión y deberás
+            ingresar tus credenciales nuevamente.
+          </p>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="mt-6 flex justify-end space-x-3">
+        <button (click)="closeLogoutModal()"
+          class="px-5 py-2.5 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-all duration-200 flex items-center cursor-pointer">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          Cancelar
+        </button>
+        <button (click)="confirmLogout()"
+          class="px-5 py-2.5 text-sm font-medium rounded-lg bg-gradient-to-r from-[#011147] to-[#023e8a] text-white hover:from-[#023e8a] hover:to-[#011147] transition-all duration-200 shadow-md flex items-center cursor-pointer">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          Sí, cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

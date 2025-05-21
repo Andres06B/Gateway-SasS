@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { UsersService } from '../../../../../service/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,6 +12,7 @@ export class NavComponent {
   admin: number = Number(localStorage.getItem('token'));
   isMenuOpen = false;
   adminInfo: { name: string; last_name: string; email: string } | null = null;
+  showLogoutModal = false;
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -21,7 +23,8 @@ export class NavComponent {
   }
 
   constructor(
-    private adminS: UsersService
+    private adminS: UsersService,
+    private router: Router
   ) {}
 
   adminData():void {
@@ -57,6 +60,34 @@ export class NavComponent {
   onMouseEnter(): void {
     if (window.innerWidth > 768) {
       this.isMenuOpen = true;
+    }
+  }
+
+  // Abrir modal
+  openLogoutModal(event: Event): void {
+    event.preventDefault();
+    this.showLogoutModal = true;
+    document.body.classList.add('overflow-hidden');
+  }
+
+  // Cerrar modal
+  closeLogoutModal(): void {
+    this.showLogoutModal = false;
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  // Confirmar logout
+  confirmLogout(): void {
+    localStorage.removeItem('token');
+    this.closeLogoutModal();
+    this.router.navigate(['/loginAdmin']);
+  }
+
+  // Tecla Escape
+  @HostListener('document:keydown.escape', ['$event'])
+  handleEscapeKey(event: KeyboardEvent): void {
+    if (this.showLogoutModal) {
+      this.closeLogoutModal();
     }
   }
 }

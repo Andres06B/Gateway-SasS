@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientsService } from '../../../../../service/clients.service';
 
@@ -27,6 +27,7 @@ export class HeaderAppComponent {
   
   mobileMenuOpen = false;
   userMenuOpen = false;
+  showLogoutModal = false;
   userData = {
     name: '',
     lastName: '',
@@ -76,9 +77,7 @@ export class HeaderAppComponent {
       icon: 'M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z',
       bgColor: 'bg-green-50',
       iconColor: 'text-green-500'
-    },
-   
-    
+    }
   ];
 
   constructor(
@@ -128,11 +127,32 @@ export class HeaderAppComponent {
     this.userMenuOpen = false;
   }
 
-  onLogout(): void {
-    // Lógica para cerrar sesión
-    console.log('Sesión cerrada');
-    this.router.navigate(['/loginUser']);
-    this.mobileMenuOpen = false;
+  // Abrir modal de cierre de sesión
+  openLogoutModal(): void {
+    this.showLogoutModal = true;
+    document.body.classList.add('overflow-hidden');
     this.userMenuOpen = false;
+  }
+
+  // Cerrar modal de cierre de sesión
+  closeLogoutModal(): void {
+    this.showLogoutModal = false;
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  // Confirmar cierre de sesión
+  confirmLogout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.closeLogoutModal();
+    this.router.navigate(['/loginUser']);
+  }
+
+  // Escuchar tecla Escape
+  @HostListener('document:keydown.escape', ['$event'])
+  handleEscapeKey(event: KeyboardEvent): void {
+    if (this.showLogoutModal) {
+      this.closeLogoutModal();
+    }
   }
 }
