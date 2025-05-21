@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SuperAdminService {
 
-  apiUrl = 'http://localhost:3000/super-admin';
+  apiUrl = 'https://quantumsaas-production.up.railway.app/super-admin';
 
   constructor(
     private http: HttpClient,

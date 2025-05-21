@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RoomsService {
-  private apiURL = 'http://localhost:3000/rooms';
+  private apiURL = 'https://quantumsaas-production.up.railway.app/rooms';
   
   constructor(
     private http: HttpClient

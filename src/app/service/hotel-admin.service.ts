@@ -10,7 +10,7 @@ import { admin_hotels } from '../interface/admin-hotels.interface';
 
 export class HotelAdminService {
   
-  private baseUrl: string = 'http://localhost:3000/admin-hotels';
+  private baseUrl: string = 'https://quantumsaas-production.up.railway.app/admin-hotels';
 
   
 

@@ -8,7 +8,7 @@ import { paymentService } from '../interface/payment.interface';
 })
 export class PaymentServiceService {
 
-  private baseUrl = 'http://localhost:3000/payment'
+  private baseUrl = 'https://quantumsaas-production.up.railway.app/payment'
 
   constructor(
     private http: HttpClient

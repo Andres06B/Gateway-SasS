@@ -8,7 +8,7 @@ import { IUser } from '../interface/users.interface';
 })
 export class UsersService {
 
-  private baseUrl = 'http://localhost:3000/users'
+  private baseUrl = 'https://quantumsaas-production.up.railway.app/users'
 
   constructor(
     private http: HttpClient
