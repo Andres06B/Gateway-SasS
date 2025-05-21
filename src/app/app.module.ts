@@ -73,6 +73,7 @@ import { AsistenteQAComponent } from './shared/Components/asistente-qa/asistente
 import { AsistenteQWComponent } from './shared/Components/asistente-qw/asistente-qw.component';
 import { AsistenteQuComponent } from './shared/Components/asistente-qu/asistente-qu.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
+import { StorageService } from './service/storage.service';
 
 
 
@@ -153,7 +154,8 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    StorageService
   ],
   bootstrap: [AppComponent]
 })
