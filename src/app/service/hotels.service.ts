@@ -8,7 +8,7 @@ import { hotels } from '../interface/hotels.interface';
 })
 export class HotelsService {
 
-  private apiUrl = 'http://localhost:3000/hotels'
+  private apiUrl = 'https://quantumsaas-production.up.railway.app/hotels'
 
   constructor(
     private http: HttpClient

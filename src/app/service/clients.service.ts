@@ -9,7 +9,7 @@ import { Clients } from '../interface/clients.interface';
 })
 export class ClientsService {
 
-  private apiURL = 'http://localhost:3000/clients';
+  private apiURL = 'https://quantumsaas-production.up.railway.app/clients';
 
   constructor(
     private http: HttpClient

@@ -8,7 +8,7 @@ import { pago_reserva } from '../interface/pago_reserva.interface';
 })
 export class PagoReservaService {
 
-  private apiUrl = 'http://localhost:3000/payment-booking'
+  private apiUrl = 'https://quantumsaas-production.up.railway.app/payment-booking'
 
   constructor(
     private http: HttpClient

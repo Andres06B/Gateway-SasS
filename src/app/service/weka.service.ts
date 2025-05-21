@@ -8,7 +8,7 @@ import { WeekDay } from '@angular/common';
   providedIn: 'root'
 })
 export class WekaService {
-  private apiUrl = 'http://localhost:3000/booking'; 
+  private apiUrl = 'https://quantumsaas-production.up.railway.app/booking'; 
 
   constructor(private http: HttpClient) {}
 

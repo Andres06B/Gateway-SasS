@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ReservationsService {
 
-  private baseUrl: string = 'http://localhost:3000/booking'
+  private baseUrl: string = 'https://quantumsaas-production.up.railway.app/booking'
 
   constructor(
     private http: HttpClient
