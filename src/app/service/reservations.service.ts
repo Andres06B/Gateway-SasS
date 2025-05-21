@@ -38,5 +38,8 @@ export class ReservationsService {
     return this.http.get<reservations>(`${this.baseUrl}/reservation/${id}/client/${client}`);
   }
 
+  createReservation(data: reservations): Observable<reservations> {
+    return this.http.post<reservations>(`${this.baseUrl}/`, data);
+  }
 
 }

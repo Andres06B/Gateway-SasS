@@ -34,6 +34,10 @@ export class RoomsService {
     return this.http.get<rooms[]>(this.apiURL + '/rooms-by-admin/' + adminId);
   }
 
+  getRoomByHotel(hotelId: number): Observable<rooms[]>{
+    return this.http.get<rooms[]>(this.apiURL+ '/all/hotel/'+hotelId)
+  }
+
   getRoomByStatus(status: string): Observable<rooms[]>{
     return this.http.get<rooms[]>(this.apiURL + '/status/' + status);
   }

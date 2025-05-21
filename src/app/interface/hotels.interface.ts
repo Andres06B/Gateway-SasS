@@ -1,5 +1,5 @@
 export interface hotels {
-image: any;
+    image: any;
     id?: number;
     name: string;
     description: string;
@@ -9,4 +9,6 @@ image: any;
     address: string;
     phone: string;
     email: string;
+    available?: boolean;
+    rating?: number;
 }

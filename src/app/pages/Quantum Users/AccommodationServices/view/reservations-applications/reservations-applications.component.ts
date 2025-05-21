@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { hotels } from '../../../../../interface/hotels.interface';
+import { HotelsService } from '../../../../../service/hotels.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservations-applications',
@@ -10,6 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ReservationsApplicationsComponent implements OnInit {
 
   hovering = false;
+  today: string = new Date().toISOString().split('T')[0];
 
   activeTab: string = 'destinos';
   searchPerformed = false;
@@ -17,8 +21,8 @@ export class ReservationsApplicationsComponent implements OnInit {
   selectedCheckIn = '';
   selectedCheckOut = '';
   searchForm: FormGroup;
+  hoteles:hotels[] = []
   
-  // Hoteles de ejemplo (solo 1 disponible en Cartagena, otros próximos)
   hotels = [
     {
       id: 1,
@@ -172,7 +176,11 @@ export class ReservationsApplicationsComponent implements OnInit {
     }
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private ht: HotelsService,
+    private router: Router
+  ) {
     this.searchForm = this.fb.group({
       destination: ['', Validators.required],
       checkIn: ['', [Validators.required, this.futureDateValidator()]],
@@ -182,6 +190,26 @@ export class ReservationsApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.setMinDateForInputs();
+    this.findAllHotels();
+  }
+
+  findAllHotels(): void {
+    this.ht.getHotels().subscribe({
+      next: rsp => {
+        console.log('Primer hotel completo:', JSON.stringify(rsp[0], null, 2));
+        this.hoteles = rsp.map(hotel => {
+          const mappedHotel = {
+            ...hotel,
+            available: true,
+            rating: 4.5
+          };
+          return mappedHotel;
+        });
+      },
+      error: error => {
+        console.error('Error loading hotels:', error);
+      }
+    });
   }
 
   private setMinDateForInputs(): void {
@@ -194,9 +222,14 @@ export class ReservationsApplicationsComponent implements OnInit {
 
   futureDateValidator() {
     return (control: { value: string }) => {
+      if (!control.value) return null;
+      
       const selectedDate = new Date(control.value);
       const today = new Date();
+      
+      // Resetear las horas para comparar solo fechas
       today.setHours(0, 0, 0, 0);
+      selectedDate.setHours(0, 0, 0, 0);
       
       return selectedDate >= today ? null : { pastDate: true };
     };
@@ -252,8 +285,36 @@ export class ReservationsApplicationsComponent implements OnInit {
     return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(price);
   }
 
+  private normalizeText(text: string): string {
+    return text.toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .trim();
+  }
+
   getFilteredHotels(): any[] {
     if (!this.selectedDestination) return [];
-    return this.hotels.filter(hotel => hotel.city === this.selectedDestination);
+    console.log('Selected destination:', this.selectedDestination);
+    console.log('All hotels:', this.hoteles);
+    
+    const filteredHotels = this.hoteles.filter(hotel => {
+      const hotelCity = this.normalizeText(hotel.city || '');
+      const selectedCity = this.normalizeText(this.selectedDestination);
+      console.log(`Comparing hotel city "${hotelCity}" with selected city "${selectedCity}"`);
+      return hotelCity === selectedCity;
+    });
+    
+    console.log('Filtered hotels:', filteredHotels);
+    return filteredHotels;
+  }
+
+  selectHotel(hotelId: number): void {
+    // Guardar el ID del hotel en localStorage
+    localStorage.setItem('selectedHotelId', hotelId.toString());
+    // Guardar las fechas de check-in y check-out
+    localStorage.setItem('checkInDate', this.selectedCheckIn);
+    localStorage.setItem('checkOutDate', this.selectedCheckOut);
+    // Navegar a la vista del hotel
+    this.router.navigate(['/vistahotel']);
   }
 }
