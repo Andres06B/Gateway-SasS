@@ -34,6 +34,8 @@ export class NavarAdmComponent {
           this.dataUser.name = response.name;
           this.dataUser.lastName = response.last_name;
           this.dataUser.email = response.email;
+
+          console.log(this.dataUser); 
         },
         error: (err) => {
           console.error('Error al obtener el super admin:', err);

@@ -75,18 +75,52 @@
               <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                   <tr>
-                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hotel</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  <tr class="hover:bg-gray-50">
-                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">{{hotel[0].name}}</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{vipUsers[0].name}}</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">{{vipUsers[0].price | currency }}</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{vipUsers[0].created_at | date:'dd/MM/yyyy' }}</td>
+                  <!-- Usuarios Premium -->
+                  <tr *ngFor="let premium of premiumUsers" class="hover:bg-gray-50">
+                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">{{premium.user.name}} {{premium.user.last_name}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                        Premium
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">{{premium.price | currency}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{premium.created_at | date:'dd/MM/yyyy'}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full" [ngClass]="{
+                        'bg-green-100 text-green-800': premium.active,
+                        'bg-red-100 text-red-800': !premium.active
+                      }">
+                        {{premium.active ? 'Activo' : 'Inactivo'}}
+                      </span>
+                    </td>
+                  </tr>
+                  
+                  <!-- Usuarios VIP -->
+                  <tr *ngFor="let vip of vipUsers" class="hover:bg-gray-50">
+                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-800">{{vip.user.name}} {{vip.user.last_name}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+                        VIP
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">{{vip.price | currency}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{vip.created_at | date:'dd/MM/yyyy'}}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full" [ngClass]="{
+                        'bg-green-100 text-green-800': vip.active,
+                        'bg-red-100 text-red-800': !vip.active
+                      }">
+                        {{vip.active ? 'Activo' : 'Inactivo'}}
+                      </span>
+                    </td>
                   </tr>
                 </tbody>
               </table>
