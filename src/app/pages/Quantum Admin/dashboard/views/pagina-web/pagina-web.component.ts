@@ -258,4 +258,16 @@ throw new Error('Method not implemented.');
       minimumFractionDigits: 0
     }).format(price);
   }
+
+
+  handleImageError(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    // Si el alt contiene "Habitación", usamos la imagen de habitación
+    if (imgElement.alt.toLowerCase().includes('habitación')) {
+      imgElement.src = 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=80';
+    } else {
+      // Para cualquier otra imagen (hotel), usamos la imagen de hotel
+      imgElement.src = 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80';
+    }
+  }
 }
