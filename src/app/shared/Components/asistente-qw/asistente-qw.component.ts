@@ -124,7 +124,7 @@ export class AsistenteQWComponent {
 
   getResponseForMessage(message: string): string {
     if (message.includes('cancelacion') || message.includes('cancelaciones')) {
-      return "Nuestro sistema de predicción de cancelaciones utiliza algoritmos con Weka para analizar patrones históricos y predecir qué reservas tienen mayor probabilidad de cancelarse, con un 92% de precisión.";
+      return "Nuestro sistema de predicción de cancelaciones utiliza algoritmos con Weka para analizar patrones históricos y predecir qué reservas tienen mayor probabilidad de cancelarse, con un 97% de precisión.";
     } else if (message.includes('pago') || message.includes('pagos')) {
       return "Aceptamos todas las tarjetas de crédito/débito principales, transferencias bancarias y PayPal. Todos los pagos son procesados con encriptación AES-256 y cumplimiento PCI-DSS.";
     } else if (message.includes('seguridad') || message.includes('datos')) {
