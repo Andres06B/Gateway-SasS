@@ -154,7 +154,8 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr *ngFor="let room of filteredRooms" class="hover:bg-gray-50">
+                <tr *ngFor="let room of filteredRooms | slice: (currentPage-1) * pageSize : (currentPage) * pageSize"
+                  class="hover:bg-gray-50">
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {{ room.name }}
                   </td>
@@ -183,7 +184,7 @@
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div class="flex justify-end space-x-2">
-                      
+
                       <button (click)="openEditModal(room.id)"
                         class="bg-[#011147] hover:bg-[#0a2a8f] text-white px-2 py-1 rounded-md flex items-center text-xs shadow-sm transition-all duration-200 hover:scale-105">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -215,13 +216,9 @@
 
           <!-- Paginación mejorada -->
           <div class="px-6 py-3 bg-gray-50 border-t border-gray-200">
-              <app-pagination 
-                [currentPage]="currentPage"
-                [totalPages]="totalPages"
-                [pageSize]="pageSize"
-                [totalItems]="Rooms.length"
-                (pageChange)="onPageChange($event)">
-              </app-pagination>
+            <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" [pageSize]="pageSize"
+              [totalItems]="Rooms.length" (pageChange)="onPageChange($event)">
+            </app-pagination>
           </div>
         </div>
       </main>
@@ -232,9 +229,10 @@
   <div *ngIf="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0">
     <!-- Fondo transparente con blur -->
     <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" (click)="closeModal()"></div>
-  
+
     <!-- Contenido del modal -->
-    <div class="bg-white rounded-lg shadow-xl w-full max-w-[95%] sm:max-w-md max-h-[90vh] overflow-auto z-10 animate-in fade-in-50 zoom-in-95 duration-200">
+    <div
+      class="bg-white rounded-lg shadow-xl w-full max-w-[95%] sm:max-w-md max-h-[90vh] overflow-auto z-10 animate-in fade-in-50 zoom-in-95 duration-200">
       <!-- Encabezado con gradiente -->
       <div class="relative bg-gradient-to-r from-[#011147] to-[#0a2a8f] text-white p-3 sm:p-4 rounded-t-lg">
         <button type="button" class="absolute right-2 top-2 text-white hover:bg-white/20 p-1.5 rounded-full"
@@ -248,7 +246,7 @@
         </button>
         <h2 class="text-lg sm:text-xl font-semibold pr-6">Crear Nueva Habitación</h2>
       </div>
-  
+
       <!-- Cuerpo del formulario -->
       <div class="p-4 sm:p-6">
         <form (ngSubmit)="createRoom()" enctype="multipart/form-data" class="space-y-4">
@@ -258,14 +256,14 @@
               class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#011147] focus:border-[#011147] text-sm"
               required />
           </div>
-  
+
           <div class="space-y-1.5 sm:space-y-2">
             <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
             <textarea id="description" [(ngModel)]="newRoom.description" name="description"
               class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#011147] focus:border-[#011147] text-sm min-h-[80px] sm:min-h-[100px]"
               required></textarea>
           </div>
-  
+
           <div class="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4">
             <div class="space-y-1.5 sm:space-y-2">
               <label for="price" class="block text-sm font-medium text-gray-700">Precio</label>
@@ -276,7 +274,7 @@
                   required />
               </div>
             </div>
-  
+
             <div class="space-y-1.5 sm:space-y-2">
               <label for="ability" class="block text-sm font-medium text-gray-700">Capacidad</label>
               <input id="ability" type="number" [(ngModel)]="newRoom.ability" name="ability"
@@ -284,7 +282,7 @@
                 required />
             </div>
           </div>
-  
+
           <div class="space-y-1.5 sm:space-y-2">
             <label for="image" class="block text-sm font-medium text-gray-700">Imagen</label>
             <div
@@ -293,9 +291,10 @@
                 class="w-full text-xs sm:text-sm text-gray-500 file:mr-2 sm:file:mr-4 file:py-1.5 sm:file:py-2 file:px-3 sm:file:px-4 file:rounded-md file:border-0 file:text-xs sm:file:text-sm file:font-medium file:bg-[#011147]/10 file:text-[#011147] hover:file:bg-[#011147]/20" />
             </div>
           </div>
-  
+
           <!-- Pie del modal con botones -->
-          <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 space-y-2 space-y-reverse sm:space-y-0 pt-4 border-t border-gray-100 mt-4 sm:mt-6">
+          <div
+            class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 space-y-2 space-y-reverse sm:space-y-0 pt-4 border-t border-gray-100 mt-4 sm:mt-6">
             <button type="button"
               class="w-full sm:w-auto px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
               (click)="closeModal()">
@@ -393,9 +392,10 @@
   <div *ngIf="isEditing" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0">
     <!-- Fondo transparente con blur -->
     <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" (click)="closeEditModal()"></div>
-  
+
     <!-- Contenido del modal -->
-    <div class="bg-white rounded-lg shadow-xl w-full max-w-[95%] sm:max-w-md max-h-[90vh] overflow-auto z-10 animate-in fade-in-50 zoom-in-95 duration-200">
+    <div
+      class="bg-white rounded-lg shadow-xl w-full max-w-[95%] sm:max-w-md max-h-[90vh] overflow-auto z-10 animate-in fade-in-50 zoom-in-95 duration-200">
       <!-- Encabezado con gradiente -->
       <div class="relative bg-gradient-to-r from-[#011147] to-[#0a2a8f] text-white p-3 sm:p-4 rounded-t-lg">
         <button type="button" class="absolute right-2 top-2 text-white hover:bg-white/20 p-1.5 rounded-full"
@@ -409,7 +409,7 @@
         </button>
         <h2 class="text-lg sm:text-xl font-semibold pr-6">Editar Habitación</h2>
       </div>
-  
+
       <!-- Cuerpo del formulario -->
       <div class="p-4 sm:p-6">
         <form #editForm="ngForm" (ngSubmit)="editRoom()" enctype="multipart/form-data" class="space-y-4"
@@ -421,7 +421,7 @@
               class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#011147] focus:border-[#011147] text-sm"
               required>
           </div>
-  
+
           <!-- Descripción -->
           <div class="space-y-1.5 sm:space-y-2">
             <label for="edit-description" class="block text-sm font-medium text-gray-700">Descripción</label>
@@ -429,7 +429,7 @@
               class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#011147] focus:border-[#011147] text-sm min-h-[80px] sm:min-h-[100px]"
               required></textarea>
           </div>
-  
+
           <!-- Precio y Capacidad -->
           <div class="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4">
             <div class="space-y-1.5 sm:space-y-2">
@@ -441,7 +441,7 @@
                   min="0" required>
               </div>
             </div>
-  
+
             <div class="space-y-1.5 sm:space-y-2">
               <label for="edit-ability" class="block text-sm font-medium text-gray-700">Capacidad</label>
               <input id="edit-ability" type="number" [(ngModel)]="selectedRoom.ability" name="ability"
@@ -449,11 +449,11 @@
                 min="1" required>
             </div>
           </div>
-  
+
           <!-- Imagen -->
           <div class="space-y-1.5 sm:space-y-2">
             <label for="edit-image" class="block text-sm font-medium text-gray-700">Imagen</label>
-  
+
             <!-- Vista previa de la imagen actual (si existe) -->
             <div *ngIf="selectedRoom.image" class="mb-2 sm:mb-3 relative rounded-md overflow-hidden">
               <img [src]="selectedRoom.image" alt="Imagen actual" class="w-full h-24 sm:h-32 object-cover">
@@ -462,7 +462,7 @@
                 <span class="text-white text-xs sm:text-sm">Imagen actual</span>
               </div>
             </div>
-  
+
             <div
               class="border border-gray-300 rounded-md p-2 focus-within:ring-2 focus-within:ring-[#011147] focus-within:border-[#011147]">
               <input id="edit-image" type="file" (change)="onFileSelected($event)"
@@ -470,9 +470,10 @@
               <p class="mt-1 text-xs text-gray-500">Deja en blanco para mantener la imagen actual</p>
             </div>
           </div>
-  
+
           <!-- Pie del modal con botones -->
-          <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 space-y-2 space-y-reverse sm:space-y-0 pt-4 border-t border-gray-100 mt-4 sm:mt-6">
+          <div
+            class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 space-y-2 space-y-reverse sm:space-y-0 pt-4 border-t border-gray-100 mt-4 sm:mt-6">
             <button type="button"
               class="w-full sm:w-auto px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
               (click)="closeEditModal()">
