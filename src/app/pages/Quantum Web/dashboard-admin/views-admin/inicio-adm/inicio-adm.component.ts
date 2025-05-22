@@ -23,9 +23,22 @@ export class InicioAdmComponent {
   ){}
 
   ngOnInit(): void {
-    this.premiumUsersList();
-    this.vipUsersList();
     this.findAllHotels();
+  }
+
+  findAllHotels() {
+    this.hotels.getHotels().subscribe({
+      next: (res) => {
+        this.hotel = res;
+        console.log('Hoteles cargados:', this.hotel);
+        // Una vez que tenemos los hoteles, cargamos los usuarios
+        this.premiumUsersList();
+        this.vipUsersList();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   premiumUsersList() {
@@ -35,41 +48,42 @@ export class InicioAdmComponent {
           console.log("No hay usuarios premium");
           this.premiumUsers = [];
         } else {
-          this.premiumUsers = res;
-          console.log("Premiun user: ", this.premiumUsers);
+          // Asociar cada usuario premium con el nombre de su hotel
+          this.premiumUsers = res.map(user => {
+            const hotelName = this.hotel.find(h => h.id === user.hotel_id)?.name || 'N/A';
+            return {
+              ...user,
+              hotelName: hotelName
+            };
+          });
+          console.log("Premium users con nombres de hoteles:", this.premiumUsers);
           this.calculateTotalPricePremium();
         }
       },
       error: (err) => {
         console.log(err);
       }
-    })
+    });
   }
 
   vipUsersList() {
     this.payment.findVipUsers().subscribe({
       next: (res) => {
-        this.vipUsers = res;
-        console.log(this.vipUsers);
+        // Asociar cada usuario VIP con el nombre de su hotel
+        this.vipUsers = res.map(user => {
+          const hotelName = this.hotel.find(h => h.id === user.hotel_id)?.name || 'N/A';
+          return {
+            ...user,
+            hotelName: hotelName
+          };
+        });
+        console.log("VIP users con nombres de hoteles:", this.vipUsers);
         this.calculateTotalPriceVip();
       },
       error: (err) => {
         console.log(err);
       }
-    })
-  }
-
-  findAllHotels() {
-    this.hotels.getHotels().subscribe({
-      next: (res) => {
-        this.hotel = res;
-        console.log(this.hotel);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
-
+    });
   }
 
   calculateTotalPriceVip(): void {
@@ -83,5 +97,4 @@ export class InicioAdmComponent {
       return total + (user.price || 0); 
     }, 0);
   }
-
 }
